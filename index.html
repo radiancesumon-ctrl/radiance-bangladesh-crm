@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,783 +6,1157 @@
 
   <title>Radiance Bangladesh CRM</title>
 
-  <meta name="description" content="Radiance Bangladesh CRM & Business Management System">
-  <meta name="theme-color" content="#7c3aed">
+  <meta
+    name="description"
+    content="Radiance Bangladesh CRM & Business Management System"
+  >
+
+  <meta
+    name="theme-color"
+    content="#7c3aed"
+  >
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    :root {
-      --primary: #7c3aed;
-      --primary-dark: #5b21b6;
-      --secondary: #2563eb;
-      --success: #16a34a;
-      --warning: #d97706;
-      --danger: #dc2626;
-      --dark: #111827;
-      --text: #374151;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --bg: #f5f7fb;
-      --white: #ffffff;
-      --sidebar: #111827;
-      --sidebar-hover: #1f2937;
+    :root{
+      --primary:#7c3aed;
+      --primary-dark:#5b21b6;
+      --secondary:#2563eb;
+      --success:#16a34a;
+      --warning:#d97706;
+      --danger:#dc2626;
+      --dark:#111827;
+      --text:#374151;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --bg:#f5f7fb;
+      --white:#ffffff;
+      --sidebar:#111827;
+      --sidebar-hover:#1f2937;
     }
 
     html,
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
+    body{
+      margin:0;
+      padding:0;
+      min-height:100%;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+    body{
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      background:var(--bg);
+      color:var(--text);
     }
 
     button,
     input,
     select,
-    textarea {
-      font-family: inherit;
+    textarea{
+      font-family:inherit;
     }
 
-    button {
-      cursor: pointer;
+    button{
+      cursor:pointer;
     }
 
-    /* =========================================
+
+    /* =====================================================
        LOGIN
-    ========================================= */
+    ===================================================== */
 
-    #loginScreen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+    #loginScreen{
+      min-height:100vh;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:20px;
 
       background:
         radial-gradient(
           circle at top left,
-          rgba(124, 58, 237, 0.22),
+          rgba(124,58,237,.22),
           transparent 35%
         ),
         radial-gradient(
           circle at bottom right,
-          rgba(37, 99, 235, 0.18),
+          rgba(37,99,235,.18),
           transparent 35%
         ),
         #f3f4f6;
     }
 
-    .login-card {
-      width: 100%;
-      max-width: 430px;
-      background: var(--white);
-      border-radius: 20px;
-      padding: 38px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    .login-card{
+      width:100%;
+
+      max-width:430px;
+
+      background:var(--white);
+
+      border-radius:20px;
+
+      padding:38px;
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.12);
     }
 
-    .login-logo {
-      width: 92px;
-      height: 92px;
-      margin: 0 auto 18px;
-      border-radius: 20px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      border: 1px solid #eeeeee;
+    .login-logo{
+      width:92px;
+      height:92px;
+
+      margin:0 auto 18px;
+
+      border-radius:20px;
+
+      background:#fff;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      overflow:hidden;
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+
+      border:1px solid #eee;
     }
 
-    .login-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
+    .login-logo img{
+      width:100%;
+      height:100%;
+
+      object-fit:contain;
+
+      display:block;
     }
 
-    .login-logo-fallback {
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 30px;
-      font-weight: 800;
+    .login-logo-fallback{
+      width:100%;
+      height:100%;
+
+      border-radius:20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      color:#fff;
+
+      font-size:30px;
+
+      font-weight:800;
     }
 
-    .login-card h1 {
-      text-align: center;
-      font-size: 25px;
-      color: var(--dark);
-      margin-bottom: 7px;
+    .login-card h1{
+      text-align:center;
+
+      font-size:25px;
+
+      color:var(--dark);
+
+      margin-bottom:7px;
     }
 
-    .login-subtitle {
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 30px;
+    .login-subtitle{
+      text-align:center;
+
+      color:var(--muted);
+
+      font-size:14px;
+
+      margin-bottom:30px;
     }
 
-    .form-group {
-      margin-bottom: 18px;
+    .form-group{
+      margin-bottom:18px;
     }
 
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--dark);
+    .form-group label{
+      display:block;
+
+      font-size:13px;
+
+      font-weight:700;
+
+      margin-bottom:8px;
+
+      color:var(--dark);
     }
 
-    .form-control {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      outline: none;
-      background: white;
-      font-size: 14px;
-      transition: 0.2s;
+    .form-control{
+      width:100%;
+
+      padding:13px 14px;
+
+      border:1px solid var(--border);
+
+      border-radius:10px;
+
+      outline:none;
+
+      background:white;
+
+      font-size:14px;
+
+      transition:.2s;
     }
 
-    .form-control:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    .form-control:focus{
+      border-color:var(--primary);
+
+      box-shadow:
+        0 0 0 3px rgba(124,58,237,.1);
     }
 
-    .login-btn {
-      width: 100%;
-      border: none;
-      padding: 14px;
-      border-radius: 10px;
-      color: white;
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
-      font-size: 15px;
-      font-weight: 700;
-      margin-top: 5px;
-      transition: 0.2s;
+    .login-btn{
+      width:100%;
+
+      border:none;
+
+      padding:14px;
+
+      border-radius:10px;
+
+      color:#fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
+      font-size:15px;
+
+      font-weight:700;
+
+      margin-top:5px;
+
+      transition:.2s;
     }
 
-    .login-btn:hover {
-      opacity: 0.92;
+    .login-btn:hover{
+      opacity:.92;
     }
 
-    .login-btn:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
+    .login-btn:disabled{
+      opacity:.65;
+
+      cursor:not-allowed;
     }
 
-    .login-error {
-      display: none;
-      background: #fef2f2;
-      color: var(--danger);
-      border: 1px solid #fecaca;
-      padding: 11px 13px;
-      border-radius: 8px;
-      font-size: 13px;
-      margin-bottom: 15px;
+    .login-error{
+      display:none;
+
+      background:#fef2f2;
+
+      color:var(--danger);
+
+      border:1px solid #fecaca;
+
+      padding:11px 13px;
+
+      border-radius:8px;
+
+      font-size:13px;
+
+      margin-bottom:15px;
     }
 
-    .login-footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 25px;
+    .login-footer{
+      text-align:center;
+
+      color:var(--muted);
+
+      font-size:12px;
+
+      margin-top:25px;
     }
 
-    /* =========================================
-       APP
-    ========================================= */
 
-    #app {
-      display: none;
-      min-height: 100vh;
+    /* =====================================================
+       APPLICATION
+    ===================================================== */
+
+    #app{
+      display:none;
+
+      min-height:100vh;
     }
 
-    .app-layout {
-      display: flex;
-      min-height: 100vh;
+    .app-layout{
+      display:flex;
+
+      min-height:100vh;
     }
 
-    /* =========================================
+
+    /* =====================================================
        SIDEBAR
-    ========================================= */
+    ===================================================== */
 
-    .sidebar {
-      width: 260px;
-      background: var(--sidebar);
-      color: white;
-      position: fixed;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      overflow-y: auto;
-      z-index: 1000;
-      transition: transform 0.25s ease;
+    .sidebar{
+      width:260px;
+
+      background:var(--sidebar);
+
+      color:#fff;
+
+      position:fixed;
+
+      left:0;
+      top:0;
+      bottom:0;
+
+      overflow-y:auto;
+
+      z-index:1000;
+
+      transition:
+        transform .25s ease;
     }
 
-    .brand {
-      min-height: 75px;
-      padding: 15px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .brand{
+      min-height:75px;
+
+      padding:15px 18px;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
     }
 
-    .brand-icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      border-radius: 10px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    .brand-icon{
+      width:44px;
+      height:44px;
+
+      min-width:44px;
+
+      border-radius:10px;
+
+      background:#fff;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      overflow:hidden;
+
+      box-shadow:
+        0 4px 12px rgba(0,0,0,.2);
     }
 
-    .brand-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
+    .brand-icon img{
+      width:100%;
+      height:100%;
+
+      object-fit:contain;
+
+      display:block;
     }
 
-    .brand-icon-fallback {
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      background: linear-gradient(
-        135deg,
-        #8b5cf6,
-        #2563eb
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 800;
-      font-size: 16px;
+    .brand-icon-fallback{
+      width:100%;
+      height:100%;
+
+      border-radius:10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #8b5cf6,
+          #2563eb
+        );
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      color:#fff;
+
+      font-weight:800;
+
+      font-size:16px;
     }
 
-    .brand-text strong {
-      display: block;
-      font-size: 15px;
+    .brand-text strong{
+      display:block;
+
+      font-size:15px;
     }
 
-    .brand-text span {
-      display: block;
-      color: #9ca3af;
-      font-size: 10px;
-      margin-top: 3px;
+    .brand-text span{
+      display:block;
+
+      color:#9ca3af;
+
+      font-size:10px;
+
+      margin-top:3px;
     }
 
-    .menu-section {
-      padding: 20px 12px 6px;
-      color: #6b7280;
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
+    .menu-section{
+      padding:20px 12px 6px;
+
+      color:#6b7280;
+
+      font-size:10px;
+
+      font-weight:800;
+
+      text-transform:uppercase;
+
+      letter-spacing:.8px;
     }
 
-    .menu-item {
-      width: calc(100% - 16px);
-      margin: 2px 8px;
-      padding: 11px 12px;
-      border: none;
-      background: transparent;
-      color: #d1d5db;
-      border-radius: 8px;
-      text-align: left;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      transition: 0.2s;
+    .menu-item{
+      width:
+        calc(100% - 16px);
+
+      margin:
+        2px 8px;
+
+      padding:
+        11px 12px;
+
+      border:none;
+
+      background:transparent;
+
+      color:#d1d5db;
+
+      border-radius:8px;
+
+      text-align:left;
+
+      font-size:13px;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:11px;
+
+      transition:.2s;
     }
 
     .menu-item:hover,
-    .menu-item.active {
-      background: var(--sidebar-hover);
-      color: white;
+    .menu-item.active{
+      background:var(--sidebar-hover);
+
+      color:#fff;
     }
 
-    .menu-icon {
-      width: 20px;
-      text-align: center;
-      font-size: 15px;
+    .menu-icon{
+      width:20px;
+
+      text-align:center;
+
+      font-size:15px;
     }
 
-    /* =========================================
+
+    /* =====================================================
        MAIN
-    ========================================= */
+    ===================================================== */
 
-    .main {
-      margin-left: 260px;
-      width: calc(100% - 260px);
-      min-height: 100vh;
+    .main{
+      margin-left:260px;
+
+      width:
+        calc(100% - 260px);
+
+      min-height:100vh;
     }
 
-    .topbar {
-      height: 75px;
-      background: white;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 25px;
-      position: sticky;
-      top: 0;
-      z-index: 500;
+
+    /* =====================================================
+       TOPBAR
+    ===================================================== */
+
+    .topbar{
+      height:75px;
+
+      background:#fff;
+
+      border-bottom:
+        1px solid var(--border);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      padding:
+        0 25px;
+
+      position:sticky;
+
+      top:0;
+
+      z-index:500;
     }
 
-    .topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+    .topbar-left{
+      display:flex;
+
+      align-items:center;
+
+      gap:15px;
     }
 
-    .mobile-menu {
-      display: none;
-      border: none;
-      background: transparent;
-      font-size: 23px;
+    .mobile-menu{
+      display:none;
+
+      border:none;
+
+      background:transparent;
+
+      font-size:23px;
     }
 
-    .page-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--dark);
+    .page-title{
+      font-size:20px;
+
+      font-weight:800;
+
+      color:var(--dark);
     }
 
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+    .topbar-right{
+      display:flex;
+
+      align-items:center;
+
+      gap:15px;
     }
 
-    .notification-btn {
-      position: relative;
-      border: none;
-      background: #f3f4f6;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 17px;
+    .notification-btn{
+      position:relative;
+
+      border:none;
+
+      background:#f3f4f6;
+
+      width:40px;
+
+      height:40px;
+
+      border-radius:50%;
+
+      font-size:17px;
     }
 
-    .notification-dot {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      background: var(--danger);
-      border-radius: 50%;
-      top: 8px;
-      right: 9px;
+    .notification-dot{
+      position:absolute;
+
+      width:7px;
+      height:7px;
+
+      background:var(--danger);
+
+      border-radius:50%;
+
+      top:8px;
+      right:9px;
     }
 
-    .user-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .user-box{
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
     }
 
-    .user-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 13px;
+    .user-avatar{
+      width:38px;
+      height:38px;
+
+      border-radius:50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
+      color:#fff;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      font-weight:800;
+
+      font-size:13px;
     }
 
-    .user-info strong {
-      display: block;
-      font-size: 13px;
-      color: var(--dark);
+    .user-info strong{
+      display:block;
+
+      font-size:13px;
+
+      color:var(--dark);
     }
 
-    .user-info span {
-      display: block;
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 2px;
+    .user-info span{
+      display:block;
+
+      font-size:11px;
+
+      color:var(--muted);
+
+      margin-top:2px;
     }
 
-    .content {
-      padding: 25px;
+
+    /* =====================================================
+       CONTENT
+    ===================================================== */
+
+    .content{
+      padding:25px;
     }
 
-    /* =========================================
-       DASHBOARD
-    ========================================= */
 
-    .welcome-box {
-      background: linear-gradient(
-        135deg,
-        #5b21b6,
-        #2563eb
-      );
-      color: white;
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 24px;
+    /* =====================================================
+       WELCOME
+    ===================================================== */
+
+    .welcome-box{
+      background:
+        linear-gradient(
+          135deg,
+          #5b21b6,
+          #2563eb
+        );
+
+      color:#fff;
+
+      padding:25px;
+
+      border-radius:16px;
+
+      margin-bottom:24px;
     }
 
-    .welcome-box h2 {
-      font-size: 22px;
-      margin-bottom: 7px;
+    .welcome-box h2{
+      font-size:22px;
+
+      margin-bottom:7px;
     }
 
-    .welcome-box p {
-      font-size: 13px;
-      opacity: 0.9;
+    .welcome-box p{
+      font-size:13px;
+
+      opacity:.9;
     }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-bottom: 24px;
+
+    /* =====================================================
+       STATS
+    ===================================================== */
+
+    .stats-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:18px;
+
+      margin-bottom:24px;
     }
 
-    .stat-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .stat-card{
+      background:#fff;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:14px;
+
+      padding:20px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      transition:.2s;
     }
 
-    .stat-info span {
-      color: var(--muted);
-      font-size: 12px;
-      display: block;
-      margin-bottom: 8px;
+    .stat-card:hover{
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,.06);
     }
 
-    .stat-info strong {
-      font-size: 25px;
-      color: var(--dark);
+    .stat-info span{
+      color:var(--muted);
+
+      font-size:12px;
+
+      display:block;
+
+      margin-bottom:8px;
     }
 
-    .stat-icon {
-      width: 47px;
-      height: 47px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
+    .stat-info strong{
+      font-size:25px;
+
+      color:var(--dark);
     }
 
-    .purple {
-      background: #ede9fe;
-      color: #7c3aed;
+    .stat-icon{
+      width:47px;
+      height:47px;
+
+      border-radius:12px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      font-size:20px;
     }
 
-    .blue {
-      background: #dbeafe;
-      color: #2563eb;
+    .purple{
+      background:#ede9fe;
+
+      color:#7c3aed;
     }
 
-    .green {
-      background: #dcfce7;
-      color: #16a34a;
+    .blue{
+      background:#dbeafe;
+
+      color:#2563eb;
     }
 
-    .orange {
-      background: #ffedd5;
-      color: #ea580c;
+    .green{
+      background:#dcfce7;
+
+      color:#16a34a;
     }
 
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 20px;
+    .orange{
+      background:#ffedd5;
+
+      color:#ea580c;
     }
 
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
+
+    /* =====================================================
+       DASHBOARD GRID
+    ===================================================== */
+
+    .dashboard-grid{
+      display:grid;
+
+      grid-template-columns:
+        1.5fr 1fr;
+
+      gap:20px;
     }
 
-    .card-header {
-      padding: 17px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .card{
+      background:#fff;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:14px;
+
+      overflow:hidden;
     }
 
-    .card-header h3 {
-      font-size: 15px;
-      color: var(--dark);
+    .card-header{
+      padding:
+        17px 20px;
+
+      border-bottom:
+        1px solid var(--border);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
     }
 
-    .card-body {
-      padding: 20px;
+    .card-header h3{
+      font-size:15px;
+
+      color:var(--dark);
     }
 
-    .quick-actions {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+    .card-body{
+      padding:20px;
     }
 
-    .quick-action {
-      border: 1px solid var(--border);
-      background: #fafafa;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: left;
-      font-size: 12px;
-      color: var(--dark);
+
+    /* =====================================================
+       QUICK ACTIONS
+    ===================================================== */
+
+    .quick-actions{
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:10px;
     }
 
-    .quick-action:hover {
-      border-color: var(--primary);
-      background: #faf5ff;
+    .quick-action{
+      border:
+        1px solid var(--border);
+
+      background:#fafafa;
+
+      padding:15px;
+
+      border-radius:10px;
+
+      text-align:left;
+
+      font-size:12px;
+
+      color:var(--dark);
+
+      transition:.2s;
     }
 
-    .activity-item {
-      display: flex;
-      gap: 12px;
-      padding: 13px 0;
-      border-bottom: 1px solid #f0f0f0;
+    .quick-action:hover{
+      border-color:
+        var(--primary);
+
+      background:#faf5ff;
     }
 
-    .activity-item:last-child {
-      border-bottom: none;
+
+    /* =====================================================
+       ACTIVITY
+    ===================================================== */
+
+    .activity-item{
+      display:flex;
+
+      gap:12px;
+
+      padding:13px 0;
+
+      border-bottom:
+        1px solid #f0f0f0;
     }
 
-    .activity-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--primary);
-      margin-top: 5px;
-      flex-shrink: 0;
+    .activity-item:last-child{
+      border-bottom:none;
     }
 
-    .activity-text {
-      font-size: 12px;
-      line-height: 1.5;
+    .activity-dot{
+      width:9px;
+      height:9px;
+
+      border-radius:50%;
+
+      background:
+        var(--primary);
+
+      margin-top:5px;
+
+      flex-shrink:0;
     }
 
-    .activity-text strong {
-      color: var(--dark);
+    .activity-text{
+      font-size:12px;
+
+      line-height:1.5;
     }
 
-    .activity-time {
-      color: var(--muted);
-      font-size: 10px;
-      margin-top: 3px;
+    .activity-text strong{
+      color:var(--dark);
     }
 
-    /* =========================================
+    .activity-time{
+      color:var(--muted);
+
+      font-size:10px;
+
+      margin-top:3px;
+    }
+
+
+    /* =====================================================
        MODULE
-    ========================================= */
+    ===================================================== */
 
-    .module-view {
-      display: none;
+    .module-view{
+      display:none;
     }
 
-    .module-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
+    .module-header{
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:center;
+
+      margin-bottom:20px;
     }
 
-    .module-header h2 {
-      color: var(--dark);
-      font-size: 21px;
+    .module-header h2{
+      color:var(--dark);
+
+      font-size:21px;
     }
 
-    .module-header p {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 5px;
+    .module-header p{
+      color:var(--muted);
+
+      font-size:12px;
+
+      margin-top:5px;
     }
 
-    .btn {
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
+    .btn{
+      border:none;
+
+      padding:
+        10px 15px;
+
+      border-radius:8px;
+
+      font-size:12px;
+
+      font-weight:700;
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: white;
+    .btn-primary{
+      background:
+        var(--primary);
+
+      color:#fff;
     }
 
-    .btn-primary:hover {
-      background: var(--primary-dark);
+    .btn-primary:hover{
+      background:
+        var(--primary-dark);
     }
 
-    .empty-module {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 70px 20px;
-      text-align: center;
+    .empty-module{
+      background:#fff;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:14px;
+
+      padding:
+        70px 20px;
+
+      text-align:center;
     }
 
-    .empty-module-icon {
-      font-size: 42px;
-      margin-bottom: 15px;
+    .empty-module-icon{
+      font-size:42px;
+
+      margin-bottom:15px;
     }
 
-    .empty-module h3 {
-      color: var(--dark);
-      margin-bottom: 7px;
+    .empty-module h3{
+      color:var(--dark);
+
+      margin-bottom:7px;
     }
 
-    .empty-module p {
-      color: var(--muted);
-      font-size: 13px;
+    .empty-module p{
+      color:var(--muted);
+
+      font-size:13px;
     }
 
-    /* =========================================
-       SIDEBAR OVERLAY
-    ========================================= */
 
-    .sidebar-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 900;
+    /* =====================================================
+       LOADING
+    ===================================================== */
+
+    .dashboard-loading{
+      opacity:.55;
+
+      pointer-events:none;
     }
 
-    /* =========================================
+
+    /* =====================================================
+       SIDEBAR MOBILE
+    ===================================================== */
+
+    .sidebar-overlay{
+      display:none;
+
+      position:fixed;
+
+      inset:0;
+
+      background:
+        rgba(0,0,0,.4);
+
+      z-index:900;
+    }
+
+
+    /* =====================================================
        RESPONSIVE
-    ========================================= */
+    ===================================================== */
 
-    @media (max-width: 1100px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+    @media(max-width:1100px){
+
+      .stats-grid{
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
-      .dashboard-grid {
-        grid-template-columns: 1fr;
+      .dashboard-grid{
+        grid-template-columns:1fr;
       }
+
     }
 
-    @media (max-width: 800px) {
-      .sidebar {
-        transform: translateX(-100%);
+
+    @media(max-width:800px){
+
+      .sidebar{
+        transform:
+          translateX(-100%);
       }
 
-      .sidebar.open {
-        transform: translateX(0);
+      .sidebar.open{
+        transform:
+          translateX(0);
       }
 
-      .sidebar-overlay.show {
-        display: block;
+      .sidebar-overlay.show{
+        display:block;
       }
 
-      .main {
-        margin-left: 0;
-        width: 100%;
+      .main{
+        margin-left:0;
+
+        width:100%;
       }
 
-      .mobile-menu {
-        display: block;
+      .mobile-menu{
+        display:block;
       }
 
-      .user-info {
-        display: none;
+      .user-info{
+        display:none;
       }
 
-      .content {
-        padding: 17px;
+      .content{
+        padding:17px;
       }
+
     }
 
-    @media (max-width: 600px) {
-      .login-card {
-        padding: 28px 22px;
+
+    @media(max-width:600px){
+
+      .login-card{
+        padding:
+          28px 22px;
       }
 
-      .stats-grid {
-        grid-template-columns: 1fr;
+      .stats-grid{
+        grid-template-columns:1fr;
       }
 
-      .topbar {
-        padding: 0 15px;
+      .topbar{
+        padding:
+          0 15px;
       }
 
-      .page-title {
-        font-size: 17px;
+      .page-title{
+        font-size:17px;
       }
 
-      .welcome-box {
-        padding: 20px;
+      .welcome-box{
+        padding:20px;
       }
 
-      .welcome-box h2 {
-        font-size: 19px;
+      .welcome-box h2{
+        font-size:19px;
       }
 
-      .module-header {
-        align-items: flex-start;
-        gap: 10px;
-        flex-direction: column;
+      .module-header{
+        align-items:flex-start;
+
+        gap:10px;
+
+        flex-direction:column;
       }
 
-      .login-logo {
-        width: 82px;
-        height: 82px;
+      .login-logo{
+        width:82px;
+        height:82px;
       }
+
+      .quick-actions{
+        grid-template-columns:1fr;
+      }
+
     }
+
   </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================================================
      LOGIN SCREEN
@@ -794,10 +1167,14 @@
   <div class="login-card">
 
     <div class="login-logo">
+
       <img
         src="logo.png"
         alt="Radiance Bangladesh Logo"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        onerror="
+          this.style.display='none';
+          this.nextElementSibling.style.display='flex';
+        "
       >
 
       <div
@@ -806,15 +1183,19 @@
       >
         RB
       </div>
+
     </div>
+
 
     <h1>
       Radiance Bangladesh
     </h1>
 
+
     <p class="login-subtitle">
       CRM & Business Management System
     </p>
+
 
     <div
       id="loginError"
@@ -822,6 +1203,7 @@
     >
       Invalid username or password.
     </div>
+
 
     <form id="loginForm">
 
@@ -842,6 +1224,7 @@
 
       </div>
 
+
       <div class="form-group">
 
         <label for="password">
@@ -859,6 +1242,7 @@
 
       </div>
 
+
       <button
         type="submit"
         class="login-btn"
@@ -867,6 +1251,7 @@
       </button>
 
     </form>
+
 
     <div class="login-footer">
       © 2026 Radiance Bangladesh. All rights reserved.
@@ -877,6 +1262,7 @@
 </section>
 
 
+
 <!-- =========================================================
      APPLICATION
 ========================================================= -->
@@ -885,12 +1271,16 @@
 
   <div class="app-layout">
 
-    <!-- SIDEBAR -->
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
 
     <aside
       class="sidebar"
       id="sidebar"
     >
+
 
       <div class="brand">
 
@@ -899,7 +1289,10 @@
           <img
             src="logo.png"
             alt="Radiance Bangladesh Logo"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            onerror="
+              this.style.display='none';
+              this.nextElementSibling.style.display='flex';
+            "
           >
 
           <div
@@ -910,6 +1303,7 @@
           </div>
 
         </div>
+
 
         <div class="brand-text">
 
@@ -926,203 +1320,322 @@
       </div>
 
 
+
+      <!-- MAIN -->
+
       <div class="menu-section">
         Main
       </div>
 
-      <button class="menu-item active" data-page="dashboard">
+      <button
+        class="menu-item active"
+        data-page="dashboard"
+      >
         <span class="menu-icon">▦</span>
         <span>Dashboard</span>
       </button>
 
 
+
+      <!-- CRM -->
+
       <div class="menu-section">
         CRM
       </div>
 
-      <button class="menu-item" data-page="leads">
+      <button
+        class="menu-item"
+        data-page="leads"
+      >
         <span class="menu-icon">◉</span>
         <span>Leads</span>
       </button>
 
-      <button class="menu-item" data-page="students">
+      <button
+        class="menu-item"
+        data-page="students"
+      >
         <span class="menu-icon">♙</span>
         <span>Students</span>
       </button>
 
-      <button class="menu-item" data-page="counselling">
+      <button
+        class="menu-item"
+        data-page="counselling"
+      >
         <span class="menu-icon">☏</span>
         <span>Counselling</span>
       </button>
 
-      <button class="menu-item" data-page="followups">
+      <button
+        class="menu-item"
+        data-page="followups"
+      >
         <span class="menu-icon">↻</span>
         <span>Follow-ups</span>
       </button>
 
-      <button class="menu-item" data-page="tasks">
+      <button
+        class="menu-item"
+        data-page="tasks"
+      >
         <span class="menu-icon">✓</span>
         <span>Tasks</span>
       </button>
 
 
+
+      <!-- IELTS -->
+
       <div class="menu-section">
         IELTS
       </div>
 
-      <button class="menu-item" data-page="ielts-batches">
+      <button
+        class="menu-item"
+        data-page="ielts-batches"
+      >
         <span class="menu-icon">▤</span>
         <span>Batches</span>
       </button>
 
-      <button class="menu-item" data-page="ielts-students">
+      <button
+        class="menu-item"
+        data-page="ielts-students"
+      >
         <span class="menu-icon">♙</span>
         <span>IELTS Students</span>
       </button>
 
-      <button class="menu-item" data-page="attendance">
+      <button
+        class="menu-item"
+        data-page="attendance"
+      >
         <span class="menu-icon">✓</span>
         <span>Attendance</span>
       </button>
 
-      <button class="menu-item" data-page="mock-tests">
+      <button
+        class="menu-item"
+        data-page="mock-tests"
+      >
         <span class="menu-icon">▣</span>
         <span>Mock Tests</span>
       </button>
 
-      <button class="menu-item" data-page="results">
+      <button
+        class="menu-item"
+        data-page="results"
+      >
         <span class="menu-icon">★</span>
         <span>Results</span>
       </button>
 
 
+
+      <!-- STUDY ABROAD -->
+
       <div class="menu-section">
         Study Abroad
       </div>
 
-      <button class="menu-item" data-page="countries">
+      <button
+        class="menu-item"
+        data-page="countries"
+      >
         <span class="menu-icon">🌍</span>
         <span>Countries</span>
       </button>
 
-      <button class="menu-item" data-page="universities">
+      <button
+        class="menu-item"
+        data-page="universities"
+      >
         <span class="menu-icon">🏫</span>
         <span>Universities</span>
       </button>
 
-      <button class="menu-item" data-page="courses">
+      <button
+        class="menu-item"
+        data-page="courses"
+      >
         <span class="menu-icon">📚</span>
         <span>Courses</span>
       </button>
 
-      <button class="menu-item" data-page="applications">
+      <button
+        class="menu-item"
+        data-page="applications"
+      >
         <span class="menu-icon">▤</span>
         <span>Applications</span>
       </button>
 
-      <button class="menu-item" data-page="documents">
+      <button
+        class="menu-item"
+        data-page="documents"
+      >
         <span class="menu-icon">▱</span>
         <span>Documents</span>
       </button>
 
-      <button class="menu-item" data-page="offers">
+      <button
+        class="menu-item"
+        data-page="offers"
+      >
         <span class="menu-icon">✉</span>
         <span>Offers</span>
       </button>
 
-      <button class="menu-item" data-page="visa">
+      <button
+        class="menu-item"
+        data-page="visa"
+      >
         <span class="menu-icon">🛂</span>
         <span>Visa Management</span>
       </button>
 
-      <button class="menu-item" data-page="deadlines">
+      <button
+        class="menu-item"
+        data-page="deadlines"
+      >
         <span class="menu-icon">◷</span>
         <span>Intake & Deadlines</span>
       </button>
 
 
+
+      <!-- FINANCE -->
+
       <div class="menu-section">
         Finance
       </div>
 
-      <button class="menu-item" data-page="payments">
+      <button
+        class="menu-item"
+        data-page="payments"
+      >
         <span class="menu-icon">৳</span>
         <span>Payments</span>
       </button>
 
-      <button class="menu-item" data-page="due-payments">
+      <button
+        class="menu-item"
+        data-page="due-payments"
+      >
         <span class="menu-icon">!</span>
         <span>Due Payments</span>
       </button>
 
-      <button class="menu-item" data-page="income">
+      <button
+        class="menu-item"
+        data-page="income"
+      >
         <span class="menu-icon">↗</span>
         <span>Income</span>
       </button>
 
-      <button class="menu-item" data-page="expenses">
+      <button
+        class="menu-item"
+        data-page="expenses"
+      >
         <span class="menu-icon">↘</span>
         <span>Expenses</span>
       </button>
 
-      <button class="menu-item" data-page="invoices">
+      <button
+        class="menu-item"
+        data-page="invoices"
+      >
         <span class="menu-icon">▤</span>
         <span>Invoices</span>
       </button>
 
-      <button class="menu-item" data-page="receipts">
+      <button
+        class="menu-item"
+        data-page="receipts"
+      >
         <span class="menu-icon">▱</span>
         <span>Money Receipts</span>
       </button>
 
 
+
+      <!-- REPORTS -->
+
       <div class="menu-section">
         Reports
       </div>
 
-      <button class="menu-item" data-page="reports">
+      <button
+        class="menu-item"
+        data-page="reports"
+      >
         <span class="menu-icon">▥</span>
         <span>Reports</span>
       </button>
 
 
+
+      <!-- STAFF -->
+
       <div class="menu-section">
         Staff
       </div>
 
-      <button class="menu-item" data-page="users">
+      <button
+        class="menu-item"
+        data-page="users"
+      >
         <span class="menu-icon">♙</span>
         <span>Users</span>
       </button>
 
-      <button class="menu-item" data-page="roles">
+      <button
+        class="menu-item"
+        data-page="roles"
+      >
         <span class="menu-icon">⚙</span>
         <span>Roles & Permissions</span>
       </button>
 
 
+
+      <!-- SYSTEM -->
+
       <div class="menu-section">
         System
       </div>
 
-      <button class="menu-item" data-page="notifications">
+      <button
+        class="menu-item"
+        data-page="notifications"
+      >
         <span class="menu-icon">🔔</span>
         <span>Notifications</span>
       </button>
 
-      <button class="menu-item" data-page="settings">
+      <button
+        class="menu-item"
+        data-page="settings"
+      >
         <span class="menu-icon">⚙</span>
         <span>Settings</span>
       </button>
 
-      <button class="menu-item" data-page="activity-log">
+      <button
+        class="menu-item"
+        data-page="activity-log"
+      >
         <span class="menu-icon">▤</span>
         <span>Activity Log</span>
       </button>
 
+
       <div style="height:30px;"></div>
 
     </aside>
+
 
 
     <div
@@ -1131,9 +1644,15 @@
     ></div>
 
 
-    <!-- MAIN -->
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
 
     <main class="main">
+
+
+      <!-- TOPBAR -->
 
       <header class="topbar">
 
@@ -1165,7 +1684,11 @@
             title="Notifications"
           >
             🔔
-            <span class="notification-dot"></span>
+
+            <span
+              class="notification-dot"
+            ></span>
+
           </button>
 
 
@@ -1180,11 +1703,15 @@
 
             <div class="user-info">
 
-              <strong id="loggedUserName">
+              <strong
+                id="loggedUserName"
+              >
                 Super Admin
               </strong>
 
-              <span id="loggedUserRole">
+              <span
+                id="loggedUserRole"
+              >
                 Super Admin
               </span>
 
@@ -1197,14 +1724,21 @@
       </header>
 
 
+
+      <!-- CONTENT -->
+
       <div class="content">
 
-        <!-- DASHBOARD -->
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
 
         <section
           id="page-dashboard"
           class="page-section"
         >
+
 
           <div class="welcome-box">
 
@@ -1213,15 +1747,23 @@
             </h2>
 
             <p>
-              Manage leads, students, IELTS, study abroad
-              applications, visa processing and business
-              operations from one place.
+              Manage leads, students, IELTS,
+              study abroad applications, visa
+              processing and business operations
+              from one place.
             </p>
 
           </div>
 
 
-          <div class="stats-grid">
+
+          <!-- STATS -->
+
+          <div
+            class="stats-grid"
+            id="dashboardStats"
+          >
+
 
             <div class="stat-card">
 
@@ -1231,7 +1773,9 @@
                   Total Leads
                 </span>
 
-                <strong id="statLeads">
+                <strong
+                  id="statLeads"
+                >
                   0
                 </strong>
 
@@ -1244,6 +1788,7 @@
             </div>
 
 
+
             <div class="stat-card">
 
               <div class="stat-info">
@@ -1252,7 +1797,9 @@
                   Total Students
                 </span>
 
-                <strong id="statStudents">
+                <strong
+                  id="statStudents"
+                >
                   0
                 </strong>
 
@@ -1265,6 +1812,7 @@
             </div>
 
 
+
             <div class="stat-card">
 
               <div class="stat-info">
@@ -1273,7 +1821,9 @@
                   Applications
                 </span>
 
-                <strong id="statApplications">
+                <strong
+                  id="statApplications"
+                >
                   0
                 </strong>
 
@@ -1286,6 +1836,7 @@
             </div>
 
 
+
             <div class="stat-card">
 
               <div class="stat-info">
@@ -1294,7 +1845,9 @@
                   Pending Payments
                 </span>
 
-                <strong id="statPayments">
+                <strong
+                  id="statPayments"
+                >
                   ৳0
                 </strong>
 
@@ -1306,10 +1859,17 @@
 
             </div>
 
+
           </div>
 
 
+
+          <!-- DASHBOARD GRID -->
+
           <div class="dashboard-grid">
+
+
+            <!-- ACTIVITY -->
 
             <div class="card">
 
@@ -1321,7 +1881,9 @@
 
               </div>
 
+
               <div class="card-body">
+
 
                 <div class="activity-item">
 
@@ -1340,6 +1902,7 @@
                   </div>
 
                 </div>
+
 
 
                 <div class="activity-item">
@@ -1361,6 +1924,7 @@
                 </div>
 
 
+
                 <div class="activity-item">
 
                   <div class="activity-dot"></div>
@@ -1379,10 +1943,14 @@
 
                 </div>
 
+
               </div>
 
             </div>
 
+
+
+            <!-- QUICK ACTIONS -->
 
             <div class="card">
 
@@ -1394,9 +1962,11 @@
 
               </div>
 
+
               <div class="card-body">
 
                 <div class="quick-actions">
+
 
                   <button
                     class="quick-action"
@@ -1405,12 +1975,14 @@
                     ➕ Add Lead
                   </button>
 
+
                   <button
                     class="quick-action"
                     data-quick-page="students"
                   >
                     ♙ Add Student
                   </button>
+
 
                   <button
                     class="quick-action"
@@ -1419,6 +1991,7 @@
                     📄 New Application
                   </button>
 
+
                   <button
                     class="quick-action"
                     data-quick-page="payments"
@@ -1426,37 +1999,48 @@
                     ৳ Add Payment
                   </button>
 
+
                 </div>
 
               </div>
 
             </div>
 
+
           </div>
 
         </section>
 
 
-        <!-- OTHER MODULES -->
+
+        <!-- =================================================
+             MODULE VIEW
+        ================================================== -->
 
         <section
           id="moduleView"
           class="module-view"
         >
 
+
           <div class="module-header">
 
             <div>
 
-              <h2 id="moduleTitle">
+              <h2
+                id="moduleTitle"
+              >
                 Module
               </h2>
 
-              <p id="moduleDescription">
+              <p
+                id="moduleDescription"
+              >
                 Module description
               </p>
 
             </div>
+
 
             <button
               class="btn btn-primary"
@@ -1478,19 +2062,20 @@
               📋
             </div>
 
-            <h3 id="emptyModuleTitle">
+            <h3>
               Module Ready
             </h3>
 
             <p>
-              This module will be connected to the
-              Radiance Bangladesh database in the
-              next development steps.
+              This module will be connected
+              to the Radiance Bangladesh
+              database in the next development steps.
             </p>
 
           </div>
 
         </section>
+
 
       </div>
 
@@ -1501,285 +2086,343 @@
 </section>
 
 
+
 <script>
 
-/* ============================================================
-   API CONFIGURATION
-============================================================ */
+
+/* =========================================================
+   API URL
+========================================================= */
 
 const API_URL =
   "https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec";
 
 
-/* ============================================================
+
+/* =========================================================
    PAGE CONFIGURATION
-============================================================ */
+========================================================= */
 
 const pages = {
 
-  dashboard: {
-    title: "Dashboard"
+  dashboard:{
+    title:"Dashboard"
   },
 
-  leads: {
-    title: "Leads",
-    description: "Manage enquiries and potential students.",
-    icon: "◉"
+  leads:{
+    title:"Leads",
+    description:
+      "Manage enquiries and potential students.",
+    icon:"◉"
   },
 
-  students: {
-    title: "Students",
-    description: "Manage student profiles and academic information.",
-    icon: "♙"
+  students:{
+    title:"Students",
+    description:
+      "Manage student profiles and academic information.",
+    icon:"♙"
   },
 
-  counselling: {
-    title: "Counselling",
-    description: "Track counselling sessions and student requirements.",
-    icon: "☏"
+  counselling:{
+    title:"Counselling",
+    description:
+      "Track counselling sessions and student requirements.",
+    icon:"☏"
   },
 
-  followups: {
-    title: "Follow-ups",
-    description: "Manage upcoming student follow-ups.",
-    icon: "↻"
+  followups:{
+    title:"Follow-ups",
+    description:
+      "Manage upcoming student follow-ups.",
+    icon:"↻"
   },
 
-  tasks: {
-    title: "Tasks",
-    description: "Manage staff tasks and assignments.",
-    icon: "✓"
+  tasks:{
+    title:"Tasks",
+    description:
+      "Manage staff tasks and assignments.",
+    icon:"✓"
   },
 
-  "ielts-batches": {
-    title: "IELTS Batches",
-    description: "Manage IELTS classes and batches.",
-    icon: "▤"
+  "ielts-batches":{
+    title:"IELTS Batches",
+    description:
+      "Manage IELTS classes and batches.",
+    icon:"▤"
   },
 
-  "ielts-students": {
-    title: "IELTS Students",
-    description: "Manage students enrolled in IELTS courses.",
-    icon: "♙"
+  "ielts-students":{
+    title:"IELTS Students",
+    description:
+      "Manage students enrolled in IELTS courses.",
+    icon:"♙"
   },
 
-  attendance: {
-    title: "Attendance",
-    description: "Manage IELTS student attendance.",
-    icon: "✓"
+  attendance:{
+    title:"Attendance",
+    description:
+      "Manage IELTS student attendance.",
+    icon:"✓"
   },
 
-  "mock-tests": {
-    title: "Mock Tests",
-    description: "Manage IELTS mock tests.",
-    icon: "▣"
+  "mock-tests":{
+    title:"Mock Tests",
+    description:
+      "Manage IELTS mock tests.",
+    icon:"▣"
   },
 
-  results: {
-    title: "Results",
-    description: "Manage IELTS test results.",
-    icon: "★"
+  results:{
+    title:"Results",
+    description:
+      "Manage IELTS test results.",
+    icon:"★"
   },
 
-  countries: {
-    title: "Countries",
-    description: "Manage study destinations dynamically.",
-    icon: "🌍"
+  countries:{
+    title:"Countries",
+    description:
+      "Manage study destinations dynamically.",
+    icon:"🌍"
   },
 
-  universities: {
-    title: "Universities",
-    description: "Manage universities and institutions.",
-    icon: "🏫"
+  universities:{
+    title:"Universities",
+    description:
+      "Manage universities and institutions.",
+    icon:"🏫"
   },
 
-  courses: {
-    title: "Courses",
-    description: "Manage available courses and programs.",
-    icon: "📚"
+  courses:{
+    title:"Courses",
+    description:
+      "Manage available courses and programs.",
+    icon:"📚"
   },
 
-  applications: {
-    title: "Applications",
-    description: "Track student applications.",
-    icon: "▤"
+  applications:{
+    title:"Applications",
+    description:
+      "Track student applications.",
+    icon:"▤"
   },
 
-  documents: {
-    title: "Documents",
-    description: "Manage student documents.",
-    icon: "▱"
+  documents:{
+    title:"Documents",
+    description:
+      "Manage student documents.",
+    icon:"▱"
   },
 
-  offers: {
-    title: "Offers",
-    description: "Manage university offers.",
-    icon: "✉"
+  offers:{
+    title:"Offers",
+    description:
+      "Manage university offers.",
+    icon:"✉"
   },
 
-  visa: {
-    title: "Visa Management",
-    description: "Track visa applications and decisions.",
-    icon: "🛂"
+  visa:{
+    title:"Visa Management",
+    description:
+      "Track visa applications and decisions.",
+    icon:"🛂"
   },
 
-  deadlines: {
-    title: "Intake & Deadlines",
-    description: "Manage intakes and application deadlines.",
-    icon: "◷"
+  deadlines:{
+    title:"Intake & Deadlines",
+    description:
+      "Manage intakes and application deadlines.",
+    icon:"◷"
   },
 
-  payments: {
-    title: "Payments",
-    description: "Manage student payments.",
-    icon: "৳"
+  payments:{
+    title:"Payments",
+    description:
+      "Manage student payments.",
+    icon:"৳"
   },
 
-  "due-payments": {
-    title: "Due Payments",
-    description: "Track outstanding student payments.",
-    icon: "!"
+  "due-payments":{
+    title:"Due Payments",
+    description:
+      "Track outstanding student payments.",
+    icon:"!"
   },
 
-  income: {
-    title: "Income",
-    description: "Manage company income.",
-    icon: "↗"
+  income:{
+    title:"Income",
+    description:
+      "Manage company income.",
+    icon:"↗"
   },
 
-  expenses: {
-    title: "Expenses",
-    description: "Manage company expenses.",
-    icon: "↘"
+  expenses:{
+    title:"Expenses",
+    description:
+      "Manage company expenses.",
+    icon:"↘"
   },
 
-  invoices: {
-    title: "Invoices",
-    description: "Create and manage invoices.",
-    icon: "▤"
+  invoices:{
+    title:"Invoices",
+    description:
+      "Create and manage invoices.",
+    icon:"▤"
   },
 
-  receipts: {
-    title: "Money Receipts",
-    description: "Manage payment receipts.",
-    icon: "▱"
+  receipts:{
+    title:"Money Receipts",
+    description:
+      "Manage payment receipts.",
+    icon:"▱"
   },
 
-  reports: {
-    title: "Reports",
-    description: "View CRM, application, visa and finance reports.",
-    icon: "▥"
+  reports:{
+    title:"Reports",
+    description:
+      "View CRM, application, visa and finance reports.",
+    icon:"▥"
   },
 
-  users: {
-    title: "Users",
-    description: "Manage Radiance Bangladesh staff accounts.",
-    icon: "♙"
+  users:{
+    title:"Users",
+    description:
+      "Manage Radiance Bangladesh staff accounts.",
+    icon:"♙"
   },
 
-  roles: {
-    title: "Roles & Permissions",
-    description: "Manage staff roles and permissions.",
-    icon: "⚙"
+  roles:{
+    title:"Roles & Permissions",
+    description:
+      "Manage staff roles and permissions.",
+    icon:"⚙"
   },
 
-  notifications: {
-    title: "Notifications",
-    description: "Manage system notifications.",
-    icon: "🔔"
+  notifications:{
+    title:"Notifications",
+    description:
+      "Manage system notifications.",
+    icon:"🔔"
   },
 
-  settings: {
-    title: "Settings",
-    description: "Manage company and system settings.",
-    icon: "⚙"
+  settings:{
+    title:"Settings",
+    description:
+      "Manage company and system settings.",
+    icon:"⚙"
   },
 
-  "activity-log": {
-    title: "Activity Log",
-    description: "View system activities and user actions.",
-    icon: "▤"
+  "activity-log":{
+    title:"Activity Log",
+    description:
+      "View system activities and user actions.",
+    icon:"▤"
   }
 
 };
 
 
-/* ============================================================
+
+/* =========================================================
    LOGIN ELEMENTS
-============================================================ */
+========================================================= */
 
 const loginForm =
-  document.getElementById("loginForm");
+  document.getElementById(
+    "loginForm"
+  );
 
 const loginError =
-  document.getElementById("loginError");
+  document.getElementById(
+    "loginError"
+  );
 
 const loginButton =
-  document.querySelector(".login-btn");
+  document.querySelector(
+    ".login-btn"
+  );
 
 
-/* ============================================================
+
+/* =========================================================
    LOGIN
-============================================================ */
+========================================================= */
 
 loginForm.addEventListener(
   "submit",
-  async function(event) {
+  async function(event){
 
     event.preventDefault();
 
+
     const username =
       document
-        .getElementById("username")
+        .getElementById(
+          "username"
+        )
         .value
         .trim();
 
+
     const password =
       document
-        .getElementById("password")
+        .getElementById(
+          "password"
+        )
         .value;
 
-    loginError.style.display = "none";
 
-    if (!username || !password) {
+    loginError.style.display =
+      "none";
+
+
+    if(
+      !username ||
+      !password
+    ){
 
       showLoginError(
         "Please enter username and password."
       );
 
       return;
+
     }
 
-    loginButton.disabled = true;
-    loginButton.textContent = "Signing in...";
 
-    try {
+    loginButton.disabled =
+      true;
+
+    loginButton.textContent =
+      "Signing in...";
+
+
+    try{
 
       const response =
         await fetch(
           API_URL,
           {
-            method: "POST",
+            method:"POST",
 
-            headers: {
+            headers:{
               "Content-Type":
                 "text/plain;charset=utf-8"
             },
 
             body:
               JSON.stringify({
-
-                action: "login",
-
-                username: username,
-
-                password: password
-
+                action:"login",
+                username:username,
+                password:password
               })
           }
         );
 
-      if (!response.ok) {
+
+      if(
+        !response.ok
+      ){
 
         throw new Error(
           "Server returned HTTP " +
@@ -1788,27 +2431,32 @@ loginForm.addEventListener(
 
       }
 
+
       const result =
         await response.json();
 
-      if (
+
+      if(
         result &&
         result.success
-      ) {
-
-        loginError.style.display = "none";
+      ){
 
         const user =
           result.user || {};
+
 
         sessionStorage.setItem(
           "radiance_user",
           JSON.stringify(user)
         );
 
-        showApplication(user);
 
-      } else {
+        showApplication(
+          user
+        );
+
+
+      }else{
 
         showLoginError(
           result &&
@@ -1819,12 +2467,14 @@ loginForm.addEventListener(
 
       }
 
-    } catch (error) {
+
+    }catch(error){
 
       console.error(
         "Login Error:",
         error
       );
+
 
       showLoginError(
         "Unable to connect to the CRM server. Please check your internet connection and try again."
@@ -1832,133 +2482,198 @@ loginForm.addEventListener(
 
     }
 
-    loginButton.disabled = false;
-    loginButton.textContent = "Sign In";
+
+    loginButton.disabled =
+      false;
+
+    loginButton.textContent =
+      "Sign In";
 
   }
 );
 
 
-/* ============================================================
-   SHOW LOGIN ERROR
-============================================================ */
 
-function showLoginError(message) {
+/* =========================================================
+   LOGIN ERROR
+========================================================= */
 
-  loginError.textContent = message;
+function showLoginError(
+  message
+){
 
-  loginError.style.display = "block";
+  loginError.textContent =
+    message;
+
+  loginError.style.display =
+    "block";
 
 }
 
 
-/* ============================================================
+
+/* =========================================================
    SHOW APPLICATION
-============================================================ */
+========================================================= */
 
-function showApplication(user) {
-
-  document
-    .getElementById("loginScreen")
-    .style.display = "none";
+function showApplication(
+  user
+){
 
   document
-    .getElementById("app")
-    .style.display = "block";
+    .getElementById(
+      "loginScreen"
+    )
+    .style.display =
+      "none";
+
+
+  document
+    .getElementById(
+      "app"
+    )
+    .style.display =
+      "block";
+
 
   const userName =
     user.name ||
     "Super Admin";
 
+
   const userRole =
     user.role ||
     "Super Admin";
 
+
   document
-    .getElementById("loggedUserName")
+    .getElementById(
+      "loggedUserName"
+    )
     .textContent =
       userName;
 
+
   document
-    .getElementById("loggedUserRole")
+    .getElementById(
+      "loggedUserRole"
+    )
     .textContent =
       userRole;
 
+
   document
-    .getElementById("userAvatar")
+    .getElementById(
+      "userAvatar"
+    )
     .textContent =
-      getInitials(userName);
+      getInitials(
+        userName
+      );
+
+
+  /*
+   * Load dashboard immediately
+   */
+
+  loadDashboardData();
 
 }
 
 
-/* ============================================================
-   INITIALS
-============================================================ */
 
-function getInitials(name) {
+/* =========================================================
+   INITIALS
+========================================================= */
+
+function getInitials(
+  name
+){
 
   const words =
-    String(name || "")
+    String(
+      name || ""
+    )
       .trim()
       .split(/\s+/)
       .filter(Boolean);
 
-  if (words.length === 0) {
+
+  if(
+    words.length === 0
+  ){
     return "RB";
   }
 
-  if (words.length === 1) {
+
+  if(
+    words.length === 1
+  ){
 
     return words[0]
-      .substring(0, 2)
+      .substring(0,2)
       .toUpperCase();
 
   }
 
+
   return (
     words[0].charAt(0) +
-    words[words.length - 1].charAt(0)
+    words[
+      words.length - 1
+    ].charAt(0)
   ).toUpperCase();
 
 }
 
 
-/* ============================================================
+
+/* =========================================================
    RESTORE SESSION
-============================================================ */
+========================================================= */
 
-function restoreSession() {
+function restoreSession(){
 
-  try {
+  try{
 
     const saved =
       sessionStorage.getItem(
         "radiance_user"
       );
 
-    if (!saved) {
+
+    if(
+      !saved
+    ){
       return;
     }
 
-    const user =
-      JSON.parse(saved);
 
-    if (
+    const user =
+      JSON.parse(
+        saved
+      );
+
+
+    if(
       user &&
       user.username
-    ) {
+    ){
 
-      showApplication(user);
+      showApplication(
+        user
+      );
 
     }
 
-  } catch (error) {
+
+  }catch(error){
 
     console.error(
       "Session restore error:",
       error
     );
+
 
     sessionStorage.removeItem(
       "radiance_user"
@@ -1969,39 +2684,46 @@ function restoreSession() {
 }
 
 
-/* ============================================================
-   SIDEBAR NAVIGATION
-============================================================ */
+
+/* =========================================================
+   MENU ELEMENTS
+========================================================= */
 
 const menuItems =
   document.querySelectorAll(
     ".menu-item"
   );
 
+
 const dashboard =
   document.getElementById(
     "page-dashboard"
   );
+
 
 const moduleView =
   document.getElementById(
     "moduleView"
   );
 
+
 const pageTitle =
   document.getElementById(
     "pageTitle"
   );
+
 
 const moduleTitle =
   document.getElementById(
     "moduleTitle"
   );
 
+
 const moduleDescription =
   document.getElementById(
     "moduleDescription"
   );
+
 
 const moduleIcon =
   document.getElementById(
@@ -2009,75 +2731,114 @@ const moduleIcon =
   );
 
 
-function openPage(pageName) {
+
+/* =========================================================
+   OPEN PAGE
+========================================================= */
+
+function openPage(
+  pageName
+){
 
   const page =
-    pages[pageName];
+    pages[
+      pageName
+    ];
 
-  if (!page) {
+
+  if(
+    !page
+  ){
     return;
   }
 
+
   menuItems.forEach(
-    function(item) {
+    function(item){
 
-      item.classList.remove("active");
+      item.classList.remove(
+        "active"
+      );
 
-      if (
+
+      if(
         item.dataset.page ===
         pageName
-      ) {
+      ){
 
-        item.classList.add("active");
+        item.classList.add(
+          "active"
+        );
 
       }
 
     }
   );
 
-  if (
+
+  if(
     pageName ===
     "dashboard"
-  ) {
+  ){
 
-    dashboard.style.display = "block";
+    dashboard.style.display =
+      "block";
 
-    moduleView.style.display = "none";
+    moduleView.style.display =
+      "none";
 
     pageTitle.textContent =
       "Dashboard";
 
-  } else {
 
-    dashboard.style.display = "none";
+    loadDashboardData();
 
-    moduleView.style.display = "block";
+
+  }else{
+
+    dashboard.style.display =
+      "none";
+
+    moduleView.style.display =
+      "block";
+
 
     pageTitle.textContent =
       page.title;
 
+
     moduleTitle.textContent =
       page.title;
 
+
     moduleDescription.textContent =
-      page.description || "";
+      page.description ||
+      "";
+
 
     moduleIcon.textContent =
-      page.icon || "📋";
+      page.icon ||
+      "📋";
 
   }
+
 
   closeMobileSidebar();
 
 }
 
 
+
+/* =========================================================
+   MENU EVENTS
+========================================================= */
+
 menuItems.forEach(
-  function(item) {
+  function(item){
 
     item.addEventListener(
       "click",
-      function() {
+      function(){
 
         openPage(
           item.dataset.page
@@ -2090,20 +2851,21 @@ menuItems.forEach(
 );
 
 
-/* ============================================================
+
+/* =========================================================
    QUICK ACTIONS
-============================================================ */
+========================================================= */
 
 document
   .querySelectorAll(
     "[data-quick-page]"
   )
   .forEach(
-    function(button) {
+    function(button){
 
       button.addEventListener(
         "click",
-        function() {
+        function(){
 
           openPage(
             button.dataset.quickPage
@@ -2116,19 +2878,22 @@ document
   );
 
 
-/* ============================================================
+
+/* =========================================================
    MOBILE SIDEBAR
-============================================================ */
+========================================================= */
 
 const sidebar =
   document.getElementById(
     "sidebar"
   );
 
+
 const overlay =
   document.getElementById(
     "sidebarOverlay"
   );
+
 
 const mobileMenuBtn =
   document.getElementById(
@@ -2138,21 +2903,30 @@ const mobileMenuBtn =
 
 mobileMenuBtn.addEventListener(
   "click",
-  function() {
+  function(){
 
-    sidebar.classList.add("open");
+    sidebar.classList.add(
+      "open"
+    );
 
-    overlay.classList.add("show");
+    overlay.classList.add(
+      "show"
+    );
 
   }
 );
 
 
-function closeMobileSidebar() {
 
-  sidebar.classList.remove("open");
+function closeMobileSidebar(){
 
-  overlay.classList.remove("show");
+  sidebar.classList.remove(
+    "open"
+  );
+
+  overlay.classList.remove(
+    "show"
+  );
 
 }
 
@@ -2163,30 +2937,239 @@ overlay.addEventListener(
 );
 
 
-/* ============================================================
-   INITIAL DASHBOARD VALUES
-============================================================ */
+
+/* =========================================================
+   DASHBOARD REAL DATA
+========================================================= */
+
+async function loadDashboardData(){
+
+  const dashboardStats =
+    document.getElementById(
+      "dashboardStats"
+    );
+
+
+  try{
+
+    /*
+     * Visual loading state
+     */
+
+    dashboardStats.classList.add(
+      "dashboard-loading"
+    );
+
+
+    const response =
+      await fetch(
+        API_URL,
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "text/plain;charset=utf-8"
+          },
+
+          body:
+            JSON.stringify({
+              action:"dashboard"
+            })
+        }
+      );
+
+
+    if(
+      !response.ok
+    ){
+
+      throw new Error(
+        "Dashboard API HTTP " +
+        response.status
+      );
+
+    }
+
+
+    const result =
+      await response.json();
+
+
+    console.log(
+      "Dashboard API:",
+      result
+    );
+
+
+    if(
+      !result ||
+      !result.success ||
+      !result.data
+    ){
+
+      console.error(
+        "Dashboard API error:",
+        result
+      );
+
+      return;
+
+    }
+
+
+    const data =
+      result.data;
+
+
+    /* ---------------------------------------------
+       TOTAL LEADS
+    --------------------------------------------- */
+
+    document
+      .getElementById(
+        "statLeads"
+      )
+      .textContent =
+        formatNumber(
+          data.totalLeads
+        );
+
+
+    /* ---------------------------------------------
+       TOTAL STUDENTS
+    --------------------------------------------- */
+
+    document
+      .getElementById(
+        "statStudents"
+      )
+      .textContent =
+        formatNumber(
+          data.totalStudents
+        );
+
+
+    /* ---------------------------------------------
+       APPLICATIONS
+    --------------------------------------------- */
+
+    document
+      .getElementById(
+        "statApplications"
+      )
+      .textContent =
+        formatNumber(
+          data.totalApplications
+        );
+
+
+    /* ---------------------------------------------
+       PENDING PAYMENTS
+    --------------------------------------------- */
+
+    document
+      .getElementById(
+        "statPayments"
+      )
+      .textContent =
+        "৳" +
+        formatNumber(
+          data.pendingPayments
+        );
+
+
+  }catch(error){
+
+    console.error(
+      "Dashboard data error:",
+      error
+    );
+
+
+  }finally{
+
+    dashboardStats.classList.remove(
+      "dashboard-loading"
+    );
+
+  }
+
+}
+
+
+
+/* =========================================================
+   NUMBER FORMAT
+========================================================= */
+
+function formatNumber(
+  value
+){
+
+  const number =
+    Number(
+      value || 0
+    );
+
+
+  if(
+    isNaN(number)
+  ){
+
+    return "0";
+
+  }
+
+
+  return number.toLocaleString(
+    "en-BD"
+  );
+
+}
+
+
+
+/* =========================================================
+   INITIAL VALUES
+========================================================= */
 
 document
-  .getElementById("statLeads")
-  .textContent = "0";
+  .getElementById(
+    "statLeads"
+  )
+  .textContent =
+    "0";
+
 
 document
-  .getElementById("statStudents")
-  .textContent = "0";
+  .getElementById(
+    "statStudents"
+  )
+  .textContent =
+    "0";
+
 
 document
-  .getElementById("statApplications")
-  .textContent = "0";
+  .getElementById(
+    "statApplications"
+  )
+  .textContent =
+    "0";
+
 
 document
-  .getElementById("statPayments")
-  .textContent = "৳0";
+  .getElementById(
+    "statPayments"
+  )
+  .textContent =
+    "৳0";
 
 
-/* ============================================================
+
+/* =========================================================
    RESTORE LOGIN SESSION
-============================================================ */
+========================================================= */
 
 restoreSession();
 
@@ -2194,4 +3177,3 @@ restoreSession();
 
 </body>
 </html>
-```
