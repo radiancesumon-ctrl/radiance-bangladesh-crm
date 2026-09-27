@@ -1,1223 +1,752 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Radiance Bangladesh CRM</title>
-
-  <meta
-    name="description"
-    content="Radiance Bangladesh CRM & Business Management System"
-  >
-
-  <meta
-    name="theme-color"
-    content="#7c3aed"
-  >
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    :root{
-      --primary:#7c3aed;
-      --primary-dark:#5b21b6;
-      --secondary:#2563eb;
-      --success:#16a34a;
-      --warning:#d97706;
-      --danger:#dc2626;
-      --dark:#111827;
-      --text:#374151;
-      --muted:#6b7280;
-      --border:#e5e7eb;
-      --bg:#f5f7fb;
-      --white:#ffffff;
-      --sidebar:#111827;
-      --sidebar-hover:#1f2937;
-    }
 
-    html,
-    body{
-      margin:0;
-      padding:0;
-      min-height:100%;
-    }
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Radiance Bangladesh CRM</title>
+
+<link
+  rel="icon"
+  href="../logo.png"
+>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fb;
+  color:#1f2937;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+
+/* LOGIN */
+
+.login-screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#111827,#2563eb);
+  padding:20px;
+}
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:white;
+  border-radius:18px;
+  padding:35px;
+  box-shadow:0 25px 70px rgba(0,0,0,.2);
+}
+
+.login-logo{
+  display:block;
+  width:110px;
+  height:110px;
+  object-fit:contain;
+  margin:0 auto 15px;
+}
+
+.login-title{
+  text-align:center;
+  font-size:25px;
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.login-subtitle{
+  text-align:center;
+  color:#6b7280;
+  margin-bottom:25px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.form-control{
+  width:100%;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  padding:11px 12px;
+  outline:none;
+  background:white;
+}
+
+.form-control:focus{
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.1);
+}
+
+textarea.form-control{
+  min-height:100px;
+  resize:vertical;
+}
+
+.login-btn{
+  width:100%;
+  border:0;
+  border-radius:8px;
+  padding:12px;
+  background:#2563eb;
+  color:white;
+  font-weight:700;
+}
+
+.login-btn:hover{
+  background:#1d4ed8;
+}
+
+.login-error{
+  color:#dc2626;
+  background:#fee2e2;
+  padding:10px;
+  border-radius:7px;
+  margin-bottom:15px;
+  font-size:13px;
+}
+
+
+/* APP */
+
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+  width:260px;
+  background:#111827;
+  color:white;
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  overflow-y:auto;
+  z-index:1000;
+}
+
+.brand{
+  padding:20px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  background:white;
+  border-radius:8px;
+}
+
+.brand-title{
+  font-weight:700;
+  font-size:17px;
+}
+
+.brand-subtitle{
+  font-size:11px;
+  color:#9ca3af;
+  margin-top:2px;
+}
+
+.menu{
+  padding:12px;
+}
+
+.menu-section{
+  color:#6b7280;
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  margin:16px 10px 7px;
+}
+
+.menu button{
+  width:100%;
+  text-align:left;
+  border:0;
+  background:transparent;
+  color:#d1d5db;
+  padding:10px 12px;
+  border-radius:7px;
+  margin-bottom:2px;
+}
+
+.menu button:hover,
+.menu button.active{
+  background:#2563eb;
+  color:white;
+}
+
+
+/* MAIN */
+
+.main{
+  margin-left:260px;
+  width:calc(100% - 260px);
+  min-height:100vh;
+}
+
+.topbar{
+  height:70px;
+  background:white;
+  border-bottom:1px solid #e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.topbar-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.mobile-menu{
+  display:none;
+  border:0;
+  background:#f3f4f6;
+  border-radius:7px;
+  padding:8px 12px;
+}
+
+.page-title{
+  font-size:20px;
+  font-weight:700;
+}
+
+.user-area{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.user-info{
+  text-align:right;
+}
+
+.user-name{
+  font-size:14px;
+  font-weight:700;
+}
+
+.user-role{
+  font-size:11px;
+  color:#6b7280;
+}
+
+.logout-btn{
+  border:0;
+  background:#fee2e2;
+  color:#dc2626;
+  padding:8px 12px;
+  border-radius:7px;
+  font-weight:600;
+}
+
+.logout-btn:hover{
+  background:#fecaca;
+}
+
+.content{
+  padding:25px;
+}
+
+
+/* DASHBOARD */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.stat-card{
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  border:1px solid #e5e7eb;
+}
+
+.stat-label{
+  color:#6b7280;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.stat-value{
+  font-size:28px;
+  font-weight:700;
+}
+
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.card-header{
+  padding:17px 20px;
+  border-bottom:1px solid #e5e7eb;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card-title{
+  font-weight:700;
+}
+
+.card-body{
+  padding:20px;
+}
+
+
+/* MODULE */
+
+.module-toolbar{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:15px;
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+  align-items:center;
+}
+
+.search{
+  flex:1;
+  padding:10px 12px;
+  border:1px solid #d1d5db;
+  border-radius:7px;
+}
+
+.btn{
+  border:0;
+  border-radius:7px;
+  padding:10px 14px;
+  font-weight:600;
+}
+
+.btn-primary{
+  background:#2563eb;
+  color:white;
+}
+
+.btn-primary:hover{
+  background:#1d4ed8;
+}
+
+.btn-secondary{
+  background:#e5e7eb;
+  color:#374151;
+}
+
+.btn-danger{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.btn-success{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.table-card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:900px;
+}
+
+th{
+  background:#f9fafb;
+  text-align:left;
+  font-size:12px;
+  color:#6b7280;
+  padding:12px;
+  border-bottom:1px solid #e5e7eb;
+  white-space:nowrap;
+}
+
+td{
+  padding:11px 12px;
+  border-bottom:1px solid #f0f0f0;
+  font-size:13px;
+  vertical-align:top;
+}
+
+tr:hover td{
+  background:#fafafa;
+}
+
+.actions{
+  white-space:nowrap;
+}
+
+.action-btn{
+  border:0;
+  padding:6px 9px;
+  border-radius:5px;
+  font-size:12px;
+  margin-right:4px;
+}
+
+.edit-btn{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.delete-btn{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+
+/* BADGE */
+
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:20px;
+  background:#e5e7eb;
+  font-size:11px;
+}
+
+.badge.active,
+.badge.paid,
+.badge.completed{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.badge.pending,
+.badge.due{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.badge.inactive,
+.badge.rejected,
+.badge.cancelled{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+
+/* MODAL */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:2000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal-overlay.show{
+  display:flex;
+}
+
+.modal{
+  width:100%;
+  max-width:850px;
+  max-height:90vh;
+  overflow-y:auto;
+  background:white;
+  border-radius:14px;
+}
+
+.modal-header{
+  padding:18px 20px;
+  border-bottom:1px solid #e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.modal-title{
+  font-size:18px;
+  font-weight:700;
+}
+
+.close-btn{
+  border:0;
+  background:#f3f4f6;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  font-size:18px;
+}
+
+.modal-body{
+  padding:20px;
+}
+
+.modal-footer{
+  padding:15px 20px;
+  border-top:1px solid #e5e7eb;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+
+/* REPORT */
+
+.report-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.report-box{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:20px;
+}
+
+.report-box h4{
+  color:#6b7280;
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.report-box strong{
+  font-size:25px;
+}
+
+
+/* LOADING */
+
+.loading{
+  padding:40px;
+  text-align:center;
+  color:#6b7280;
+}
+
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:5000;
+  background:#111827;
+  color:white;
+  padding:12px 18px;
+  border-radius:8px;
+  display:none;
+  max-width:350px;
+}
+
+.toast.show{
+  display:block;
+}
+
+.toast.error{
+  background:#dc2626;
+}
+
+.toast.success{
+  background:#15803d;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .dashboard-grid{
+    grid-template-columns:1fr;
+  }
+
+  .report-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:800px){
+
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main{
+    margin-left:0;
+    width:100%;
+  }
+
+  .mobile-menu{
+    display:block;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .user-info{
+    display:none;
+  }
+
+  .content{
+    padding:15px;
+  }
+
+  .topbar{
+    padding:0 15px;
+  }
+}
+
+@media(max-width:500px){
+
+  .stats,
+  .report-grid{
+    grid-template-columns:1fr;
+  }
+
+  .module-toolbar{
+    flex-wrap:wrap;
+  }
+
+  .search{
+    flex-basis:100%;
+  }
+}
+
+</style>
 
-    body{
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
-
-    button,
-    input,
-    select,
-    textarea{
-      font-family:inherit;
-    }
-
-    button{
-      cursor:pointer;
-    }
-
-
-    /* =====================================================
-       LOGIN
-    ===================================================== */
-
-    #loginScreen{
-      min-height:100vh;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      padding:20px;
-
-      background:
-        radial-gradient(
-          circle at top left,
-          rgba(124,58,237,.22),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at bottom right,
-          rgba(37,99,235,.18),
-          transparent 35%
-        ),
-        #f3f4f6;
-    }
-
-    .login-card{
-      width:100%;
-
-      max-width:430px;
-
-      background:var(--white);
-
-      border-radius:20px;
-
-      padding:38px;
-
-      box-shadow:
-        0 20px 60px rgba(0,0,0,.12);
-    }
-
-    .login-logo{
-      width:92px;
-      height:92px;
-
-      margin:0 auto 18px;
-
-      border-radius:20px;
-
-      background:#fff;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      overflow:hidden;
-
-      box-shadow:
-        0 8px 25px rgba(0,0,0,.08);
-
-      border:1px solid #eee;
-    }
-
-    .login-logo img{
-      width:100%;
-      height:100%;
-
-      object-fit:contain;
-
-      display:block;
-    }
-
-    .login-logo-fallback{
-      width:100%;
-      height:100%;
-
-      border-radius:20px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          var(--secondary)
-        );
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      color:#fff;
-
-      font-size:30px;
-
-      font-weight:800;
-    }
-
-    .login-card h1{
-      text-align:center;
-
-      font-size:25px;
-
-      color:var(--dark);
-
-      margin-bottom:7px;
-    }
-
-    .login-subtitle{
-      text-align:center;
-
-      color:var(--muted);
-
-      font-size:14px;
-
-      margin-bottom:30px;
-    }
-
-    .form-group{
-      margin-bottom:18px;
-    }
-
-    .form-group label{
-      display:block;
-
-      font-size:13px;
-
-      font-weight:700;
-
-      margin-bottom:8px;
-
-      color:var(--dark);
-    }
-
-    .form-control{
-      width:100%;
-
-      padding:13px 14px;
-
-      border:1px solid var(--border);
-
-      border-radius:10px;
-
-      outline:none;
-
-      background:white;
-
-      font-size:14px;
-
-      transition:.2s;
-    }
-
-    .form-control:focus{
-      border-color:var(--primary);
-
-      box-shadow:
-        0 0 0 3px rgba(124,58,237,.1);
-    }
-
-    .login-btn{
-      width:100%;
-
-      border:none;
-
-      padding:14px;
-
-      border-radius:10px;
-
-      color:#fff;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          var(--secondary)
-        );
-
-      font-size:15px;
-
-      font-weight:700;
-
-      margin-top:5px;
-
-      transition:.2s;
-    }
-
-    .login-btn:hover{
-      opacity:.92;
-    }
-
-    .login-btn:disabled{
-      opacity:.65;
-
-      cursor:not-allowed;
-    }
-
-    .login-error{
-      display:none;
-
-      background:#fef2f2;
-
-      color:var(--danger);
-
-      border:1px solid #fecaca;
-
-      padding:11px 13px;
-
-      border-radius:8px;
-
-      font-size:13px;
-
-      margin-bottom:15px;
-    }
-
-    .login-footer{
-      text-align:center;
-
-      color:var(--muted);
-
-      font-size:12px;
-
-      margin-top:25px;
-    }
-
-
-    /* =====================================================
-       APPLICATION
-    ===================================================== */
-
-    #app{
-      display:none;
-
-      min-height:100vh;
-    }
-
-    .app-layout{
-      display:flex;
-
-      min-height:100vh;
-    }
-
-
-    /* =====================================================
-       SIDEBAR
-    ===================================================== */
-
-    .sidebar{
-      width:260px;
-
-      background:var(--sidebar);
-
-      color:#fff;
-
-      position:fixed;
-
-      left:0;
-      top:0;
-      bottom:0;
-
-      overflow-y:auto;
-
-      z-index:1000;
-
-      transition:
-        transform .25s ease;
-    }
-
-    .brand{
-      min-height:75px;
-
-      padding:15px 18px;
-
-      display:flex;
-
-      align-items:center;
-
-      gap:12px;
-
-      border-bottom:
-        1px solid rgba(255,255,255,.08);
-    }
-
-    .brand-icon{
-      width:44px;
-      height:44px;
-
-      min-width:44px;
-
-      border-radius:10px;
-
-      background:#fff;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      overflow:hidden;
-
-      box-shadow:
-        0 4px 12px rgba(0,0,0,.2);
-    }
-
-    .brand-icon img{
-      width:100%;
-      height:100%;
-
-      object-fit:contain;
-
-      display:block;
-    }
-
-    .brand-icon-fallback{
-      width:100%;
-      height:100%;
-
-      border-radius:10px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #8b5cf6,
-          #2563eb
-        );
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      color:#fff;
-
-      font-weight:800;
-
-      font-size:16px;
-    }
-
-    .brand-text strong{
-      display:block;
-
-      font-size:15px;
-    }
-
-    .brand-text span{
-      display:block;
-
-      color:#9ca3af;
-
-      font-size:10px;
-
-      margin-top:3px;
-    }
-
-    .menu-section{
-      padding:20px 12px 6px;
-
-      color:#6b7280;
-
-      font-size:10px;
-
-      font-weight:800;
-
-      text-transform:uppercase;
-
-      letter-spacing:.8px;
-    }
-
-    .menu-item{
-      width:
-        calc(100% - 16px);
-
-      margin:
-        2px 8px;
-
-      padding:
-        11px 12px;
-
-      border:none;
-
-      background:transparent;
-
-      color:#d1d5db;
-
-      border-radius:8px;
-
-      text-align:left;
-
-      font-size:13px;
-
-      display:flex;
-
-      align-items:center;
-
-      gap:11px;
-
-      transition:.2s;
-    }
-
-    .menu-item:hover,
-    .menu-item.active{
-      background:var(--sidebar-hover);
-
-      color:#fff;
-    }
-
-    .menu-icon{
-      width:20px;
-
-      text-align:center;
-
-      font-size:15px;
-    }
-
-
-    /* =====================================================
-       MAIN
-    ===================================================== */
-
-    .main{
-      margin-left:260px;
-
-      width:
-        calc(100% - 260px);
-
-      min-height:100vh;
-    }
-
-
-    /* =====================================================
-       TOPBAR
-    ===================================================== */
-
-    .topbar{
-      height:75px;
-
-      background:#fff;
-
-      border-bottom:
-        1px solid var(--border);
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      padding:
-        0 25px;
-
-      position:sticky;
-
-      top:0;
-
-      z-index:500;
-    }
-
-    .topbar-left{
-      display:flex;
-
-      align-items:center;
-
-      gap:15px;
-    }
-
-    .mobile-menu{
-      display:none;
-
-      border:none;
-
-      background:transparent;
-
-      font-size:23px;
-    }
-
-    .page-title{
-      font-size:20px;
-
-      font-weight:800;
-
-      color:var(--dark);
-    }
-
-    .topbar-right{
-      display:flex;
-
-      align-items:center;
-
-      gap:15px;
-    }
-
-    .notification-btn{
-      position:relative;
-
-      border:none;
-
-      background:#f3f4f6;
-
-      width:40px;
-
-      height:40px;
-
-      border-radius:50%;
-
-      font-size:17px;
-    }
-
-    .notification-dot{
-      position:absolute;
-
-      width:7px;
-      height:7px;
-
-      background:var(--danger);
-
-      border-radius:50%;
-
-      top:8px;
-      right:9px;
-    }
-
-    .user-box{
-      display:flex;
-
-      align-items:center;
-
-      gap:10px;
-    }
-
-    .user-avatar{
-      width:38px;
-      height:38px;
-
-      border-radius:50%;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          var(--secondary)
-        );
-
-      color:#fff;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      font-weight:800;
-
-      font-size:13px;
-    }
-
-    .user-info strong{
-      display:block;
-
-      font-size:13px;
-
-      color:var(--dark);
-    }
-
-    .user-info span{
-      display:block;
-
-      font-size:11px;
-
-      color:var(--muted);
-
-      margin-top:2px;
-    }
-
-
-    /* =====================================================
-       CONTENT
-    ===================================================== */
-
-    .content{
-      padding:25px;
-    }
-
-
-    /* =====================================================
-       WELCOME
-    ===================================================== */
-
-    .welcome-box{
-      background:
-        linear-gradient(
-          135deg,
-          #5b21b6,
-          #2563eb
-        );
-
-      color:#fff;
-
-      padding:25px;
-
-      border-radius:16px;
-
-      margin-bottom:24px;
-    }
-
-    .welcome-box h2{
-      font-size:22px;
-
-      margin-bottom:7px;
-    }
-
-    .welcome-box p{
-      font-size:13px;
-
-      opacity:.9;
-    }
-
-
-    /* =====================================================
-       STATS
-    ===================================================== */
-
-    .stats-grid{
-      display:grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:18px;
-
-      margin-bottom:24px;
-    }
-
-    .stat-card{
-      background:#fff;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:14px;
-
-      padding:20px;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      transition:.2s;
-    }
-
-    .stat-card:hover{
-      transform:translateY(-2px);
-
-      box-shadow:
-        0 8px 25px rgba(0,0,0,.06);
-    }
-
-    .stat-info span{
-      color:var(--muted);
-
-      font-size:12px;
-
-      display:block;
-
-      margin-bottom:8px;
-    }
-
-    .stat-info strong{
-      font-size:25px;
-
-      color:var(--dark);
-    }
-
-    .stat-icon{
-      width:47px;
-      height:47px;
-
-      border-radius:12px;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      font-size:20px;
-    }
-
-    .purple{
-      background:#ede9fe;
-
-      color:#7c3aed;
-    }
-
-    .blue{
-      background:#dbeafe;
-
-      color:#2563eb;
-    }
-
-    .green{
-      background:#dcfce7;
-
-      color:#16a34a;
-    }
-
-    .orange{
-      background:#ffedd5;
-
-      color:#ea580c;
-    }
-
-
-    /* =====================================================
-       DASHBOARD GRID
-    ===================================================== */
-
-    .dashboard-grid{
-      display:grid;
-
-      grid-template-columns:
-        1.5fr 1fr;
-
-      gap:20px;
-    }
-
-    .card{
-      background:#fff;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:14px;
-
-      overflow:hidden;
-    }
-
-    .card-header{
-      padding:
-        17px 20px;
-
-      border-bottom:
-        1px solid var(--border);
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-    }
-
-    .card-header h3{
-      font-size:15px;
-
-      color:var(--dark);
-    }
-
-    .card-body{
-      padding:20px;
-    }
-
-
-    /* =====================================================
-       QUICK ACTIONS
-    ===================================================== */
-
-    .quick-actions{
-      display:grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap:10px;
-    }
-
-    .quick-action{
-      border:
-        1px solid var(--border);
-
-      background:#fafafa;
-
-      padding:15px;
-
-      border-radius:10px;
-
-      text-align:left;
-
-      font-size:12px;
-
-      color:var(--dark);
-
-      transition:.2s;
-    }
-
-    .quick-action:hover{
-      border-color:
-        var(--primary);
-
-      background:#faf5ff;
-    }
-
-
-    /* =====================================================
-       ACTIVITY
-    ===================================================== */
-
-    .activity-item{
-      display:flex;
-
-      gap:12px;
-
-      padding:13px 0;
-
-      border-bottom:
-        1px solid #f0f0f0;
-    }
-
-    .activity-item:last-child{
-      border-bottom:none;
-    }
-
-    .activity-dot{
-      width:9px;
-      height:9px;
-
-      border-radius:50%;
-
-      background:
-        var(--primary);
-
-      margin-top:5px;
-
-      flex-shrink:0;
-    }
-
-    .activity-text{
-      font-size:12px;
-
-      line-height:1.5;
-    }
-
-    .activity-text strong{
-      color:var(--dark);
-    }
-
-    .activity-time{
-      color:var(--muted);
-
-      font-size:10px;
-
-      margin-top:3px;
-    }
-
-
-    /* =====================================================
-       MODULE
-    ===================================================== */
-
-    .module-view{
-      display:none;
-    }
-
-    .module-header{
-      display:flex;
-
-      justify-content:space-between;
-
-      align-items:center;
-
-      margin-bottom:20px;
-    }
-
-    .module-header h2{
-      color:var(--dark);
-
-      font-size:21px;
-    }
-
-    .module-header p{
-      color:var(--muted);
-
-      font-size:12px;
-
-      margin-top:5px;
-    }
-
-    .btn{
-      border:none;
-
-      padding:
-        10px 15px;
-
-      border-radius:8px;
-
-      font-size:12px;
-
-      font-weight:700;
-    }
-
-    .btn-primary{
-      background:
-        var(--primary);
-
-      color:#fff;
-    }
-
-    .btn-primary:hover{
-      background:
-        var(--primary-dark);
-    }
-
-    .empty-module{
-      background:#fff;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:14px;
-
-      padding:
-        70px 20px;
-
-      text-align:center;
-    }
-
-    .empty-module-icon{
-      font-size:42px;
-
-      margin-bottom:15px;
-    }
-
-    .empty-module h3{
-      color:var(--dark);
-
-      margin-bottom:7px;
-    }
-
-    .empty-module p{
-      color:var(--muted);
-
-      font-size:13px;
-    }
-
-
-    /* =====================================================
-       LOADING
-    ===================================================== */
-
-    .dashboard-loading{
-      opacity:.55;
-
-      pointer-events:none;
-    }
-
-
-    /* =====================================================
-       SIDEBAR MOBILE
-    ===================================================== */
-
-    .sidebar-overlay{
-      display:none;
-
-      position:fixed;
-
-      inset:0;
-
-      background:
-        rgba(0,0,0,.4);
-
-      z-index:900;
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-
-    @media(max-width:1100px){
-
-      .stats-grid{
-        grid-template-columns:
-          repeat(2,1fr);
-      }
-
-      .dashboard-grid{
-        grid-template-columns:1fr;
-      }
-
-    }
-
-
-    @media(max-width:800px){
-
-      .sidebar{
-        transform:
-          translateX(-100%);
-      }
-
-      .sidebar.open{
-        transform:
-          translateX(0);
-      }
-
-      .sidebar-overlay.show{
-        display:block;
-      }
-
-      .main{
-        margin-left:0;
-
-        width:100%;
-      }
-
-      .mobile-menu{
-        display:block;
-      }
-
-      .user-info{
-        display:none;
-      }
-
-      .content{
-        padding:17px;
-      }
-
-    }
-
-
-    @media(max-width:600px){
-
-      .login-card{
-        padding:
-          28px 22px;
-      }
-
-      .stats-grid{
-        grid-template-columns:1fr;
-      }
-
-      .topbar{
-        padding:
-          0 15px;
-      }
-
-      .page-title{
-        font-size:17px;
-      }
-
-      .welcome-box{
-        padding:20px;
-      }
-
-      .welcome-box h2{
-        font-size:19px;
-      }
-
-      .module-header{
-        align-items:flex-start;
-
-        gap:10px;
-
-        flex-direction:column;
-      }
-
-      .login-logo{
-        width:82px;
-        height:82px;
-      }
-
-      .quick-actions{
-        grid-template-columns:1fr;
-      }
-
-    }
-
-  </style>
 </head>
 
 
 <body>
 
 
-<!-- =========================================================
-     LOGIN SCREEN
-========================================================= -->
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
-<section id="loginScreen">
+<div id="loginScreen" class="login-screen">
 
-  <div class="login-card">
+  <div class="login-box">
 
-    <div class="login-logo">
+    <img
+      src="../logo.png"
+      class="login-logo"
+      onerror="this.style.display='none'"
+    >
 
-      <img
-        src="logo.png"
-        alt="Radiance Bangladesh Logo"
-        onerror="
-          this.style.display='none';
-          this.nextElementSibling.style.display='flex';
-        "
-      >
-
-      <div
-        class="login-logo-fallback"
-        style="display:none;"
-      >
-        RB
-      </div>
-
+    <div class="login-title">
+      Radiance Bangladesh
     </div>
 
-
-    <h1>
-      Radiance Bangladesh
-    </h1>
-
-
-    <p class="login-subtitle">
-      CRM & Business Management System
-    </p>
-
+    <div class="login-subtitle">
+      CRM / Business Management System
+    </div>
 
     <div
       id="loginError"
-      class="login-error"
-    >
-      Invalid username or password.
-    </div>
-
+      class="login-error hidden"
+    ></div>
 
     <form id="loginForm">
 
       <div class="form-group">
 
-        <label for="username">
-          Username
-        </label>
+        <label>Username</label>
 
         <input
-          type="text"
-          id="username"
+          id="loginUsername"
           class="form-control"
-          placeholder="Enter username"
+          type="text"
           autocomplete="username"
           required
         >
@@ -1227,15 +756,12 @@
 
       <div class="form-group">
 
-        <label for="password">
-          Password
-        </label>
+        <label>Password</label>
 
         <input
-          type="password"
-          id="password"
+          id="loginPassword"
           class="form-control"
-          placeholder="Enter password"
+          type="password"
           autocomplete="current-password"
           required
         >
@@ -1247,1931 +773,2707 @@
         type="submit"
         class="login-btn"
       >
-        Sign In
+        Login
       </button>
 
     </form>
 
-
-    <div class="login-footer">
-      © 2026 Radiance Bangladesh. All rights reserved.
-    </div>
-
   </div>
 
-</section>
+</div>
 
 
+<!-- =====================================================
+     APP
+===================================================== -->
 
-<!-- =========================================================
-     APPLICATION
-========================================================= -->
-
-<section id="app">
-
-  <div class="app-layout">
-
-
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
-    <aside
-      class="sidebar"
-      id="sidebar"
-    >
+<div
+  id="app"
+  class="app hidden"
+>
 
 
-      <div class="brand">
+  <!-- SIDEBAR -->
 
-        <div class="brand-icon">
+  <aside id="sidebar" class="sidebar">
 
-          <img
-            src="logo.png"
-            alt="Radiance Bangladesh Logo"
-            onerror="
-              this.style.display='none';
-              this.nextElementSibling.style.display='flex';
-            "
-          >
+    <div class="brand">
 
-          <div
-            class="brand-icon-fallback"
-            style="display:none;"
-          >
-            RB
-          </div>
+      <img
+        src="../logo.png"
+        onerror="this.style.display='none'"
+      >
 
+      <div>
+
+        <div class="brand-title">
+          Radiance Bangladesh
         </div>
 
-
-        <div class="brand-text">
-
-          <strong>
-            Radiance Bangladesh
-          </strong>
-
-          <span>
-            CRM & BMS
-          </span>
-
+        <div class="brand-subtitle">
+          CRM / BMS
         </div>
 
       </div>
 
+    </div>
 
 
-      <!-- MAIN -->
+    <div class="menu">
+
 
       <div class="menu-section">
         Main
       </div>
 
-      <button
-        class="menu-item active"
-        data-page="dashboard"
-      >
-        <span class="menu-icon">▦</span>
-        <span>Dashboard</span>
+      <button data-module="dashboard">
+        🏠 Dashboard
       </button>
 
-
-
-      <!-- CRM -->
 
       <div class="menu-section">
         CRM
       </div>
 
-      <button
-        class="menu-item"
-        data-page="leads"
-      >
-        <span class="menu-icon">◉</span>
-        <span>Leads</span>
-      </button>
+      <button data-module="Leads">👤 Leads</button>
+      <button data-module="Students">🎓 Students</button>
+      <button data-module="Counselling">💬 Counselling</button>
+      <button data-module="FollowUps">📞 Follow-ups</button>
+      <button data-module="Tasks">✅ Tasks</button>
 
-      <button
-        class="menu-item"
-        data-page="students"
-      >
-        <span class="menu-icon">♙</span>
-        <span>Students</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="counselling"
-      >
-        <span class="menu-icon">☏</span>
-        <span>Counselling</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="followups"
-      >
-        <span class="menu-icon">↻</span>
-        <span>Follow-ups</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="tasks"
-      >
-        <span class="menu-icon">✓</span>
-        <span>Tasks</span>
-      </button>
-
-
-
-      <!-- IELTS -->
 
       <div class="menu-section">
         IELTS
       </div>
 
-      <button
-        class="menu-item"
-        data-page="ielts-batches"
-      >
-        <span class="menu-icon">▤</span>
-        <span>Batches</span>
-      </button>
+      <button data-module="IELTS_Batches">📚 IELTS Batches</button>
+      <button data-module="IELTS_Students">👨‍🎓 IELTS Students</button>
+      <button data-module="IELTS_Attendance">📅 Attendance</button>
+      <button data-module="IELTS_MockTests">📝 Mock Tests</button>
+      <button data-module="IELTS_Results">📊 IELTS Results</button>
 
-      <button
-        class="menu-item"
-        data-page="ielts-students"
-      >
-        <span class="menu-icon">♙</span>
-        <span>IELTS Students</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="attendance"
-      >
-        <span class="menu-icon">✓</span>
-        <span>Attendance</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="mock-tests"
-      >
-        <span class="menu-icon">▣</span>
-        <span>Mock Tests</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="results"
-      >
-        <span class="menu-icon">★</span>
-        <span>Results</span>
-      </button>
-
-
-
-      <!-- STUDY ABROAD -->
 
       <div class="menu-section">
         Study Abroad
       </div>
 
-      <button
-        class="menu-item"
-        data-page="countries"
-      >
-        <span class="menu-icon">🌍</span>
-        <span>Countries</span>
-      </button>
+      <button data-module="Countries">🌍 Countries</button>
+      <button data-module="Universities">🏫 Universities</button>
+      <button data-module="Courses">📖 Courses</button>
+      <button data-module="Intake">📆 Intake & Deadline</button>
+      <button data-module="Applications">📋 Applications</button>
+      <button data-module="Documents">📁 Documents</button>
+      <button data-module="DocumentChecklist">☑️ Document Checklist</button>
+      <button data-module="Offers">🎁 Offers</button>
+      <button data-module="Visa">🛂 Visa Management</button>
 
-      <button
-        class="menu-item"
-        data-page="universities"
-      >
-        <span class="menu-icon">🏫</span>
-        <span>Universities</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="courses"
-      >
-        <span class="menu-icon">📚</span>
-        <span>Courses</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="applications"
-      >
-        <span class="menu-icon">▤</span>
-        <span>Applications</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="documents"
-      >
-        <span class="menu-icon">▱</span>
-        <span>Documents</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="offers"
-      >
-        <span class="menu-icon">✉</span>
-        <span>Offers</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="visa"
-      >
-        <span class="menu-icon">🛂</span>
-        <span>Visa Management</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="deadlines"
-      >
-        <span class="menu-icon">◷</span>
-        <span>Intake & Deadlines</span>
-      </button>
-
-
-
-      <!-- FINANCE -->
 
       <div class="menu-section">
-        Finance
+        Accounts
       </div>
 
-      <button
-        class="menu-item"
-        data-page="payments"
-      >
-        <span class="menu-icon">৳</span>
-        <span>Payments</span>
-      </button>
+      <button data-module="Payments">💰 Payments</button>
+      <button data-module="Invoices">🧾 Invoices</button>
+      <button data-module="MoneyReceipts">🧾 Money Receipts</button>
+      <button data-module="Income">📈 Income</button>
+      <button data-module="Expenses">📉 Expenses</button>
+      <button data-module="DuePayments">⚠️ Due Payments</button>
 
-      <button
-        class="menu-item"
-        data-page="due-payments"
-      >
-        <span class="menu-icon">!</span>
-        <span>Due Payments</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="income"
-      >
-        <span class="menu-icon">↗</span>
-        <span>Income</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="expenses"
-      >
-        <span class="menu-icon">↘</span>
-        <span>Expenses</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="invoices"
-      >
-        <span class="menu-icon">▤</span>
-        <span>Invoices</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="receipts"
-      >
-        <span class="menu-icon">▱</span>
-        <span>Money Receipts</span>
-      </button>
-
-
-
-      <!-- REPORTS -->
 
       <div class="menu-section">
         Reports
       </div>
 
-      <button
-        class="menu-item"
-        data-page="reports"
-      >
-        <span class="menu-icon">▥</span>
-        <span>Reports</span>
-      </button>
+      <button data-module="Reports">📊 Reports</button>
 
-
-
-      <!-- STAFF -->
 
       <div class="menu-section">
-        Staff
+        Administration
+      </div>
+
+      <button data-module="Users">👥 Staff Management</button>
+      <button data-module="Roles">🔐 Roles & Permissions</button>
+      <button data-module="Notifications">🔔 Notifications</button>
+      <button data-module="Timeline">🕒 Student Timeline</button>
+      <button data-module="LeadSources">📢 Lead Sources</button>
+      <button data-module="ActivityLog">📜 Activity Log</button>
+      <button data-module="Settings">⚙️ Settings</button>
+
+
+      <div style="margin-top:20px">
+
+        <button
+          onclick="logout()"
+          style="background:#7f1d1d;color:white"
+        >
+          🚪 Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          id="mobileMenu"
+          class="mobile-menu"
+        >
+          ☰
+        </button>
+
+        <div
+          id="pageTitle"
+          class="page-title"
+        >
+          Dashboard
+        </div>
+
+      </div>
+
+
+      <div class="user-area">
+
+        <div class="user-info">
+
+          <div
+            id="topUserName"
+            class="user-name"
+          >
+            Radiance
+          </div>
+
+          <div
+            id="topUserRole"
+            class="user-role"
+          >
+            Super Admin
+          </div>
+
+        </div>
+
+
+        <button
+          class="logout-btn"
+          onclick="logout()"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <section
+      id="content"
+      class="content"
+    ></section>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+  id="modalOverlay"
+  class="modal-overlay"
+>
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <div
+        id="modalTitle"
+        class="modal-title"
+      >
+        Add Record
       </div>
 
       <button
-        class="menu-item"
-        data-page="users"
+        class="close-btn"
+        onclick="closeModal()"
       >
-        <span class="menu-icon">♙</span>
-        <span>Users</span>
+        ×
       </button>
 
-      <button
-        class="menu-item"
-        data-page="roles"
-      >
-        <span class="menu-icon">⚙</span>
-        <span>Roles & Permissions</span>
-      </button>
-
-
-
-      <!-- SYSTEM -->
-
-      <div class="menu-section">
-        System
-      </div>
-
-      <button
-        class="menu-item"
-        data-page="notifications"
-      >
-        <span class="menu-icon">🔔</span>
-        <span>Notifications</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="settings"
-      >
-        <span class="menu-icon">⚙</span>
-        <span>Settings</span>
-      </button>
-
-      <button
-        class="menu-item"
-        data-page="activity-log"
-      >
-        <span class="menu-icon">▤</span>
-        <span>Activity Log</span>
-      </button>
-
-
-      <div style="height:30px;"></div>
-
-    </aside>
-
+    </div>
 
 
     <div
-      class="sidebar-overlay"
-      id="sidebarOverlay"
+      id="modalBody"
+      class="modal-body"
     ></div>
 
 
-
-    <!-- =====================================================
-         MAIN CONTENT
-    ====================================================== -->
-
-    <main class="main">
-
-
-      <!-- TOPBAR -->
-
-      <header class="topbar">
-
-        <div class="topbar-left">
-
-          <button
-            class="mobile-menu"
-            id="mobileMenuBtn"
-            type="button"
-          >
-            ☰
-          </button>
-
-          <div
-            class="page-title"
-            id="pageTitle"
-          >
-            Dashboard
-          </div>
-
-        </div>
-
-
-        <div class="topbar-right">
-
-          <button
-            class="notification-btn"
-            type="button"
-            title="Notifications"
-          >
-            🔔
-
-            <span
-              class="notification-dot"
-            ></span>
-
-          </button>
-
-
-          <div class="user-box">
-
-            <div
-              class="user-avatar"
-              id="userAvatar"
-            >
-              SA
-            </div>
-
-            <div class="user-info">
-
-              <strong
-                id="loggedUserName"
-              >
-                Super Admin
-              </strong>
-
-              <span
-                id="loggedUserRole"
-              >
-                Super Admin
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </header>
-
-
-
-      <!-- CONTENT -->
-
-      <div class="content">
-
-
-        <!-- =================================================
-             DASHBOARD
-        ================================================== -->
-
-        <section
-          id="page-dashboard"
-          class="page-section"
-        >
-
-
-          <div class="welcome-box">
-
-            <h2>
-              Welcome to Radiance Bangladesh CRM
-            </h2>
-
-            <p>
-              Manage leads, students, IELTS,
-              study abroad applications, visa
-              processing and business operations
-              from one place.
-            </p>
-
-          </div>
-
-
-
-          <!-- STATS -->
-
-          <div
-            class="stats-grid"
-            id="dashboardStats"
-          >
-
-
-            <div class="stat-card">
-
-              <div class="stat-info">
-
-                <span>
-                  Total Leads
-                </span>
-
-                <strong
-                  id="statLeads"
-                >
-                  0
-                </strong>
-
-              </div>
-
-              <div class="stat-icon purple">
-                ◉
-              </div>
-
-            </div>
-
-
-
-            <div class="stat-card">
-
-              <div class="stat-info">
-
-                <span>
-                  Total Students
-                </span>
-
-                <strong
-                  id="statStudents"
-                >
-                  0
-                </strong>
-
-              </div>
-
-              <div class="stat-icon blue">
-                ♙
-              </div>
-
-            </div>
-
-
-
-            <div class="stat-card">
-
-              <div class="stat-info">
-
-                <span>
-                  Applications
-                </span>
-
-                <strong
-                  id="statApplications"
-                >
-                  0
-                </strong>
-
-              </div>
-
-              <div class="stat-icon green">
-                ▤
-              </div>
-
-            </div>
-
-
-
-            <div class="stat-card">
-
-              <div class="stat-info">
-
-                <span>
-                  Pending Payments
-                </span>
-
-                <strong
-                  id="statPayments"
-                >
-                  ৳0
-                </strong>
-
-              </div>
-
-              <div class="stat-icon orange">
-                ৳
-              </div>
-
-            </div>
-
-
-          </div>
-
-
-
-          <!-- DASHBOARD GRID -->
-
-          <div class="dashboard-grid">
-
-
-            <!-- ACTIVITY -->
-
-            <div class="card">
-
-              <div class="card-header">
-
-                <h3>
-                  Recent Activity
-                </h3>
-
-              </div>
-
-
-              <div class="card-body">
-
-
-                <div class="activity-item">
-
-                  <div class="activity-dot"></div>
-
-                  <div class="activity-text">
-
-                    <strong>
-                      CRM system initialized
-                    </strong>
-
-                    <div class="activity-time">
-                      System setup completed
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-
-                <div class="activity-item">
-
-                  <div class="activity-dot"></div>
-
-                  <div class="activity-text">
-
-                    <strong>
-                      Database connected
-                    </strong>
-
-                    <div class="activity-time">
-                      Google Sheets backend
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-
-                <div class="activity-item">
-
-                  <div class="activity-dot"></div>
-
-                  <div class="activity-text">
-
-                    <strong>
-                      Radiance Bangladesh CRM
-                    </strong>
-
-                    <div class="activity-time">
-                      Ready for configuration
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-              </div>
-
-            </div>
-
-
-
-            <!-- QUICK ACTIONS -->
-
-            <div class="card">
-
-              <div class="card-header">
-
-                <h3>
-                  Quick Actions
-                </h3>
-
-              </div>
-
-
-              <div class="card-body">
-
-                <div class="quick-actions">
-
-
-                  <button
-                    class="quick-action"
-                    data-quick-page="leads"
-                  >
-                    ➕ Add Lead
-                  </button>
-
-
-                  <button
-                    class="quick-action"
-                    data-quick-page="students"
-                  >
-                    ♙ Add Student
-                  </button>
-
-
-                  <button
-                    class="quick-action"
-                    data-quick-page="applications"
-                  >
-                    📄 New Application
-                  </button>
-
-
-                  <button
-                    class="quick-action"
-                    data-quick-page="payments"
-                  >
-                    ৳ Add Payment
-                  </button>
-
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-          </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             MODULE VIEW
-        ================================================== -->
-
-        <section
-          id="moduleView"
-          class="module-view"
-        >
-
-
-          <div class="module-header">
-
-            <div>
-
-              <h2
-                id="moduleTitle"
-              >
-                Module
-              </h2>
-
-              <p
-                id="moduleDescription"
-              >
-                Module description
-              </p>
-
-            </div>
-
-
-            <button
-              class="btn btn-primary"
-              id="moduleActionBtn"
-              type="button"
-            >
-              + Add New
-            </button>
-
-          </div>
-
-
-          <div class="empty-module">
-
-            <div
-              class="empty-module-icon"
-              id="moduleIcon"
-            >
-              📋
-            </div>
-
-            <h3>
-              Module Ready
-            </h3>
-
-            <p>
-              This module will be connected
-              to the Radiance Bangladesh
-              database in the next development steps.
-            </p>
-
-          </div>
-
-        </section>
-
-
-      </div>
-
-    </main>
+    <div class="modal-footer">
+
+      <button
+        class="btn btn-secondary"
+        onclick="closeModal()"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="saveBtn"
+        class="btn btn-primary"
+        onclick="submitForm()"
+      >
+        Save
+      </button>
+
+    </div>
 
   </div>
 
-</section>
+</div>
 
+
+<div id="toast" class="toast"></div>
 
 
 <script>
 
 
-/* =========================================================
-   API URL
-========================================================= */
+/* =====================================================
+   CONFIG
+===================================================== */
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec";
+"https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec";
 
 
+let currentUser = null;
+let currentModule = "dashboard";
+let currentRecords = [];
+let currentEditRecord = null;
+let dropdowns = {};
 
-/* =========================================================
-   PAGE CONFIGURATION
-========================================================= */
 
-const pages = {
+/* =====================================================
+   MODULE NAMES
+===================================================== */
 
-  dashboard:{
-    title:"Dashboard"
-  },
+const moduleNames = {
 
-  leads:{
-    title:"Leads",
-    description:
-      "Manage enquiries and potential students.",
-    icon:"◉"
-  },
+  dashboard:"Dashboard",
 
-  students:{
-    title:"Students",
-    description:
-      "Manage student profiles and academic information.",
-    icon:"♙"
-  },
+  Leads:"Leads",
+  Students:"Students",
+  Counselling:"Counselling",
+  FollowUps:"Follow-ups",
+  Tasks:"Tasks",
 
-  counselling:{
-    title:"Counselling",
-    description:
-      "Track counselling sessions and student requirements.",
-    icon:"☏"
-  },
+  IELTS_Batches:"IELTS Batches",
+  IELTS_Students:"IELTS Students",
+  IELTS_Attendance:"IELTS Attendance",
+  IELTS_MockTests:"IELTS Mock Tests",
+  IELTS_Results:"IELTS Results",
 
-  followups:{
-    title:"Follow-ups",
-    description:
-      "Manage upcoming student follow-ups.",
-    icon:"↻"
-  },
+  Countries:"Countries",
+  Universities:"Universities",
+  Courses:"Courses",
+  Intake:"Intake & Deadline",
+  Applications:"Applications",
+  Documents:"Documents",
+  DocumentChecklist:"Document Checklist",
+  Offers:"Offers",
+  Visa:"Visa Management",
 
-  tasks:{
-    title:"Tasks",
-    description:
-      "Manage staff tasks and assignments.",
-    icon:"✓"
-  },
+  Payments:"Payments",
+  Invoices:"Invoices",
+  MoneyReceipts:"Money Receipts",
+  Income:"Income",
+  Expenses:"Expenses",
 
-  "ielts-batches":{
-    title:"IELTS Batches",
-    description:
-      "Manage IELTS classes and batches.",
-    icon:"▤"
-  },
+  DuePayments:"Due Payments",
+  Reports:"Reports",
 
-  "ielts-students":{
-    title:"IELTS Students",
-    description:
-      "Manage students enrolled in IELTS courses.",
-    icon:"♙"
-  },
-
-  attendance:{
-    title:"Attendance",
-    description:
-      "Manage IELTS student attendance.",
-    icon:"✓"
-  },
-
-  "mock-tests":{
-    title:"Mock Tests",
-    description:
-      "Manage IELTS mock tests.",
-    icon:"▣"
-  },
-
-  results:{
-    title:"Results",
-    description:
-      "Manage IELTS test results.",
-    icon:"★"
-  },
-
-  countries:{
-    title:"Countries",
-    description:
-      "Manage study destinations dynamically.",
-    icon:"🌍"
-  },
-
-  universities:{
-    title:"Universities",
-    description:
-      "Manage universities and institutions.",
-    icon:"🏫"
-  },
-
-  courses:{
-    title:"Courses",
-    description:
-      "Manage available courses and programs.",
-    icon:"📚"
-  },
-
-  applications:{
-    title:"Applications",
-    description:
-      "Track student applications.",
-    icon:"▤"
-  },
-
-  documents:{
-    title:"Documents",
-    description:
-      "Manage student documents.",
-    icon:"▱"
-  },
-
-  offers:{
-    title:"Offers",
-    description:
-      "Manage university offers.",
-    icon:"✉"
-  },
-
-  visa:{
-    title:"Visa Management",
-    description:
-      "Track visa applications and decisions.",
-    icon:"🛂"
-  },
-
-  deadlines:{
-    title:"Intake & Deadlines",
-    description:
-      "Manage intakes and application deadlines.",
-    icon:"◷"
-  },
-
-  payments:{
-    title:"Payments",
-    description:
-      "Manage student payments.",
-    icon:"৳"
-  },
-
-  "due-payments":{
-    title:"Due Payments",
-    description:
-      "Track outstanding student payments.",
-    icon:"!"
-  },
-
-  income:{
-    title:"Income",
-    description:
-      "Manage company income.",
-    icon:"↗"
-  },
-
-  expenses:{
-    title:"Expenses",
-    description:
-      "Manage company expenses.",
-    icon:"↘"
-  },
-
-  invoices:{
-    title:"Invoices",
-    description:
-      "Create and manage invoices.",
-    icon:"▤"
-  },
-
-  receipts:{
-    title:"Money Receipts",
-    description:
-      "Manage payment receipts.",
-    icon:"▱"
-  },
-
-  reports:{
-    title:"Reports",
-    description:
-      "View CRM, application, visa and finance reports.",
-    icon:"▥"
-  },
-
-  users:{
-    title:"Users",
-    description:
-      "Manage Radiance Bangladesh staff accounts.",
-    icon:"♙"
-  },
-
-  roles:{
-    title:"Roles & Permissions",
-    description:
-      "Manage staff roles and permissions.",
-    icon:"⚙"
-  },
-
-  notifications:{
-    title:"Notifications",
-    description:
-      "Manage system notifications.",
-    icon:"🔔"
-  },
-
-  settings:{
-    title:"Settings",
-    description:
-      "Manage company and system settings.",
-    icon:"⚙"
-  },
-
-  "activity-log":{
-    title:"Activity Log",
-    description:
-      "View system activities and user actions.",
-    icon:"▤"
-  }
-
+  Users:"Staff Management",
+  Roles:"Roles & Permissions",
+  Notifications:"Notifications",
+  Timeline:"Student Timeline",
+  LeadSources:"Lead Sources",
+  ActivityLog:"Activity Log",
+  Settings:"Settings"
 };
 
 
+/* =====================================================
+   INIT
+===================================================== */
 
-/* =========================================================
-   LOGIN ELEMENTS
-========================================================= */
+document.addEventListener("DOMContentLoaded", function(){
 
-const loginForm =
-  document.getElementById(
-    "loginForm"
-  );
+  document
+    .querySelectorAll(".menu button[data-module]")
+    .forEach(function(button){
 
-const loginError =
-  document.getElementById(
-    "loginError"
-  );
+      button.addEventListener("click", function(){
 
-const loginButton =
-  document.querySelector(
-    ".login-btn"
-  );
+        navigate(
+          button.dataset.module
+        );
+
+      });
+
+    });
 
 
+  document
+    .getElementById("loginForm")
+    .addEventListener(
+      "submit",
+      handleLogin
+    );
 
-/* =========================================================
+
+  document
+    .getElementById("mobileMenu")
+    .addEventListener(
+      "click",
+      function(){
+        document
+          .getElementById("sidebar")
+          .classList.toggle("open");
+      }
+    );
+
+
+  restoreSession();
+
+});
+
+
+/* =====================================================
+   API
+===================================================== */
+
+async function api(payload){
+
+  const response =
+    await fetch(API_URL,{
+      method:"POST",
+      headers:{
+        "Content-Type":"text/plain;charset=utf-8"
+      },
+      body:JSON.stringify(payload)
+    });
+
+  const text =
+    await response.text();
+
+  let data;
+
+  try{
+    data = JSON.parse(text);
+  }catch(e){
+    throw new Error(
+      "Server returned invalid response."
+    );
+  }
+
+  if(!data.success){
+    throw new Error(
+      data.message || "Operation failed."
+    );
+  }
+
+  return data;
+}
+
+
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 
-loginForm.addEventListener(
-  "submit",
-  async function(event){
+async function handleLogin(event){
 
-    event.preventDefault();
+  event.preventDefault();
 
+  const username =
+    document
+      .getElementById("loginUsername")
+      .value
+      .trim();
 
-    const username =
-      document
-        .getElementById(
-          "username"
-        )
-        .value
-        .trim();
+  const password =
+    document
+      .getElementById("loginPassword")
+      .value;
 
 
-    const password =
-      document
-        .getElementById(
-          "password"
-        )
-        .value;
+  const errorBox =
+    document.getElementById("loginError");
 
+  errorBox.classList.add("hidden");
 
-    loginError.style.display =
-      "none";
-
-
-    if(
-      !username ||
-      !password
-    ){
-
-      showLoginError(
-        "Please enter username and password."
-      );
-
-      return;
-
-    }
-
-
-    loginButton.disabled =
-      true;
-
-    loginButton.textContent =
-      "Signing in...";
-
-
-    try{
-
-      const response =
-        await fetch(
-          API_URL,
-          {
-            method:"POST",
-
-            headers:{
-              "Content-Type":
-                "text/plain;charset=utf-8"
-            },
-
-            body:
-              JSON.stringify({
-                action:"login",
-                username:username,
-                password:password
-              })
-          }
-        );
-
-
-      if(
-        !response.ok
-      ){
-
-        throw new Error(
-          "Server returned HTTP " +
-          response.status
-        );
-
-      }
-
-
-      const result =
-        await response.json();
-
-
-      if(
-        result &&
-        result.success
-      ){
-
-        const user =
-          result.user || {};
-
-
-        sessionStorage.setItem(
-          "radiance_user",
-          JSON.stringify(user)
-        );
-
-
-        showApplication(
-          user
-        );
-
-
-      }else{
-
-        showLoginError(
-          result &&
-          result.message
-            ? result.message
-            : "Invalid username or password."
-        );
-
-      }
-
-
-    }catch(error){
-
-      console.error(
-        "Login Error:",
-        error
-      );
-
-
-      showLoginError(
-        "Unable to connect to the CRM server. Please check your internet connection and try again."
-      );
-
-    }
-
-
-    loginButton.disabled =
-      false;
-
-    loginButton.textContent =
-      "Sign In";
-
-  }
-);
-
-
-
-/* =========================================================
-   LOGIN ERROR
-========================================================= */
-
-function showLoginError(
-  message
-){
-
-  loginError.textContent =
-    message;
-
-  loginError.style.display =
-    "block";
-
-}
-
-
-
-/* =========================================================
-   SHOW APPLICATION
-========================================================= */
-
-function showApplication(
-  user
-){
-
-  document
-    .getElementById(
-      "loginScreen"
-    )
-    .style.display =
-      "none";
-
-
-  document
-    .getElementById(
-      "app"
-    )
-    .style.display =
-      "block";
-
-
-  const userName =
-    user.name ||
-    "Super Admin";
-
-
-  const userRole =
-    user.role ||
-    "Super Admin";
-
-
-  document
-    .getElementById(
-      "loggedUserName"
-    )
-    .textContent =
-      userName;
-
-
-  document
-    .getElementById(
-      "loggedUserRole"
-    )
-    .textContent =
-      userRole;
-
-
-  document
-    .getElementById(
-      "userAvatar"
-    )
-    .textContent =
-      getInitials(
-        userName
-      );
-
-
-  /*
-   * Load dashboard immediately
-   */
-
-  loadDashboardData();
-
-}
-
-
-
-/* =========================================================
-   INITIALS
-========================================================= */
-
-function getInitials(
-  name
-){
-
-  const words =
-    String(
-      name || ""
-    )
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean);
-
-
-  if(
-    words.length === 0
-  ){
-    return "RB";
-  }
-
-
-  if(
-    words.length === 1
-  ){
-
-    return words[0]
-      .substring(0,2)
-      .toUpperCase();
-
-  }
-
-
-  return (
-    words[0].charAt(0) +
-    words[
-      words.length - 1
-    ].charAt(0)
-  ).toUpperCase();
-
-}
-
-
-
-/* =========================================================
-   RESTORE SESSION
-========================================================= */
-
-function restoreSession(){
 
   try{
 
-    const saved =
-      sessionStorage.getItem(
-        "radiance_user"
-      );
+    const result =
+      await api({
+        action:"login",
+        username:username,
+        password:password
+      });
 
 
-    if(
-      !saved
-    ){
-      return;
-    }
+    currentUser =
+      result.user;
 
 
-    const user =
-      JSON.parse(
-        saved
-      );
+    sessionStorage.setItem(
+      "radiance_user",
+      JSON.stringify(currentUser)
+    );
 
 
-    if(
-      user &&
-      user.username
-    ){
-
-      showApplication(
-        user
-      );
-
-    }
-
+    showApplication();
 
   }catch(error){
 
-    console.error(
-      "Session restore error:",
-      error
+    errorBox.textContent =
+      error.message;
+
+    errorBox.classList.remove(
+      "hidden"
+    );
+  }
+}
+
+
+/* =====================================================
+   RESTORE
+===================================================== */
+
+function restoreSession(){
+
+  const saved =
+    sessionStorage.getItem(
+      "radiance_user"
     );
 
+  if(!saved){
+    return;
+  }
+
+  try{
+
+    currentUser =
+      JSON.parse(saved);
+
+    showApplication();
+
+  }catch(e){
 
     sessionStorage.removeItem(
       "radiance_user"
     );
-
   }
+}
+
+
+/* =====================================================
+   SHOW APP
+===================================================== */
+
+function showApplication(){
+
+  document
+    .getElementById("loginScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+
+  document
+    .getElementById("topUserName")
+    .textContent =
+      currentUser.name || "Radiance";
+
+
+  document
+    .getElementById("topUserRole")
+    .textContent =
+      currentUser.role || "";
+
+
+  navigate("dashboard");
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+  sessionStorage.removeItem(
+    "radiance_user"
+  );
+
+  currentUser = null;
+
+  document
+    .getElementById("app")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loginScreen")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("loginPassword")
+    .value = "";
 
 }
 
 
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
-/* =========================================================
-   MENU ELEMENTS
-========================================================= */
+async function navigate(module){
 
-const menuItems =
-  document.querySelectorAll(
-    ".menu-item"
+  currentModule =
+    module;
+
+  document
+    .querySelectorAll(
+      ".menu button[data-module]"
+    )
+    .forEach(function(button){
+
+      button.classList.toggle(
+        "active",
+        button.dataset.module === module
+      );
+
+    });
+
+
+  document
+    .getElementById("pageTitle")
+    .textContent =
+      moduleNames[module] || module;
+
+
+  document
+    .getElementById("sidebar")
+    .classList.remove("open");
+
+
+  if(module === "dashboard"){
+
+    await renderDashboard();
+    return;
+  }
+
+
+  if(module === "Reports"){
+
+    await renderReports();
+    return;
+  }
+
+
+  if(module === "DuePayments"){
+
+    await renderDuePayments();
+    return;
+  }
+
+
+  await renderModule(module);
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+async function renderDashboard(){
+
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML =
+    `<div class="loading">Loading dashboard...</div>`;
+
+
+  try{
+
+    const result =
+      await api({
+        action:"dashboard",
+        user:currentUser
+      });
+
+
+    const d =
+      result.data;
+
+
+    content.innerHTML = `
+
+      <div class="stats">
+
+        ${statCard(
+          "Total Leads",
+          d.totalLeads
+        )}
+
+        ${statCard(
+          "Total Students",
+          d.totalStudents
+        )}
+
+        ${statCard(
+          "Applications",
+          d.totalApplications
+        )}
+
+        ${statCard(
+          "Due Payments",
+          formatMoney(d.pendingPayments)
+        )}
+
+      </div>
+
+
+      <div class="stats">
+
+        ${statCard(
+          "Countries",
+          d.totalCountries
+        )}
+
+        ${statCard(
+          "Universities",
+          d.totalUniversities
+        )}
+
+        ${statCard(
+          "Courses",
+          d.totalCourses
+        )}
+
+        ${statCard(
+          "Tasks",
+          d.totalTasks
+        )}
+
+      </div>
+
+
+      <div class="dashboard-grid">
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <div class="card-title">
+              Recent Activity
+            </div>
+
+            <button
+              class="btn btn-secondary"
+              onclick="navigate('ActivityLog')"
+            >
+              View All
+            </button>
+
+          </div>
+
+          <div class="card-body">
+
+            ${
+              d.recentActivity &&
+              d.recentActivity.length
+              ?
+              renderActivityTable(
+                d.recentActivity
+              )
+              :
+              "<p>No activity yet.</p>"
+            }
+
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <div class="card-title">
+              Financial Summary
+            </div>
+
+          </div>
+
+          <div class="card-body">
+
+            <p>
+              <strong>Total Payments:</strong>
+              ${formatMoney(d.totalPayments)}
+            </p>
+
+            <br>
+
+            <p>
+              <strong>Total Expenses:</strong>
+              ${formatMoney(d.totalExpenses)}
+            </p>
+
+            <br>
+
+            <p>
+              <strong>Net Balance:</strong>
+              ${formatMoney(d.netBalance)}
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  }catch(error){
+
+    showError(error);
+  }
+}
+
+
+function statCard(label,value){
+
+  return `
+    <div class="stat-card">
+
+      <div class="stat-label">
+        ${escapeHtml(label)}
+      </div>
+
+      <div class="stat-value">
+        ${escapeHtml(String(value))}
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* =====================================================
+   GENERIC MODULE
+===================================================== */
+
+async function renderModule(module){
+
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML =
+    `<div class="loading">Loading ${escapeHtml(moduleNames[module] || module)}...</div>`;
+
+
+  try{
+
+    await loadDropdowns();
+
+
+    const result =
+      await api({
+        action:"list",
+        module:module,
+        user:currentUser
+      });
+
+
+    currentRecords =
+      result.records || [];
+
+
+    renderModuleTable();
+
+  }catch(error){
+
+    showError(error);
+  }
+}
+
+
+/* =====================================================
+   MODULE TABLE
+===================================================== */
+
+function renderModuleTable(){
+
+  const module =
+    currentModule;
+
+  let records =
+    currentRecords.slice();
+
+
+  const search =
+    document.getElementById("moduleSearch");
+
+  const query =
+    search
+      ? search.value.toLowerCase().trim()
+      : "";
+
+
+  if(query){
+
+    records =
+      records.filter(function(record){
+
+        return Object.keys(record)
+          .some(function(key){
+
+            return String(
+              record[key]
+            )
+            .toLowerCase()
+            .includes(query);
+
+          });
+
+      });
+
+  }
+
+
+  const readonly =
+    [
+      "ActivityLog"
+    ].includes(module);
+
+
+  const content =
+    document.getElementById("content");
+
+
+  let html = `
+
+    <div class="module-toolbar">
+
+      <input
+        id="moduleSearch"
+        class="search"
+        placeholder="Search ${escapeHtml(moduleNames[module] || module)}..."
+        value="${escapeHtml(query)}"
+        oninput="renderModuleTable()"
+      >
+
+      ${
+        readonly
+        ? ""
+        :
+        `
+        <button
+          class="btn btn-primary"
+          onclick="openAddModal()"
+        >
+          + Add New
+        </button>
+        `
+      }
+
+      <button
+        class="btn btn-secondary"
+        onclick="renderModule('${module}')"
+      >
+        Refresh
+      </button>
+
+    </div>
+
+
+    <div class="table-card">
+
+      ${
+        records.length
+        ?
+        buildTable(records,module)
+        :
+        `<div class="loading">
+          No records found.
+        </div>`
+      }
+
+    </div>
+  `;
+
+
+  content.innerHTML =
+    html;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+function buildTable(records,module){
+
+  if(!records.length){
+    return "";
+  }
+
+
+  const headers =
+    Object.keys(records[0])
+      .filter(function(key){
+        return key !== "_row" &&
+          key !== "Password Hash";
+      });
+
+
+  let html =
+    "<table><thead><tr>";
+
+
+  headers
+    .slice(0,10)
+    .forEach(function(header){
+
+      html +=
+        `<th>${escapeHtml(header)}</th>`;
+
+    });
+
+
+  if(!["ActivityLog"].includes(module)){
+    html += "<th>Actions</th>";
+  }
+
+
+  html +=
+    "</tr></thead><tbody>";
+
+
+  records.forEach(function(record){
+
+    html += "<tr>";
+
+
+    headers
+      .slice(0,10)
+      .forEach(function(header){
+
+        let value =
+          record[header];
+
+        if(
+          header === "Status" ||
+          header === "Payment Status" ||
+          header === "Application Status" ||
+          header === "Visa Status"
+        ){
+
+          html +=
+            `<td>${statusBadge(value)}</td>`;
+
+        }else{
+
+          html +=
+            `<td>${formatCell(value)}</td>`;
+        }
+
+      });
+
+
+    if(!["ActivityLog"].includes(module)){
+
+      html += `
+
+        <td class="actions">
+
+          <button
+            class="action-btn edit-btn"
+            onclick="editRecord(${record._row})"
+          >
+            Edit
+          </button>
+
+          <button
+            class="action-btn delete-btn"
+            onclick="deleteRecord(${record._row})"
+          >
+            Delete
+          </button>
+
+        </td>
+
+      `;
+    }
+
+
+    html += "</tr>";
+
+  });
+
+
+  html +=
+    "</tbody></table>";
+
+
+  return html;
+}
+
+
+/* =====================================================
+   ADD MODAL
+===================================================== */
+
+async function openAddModal(){
+
+  currentEditRecord = null;
+
+  await loadDropdowns();
+
+  openRecordModal(
+    null,
+    "Add New " +
+    (moduleNames[currentModule] || currentModule)
   );
+}
 
 
-const dashboard =
-  document.getElementById(
-    "page-dashboard"
+/* =====================================================
+   EDIT
+===================================================== */
+
+async function editRecord(row){
+
+  const record =
+    currentRecords.find(function(item){
+
+      return Number(item._row) ===
+        Number(row);
+
+    });
+
+
+  if(!record){
+    showToast(
+      "Record not found.",
+      "error"
+    );
+    return;
+  }
+
+
+  currentEditRecord =
+    record;
+
+
+  await loadDropdowns();
+
+
+  openRecordModal(
+    record,
+    "Edit " +
+    (moduleNames[currentModule] || currentModule)
   );
+}
 
 
-const moduleView =
-  document.getElementById(
-    "moduleView"
+/* =====================================================
+   FORM
+===================================================== */
+
+function openRecordModal(record,title){
+
+  const modal =
+    document.getElementById(
+      "modalOverlay"
+    );
+
+  document
+    .getElementById("modalTitle")
+    .textContent =
+      title;
+
+
+  const body =
+    document.getElementById(
+      "modalBody"
+    );
+
+
+  const headers =
+    getModuleHeaders(
+      currentModule
+    );
+
+
+  let html =
+    `<div class="form-grid">`;
+
+
+  headers.forEach(function(header){
+
+    if(
+      header === "Password Hash" ||
+      header === "Created At" ||
+      header === "Updated At" ||
+      header === "Last Login" ||
+      header === "Uploaded At" ||
+      header === "Timestamp" ||
+      header === "Completed At"
+    ){
+      return;
+    }
+
+
+    if(
+      header.endsWith(" ID") &&
+      record &&
+      record[header]
+    ){
+
+      html += field(
+        header,
+        record[header],
+        "text",
+        true
+      );
+
+      return;
+    }
+
+
+    let value =
+      record
+        ? record[header] || ""
+        : "";
+
+
+    html +=
+      createDynamicField(
+        header,
+        value
+      );
+
+  });
+
+
+  html +=
+    `</div>`;
+
+
+  body.innerHTML =
+    html;
+
+
+  modal.classList.add(
+    "show"
   );
+}
 
 
-const pageTitle =
-  document.getElementById(
-    "pageTitle"
+/* =====================================================
+   FIELD GENERATION
+===================================================== */
+
+function createDynamicField(header,value){
+
+  const id =
+    fieldId(header);
+
+  const lower =
+    header.toLowerCase();
+
+
+  let full =
+    lower.includes("description") ||
+    lower.includes("notes") ||
+    lower.includes("remarks") ||
+    lower.includes("requirement") ||
+    lower.includes("recommendation") ||
+    lower.includes("message") ||
+    lower.includes("address");
+
+
+  /* COUNTRY */
+
+  if(lower === "country" ||
+     lower.includes("preferred country") ||
+     lower.includes("interested country")){
+
+    const options =
+      dropdowns.countries || [];
+
+    return selectField(
+      header,
+      value,
+      options.map(function(x){
+        return {
+          value:x["Country Name"],
+          label:
+            (x.Flag || "") +
+            " " +
+            x["Country Name"]
+        };
+      }),
+      full
+    );
+  }
+
+
+  /* STUDENT */
+
+  if(lower === "student id" ||
+     lower === "related student"){
+
+    const options =
+      dropdowns.students || [];
+
+    return selectField(
+      header,
+      value,
+      options.map(function(x){
+        return {
+          value:x["Student ID"],
+          label:
+            x["Student ID"] +
+            " - " +
+            x.Name
+        };
+      }),
+      full
+    );
+  }
+
+
+  /* LEAD */
+
+  if(lower === "lead id"){
+
+    const options =
+      dropdowns.leads || [];
+
+    return selectField(
+      header,
+      value,
+      options.map(function(x){
+        return {
+          value:x["Lead ID"],
+          label:
+            x["Lead ID"] +
+            " - " +
+            x.Name
+        };
+      }),
+      full
+    );
+  }
+
+
+  /* USER */
+
+  if(
+    lower.includes("assigned") ||
+    lower === "counsellor" ||
+    lower === "teacher" ||
+    lower === "received by" ||
+    lower === "paid by"
+  ){
+
+    const options =
+      dropdowns.users || [];
+
+    return selectField(
+      header,
+      value,
+      options.map(function(x){
+        return {
+          value:x.name,
+          label:
+            x.name +
+            " (" +
+            x.role +
+            ")"
+        };
+      }),
+      full
+    );
+  }
+
+
+  /* UNIVERSITY */
+
+  if(
+    lower === "university" ||
+    lower === "preferred university"
+  ){
+
+    const options =
+      dropdowns.universities || [];
+
+    return selectField(
+      header,
+      value,
+      options.map(function(x){
+        return {
+          value:x["University Name"],
+          label:x["University Name"]
+        };
+      }),
+      full
+    );
+  }
+
+
+  /* COURSE */
+
+  if(
+    lower === "course" ||
+    lower === "preferred course"
+  ){
+
+    const options =
+      dropdowns.courses || [];
+
+    return selectField(
+      header,
+      value,
+      options.map(function(x){
+        return {
+          value:x["Course Name"],
+          label:x["Course Name"]
+        };
+      }),
+      full
+    );
+  }
+
+
+  /* ROLE */
+
+  if(header === "Role"){
+
+    return selectField(
+      header,
+      value,
+      [
+        "Super Admin",
+        "Counsellor",
+        "Application Officer",
+        "Visa Officer",
+        "Accountant",
+        "IELTS Teacher"
+      ].map(function(x){
+        return {
+          value:x,
+          label:x
+        };
+      }),
+      false
+    );
+  }
+
+
+  /* PASSWORD */
+
+  if(header === "Password"){
+
+    return field(
+      header,
+      value,
+      "password",
+      false
+    );
+  }
+
+
+  /* BOOLEAN */
+
+  if(
+    ["Required","Received","Verified","Is Read","Featured"]
+      .includes(header)
+  ){
+
+    return selectField(
+      header,
+      value,
+      [
+        {value:"Yes",label:"Yes"},
+        {value:"No",label:"No"}
+      ],
+      false
+    );
+  }
+
+
+  /* STATUS */
+
+  if(
+    header === "Status" ||
+    header === "Application Status" ||
+    header === "Payment Status" ||
+    header === "Visa Status" ||
+    header === "Verification Status" ||
+    header === "Partner Status" ||
+    header === "Deposit Status"
+  ){
+
+    const options =
+      statusOptions(header);
+
+    return selectField(
+      header,
+      value,
+      options.map(function(x){
+        return {
+          value:x,
+          label:x
+        };
+      }),
+      false
+    );
+  }
+
+
+  /* PAYMENT METHOD */
+
+  if(header === "Payment Method"){
+
+    return selectField(
+      header,
+      value,
+      [
+        "Cash",
+        "Bank",
+        "bKash",
+        "Nagad",
+        "Rocket",
+        "Card",
+        "Other"
+      ].map(function(x){
+        return {
+          value:x,
+          label:x
+        };
+      }),
+      false
+    );
+  }
+
+
+  /* TEXTAREA */
+
+  if(full){
+
+    return `
+      <div class="form-group full">
+
+        <label>
+          ${escapeHtml(header)}
+        </label>
+
+        <textarea
+          id="${id}"
+          class="form-control"
+        >${escapeHtml(String(value))}</textarea>
+
+      </div>
+    `;
+  }
+
+
+  /* DATE */
+
+  if(
+    lower.includes("date") ||
+    lower.includes("deadline")
+  ){
+
+    return field(
+      header,
+      value,
+      "date",
+      false
+    );
+  }
+
+
+  /* TIME */
+
+  if(lower.includes("time")){
+
+    return field(
+      header,
+      value,
+      "time",
+      false
+    );
+  }
+
+
+  /* NUMBER */
+
+  if(
+    lower.includes("amount") ||
+    lower.includes("fee") ||
+    lower.includes("budget") ||
+    lower.includes("score") ||
+    lower.includes("gpa") ||
+    lower.includes("ranking") ||
+    lower.includes("capacity") ||
+    lower.includes("year")
+  ){
+
+    return field(
+      header,
+      value,
+      "number",
+      false
+    );
+  }
+
+
+  /* USERS PASSWORD FIELD */
+
+  if(
+    currentModule === "Users" &&
+    header === "Password"
+  ){
+
+    return field(
+      header,
+      value,
+      "password",
+      false
+    );
+  }
+
+
+  return field(
+    header,
+    value,
+    "text",
+    false
   );
+}
 
 
-const moduleTitle =
-  document.getElementById(
-    "moduleTitle"
-  );
+/* =====================================================
+   FIELD
+===================================================== */
 
-
-const moduleDescription =
-  document.getElementById(
-    "moduleDescription"
-  );
-
-
-const moduleIcon =
-  document.getElementById(
-    "moduleIcon"
-  );
-
-
-
-/* =========================================================
-   OPEN PAGE
-========================================================= */
-
-function openPage(
-  pageName
+function field(
+  header,
+  value,
+  type,
+  readonly
 ){
 
-  const page =
-    pages[
-      pageName
+  const id =
+    fieldId(header);
+
+
+  return `
+    <div class="form-group">
+
+      <label>
+        ${escapeHtml(header)}
+      </label>
+
+      <input
+        id="${id}"
+        class="form-control"
+        type="${type}"
+        value="${escapeHtml(String(value || ""))}"
+        ${readonly ? "readonly" : ""}
+      >
+
+    </div>
+  `;
+}
+
+
+function selectField(
+  header,
+  value,
+  options,
+  full
+){
+
+  const id =
+    fieldId(header);
+
+
+  let html =
+    `<div class="form-group ${full ? "full" : ""}">
+
+      <label>
+        ${escapeHtml(header)}
+      </label>
+
+      <select
+        id="${id}"
+        class="form-control"
+      >
+
+      <option value="">
+        Select ${escapeHtml(header)}
+      </option>`;
+
+
+  options.forEach(function(option){
+
+    html += `
+      <option
+        value="${escapeHtml(String(option.value))}"
+        ${String(option.value) === String(value) ? "selected" : ""}
+      >
+        ${escapeHtml(String(option.label))}
+      </option>
+    `;
+
+  });
+
+
+  html +=
+    `</select></div>`;
+
+
+  return html;
+}
+
+
+/* =====================================================
+   STATUS OPTIONS
+===================================================== */
+
+function statusOptions(header){
+
+  if(header === "Application Status"){
+    return [
+      "Pending",
+      "Submitted",
+      "Under Review",
+      "Conditional Offer",
+      "Unconditional Offer",
+      "Rejected",
+      "Withdrawn",
+      "Completed"
     ];
+  }
+
+
+  if(header === "Payment Status"){
+    return [
+      "Pending",
+      "Partial",
+      "Paid",
+      "Due",
+      "Refunded"
+    ];
+  }
+
+
+  if(header === "Visa Status"){
+    return [
+      "Not Started",
+      "Preparing",
+      "Submitted",
+      "Biometrics",
+      "Medical",
+      "Interview",
+      "Granted",
+      "Refused",
+      "Withdrawn"
+    ];
+  }
+
+
+  if(header === "Verification Status"){
+    return [
+      "Pending",
+      "Verified",
+      "Rejected"
+    ];
+  }
+
+
+  if(header === "Partner Status"){
+    return [
+      "Partner",
+      "Non-Partner",
+      "Pending"
+    ];
+  }
+
+
+  if(header === "Deposit Status"){
+    return [
+      "Pending",
+      "Paid",
+      "Not Required"
+    ];
+  }
+
+
+  return [
+    "Active",
+    "Inactive",
+    "Pending",
+    "Completed",
+    "Cancelled",
+    "Rejected"
+  ];
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+async function submitForm(){
+
+  const module =
+    currentModule;
+
+
+  const headers =
+    getModuleHeaders(module);
+
+
+  const record = {};
+
+
+  headers.forEach(function(header){
+
+    if(
+      header === "Password Hash" ||
+      header === "Created At" ||
+      header === "Updated At" ||
+      header === "Last Login" ||
+      header === "Uploaded At" ||
+      header === "Timestamp" ||
+      header === "Completed At"
+    ){
+      return;
+    }
+
+
+    const element =
+      document.getElementById(
+        fieldId(header)
+      );
+
+
+    if(element){
+
+      record[header] =
+        element.value;
+    }
+
+  });
+
+
+  if(currentEditRecord){
+
+    record._row =
+      currentEditRecord._row;
+  }
+
+
+  /* USERS PASSWORD */
+
+  if(module === "Users"){
+
+    const passwordElement =
+      document.getElementById(
+        fieldId("Password")
+      );
+
+    if(passwordElement){
+
+      record.Password =
+        passwordElement.value;
+    }
+  }
+
+
+  const saveButton =
+    document.getElementById(
+      "saveBtn"
+    );
+
+  saveButton.disabled = true;
+  saveButton.textContent = "Saving...";
+
+
+  try{
+
+    await api({
+
+      action:"save",
+
+      module:module,
+
+      record:record,
+
+      user:currentUser
+
+    });
+
+
+    closeModal();
+
+    showToast(
+      "Saved successfully.",
+      "success"
+    );
+
+
+    await renderModule(module);
+
+
+  }catch(error){
+
+    showToast(
+      error.message,
+      "error"
+    );
+
+  }finally{
+
+    saveButton.disabled = false;
+    saveButton.textContent = "Save";
+
+  }
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+async function deleteRecord(row){
+
+  const record =
+    currentRecords.find(function(item){
+
+      return Number(item._row) ===
+        Number(row);
+
+    });
+
+
+  if(!record){
+    return;
+  }
+
+
+  const name =
+    record.Name ||
+    record["Country Name"] ||
+    record["University Name"] ||
+    record["Course Name"] ||
+    record["Student ID"] ||
+    record["Lead ID"] ||
+    record["Application ID"] ||
+    record[Object.keys(record)[1]] ||
+    "this record";
 
 
   if(
-    !page
+    !confirm(
+      "Are you sure you want to delete " +
+      name +
+      "?"
+    )
   ){
     return;
   }
 
 
-  menuItems.forEach(
-    function(item){
-
-      item.classList.remove(
-        "active"
-      );
-
-
-      if(
-        item.dataset.page ===
-        pageName
-      ){
-
-        item.classList.add(
-          "active"
-        );
-
-      }
-
-    }
-  );
-
-
-  if(
-    pageName ===
-    "dashboard"
-  ){
-
-    dashboard.style.display =
-      "block";
-
-    moduleView.style.display =
-      "none";
-
-    pageTitle.textContent =
-      "Dashboard";
-
-
-    loadDashboardData();
-
-
-  }else{
-
-    dashboard.style.display =
-      "none";
-
-    moduleView.style.display =
-      "block";
-
-
-    pageTitle.textContent =
-      page.title;
-
-
-    moduleTitle.textContent =
-      page.title;
-
-
-    moduleDescription.textContent =
-      page.description ||
-      "";
-
-
-    moduleIcon.textContent =
-      page.icon ||
-      "📋";
-
-  }
-
-
-  closeMobileSidebar();
-
-}
-
-
-
-/* =========================================================
-   MENU EVENTS
-========================================================= */
-
-menuItems.forEach(
-  function(item){
-
-    item.addEventListener(
-      "click",
-      function(){
-
-        openPage(
-          item.dataset.page
-        );
-
-      }
-    );
-
-  }
-);
-
-
-
-/* =========================================================
-   QUICK ACTIONS
-========================================================= */
-
-document
-  .querySelectorAll(
-    "[data-quick-page]"
-  )
-  .forEach(
-    function(button){
-
-      button.addEventListener(
-        "click",
-        function(){
-
-          openPage(
-            button.dataset.quickPage
-          );
-
-        }
-      );
-
-    }
-  );
-
-
-
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
-
-const sidebar =
-  document.getElementById(
-    "sidebar"
-  );
-
-
-const overlay =
-  document.getElementById(
-    "sidebarOverlay"
-  );
-
-
-const mobileMenuBtn =
-  document.getElementById(
-    "mobileMenuBtn"
-  );
-
-
-mobileMenuBtn.addEventListener(
-  "click",
-  function(){
-
-    sidebar.classList.add(
-      "open"
-    );
-
-    overlay.classList.add(
-      "show"
-    );
-
-  }
-);
-
-
-
-function closeMobileSidebar(){
-
-  sidebar.classList.remove(
-    "open"
-  );
-
-  overlay.classList.remove(
-    "show"
-  );
-
-}
-
-
-overlay.addEventListener(
-  "click",
-  closeMobileSidebar
-);
-
-
-
-/* =========================================================
-   DASHBOARD REAL DATA
-========================================================= */
-
-async function loadDashboardData(){
-
-  const dashboardStats =
-    document.getElementById(
-      "dashboardStats"
-    );
-
-
   try{
 
-    /*
-     * Visual loading state
-     */
+    await api({
 
-    dashboardStats.classList.add(
-      "dashboard-loading"
+      action:"delete",
+
+      module:currentModule,
+
+      row:row,
+
+      user:currentUser
+
+    });
+
+
+    showToast(
+      "Deleted successfully.",
+      "success"
     );
 
 
-    const response =
-      await fetch(
-        API_URL,
-        {
-          method:"POST",
-
-          headers:{
-            "Content-Type":
-              "text/plain;charset=utf-8"
-          },
-
-          body:
-            JSON.stringify({
-              action:"dashboard"
-            })
-        }
-      );
-
-
-    if(
-      !response.ok
-    ){
-
-      throw new Error(
-        "Dashboard API HTTP " +
-        response.status
-      );
-
-    }
-
-
-    const result =
-      await response.json();
-
-
-    console.log(
-      "Dashboard API:",
-      result
+    await renderModule(
+      currentModule
     );
-
-
-    if(
-      !result ||
-      !result.success ||
-      !result.data
-    ){
-
-      console.error(
-        "Dashboard API error:",
-        result
-      );
-
-      return;
-
-    }
-
-
-    const data =
-      result.data;
-
-
-    /* ---------------------------------------------
-       TOTAL LEADS
-    --------------------------------------------- */
-
-    document
-      .getElementById(
-        "statLeads"
-      )
-      .textContent =
-        formatNumber(
-          data.totalLeads
-        );
-
-
-    /* ---------------------------------------------
-       TOTAL STUDENTS
-    --------------------------------------------- */
-
-    document
-      .getElementById(
-        "statStudents"
-      )
-      .textContent =
-        formatNumber(
-          data.totalStudents
-        );
-
-
-    /* ---------------------------------------------
-       APPLICATIONS
-    --------------------------------------------- */
-
-    document
-      .getElementById(
-        "statApplications"
-      )
-      .textContent =
-        formatNumber(
-          data.totalApplications
-        );
-
-
-    /* ---------------------------------------------
-       PENDING PAYMENTS
-    --------------------------------------------- */
-
-    document
-      .getElementById(
-        "statPayments"
-      )
-      .textContent =
-        "৳" +
-        formatNumber(
-          data.pendingPayments
-        );
 
 
   }catch(error){
 
-    console.error(
-      "Dashboard data error:",
-      error
+    showToast(
+      error.message,
+      "error"
     );
-
-
-  }finally{
-
-    dashboardStats.classList.remove(
-      "dashboard-loading"
-    );
-
   }
-
 }
 
 
+/* =====================================================
+   REPORTS
+===================================================== */
 
-/* =========================================================
-   NUMBER FORMAT
-========================================================= */
+async function renderReports(){
 
-function formatNumber(
-  value
-){
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML =
+    `<div class="loading">Loading reports...</div>`;
+
+
+  try{
+
+    const result =
+      await api({
+        action:"reports",
+        user:currentUser
+      });
+
+
+    const d =
+      result.data;
+
+
+    let countryRows = "";
+
+    Object.keys(
+      d.applicationsByCountry
+    ).forEach(function(country){
+
+      countryRows += `
+        <tr>
+          <td>${escapeHtml(country)}</td>
+          <td>${d.applicationsByCountry[country]}</td>
+        </tr>
+      `;
+
+    });
+
+
+    let sourceRows = "";
+
+    Object.keys(
+      d.leadsBySource
+    ).forEach(function(source){
+
+      sourceRows += `
+        <tr>
+          <td>${escapeHtml(source)}</td>
+          <td>${d.leadsBySource[source]}</td>
+        </tr>
+      `;
+
+    });
+
+
+    content.innerHTML = `
+
+      <div class="report-grid">
+
+        ${statCard("Leads",d.totalLeads)}
+
+        ${statCard("Students",d.totalStudents)}
+
+        ${statCard("Applications",d.totalApplications)}
+
+        ${statCard("Due",formatMoney(d.due))}
+
+        ${statCard("Income",formatMoney(d.income))}
+
+        ${statCard("Expenses",formatMoney(d.expenses))}
+
+        ${statCard("Net",formatMoney(d.net))}
+
+      </div>
+
+
+      <br>
+
+
+      <div class="dashboard-grid">
+
+        <div class="card">
+
+          <div class="card-header">
+            <div class="card-title">
+              Applications by Country
+            </div>
+          </div>
+
+          <div class="card-body">
+
+            <table style="min-width:0">
+
+              <thead>
+                <tr>
+                  <th>Country</th>
+                  <th>Applications</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                ${countryRows || `
+                  <tr>
+                    <td colspan="2">
+                      No data
+                    </td>
+                  </tr>
+                `}
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-header">
+            <div class="card-title">
+              Leads by Source
+            </div>
+          </div>
+
+          <div class="card-body">
+
+            <table style="min-width:0">
+
+              <thead>
+                <tr>
+                  <th>Source</th>
+                  <th>Leads</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                ${sourceRows || `
+                  <tr>
+                    <td colspan="2">
+                      No data
+                    </td>
+                  </tr>
+                `}
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+
+  }catch(error){
+
+    showError(error);
+  }
+}
+
+
+/* =====================================================
+   DUE PAYMENTS
+===================================================== */
+
+async function renderDuePayments(){
+
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML =
+    `<div class="loading">Loading due payments...</div>`;
+
+
+  try{
+
+    const result =
+      await api({
+        action:"list",
+        module:"Invoices",
+        user:currentUser
+      });
+
+
+    const records =
+      (result.records || [])
+        .filter(function(x){
+          return Number(
+            x["Due Amount"]
+          ) > 0;
+        });
+
+
+    currentModule =
+      "Invoices";
+
+    currentRecords =
+      records;
+
+
+    document
+      .getElementById("pageTitle")
+      .textContent =
+        "Due Payments";
+
+
+    const total =
+      records.reduce(
+        function(sum,x){
+          return sum +
+            (Number(x["Due Amount"]) || 0);
+        },
+        0
+      );
+
+
+    content.innerHTML = `
+
+      <div class="stats">
+
+        ${statCard(
+          "Total Due Invoices",
+          records.length
+        )}
+
+        ${statCard(
+          "Total Due Amount",
+          formatMoney(total)
+        )}
+
+      </div>
+
+
+      <div class="table-card">
+
+        ${
+          records.length
+          ?
+          buildTable(
+            records,
+            "Invoices"
+          )
+          :
+          `<div class="loading">
+            No due payments.
+          </div>`
+        }
+
+      </div>
+    `;
+
+
+  }catch(error){
+
+    showError(error);
+  }
+}
+
+
+/* =====================================================
+   DROPDOWNS
+===================================================== */
+
+async function loadDropdowns(){
+
+  try{
+
+    const result =
+      await api({
+        action:"dropdowns",
+        user:currentUser
+      });
+
+    dropdowns =
+      result.data || {};
+
+  }catch(error){
+
+    console.error(error);
+  }
+}
+
+
+/* =====================================================
+   MODULE HEADERS
+===================================================== */
+
+function getModuleHeaders(module){
+
+  const headerMap = {
+
+    Settings:[
+      "Setting ID","Setting Name","Setting Value",
+      "Description","Status"
+    ],
+
+    Users:[
+      "User ID","Name","Email","Phone","Role",
+      "Username","Password","Status","Profile Photo"
+    ],
+
+    Leads:[
+      "Lead ID","Lead Date","Name","Phone","WhatsApp","Email",
+      "Source","Interested Country","Interested Course","Intake",
+      "Assigned Counsellor","Priority","Status","Next Follow-up","Notes"
+    ],
+
+    Students:[
+      "Student ID","Lead ID","Name","Photo","Phone","WhatsApp","Email",
+      "Date of Birth","Gender","Address","Passport Number",
+      "Passport Issue Date","Passport Expiry Date","Nationality",
+      "Marital Status","SSC/O-Level","SSC/O-Level GPA",
+      "SSC/O-Level Passing Year","HSC/A-Level","HSC/A-Level GPA",
+      "HSC/A-Level Passing Year","Bachelor","Bachelor CGPA",
+      "Bachelor Passing Year","Master","Master CGPA",
+      "Master Passing Year","English Test","Overall Score",
+      "Listening","Reading","Writing","Speaking","Test Date",
+      "Preferred Country","Preferred University","Preferred Course",
+      "Preferred Intake","Budget","Assigned Counsellor",
+      "Current Status","Notes"
+    ],
+
+    Counselling:[
+      "Counselling ID","Student ID","Lead ID","Date","Counsellor",
+      "Country","Course","University","Budget","Student Requirement",
+      "Counsellor Recommendation","Next Action","Next Follow-up","Notes"
+    ],
+
+    FollowUps:[
+      "Follow-up ID","Lead ID","Student ID","Assigned To",
+      "Follow-up Date","Follow-up Time","Type","Subject","Notes",
+      "Outcome","Next Follow-up","Status"
+    ],
+
+    Tasks:[
+      "Task ID","Title","Description","Assigned To","Related Student",
+      "Related Application","Priority","Due Date","Status"
+    ],
+
+    Countries:[
+      "Country ID","Country Name","Country Code","Flag",
+      "Description","Status","Sort Order"
+    ],
+
+    Universities:[
+      "University ID","University Name","Country","City","Website",
+      "Ranking","Application Fee","Tuition Fee","Intakes",
+      "IELTS Requirement","PTE Requirement","Duolingo Requirement",
+      "GPA Requirement","Scholarship","Processing Time",
+      "Partner Status","Status","Notes"
+    ],
+
+    Courses:[
+      "Course ID","University ID","University Name","Country",
+      "Course Name","Degree Level","Duration","Tuition Fee",
+      "Intake","IELTS Requirement","PTE Requirement",
+      "Duolingo Requirement","Application Deadline","Status","Notes"
+    ],
+
+    Applications:[
+      "Application ID","Student ID","Country","University","Course",
+      "Degree Level","Intake","Application Date","Application Deadline",
+      "Assigned Officer","Application Status","Application Fee",
+      "Payment Status","Notes"
+    ],
+
+    Documents:[
+      "Document ID","Student ID","Application ID","Document Type",
+      "Document Name","File URL","Drive File ID",
+      "Verification Status","Expiry Date","Notes"
+    ],
+
+    DocumentChecklist:[
+      "Checklist ID","Student ID","Application ID","Document Type",
+      "Required","Received","Verified","File URL","Remarks"
+    ],
+
+    Offers:[
+      "Offer ID","Student ID","Application ID","University","Course",
+      "Offer Type","Offer Date","Offer Deadline","Deposit Amount",
+      "Deposit Deadline","Deposit Status","Offer Letter URL",
+      "Status","Notes"
+    ],
+
+    Visa:[
+      "Visa ID","Student ID","Application ID","Country","University",
+      "Visa Type","Application Date","Biometrics Date","Medical Date",
+      "Interview Date","Decision Date","Visa Status","Refusal Reason",
+      "Visa Letter URL","Assigned Officer","Notes"
+    ],
+
+    IELTS_Batches:[
+      "Batch ID","Batch Name","Teacher","Course Type","Start Date",
+      "End Date","Class Days","Class Time","Room","Capacity",
+      "Status","Notes"
+    ],
+
+    IELTS_Students:[
+      "Enrollment ID","Student ID","Batch ID","Enrollment Date",
+      "Course Fee","Paid","Due","Status","Notes"
+    ],
+
+    IELTS_Attendance:[
+      "Attendance ID","Batch ID","Student ID","Date","Status",
+      "Remarks","Marked By"
+    ],
+
+    IELTS_MockTests:[
+      "Mock Test ID","Student ID","Batch ID","Test Date","Listening",
+      "Reading","Writing","Speaking","Overall","Remarks"
+    ],
+
+    IELTS_Results:[
+      "Result ID","Student ID","Test Type","Test Date","Listening",
+      "Reading","Writing","Speaking","Overall","Certificate URL","Notes"
+    ],
+
+    Payments:[
+      "Payment ID","Student ID","Invoice ID","Date","Purpose",
+      "Description","Amount","Payment Method","Transaction ID",
+      "Received By","Receipt Number","Notes"
+    ],
+
+    Expenses:[
+      "Expense ID","Date","Category","Description","Amount",
+      "Payment Method","Reference","Paid By","Notes"
+    ],
+
+    Invoices:[
+      "Invoice ID","Student ID","Invoice Date","Due Date","Service",
+      "Description","Total Amount","Paid Amount","Due Amount","Status"
+    ],
+
+    MoneyReceipts:[
+      "Receipt ID","Receipt Number","Student ID","Payment ID","Date",
+      "Purpose","Amount","Payment Method","Received By","Notes"
+    ],
+
+    Notifications:[
+      "Notification ID","User ID","Title","Message","Type",
+      "Related ID","Is Read"
+    ],
+
+    ActivityLog:[
+      "Log ID","User ID","User Name","Action","Module",
+      "Record ID","Description","Timestamp","IP Address"
+    ],
+
+    Intake:[
+      "Intake ID","Country","University","Course","Intake Name",
+      "Application Deadline","Deposit Deadline","Visa Deadline",
+      "Status","Notes"
+    ],
+
+    Income:[
+      "Income ID","Date","Category","Description","Amount",
+      "Source","Payment Method","Received By","Reference","Notes"
+    ],
+
+    Timeline:[
+      "Timeline ID","Student ID","Date","Event Type","Description",
+      "User ID"
+    ],
+
+    LeadSources:[
+      "Source ID","Source Name","Status","Notes"
+    ],
+
+    StudentPortal:[
+      "Portal ID","Student ID","Username","Password","Status"
+    ],
+
+    Roles:[
+      "Role ID","Role Name","Permissions","Status"
+    ]
+
+  };
+
+
+  return headerMap[module] || [];
+}
+
+
+/* =====================================================
+   MODAL CLOSE
+===================================================== */
+
+function closeModal(){
+
+  document
+    .getElementById(
+      "modalOverlay"
+    )
+    .classList.remove(
+      "show"
+    );
+
+  currentEditRecord = null;
+}
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function fieldId(header){
+
+  return "field_" +
+    header
+      .replace(/[^a-zA-Z0-9]/g,"_");
+}
+
+
+function formatMoney(value){
 
   const number =
-    Number(
-      value || 0
+    Number(value) || 0;
+
+  return "৳ " +
+    number.toLocaleString(
+      "en-BD",
+      {
+        maximumFractionDigits:2
+      }
     );
-
-
-  if(
-    isNaN(number)
-  ){
-
-    return "0";
-
-  }
-
-
-  return number.toLocaleString(
-    "en-BD"
-  );
-
 }
 
 
+function formatCell(value){
 
-/* =========================================================
-   INITIAL VALUES
-========================================================= */
+  if(
+    value === null ||
+    value === undefined ||
+    value === ""
+  ){
+    return "-";
+  }
 
-document
-  .getElementById(
-    "statLeads"
-  )
-  .textContent =
-    "0";
+  const text =
+    String(value);
 
+  if(text.length > 120){
 
-document
-  .getElementById(
-    "statStudents"
-  )
-  .textContent =
-    "0";
+    return escapeHtml(
+      text.substring(0,120) +
+      "..."
+    );
+  }
 
-
-document
-  .getElementById(
-    "statApplications"
-  )
-  .textContent =
-    "0";
+  return escapeHtml(text);
+}
 
 
-document
-  .getElementById(
-    "statPayments"
-  )
-  .textContent =
-    "৳0";
+function statusBadge(value){
+
+  const text =
+    String(value || "—");
+
+  const cls =
+    text
+      .toLowerCase()
+      .replace(/\s+/g,"-");
 
 
+  return `
+    <span class="badge ${cls}">
+      ${escapeHtml(text)}
+    </span>
+  `;
+}
 
-/* =========================================================
-   RESTORE LOGIN SESSION
-========================================================= */
 
-restoreSession();
+function escapeHtml(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+function showToast(message,type){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+  toast.textContent =
+    message;
+
+  toast.className =
+    "toast show " +
+    (type || "");
+
+
+  setTimeout(function(){
+
+    toast.classList.remove(
+      "show"
+    );
+
+  },3500);
+}
+
+
+function showError(error){
+
+  console.error(error);
+
+  const content =
+    document.getElementById(
+      "content"
+    );
+
+  content.innerHTML = `
+
+    <div class="card">
+
+      <div class="card-body">
+
+        <h3>
+          Something went wrong
+        </h3>
+
+        <br>
+
+        <p>
+          ${escapeHtml(
+            error.message ||
+            String(error)
+          )}
+        </p>
+
+        <br>
+
+        <button
+          class="btn btn-primary"
+          onclick="navigate('${currentModule}')"
+        >
+          Try Again
+        </button>
+
+      </div>
+
+    </div>
+  `;
+
+  showToast(
+    error.message ||
+    "Something went wrong.",
+    "error"
+  );
+}
+
+
+function renderActivityTable(records){
+
+  let html =
+    `<table style="min-width:0">
+
+      <thead>
+
+        <tr>
+          <th>Time</th>
+          <th>User</th>
+          <th>Action</th>
+          <th>Module</th>
+          <th>Description</th>
+        </tr>
+
+      </thead>
+
+      <tbody>`;
+
+
+  records.forEach(function(item){
+
+    html += `
+
+      <tr>
+
+        <td>
+          ${formatCell(item.Timestamp)}
+        </td>
+
+        <td>
+          ${formatCell(item["User Name"])}
+        </td>
+
+        <td>
+          ${formatCell(item.Action)}
+        </td>
+
+        <td>
+          ${formatCell(item.Module)}
+        </td>
+
+        <td>
+          ${formatCell(item.Description)}
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+
+  html +=
+    "</tbody></table>";
+
+
+  return html;
+}
 
 </script>
 
