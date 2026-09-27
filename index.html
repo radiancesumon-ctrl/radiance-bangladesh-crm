@@ -6,7 +6,7 @@
 
   <title>Radiance Bangladesh CRM</title>
 
-  <meta name="description" content="Radiance Bangladesh CRM & BMS">
+  <meta name="description" content="Radiance Bangladesh CRM & Business Management System">
   <meta name="theme-color" content="#7c3aed">
 
   <style>
@@ -33,11 +33,17 @@
       --sidebar-hover: #1f2937;
     }
 
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
     }
 
     button,
@@ -51,9 +57,9 @@
       cursor: pointer;
     }
 
-    /* =========================
+    /* =========================================
        LOGIN
-    ========================= */
+    ========================================= */
 
     #loginScreen {
       min-height: 100vh;
@@ -61,9 +67,18 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+
       background:
-        radial-gradient(circle at top left, rgba(124, 58, 237, 0.22), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.18), transparent 35%),
+        radial-gradient(
+          circle at top left,
+          rgba(124, 58, 237, 0.22),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(37, 99, 235, 0.18),
+          transparent 35%
+        ),
         #f3f4f6;
     }
 
@@ -73,18 +88,28 @@
       background: var(--white);
       border-radius: 20px;
       padding: 38px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.12);
     }
 
     .login-logo {
       width: 82px;
       height: 82px;
       margin: 0 auto 18px;
+
       border-radius: 18px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       color: white;
       font-size: 30px;
       font-weight: 800;
@@ -119,56 +144,90 @@
     .form-control {
       width: 100%;
       padding: 13px 14px;
+
       border: 1px solid var(--border);
       border-radius: 10px;
+
       outline: none;
       background: white;
+
       font-size: 14px;
+
       transition: 0.2s;
     }
 
     .form-control:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+
+      box-shadow:
+        0 0 0 3px rgba(124, 58, 237, 0.1);
     }
 
     .login-btn {
       width: 100%;
+
       border: none;
+
       padding: 14px;
+
       border-radius: 10px;
+
       color: white;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
       font-size: 15px;
       font-weight: 700;
+
       margin-top: 5px;
+
+      transition: 0.2s;
     }
 
     .login-btn:hover {
       opacity: 0.92;
     }
 
+    .login-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
     .login-error {
       display: none;
+
       background: #fef2f2;
       color: var(--danger);
+
       border: 1px solid #fecaca;
+
       padding: 11px 13px;
+
       border-radius: 8px;
+
       font-size: 13px;
+
       margin-bottom: 15px;
     }
 
     .login-footer {
       text-align: center;
+
       color: var(--muted);
+
       font-size: 12px;
+
       margin-top: 25px;
     }
 
-    /* =========================
+    /* =========================================
        APP
-    ========================= */
+    ========================================= */
 
     #app {
       display: none;
@@ -180,40 +239,61 @@
       min-height: 100vh;
     }
 
-    /* =========================
+    /* =========================================
        SIDEBAR
-    ========================= */
+    ========================================= */
 
     .sidebar {
       width: 260px;
+
       background: var(--sidebar);
       color: white;
+
       position: fixed;
+
       left: 0;
       top: 0;
       bottom: 0;
+
       overflow-y: auto;
+
       z-index: 1000;
-      transition: transform 0.25s ease;
+
+      transition:
+        transform 0.25s ease;
     }
 
     .brand {
       height: 75px;
+
       padding: 15px 18px;
+
       display: flex;
       align-items: center;
+
       gap: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+
+      border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
     }
 
     .brand-icon {
       width: 42px;
       height: 42px;
+
       border-radius: 10px;
-      background: linear-gradient(135deg, #8b5cf6, #2563eb);
+
+      background:
+        linear-gradient(
+          135deg,
+          #8b5cf6,
+          #2563eb
+        );
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-weight: 800;
       font-size: 16px;
     }
@@ -225,33 +305,53 @@
 
     .brand-text span {
       display: block;
+
       color: #9ca3af;
+
       font-size: 10px;
+
       margin-top: 3px;
     }
 
     .menu-section {
-      padding: 20px 12px 6px;
+      padding:
+        20px 12px 6px;
+
       color: #6b7280;
+
       font-size: 10px;
+
       font-weight: 800;
+
       text-transform: uppercase;
+
       letter-spacing: 0.8px;
     }
 
     .menu-item {
       width: calc(100% - 16px);
+
       margin: 2px 8px;
+
       padding: 11px 12px;
+
       border: none;
+
       background: transparent;
+
       color: #d1d5db;
+
       border-radius: 8px;
+
       text-align: left;
+
       font-size: 13px;
+
       display: flex;
       align-items: center;
+
       gap: 11px;
+
       transition: 0.2s;
     }
 
@@ -267,70 +367,97 @@
       font-size: 15px;
     }
 
-    /* =========================
+    /* =========================================
        MAIN
-    ========================= */
+    ========================================= */
 
     .main {
       margin-left: 260px;
-      width: calc(100% - 260px);
+
+      width:
+        calc(100% - 260px);
+
       min-height: 100vh;
     }
 
     .topbar {
       height: 75px;
+
       background: white;
-      border-bottom: 1px solid var(--border);
+
+      border-bottom:
+        1px solid var(--border);
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       padding: 0 25px;
+
       position: sticky;
+
       top: 0;
+
       z-index: 500;
     }
 
     .topbar-left {
       display: flex;
       align-items: center;
+
       gap: 15px;
     }
 
     .mobile-menu {
       display: none;
+
       border: none;
+
       background: transparent;
+
       font-size: 23px;
     }
 
     .page-title {
       font-size: 20px;
+
       font-weight: 800;
+
       color: var(--dark);
     }
 
     .topbar-right {
       display: flex;
       align-items: center;
+
       gap: 15px;
     }
 
     .notification-btn {
       position: relative;
+
       border: none;
+
       background: #f3f4f6;
+
       width: 40px;
       height: 40px;
+
       border-radius: 50%;
+
       font-size: 17px;
     }
 
     .notification-dot {
       position: absolute;
+
       width: 7px;
       height: 7px;
+
       background: var(--danger);
+
       border-radius: 50%;
+
       top: 8px;
       right: 9px;
     }
@@ -338,32 +465,49 @@
     .user-box {
       display: flex;
       align-items: center;
+
       gap: 10px;
     }
 
     .user-avatar {
       width: 38px;
       height: 38px;
+
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
       color: white;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-weight: 800;
+
       font-size: 13px;
     }
 
     .user-info strong {
       display: block;
+
       font-size: 13px;
+
       color: var(--dark);
     }
 
     .user-info span {
       display: block;
+
       font-size: 11px;
+
       color: var(--muted);
+
       margin-top: 2px;
     }
 
@@ -371,15 +515,24 @@
       padding: 25px;
     }
 
-    /* =========================
+    /* =========================================
        DASHBOARD
-    ========================= */
+    ========================================= */
 
     .welcome-box {
-      background: linear-gradient(135deg, #5b21b6, #2563eb);
+      background:
+        linear-gradient(
+          135deg,
+          #5b21b6,
+          #2563eb
+        );
+
       color: white;
+
       padding: 25px;
+
       border-radius: 16px;
+
       margin-bottom: 24px;
     }
 
@@ -395,16 +548,25 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 18px;
+
       margin-bottom: 24px;
     }
 
     .stat-card {
       background: white;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid var(--border);
+
       border-radius: 14px;
+
       padding: 20px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -412,23 +574,30 @@
 
     .stat-info span {
       color: var(--muted);
+
       font-size: 12px;
+
       display: block;
+
       margin-bottom: 8px;
     }
 
     .stat-info strong {
       font-size: 25px;
+
       color: var(--dark);
     }
 
     .stat-icon {
       width: 47px;
       height: 47px;
+
       border-radius: 12px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-size: 20px;
     }
 
@@ -454,20 +623,30 @@
 
     .dashboard-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
+
+      grid-template-columns:
+        1.5fr 1fr;
+
       gap: 20px;
     }
 
     .card {
       background: white;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid var(--border);
+
       border-radius: 14px;
+
       overflow: hidden;
     }
 
     .card-header {
       padding: 17px 20px;
-      border-bottom: 1px solid var(--border);
+
+      border-bottom:
+        1px solid var(--border);
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -484,30 +663,45 @@
 
     .quick-actions {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 10px;
     }
 
     .quick-action {
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
+
       background: #fafafa;
+
       padding: 15px;
+
       border-radius: 10px;
+
       text-align: left;
+
       font-size: 12px;
+
       color: var(--dark);
     }
 
     .quick-action:hover {
       border-color: var(--primary);
+
       background: #faf5ff;
     }
 
     .activity-item {
       display: flex;
+
       gap: 12px;
+
       padding: 13px 0;
-      border-bottom: 1px solid #f0f0f0;
+
+      border-bottom:
+        1px solid #f0f0f0;
     }
 
     .activity-item:last-child {
@@ -517,14 +711,19 @@
     .activity-dot {
       width: 9px;
       height: 9px;
+
       border-radius: 50%;
+
       background: var(--primary);
+
       margin-top: 5px;
+
       flex-shrink: 0;
     }
 
     .activity-text {
       font-size: 12px;
+
       line-height: 1.5;
     }
 
@@ -534,13 +733,15 @@
 
     .activity-time {
       color: var(--muted);
+
       font-size: 10px;
+
       margin-top: 3px;
     }
 
-    /* =========================
-       MODULE PLACEHOLDER
-    ========================= */
+    /* =========================================
+       MODULE
+    ========================================= */
 
     .module-view {
       display: none;
@@ -548,27 +749,37 @@
 
     .module-header {
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       margin-bottom: 20px;
     }
 
     .module-header h2 {
       color: var(--dark);
+
       font-size: 21px;
     }
 
     .module-header p {
       color: var(--muted);
+
       font-size: 12px;
+
       margin-top: 5px;
     }
 
     .btn {
       border: none;
+
       padding: 10px 15px;
+
       border-radius: 8px;
+
       font-size: 12px;
+
       font-weight: 700;
     }
 
@@ -583,60 +794,79 @@
 
     .empty-module {
       background: white;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid var(--border);
+
       border-radius: 14px;
+
       padding: 70px 20px;
+
       text-align: center;
     }
 
     .empty-module-icon {
       font-size: 42px;
+
       margin-bottom: 15px;
     }
 
     .empty-module h3 {
       color: var(--dark);
+
       margin-bottom: 7px;
     }
 
     .empty-module p {
       color: var(--muted);
+
       font-size: 13px;
     }
 
-    /* =========================
-       OVERLAY
-    ========================= */
+    /* =========================================
+       SIDEBAR OVERLAY
+    ========================================= */
 
     .sidebar-overlay {
       display: none;
+
       position: fixed;
+
       inset: 0;
-      background: rgba(0,0,0,0.4);
+
+      background:
+        rgba(0, 0, 0, 0.4);
+
       z-index: 900;
     }
 
-    /* =========================
+    /* =========================================
        RESPONSIVE
-    ========================= */
+    ========================================= */
 
     @media (max-width: 1100px) {
+
       .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
       .dashboard-grid {
         grid-template-columns: 1fr;
       }
+
     }
 
     @media (max-width: 800px) {
+
       .sidebar {
-        transform: translateX(-100%);
+        transform:
+          translateX(-100%);
       }
 
       .sidebar.open {
-        transform: translateX(0);
+        transform:
+          translateX(0);
       }
 
       .sidebar-overlay.show {
@@ -645,6 +875,7 @@
 
       .main {
         margin-left: 0;
+
         width: 100%;
       }
 
@@ -659,9 +890,11 @@
       .content {
         padding: 17px;
       }
+
     }
 
     @media (max-width: 600px) {
+
       .login-card {
         padding: 28px 22px;
       }
@@ -688,1031 +921,1695 @@
 
       .module-header {
         align-items: flex-start;
+
         gap: 10px;
+
         flex-direction: column;
       }
+
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       LOGIN SCREEN
-  ========================== -->
 
-  <section id="loginScreen">
+<!-- =========================================================
+     LOGIN SCREEN
+========================================================= -->
 
-    <div class="login-card">
+<section id="loginScreen">
 
-      <div class="login-logo">
-        RB
-      </div>
+  <div class="login-card">
 
-      <h1>Radiance Bangladesh</h1>
-
-      <p class="login-subtitle">
-        CRM & Business Management System
-      </p>
-
-      <div id="loginError" class="login-error">
-        Invalid username or password.
-      </div>
-
-      <form id="loginForm">
-
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            placeholder="Enter username"
-            autocomplete="username"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Enter password"
-            autocomplete="current-password"
-            required
-          >
-        </div>
-
-        <button type="submit" class="login-btn">
-          Sign In
-        </button>
-
-      </form>
-
-      <div class="login-footer">
-        © 2026 Radiance Bangladesh. All rights reserved.
-      </div>
-
+    <div class="login-logo">
+      RB
     </div>
 
-  </section>
+    <h1>
+      Radiance Bangladesh
+    </h1>
+
+    <p class="login-subtitle">
+      CRM & Business Management System
+    </p>
 
 
-  <!-- =========================
-       MAIN APPLICATION
-  ========================== -->
+    <div
+      id="loginError"
+      class="login-error"
+    >
+      Invalid username or password.
+    </div>
 
-  <section id="app">
 
-    <div class="app-layout">
+    <form id="loginForm">
 
-      <!-- SIDEBAR -->
+      <div class="form-group">
 
-      <aside class="sidebar" id="sidebar">
+        <label for="username">
+          Username
+        </label>
 
-        <div class="brand">
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Enter username"
+          autocomplete="username"
+          required
+        >
 
-          <div class="brand-icon">
-            RB
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="login-btn"
+      >
+        Sign In
+      </button>
+
+    </form>
+
+
+    <div class="login-footer">
+      © 2026 Radiance Bangladesh. All rights reserved.
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     APPLICATION
+========================================================= -->
+
+<section id="app">
+
+  <div class="app-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+      class="sidebar"
+      id="sidebar"
+    >
+
+      <div class="brand">
+
+        <div class="brand-icon">
+          RB
+        </div>
+
+        <div class="brand-text">
+
+          <strong>
+            Radiance Bangladesh
+          </strong>
+
+          <span>
+            CRM & BMS
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="menu-section">
+        Main
+      </div>
+
+
+      <button
+        class="menu-item active"
+        data-page="dashboard"
+      >
+        <span class="menu-icon">
+          ▦
+        </span>
+
+        <span>
+          Dashboard
+        </span>
+      </button>
+
+
+      <div class="menu-section">
+        CRM
+      </div>
+
+
+      <button
+        class="menu-item"
+        data-page="leads"
+      >
+        <span class="menu-icon">◉</span>
+        <span>Leads</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="students"
+      >
+        <span class="menu-icon">♙</span>
+        <span>Students</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="counselling"
+      >
+        <span class="menu-icon">☏</span>
+        <span>Counselling</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="followups"
+      >
+        <span class="menu-icon">↻</span>
+        <span>Follow-ups</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="tasks"
+      >
+        <span class="menu-icon">✓</span>
+        <span>Tasks</span>
+      </button>
+
+
+      <div class="menu-section">
+        IELTS
+      </div>
+
+
+      <button
+        class="menu-item"
+        data-page="ielts-batches"
+      >
+        <span class="menu-icon">▤</span>
+        <span>Batches</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="ielts-students"
+      >
+        <span class="menu-icon">♙</span>
+        <span>IELTS Students</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="attendance"
+      >
+        <span class="menu-icon">✓</span>
+        <span>Attendance</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="mock-tests"
+      >
+        <span class="menu-icon">▣</span>
+        <span>Mock Tests</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="results"
+      >
+        <span class="menu-icon">★</span>
+        <span>Results</span>
+      </button>
+
+
+      <div class="menu-section">
+        Study Abroad
+      </div>
+
+
+      <button
+        class="menu-item"
+        data-page="countries"
+      >
+        <span class="menu-icon">🌍</span>
+        <span>Countries</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="universities"
+      >
+        <span class="menu-icon">🏫</span>
+        <span>Universities</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="courses"
+      >
+        <span class="menu-icon">📚</span>
+        <span>Courses</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="applications"
+      >
+        <span class="menu-icon">▤</span>
+        <span>Applications</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="documents"
+      >
+        <span class="menu-icon">▱</span>
+        <span>Documents</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="offers"
+      >
+        <span class="menu-icon">✉</span>
+        <span>Offers</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="visa"
+      >
+        <span class="menu-icon">🛂</span>
+        <span>Visa Management</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="deadlines"
+      >
+        <span class="menu-icon">◷</span>
+        <span>Intake & Deadlines</span>
+      </button>
+
+
+      <div class="menu-section">
+        Finance
+      </div>
+
+
+      <button
+        class="menu-item"
+        data-page="payments"
+      >
+        <span class="menu-icon">৳</span>
+        <span>Payments</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="due-payments"
+      >
+        <span class="menu-icon">!</span>
+        <span>Due Payments</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="income"
+      >
+        <span class="menu-icon">↗</span>
+        <span>Income</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="expenses"
+      >
+        <span class="menu-icon">↘</span>
+        <span>Expenses</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="invoices"
+      >
+        <span class="menu-icon">▤</span>
+        <span>Invoices</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="receipts"
+      >
+        <span class="menu-icon">▱</span>
+        <span>Money Receipts</span>
+      </button>
+
+
+      <div class="menu-section">
+        Reports
+      </div>
+
+
+      <button
+        class="menu-item"
+        data-page="reports"
+      >
+        <span class="menu-icon">▥</span>
+        <span>Reports</span>
+      </button>
+
+
+      <div class="menu-section">
+        Staff
+      </div>
+
+
+      <button
+        class="menu-item"
+        data-page="users"
+      >
+        <span class="menu-icon">♙</span>
+        <span>Users</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="roles"
+      >
+        <span class="menu-icon">⚙</span>
+        <span>Roles & Permissions</span>
+      </button>
+
+
+      <div class="menu-section">
+        System
+      </div>
+
+
+      <button
+        class="menu-item"
+        data-page="notifications"
+      >
+        <span class="menu-icon">🔔</span>
+        <span>Notifications</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="settings"
+      >
+        <span class="menu-icon">⚙</span>
+        <span>Settings</span>
+      </button>
+
+
+      <button
+        class="menu-item"
+        data-page="activity-log"
+      >
+        <span class="menu-icon">▤</span>
+        <span>Activity Log</span>
+      </button>
+
+
+      <div style="height:30px;"></div>
+
+    </aside>
+
+
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button
+            class="mobile-menu"
+            id="mobileMenuBtn"
+            type="button"
+          >
+            ☰
+          </button>
+
+
+          <div
+            class="page-title"
+            id="pageTitle"
+          >
+            Dashboard
           </div>
 
-          <div class="brand-text">
-            <strong>Radiance Bangladesh</strong>
-            <span>CRM & BMS</span>
-          </div>
-
         </div>
 
 
-        <!-- Dashboard -->
+        <div class="topbar-right">
 
-        <div class="menu-section">
-          Main
-        </div>
+          <button
+            class="notification-btn"
+            type="button"
+            title="Notifications"
+          >
+            🔔
 
-        <button class="menu-item active" data-page="dashboard">
-          <span class="menu-icon">▦</span>
-          <span>Dashboard</span>
-        </button>
+            <span
+              class="notification-dot"
+            ></span>
 
+          </button>
 
-        <!-- CRM -->
 
-        <div class="menu-section">
-          CRM
-        </div>
+          <div class="user-box">
 
-        <button class="menu-item" data-page="leads">
-          <span class="menu-icon">◉</span>
-          <span>Leads</span>
-        </button>
-
-        <button class="menu-item" data-page="students">
-          <span class="menu-icon">♙</span>
-          <span>Students</span>
-        </button>
-
-        <button class="menu-item" data-page="counselling">
-          <span class="menu-icon">☏</span>
-          <span>Counselling</span>
-        </button>
-
-        <button class="menu-item" data-page="followups">
-          <span class="menu-icon">↻</span>
-          <span>Follow-ups</span>
-        </button>
-
-        <button class="menu-item" data-page="tasks">
-          <span class="menu-icon">✓</span>
-          <span>Tasks</span>
-        </button>
-
-
-        <!-- IELTS -->
-
-        <div class="menu-section">
-          IELTS
-        </div>
-
-        <button class="menu-item" data-page="ielts-batches">
-          <span class="menu-icon">▤</span>
-          <span>Batches</span>
-        </button>
-
-        <button class="menu-item" data-page="ielts-students">
-          <span class="menu-icon">♙</span>
-          <span>IELTS Students</span>
-        </button>
-
-        <button class="menu-item" data-page="attendance">
-          <span class="menu-icon">✓</span>
-          <span>Attendance</span>
-        </button>
-
-        <button class="menu-item" data-page="mock-tests">
-          <span class="menu-icon">▣</span>
-          <span>Mock Tests</span>
-        </button>
-
-        <button class="menu-item" data-page="results">
-          <span class="menu-icon">★</span>
-          <span>Results</span>
-        </button>
-
-
-        <!-- Study Abroad -->
-
-        <div class="menu-section">
-          Study Abroad
-        </div>
-
-        <button class="menu-item" data-page="countries">
-          <span class="menu-icon">🌍</span>
-          <span>Countries</span>
-        </button>
-
-        <button class="menu-item" data-page="universities">
-          <span class="menu-icon">🏫</span>
-          <span>Universities</span>
-        </button>
-
-        <button class="menu-item" data-page="courses">
-          <span class="menu-icon">📚</span>
-          <span>Courses</span>
-        </button>
-
-        <button class="menu-item" data-page="applications">
-          <span class="menu-icon">▤</span>
-          <span>Applications</span>
-        </button>
-
-        <button class="menu-item" data-page="documents">
-          <span class="menu-icon">▱</span>
-          <span>Documents</span>
-        </button>
-
-        <button class="menu-item" data-page="offers">
-          <span class="menu-icon">✉</span>
-          <span>Offers</span>
-        </button>
-
-        <button class="menu-item" data-page="visa">
-          <span class="menu-icon">🛂</span>
-          <span>Visa Management</span>
-        </button>
-
-        <button class="menu-item" data-page="deadlines">
-          <span class="menu-icon">◷</span>
-          <span>Intake & Deadlines</span>
-        </button>
-
-
-        <!-- Finance -->
-
-        <div class="menu-section">
-          Finance
-        </div>
-
-        <button class="menu-item" data-page="payments">
-          <span class="menu-icon">৳</span>
-          <span>Payments</span>
-        </button>
-
-        <button class="menu-item" data-page="due-payments">
-          <span class="menu-icon">!</span>
-          <span>Due Payments</span>
-        </button>
-
-        <button class="menu-item" data-page="income">
-          <span class="menu-icon">↗</span>
-          <span>Income</span>
-        </button>
-
-        <button class="menu-item" data-page="expenses">
-          <span class="menu-icon">↘</span>
-          <span>Expenses</span>
-        </button>
-
-        <button class="menu-item" data-page="invoices">
-          <span class="menu-icon">▤</span>
-          <span>Invoices</span>
-        </button>
-
-        <button class="menu-item" data-page="receipts">
-          <span class="menu-icon">▱</span>
-          <span>Money Receipts</span>
-        </button>
-
-
-        <!-- Reports -->
-
-        <div class="menu-section">
-          Reports
-        </div>
-
-        <button class="menu-item" data-page="reports">
-          <span class="menu-icon">▥</span>
-          <span>Reports</span>
-        </button>
-
-
-        <!-- Staff -->
-
-        <div class="menu-section">
-          Staff
-        </div>
-
-        <button class="menu-item" data-page="users">
-          <span class="menu-icon">♙</span>
-          <span>Users</span>
-        </button>
-
-        <button class="menu-item" data-page="roles">
-          <span class="menu-icon">⚙</span>
-          <span>Roles & Permissions</span>
-        </button>
-
-
-        <!-- System -->
-
-        <div class="menu-section">
-          System
-        </div>
-
-        <button class="menu-item" data-page="notifications">
-          <span class="menu-icon">🔔</span>
-          <span>Notifications</span>
-        </button>
-
-        <button class="menu-item" data-page="settings">
-          <span class="menu-icon">⚙</span>
-          <span>Settings</span>
-        </button>
-
-        <button class="menu-item" data-page="activity-log">
-          <span class="menu-icon">▤</span>
-          <span>Activity Log</span>
-        </button>
-
-        <div style="height:30px;"></div>
-
-      </aside>
-
-
-      <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-
-      <!-- MAIN -->
-
-      <main class="main">
-
-        <!-- TOPBAR -->
-
-        <header class="topbar">
-
-          <div class="topbar-left">
-
-            <button
-              class="mobile-menu"
-              id="mobileMenuBtn"
-              type="button"
+            <div
+              class="user-avatar"
+              id="userAvatar"
             >
-              ☰
-            </button>
+              SA
+            </div>
 
-            <div class="page-title" id="pageTitle">
-              Dashboard
+
+            <div class="user-info">
+
+              <strong id="loggedUserName">
+                Super Admin
+              </strong>
+
+              <span id="loggedUserRole">
+                Super Admin
+              </span>
+
             </div>
 
           </div>
 
+        </div>
 
-          <div class="topbar-right">
+      </header>
 
-            <button
-              class="notification-btn"
-              type="button"
-              title="Notifications"
-            >
-              🔔
-              <span class="notification-dot"></span>
-            </button>
 
-            <div class="user-box">
 
-              <div class="user-avatar" id="userAvatar">
-                SA
-              </div>
+      <div class="content">
 
-              <div class="user-info">
-                <strong id="loggedUserName">
-                  Super Admin
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section
+          id="page-dashboard"
+          class="page-section"
+        >
+
+          <div class="welcome-box">
+
+            <h2>
+              Welcome to Radiance Bangladesh CRM
+            </h2>
+
+            <p>
+              Manage leads, students, IELTS, study abroad
+              applications, visa processing and business
+              operations from one place.
+            </p>
+
+          </div>
+
+
+          <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+              <div class="stat-info">
+
+                <span>
+                  Total Leads
+                </span>
+
+                <strong id="statLeads">
+                  0
                 </strong>
 
-                <span id="loggedUserRole">
-                  Super Admin
-                </span>
+              </div>
+
+              <div class="stat-icon purple">
+                ◉
               </div>
 
             </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-info">
+
+                <span>
+                  Total Students
+                </span>
+
+                <strong id="statStudents">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="stat-icon blue">
+                ♙
+              </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-info">
+
+                <span>
+                  Applications
+                </span>
+
+                <strong id="statApplications">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="stat-icon green">
+                ▤
+              </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-info">
+
+                <span>
+                  Pending Payments
+                </span>
+
+                <strong id="statPayments">
+                  ৳0
+                </strong>
+
+              </div>
+
+              <div class="stat-icon orange">
+                ৳
+              </div>
+
+            </div>
+
 
           </div>
 
-        </header>
 
 
-        <!-- CONTENT -->
-
-        <div class="content">
+          <div class="dashboard-grid">
 
 
-          <!-- DASHBOARD -->
+            <div class="card">
 
-          <section id="page-dashboard" class="page-section">
+              <div class="card-header">
 
-            <div class="welcome-box">
+                <h3>
+                  Recent Activity
+                </h3>
 
-              <h2>
-                Welcome to Radiance Bangladesh CRM
+              </div>
+
+
+              <div class="card-body">
+
+
+                <div class="activity-item">
+
+                  <div class="activity-dot"></div>
+
+                  <div class="activity-text">
+
+                    <strong>
+                      CRM system initialized
+                    </strong>
+
+                    <div class="activity-time">
+                      System setup completed
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                  <div class="activity-dot"></div>
+
+                  <div class="activity-text">
+
+                    <strong>
+                      Database connected
+                    </strong>
+
+                    <div class="activity-time">
+                      Google Sheets backend
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                  <div class="activity-dot"></div>
+
+                  <div class="activity-text">
+
+                    <strong>
+                      Radiance Bangladesh CRM
+                    </strong>
+
+                    <div class="activity-time">
+                      Ready for configuration
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+
+            <div class="card">
+
+              <div class="card-header">
+
+                <h3>
+                  Quick Actions
+                </h3>
+
+              </div>
+
+
+              <div class="card-body">
+
+                <div class="quick-actions">
+
+
+                  <button
+                    class="quick-action"
+                    data-quick-page="leads"
+                  >
+                    ➕ Add Lead
+                  </button>
+
+
+                  <button
+                    class="quick-action"
+                    data-quick-page="students"
+                  >
+                    ♙ Add Student
+                  </button>
+
+
+                  <button
+                    class="quick-action"
+                    data-quick-page="applications"
+                  >
+                    📄 New Application
+                  </button>
+
+
+                  <button
+                    class="quick-action"
+                    data-quick-page="payments"
+                  >
+                    ৳ Add Payment
+                  </button>
+
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             OTHER MODULES
+        ================================================== -->
+
+        <section
+          id="moduleView"
+          class="module-view"
+        >
+
+
+          <div class="module-header">
+
+
+            <div>
+
+              <h2 id="moduleTitle">
+                Module
               </h2>
 
-              <p>
-                Manage leads, students, IELTS, study abroad applications,
-                visa processing and business operations from one place.
+              <p id="moduleDescription">
+                Module description
               </p>
 
             </div>
 
 
-            <div class="stats-grid">
-
-              <div class="stat-card">
-
-                <div class="stat-info">
-                  <span>Total Leads</span>
-                  <strong id="statLeads">0</strong>
-                </div>
-
-                <div class="stat-icon purple">
-                  ◉
-                </div>
-
-              </div>
+            <button
+              class="btn btn-primary"
+              id="moduleActionBtn"
+              type="button"
+            >
+              + Add New
+            </button>
 
 
-              <div class="stat-card">
-
-                <div class="stat-info">
-                  <span>Total Students</span>
-                  <strong id="statStudents">0</strong>
-                </div>
-
-                <div class="stat-icon blue">
-                  ♙
-                </div>
-
-              </div>
+          </div>
 
 
-              <div class="stat-card">
-
-                <div class="stat-info">
-                  <span>Applications</span>
-                  <strong id="statApplications">0</strong>
-                </div>
-
-                <div class="stat-icon green">
-                  ▤
-                </div>
-
-              </div>
+          <div class="empty-module">
 
 
-              <div class="stat-card">
-
-                <div class="stat-info">
-                  <span>Pending Payments</span>
-                  <strong id="statPayments">৳0</strong>
-                </div>
-
-                <div class="stat-icon orange">
-                  ৳
-                </div>
-
-              </div>
-
+            <div
+              class="empty-module-icon"
+              id="moduleIcon"
+            >
+              📋
             </div>
 
 
-            <div class="dashboard-grid">
+            <h3 id="emptyModuleTitle">
+              Module Ready
+            </h3>
 
 
-              <div class="card">
+            <p>
+              This module will be connected to the
+              Radiance Bangladesh database in the
+              next development steps.
+            </p>
 
-                <div class="card-header">
-                  <h3>Recent Activity</h3>
-                </div>
 
-                <div class="card-body">
+          </div>
 
-                  <div class="activity-item">
 
-                    <div class="activity-dot"></div>
+        </section>
 
-                    <div class="activity-text">
-                      <strong>CRM system initialized</strong>
-                      <div class="activity-time">
-                        System setup completed
-                      </div>
-                    </div>
 
-                  </div>
+      </div>
 
+    </main>
 
-                  <div class="activity-item">
+  </div>
 
-                    <div class="activity-dot"></div>
+</section>
 
-                    <div class="activity-text">
-                      <strong>Database connected</strong>
-                      <div class="activity-time">
-                        Google Sheets backend
-                      </div>
-                    </div>
 
-                  </div>
 
+<script>
+
+/* ============================================================
+   API CONFIGURATION
+============================================================ */
+
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec";
+
+
+/* ============================================================
+   PAGE CONFIGURATION
+============================================================ */
+
+const pages = {
+
+  dashboard: {
+    title: "Dashboard"
+  },
+
+  leads: {
+    title: "Leads",
+    description:
+      "Manage enquiries and potential students.",
+    icon: "◉"
+  },
+
+  students: {
+    title: "Students",
+    description:
+      "Manage student profiles and academic information.",
+    icon: "♙"
+  },
+
+  counselling: {
+    title: "Counselling",
+    description:
+      "Track counselling sessions and student requirements.",
+    icon: "☏"
+  },
+
+  followups: {
+    title: "Follow-ups",
+    description:
+      "Manage upcoming student follow-ups.",
+    icon: "↻"
+  },
+
+  tasks: {
+    title: "Tasks",
+    description:
+      "Manage staff tasks and assignments.",
+    icon: "✓"
+  },
+
+  "ielts-batches": {
+    title: "IELTS Batches",
+    description:
+      "Manage IELTS classes and batches.",
+    icon: "▤"
+  },
+
+  "ielts-students": {
+    title: "IELTS Students",
+    description:
+      "Manage students enrolled in IELTS courses.",
+    icon: "♙"
+  },
+
+  attendance: {
+    title: "Attendance",
+    description:
+      "Manage IELTS student attendance.",
+    icon: "✓"
+  },
+
+  "mock-tests": {
+    title: "Mock Tests",
+    description:
+      "Manage IELTS mock tests.",
+    icon: "▣"
+  },
+
+  results: {
+    title: "Results",
+    description:
+      "Manage IELTS test results.",
+    icon: "★"
+  },
+
+  countries: {
+    title: "Countries",
+    description:
+      "Manage study destinations dynamically.",
+    icon: "🌍"
+  },
+
+  universities: {
+    title: "Universities",
+    description:
+      "Manage universities and institutions.",
+    icon: "🏫"
+  },
+
+  courses: {
+    title: "Courses",
+    description:
+      "Manage available courses and programs.",
+    icon: "📚"
+  },
+
+  applications: {
+    title: "Applications",
+    description:
+      "Track student applications.",
+    icon: "▤"
+  },
+
+  documents: {
+    title: "Documents",
+    description:
+      "Manage student documents.",
+    icon: "▱"
+  },
+
+  offers: {
+    title: "Offers",
+    description:
+      "Manage university offers.",
+    icon: "✉"
+  },
+
+  visa: {
+    title: "Visa Management",
+    description:
+      "Track visa applications and decisions.",
+    icon: "🛂"
+  },
+
+  deadlines: {
+    title: "Intake & Deadlines",
+    description:
+      "Manage intakes and application deadlines.",
+    icon: "◷"
+  },
+
+  payments: {
+    title: "Payments",
+    description:
+      "Manage student payments.",
+    icon: "৳"
+  },
+
+  "due-payments": {
+    title: "Due Payments",
+    description:
+      "Track outstanding student payments.",
+    icon: "!"
+  },
+
+  income: {
+    title: "Income",
+    description:
+      "Manage company income.",
+    icon: "↗"
+  },
+
+  expenses: {
+    title: "Expenses",
+    description:
+      "Manage company expenses.",
+    icon: "↘"
+  },
+
+  invoices: {
+    title: "Invoices",
+    description:
+      "Create and manage invoices.",
+    icon: "▤"
+  },
+
+  receipts: {
+    title: "Money Receipts",
+    description:
+      "Manage payment receipts.",
+    icon: "▱"
+  },
+
+  reports: {
+    title: "Reports",
+    description:
+      "View CRM, application, visa and finance reports.",
+    icon: "▥"
+  },
+
+  users: {
+    title: "Users",
+    description:
+      "Manage Radiance Bangladesh staff accounts.",
+    icon: "♙"
+  },
+
+  roles: {
+    title: "Roles & Permissions",
+    description:
+      "Manage staff roles and permissions.",
+    icon: "⚙"
+  },
+
+  notifications: {
+    title: "Notifications",
+    description:
+      "Manage system notifications.",
+    icon: "🔔"
+  },
+
+  settings: {
+    title: "Settings",
+    description:
+      "Manage company and system settings.",
+    icon: "⚙"
+  },
+
+  "activity-log": {
+    title: "Activity Log",
+    description:
+      "View system activities and user actions.",
+    icon: "▤"
+  }
+
+};
+
+
+/* ============================================================
+   LOGIN ELEMENTS
+============================================================ */
+
+const loginForm =
+  document.getElementById("loginForm");
+
+const loginError =
+  document.getElementById("loginError");
+
+const loginButton =
+  document.querySelector(".login-btn");
+
+
+/* ============================================================
+   LOGIN
+============================================================ */
+
+loginForm.addEventListener(
+  "submit",
+  async function(event) {
+
+    event.preventDefault();
+
+
+    const username =
+      document
+        .getElementById("username")
+        .value
+        .trim();
+
+
+    const password =
+      document
+        .getElementById("password")
+        .value;
+
+
+    loginError.style.display =
+      "none";
+
+
+    if (!username || !password) {
+
+      showLoginError(
+        "Please enter username and password."
+      );
+
+      return;
+    }
+
+
+    loginButton.disabled =
+      true;
+
+    loginButton.textContent =
+      "Signing in...";
+
+
+    try {
+
+
+      const response =
+        await fetch(
+          API_URL,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "text/plain;charset=utf-8"
+            },
+
+            body:
+              JSON.stringify({
+
+                action: "login",
+
+                username: username,
+
+                password: password
+
+              })
+          }
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "Server returned HTTP " +
+          response.status
+        );
 
-                  <div class="activity-item">
-
-                    <div class="activity-dot"></div>
-
-                    <div class="activity-text">
-                      <strong>Radiance Bangladesh CRM</strong>
-                      <div class="activity-time">
-                        Ready for configuration
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              <div class="card">
-
-                <div class="card-header">
-                  <h3>Quick Actions</h3>
-                </div>
-
-                <div class="card-body">
-
-                  <div class="quick-actions">
-
-                    <button
-                      class="quick-action"
-                      data-quick-page="leads"
-                    >
-                      ➕ Add Lead
-                    </button>
-
-                    <button
-                      class="quick-action"
-                      data-quick-page="students"
-                    >
-                      ♙ Add Student
-                    </button>
-
-                    <button
-                      class="quick-action"
-                      data-quick-page="applications"
-                    >
-                      📄 New Application
-                    </button>
-
-                    <button
-                      class="quick-action"
-                      data-quick-page="payments"
-                    >
-                      ৳ Add Payment
-                    </button>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </section>
-
-
-          <!-- ALL OTHER MODULES -->
-
-          <section id="moduleView" class="module-view">
-
-            <div class="module-header">
-
-              <div>
-                <h2 id="moduleTitle">
-                  Module
-                </h2>
-
-                <p id="moduleDescription">
-                  Module description
-                </p>
-              </div>
-
-              <button
-                class="btn btn-primary"
-                id="moduleActionBtn"
-                type="button"
-              >
-                + Add New
-              </button>
-
-            </div>
-
-
-            <div class="empty-module">
-
-              <div
-                class="empty-module-icon"
-                id="moduleIcon"
-              >
-                📋
-              </div>
-
-              <h3 id="emptyModuleTitle">
-                Module Ready
-              </h3>
-
-              <p>
-                This module will be connected to the Radiance Bangladesh
-                database in the next development steps.
-              </p>
-
-            </div>
-
-          </section>
-
-
-        </div>
-
-      </main>
-
-    </div>
-
-  </section>
-
-
-  <script>
-
-    /* =========================================
-       PAGE CONFIGURATION
-    ========================================= */
-
-    const pages = {
-
-      dashboard: {
-        title: "Dashboard"
-      },
-
-      leads: {
-        title: "Leads",
-        description: "Manage enquiries and potential students.",
-        icon: "◉"
-      },
-
-      students: {
-        title: "Students",
-        description: "Manage student profiles and academic information.",
-        icon: "♙"
-      },
-
-      counselling: {
-        title: "Counselling",
-        description: "Track counselling sessions and student requirements.",
-        icon: "☏"
-      },
-
-      followups: {
-        title: "Follow-ups",
-        description: "Manage upcoming student follow-ups.",
-        icon: "↻"
-      },
-
-      tasks: {
-        title: "Tasks",
-        description: "Manage staff tasks and assignments.",
-        icon: "✓"
-      },
-
-      "ielts-batches": {
-        title: "IELTS Batches",
-        description: "Manage IELTS classes and batches.",
-        icon: "▤"
-      },
-
-      "ielts-students": {
-        title: "IELTS Students",
-        description: "Manage students enrolled in IELTS courses.",
-        icon: "♙"
-      },
-
-      attendance: {
-        title: "Attendance",
-        description: "Manage IELTS student attendance.",
-        icon: "✓"
-      },
-
-      "mock-tests": {
-        title: "Mock Tests",
-        description: "Manage IELTS mock tests.",
-        icon: "▣"
-      },
-
-      results: {
-        title: "Results",
-        description: "Manage IELTS test results.",
-        icon: "★"
-      },
-
-      countries: {
-        title: "Countries",
-        description: "Manage study destinations dynamically.",
-        icon: "🌍"
-      },
-
-      universities: {
-        title: "Universities",
-        description: "Manage universities and institutions.",
-        icon: "🏫"
-      },
-
-      courses: {
-        title: "Courses",
-        description: "Manage available courses and programs.",
-        icon: "📚"
-      },
-
-      applications: {
-        title: "Applications",
-        description: "Track student applications.",
-        icon: "▤"
-      },
-
-      documents: {
-        title: "Documents",
-        description: "Manage student documents.",
-        icon: "▱"
-      },
-
-      offers: {
-        title: "Offers",
-        description: "Manage university offers.",
-        icon: "✉"
-      },
-
-      visa: {
-        title: "Visa Management",
-        description: "Track visa applications and decisions.",
-        icon: "🛂"
-      },
-
-      deadlines: {
-        title: "Intake & Deadlines",
-        description: "Manage intakes and application deadlines.",
-        icon: "◷"
-      },
-
-      payments: {
-        title: "Payments",
-        description: "Manage student payments.",
-        icon: "৳"
-      },
-
-      "due-payments": {
-        title: "Due Payments",
-        description: "Track outstanding student payments.",
-        icon: "!"
-      },
-
-      income: {
-        title: "Income",
-        description: "Manage company income.",
-        icon: "↗"
-      },
-
-      expenses: {
-        title: "Expenses",
-        description: "Manage company expenses.",
-        icon: "↘"
-      },
-
-      invoices: {
-        title: "Invoices",
-        description: "Create and manage invoices.",
-        icon: "▤"
-      },
-
-      receipts: {
-        title: "Money Receipts",
-        description: "Manage payment receipts.",
-        icon: "▱"
-      },
-
-      reports: {
-        title: "Reports",
-        description: "View CRM, application, visa and finance reports.",
-        icon: "▥"
-      },
-
-      users: {
-        title: "Users",
-        description: "Manage Radiance Bangladesh staff accounts.",
-        icon: "♙"
-      },
-
-      roles: {
-        title: "Roles & Permissions",
-        description: "Manage staff roles and permissions.",
-        icon: "⚙"
-      },
-
-      notifications: {
-        title: "Notifications",
-        description: "Manage system notifications.",
-        icon: "🔔"
-      },
-
-      settings: {
-        title: "Settings",
-        description: "Manage company and system settings.",
-        icon: "⚙"
-      },
-
-      "activity-log": {
-        title: "Activity Log",
-        description: "View system activities and user actions.",
-        icon: "▤"
       }
 
-    };
+
+      const result =
+        await response.json();
 
 
-    /* =========================================
-       LOGIN
-    ========================================= */
+      if (
+        result &&
+        result.success
+      ) {
 
-    const loginForm = document.getElementById("loginForm");
+        loginError.style.display =
+          "none";
 
-    loginForm.addEventListener("submit", function(event) {
 
-      event.preventDefault();
+        const user =
+          result.user || {};
 
-      const username =
-        document.getElementById("username").value.trim();
 
-      const password =
-        document.getElementById("password").value;
+        sessionStorage.setItem(
+          "radiance_user",
+          JSON.stringify(user)
+        );
 
-      const errorBox =
-        document.getElementById("loginError");
 
-      /*
-        TEMPORARY FRONTEND LOGIN PLACEHOLDER
+        showApplication(
+          user
+        );
 
-        Real authentication will be connected to
-        Google Apps Script in the next steps.
-
-        No password is stored here.
-      */
-
-      if (username === "admin" && password === "admin") {
-
-        errorBox.style.display = "none";
-
-        document.getElementById("loginScreen").style.display = "none";
-        document.getElementById("app").style.display = "block";
-
-        document.getElementById("loggedUserName").textContent =
-          "Super Admin";
-
-        document.getElementById("loggedUserRole").textContent =
-          "Super Admin";
-
-        document.getElementById("userAvatar").textContent =
-          "SA";
 
       } else {
 
-        errorBox.style.display = "block";
-
-      }
-
-    });
-
-
-    /* =========================================
-       SIDEBAR NAVIGATION
-    ========================================= */
-
-    const menuItems =
-      document.querySelectorAll(".menu-item");
-
-    const dashboard =
-      document.getElementById("page-dashboard");
-
-    const moduleView =
-      document.getElementById("moduleView");
-
-    const pageTitle =
-      document.getElementById("pageTitle");
-
-    const moduleTitle =
-      document.getElementById("moduleTitle");
-
-    const moduleDescription =
-      document.getElementById("moduleDescription");
-
-    const moduleIcon =
-      document.getElementById("moduleIcon");
-
-
-    function openPage(pageName) {
-
-      const page = pages[pageName];
-
-      if (!page) {
-        return;
-      }
-
-      menuItems.forEach(function(item) {
-
-        item.classList.remove("active");
-
-        if (item.dataset.page === pageName) {
-          item.classList.add("active");
-        }
-
-      });
-
-
-      if (pageName === "dashboard") {
-
-        dashboard.style.display = "block";
-        moduleView.style.display = "none";
-
-        pageTitle.textContent = "Dashboard";
-
-      } else {
-
-        dashboard.style.display = "none";
-        moduleView.style.display = "block";
-
-        pageTitle.textContent = page.title;
-
-        moduleTitle.textContent = page.title;
-
-        moduleDescription.textContent =
-          page.description || "";
-
-        moduleIcon.textContent =
-          page.icon || "📋";
+        showLoginError(
+          result &&
+          result.message
+            ? result.message
+            : "Invalid username or password."
+        );
 
       }
 
 
-      closeMobileSidebar();
+    } catch (error) {
+
+      console.error(
+        "Login Error:",
+        error
+      );
+
+
+      showLoginError(
+        "Unable to connect to the CRM server. Please check your internet connection and try again."
+      );
 
     }
 
 
-    menuItems.forEach(function(item) {
+    loginButton.disabled =
+      false;
 
-      item.addEventListener("click", function() {
+    loginButton.textContent =
+      "Sign In";
 
-        const pageName =
-          item.dataset.page;
-
-        openPage(pageName);
-
-      });
-
-    });
+  }
+);
 
 
-    /* =========================================
-       QUICK ACTIONS
-    ========================================= */
+/* ============================================================
+   SHOW LOGIN ERROR
+============================================================ */
 
-    document
-      .querySelectorAll("[data-quick-page]")
-      .forEach(function(button) {
+function showLoginError(message) {
 
-        button.addEventListener("click", function() {
+  loginError.textContent =
+    message;
+
+  loginError.style.display =
+    "block";
+
+}
+
+
+/* ============================================================
+   SHOW APPLICATION
+============================================================ */
+
+function showApplication(user) {
+
+  document
+    .getElementById("loginScreen")
+    .style.display = "none";
+
+
+  document
+    .getElementById("app")
+    .style.display = "block";
+
+
+  const userName =
+    user.name ||
+    "Super Admin";
+
+
+  const userRole =
+    user.role ||
+    "Super Admin";
+
+
+  document
+    .getElementById("loggedUserName")
+    .textContent =
+      userName;
+
+
+  document
+    .getElementById("loggedUserRole")
+    .textContent =
+      userRole;
+
+
+  document
+    .getElementById("userAvatar")
+    .textContent =
+      getInitials(userName);
+
+}
+
+
+/* ============================================================
+   INITIALS
+============================================================ */
+
+function getInitials(name) {
+
+  const words =
+    String(name || "")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+
+
+  if (words.length === 0) {
+
+    return "RB";
+
+  }
+
+
+  if (words.length === 1) {
+
+    return words[0]
+      .substring(0, 2)
+      .toUpperCase();
+
+  }
+
+
+  return (
+    words[0].charAt(0) +
+    words[words.length - 1].charAt(0)
+  ).toUpperCase();
+
+}
+
+
+/* ============================================================
+   RESTORE SESSION
+============================================================ */
+
+function restoreSession() {
+
+  try {
+
+    const saved =
+      sessionStorage.getItem(
+        "radiance_user"
+      );
+
+
+    if (!saved) {
+
+      return;
+
+    }
+
+
+    const user =
+      JSON.parse(saved);
+
+
+    if (
+      user &&
+      user.username
+    ) {
+
+      showApplication(
+        user
+      );
+
+    }
+
+  } catch (error) {
+
+    console.error(
+      "Session restore error:",
+      error
+    );
+
+    sessionStorage.removeItem(
+      "radiance_user"
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   SIDEBAR NAVIGATION
+============================================================ */
+
+const menuItems =
+  document.querySelectorAll(
+    ".menu-item"
+  );
+
+
+const dashboard =
+  document.getElementById(
+    "page-dashboard"
+  );
+
+
+const moduleView =
+  document.getElementById(
+    "moduleView"
+  );
+
+
+const pageTitle =
+  document.getElementById(
+    "pageTitle"
+  );
+
+
+const moduleTitle =
+  document.getElementById(
+    "moduleTitle"
+  );
+
+
+const moduleDescription =
+  document.getElementById(
+    "moduleDescription"
+  );
+
+
+const moduleIcon =
+  document.getElementById(
+    "moduleIcon"
+  );
+
+
+function openPage(pageName) {
+
+  const page =
+    pages[pageName];
+
+
+  if (!page) {
+
+    return;
+
+  }
+
+
+  menuItems.forEach(
+    function(item) {
+
+      item.classList.remove(
+        "active"
+      );
+
+
+      if (
+        item.dataset.page ===
+        pageName
+      ) {
+
+        item.classList.add(
+          "active"
+        );
+
+      }
+
+    }
+  );
+
+
+  if (
+    pageName ===
+    "dashboard"
+  ) {
+
+    dashboard.style.display =
+      "block";
+
+    moduleView.style.display =
+      "none";
+
+    pageTitle.textContent =
+      "Dashboard";
+
+  } else {
+
+    dashboard.style.display =
+      "none";
+
+    moduleView.style.display =
+      "block";
+
+    pageTitle.textContent =
+      page.title;
+
+    moduleTitle.textContent =
+      page.title;
+
+    moduleDescription.textContent =
+      page.description || "";
+
+    moduleIcon.textContent =
+      page.icon || "📋";
+
+  }
+
+
+  closeMobileSidebar();
+
+}
+
+
+menuItems.forEach(
+  function(item) {
+
+    item.addEventListener(
+      "click",
+      function() {
+
+        openPage(
+          item.dataset.page
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* ============================================================
+   QUICK ACTIONS
+============================================================ */
+
+document
+  .querySelectorAll(
+    "[data-quick-page]"
+  )
+  .forEach(
+    function(button) {
+
+      button.addEventListener(
+        "click",
+        function() {
 
           openPage(
             button.dataset.quickPage
           );
 
-        });
-
-      });
-
-
-    /* =========================================
-       MOBILE SIDEBAR
-    ========================================= */
-
-    const sidebar =
-      document.getElementById("sidebar");
-
-    const overlay =
-      document.getElementById("sidebarOverlay");
-
-    const mobileMenuBtn =
-      document.getElementById("mobileMenuBtn");
-
-
-    mobileMenuBtn.addEventListener("click", function() {
-
-      sidebar.classList.add("open");
-      overlay.classList.add("show");
-
-    });
-
-
-    function closeMobileSidebar() {
-
-      sidebar.classList.remove("open");
-      overlay.classList.remove("show");
+        }
+      );
 
     }
+  );
 
 
-    overlay.addEventListener(
-      "click",
-      closeMobileSidebar
+/* ============================================================
+   MOBILE SIDEBAR
+============================================================ */
+
+const sidebar =
+  document.getElementById(
+    "sidebar"
+  );
+
+
+const overlay =
+  document.getElementById(
+    "sidebarOverlay"
+  );
+
+
+const mobileMenuBtn =
+  document.getElementById(
+    "mobileMenuBtn"
+  );
+
+
+mobileMenuBtn.addEventListener(
+  "click",
+  function() {
+
+    sidebar.classList.add(
+      "open"
     );
 
+    overlay.classList.add(
+      "show"
+    );
 
-    /* =========================================
-       INITIAL STATE
-    ========================================= */
+  }
+);
 
-    document.getElementById("statLeads").textContent = "0";
-    document.getElementById("statStudents").textContent = "0";
-    document.getElementById("statApplications").textContent = "0";
-    document.getElementById("statPayments").textContent = "৳0";
 
-  </script>
+function closeMobileSidebar() {
+
+  sidebar.classList.remove(
+    "open"
+  );
+
+  overlay.classList.remove(
+    "show"
+  );
+
+}
+
+
+overlay.addEventListener(
+  "click",
+  closeMobileSidebar
+);
+
+
+/* ============================================================
+   INITIAL DASHBOARD VALUES
+============================================================ */
+
+document
+  .getElementById("statLeads")
+  .textContent = "0";
+
+
+document
+  .getElementById("statStudents")
+  .textContent = "0";
+
+
+document
+  .getElementById("statApplications")
+  .textContent = "0";
+
+
+document
+  .getElementById("statPayments")
+  .textContent = "৳0";
+
+
+/* ============================================================
+   RESTORE LOGIN SESSION
+============================================================ */
+
+restoreSession();
+
+</script>
 
 </body>
 </html>
