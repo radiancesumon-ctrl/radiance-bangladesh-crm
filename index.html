@@ -19,13 +19,14 @@
   --secondary:#4f46e5;
   --dark:#111827;
   --bg:#f5f7fb;
-  --card:#fff;
+  --card:#ffffff;
   --text:#172033;
   --muted:#667085;
   --border:#e5e7eb;
   --success:#16a34a;
   --danger:#dc2626;
   --warning:#d97706;
+  --info:#2563eb;
 }
 
 *{
@@ -50,6 +51,14 @@ button{
   cursor:pointer;
 }
 
+img{
+  max-width:100%;
+}
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
 .login-screen{
   min-height:100vh;
   display:flex;
@@ -63,17 +72,17 @@ button{
 }
 
 .login-box{
-  width:min(410px,92%);
+  width:min(420px,92%);
   background:#fff;
   padding:32px;
-  border-radius:16px;
+  border-radius:18px;
   box-shadow:0 20px 60px #0002;
 }
 
 .login-logo{
   display:block;
-  width:90px;
-  height:90px;
+  width:100px;
+  height:100px;
   object-fit:contain;
   margin:auto auto 15px;
 }
@@ -87,6 +96,10 @@ button{
   text-align:center;
   color:var(--muted);
 }
+
+/* =========================================================
+   FORM
+========================================================= */
 
 .field{
   margin-bottom:13px;
@@ -107,11 +120,27 @@ button{
   border-radius:8px;
   padding:10px;
   background:#fff;
+  color:var(--text);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px #6d28d922;
 }
 
 .field textarea{
   min-height:85px;
   resize:vertical;
+}
+
+.field small{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:11px;
 }
 
 .form-grid{
@@ -120,12 +149,24 @@ button{
   gap:10px;
 }
 
+.form-full{
+  grid-column:1/-1;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
 .btn{
   border:0;
   border-radius:8px;
   padding:9px 13px;
   background:var(--primary);
   color:#fff;
+}
+
+.btn:hover{
+  opacity:.92;
 }
 
 .btn-light{
@@ -146,9 +187,26 @@ button{
   background:var(--warning);
 }
 
+.btn-info{
+  background:var(--info);
+}
+
+.btn-small{
+  padding:6px 9px;
+  font-size:12px;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
 .app{
   min-height:100vh;
 }
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
 
 .sidebar{
   position:fixed;
@@ -214,6 +272,10 @@ button{
   color:#fff;
 }
 
+/* =========================================================
+   MAIN
+========================================================= */
+
 .main{
   margin-left:250px;
   padding:18px;
@@ -247,6 +309,10 @@ button{
   display:none;
 }
 
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
 .dashboard{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -277,12 +343,15 @@ button{
   padding:18px;
 }
 
-.table-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
+.report-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
 }
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
 
 .toolbar{
   display:flex;
@@ -293,12 +362,31 @@ button{
   margin-bottom:12px;
 }
 
+.toolbar-left,
+.toolbar-right{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
 .search{
   width:300px;
   max-width:100%;
   border:1px solid var(--border);
   border-radius:8px;
   padding:10px;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
 }
 
 .table-wrap{
@@ -328,7 +416,12 @@ th{
   z-index:2;
 }
 
+tbody tr:hover{
+  background:#fafafa;
+}
+
 .badge{
+  display:inline-block;
   padding:4px 8px;
   border-radius:30px;
   background:#eef2ff;
@@ -347,6 +440,7 @@ th{
   border-radius:5px;
   padding:4px 7px;
   font-size:11px;
+  margin-left:5px;
 }
 
 .empty{
@@ -354,6 +448,28 @@ th{
   text-align:center;
   color:var(--muted);
 }
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.pagination{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px;
+  gap:10px;
+  border-top:1px solid var(--border);
+}
+
+.page-buttons{
+  display:flex;
+  gap:5px;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
 
 .modal{
   position:fixed;
@@ -371,7 +487,7 @@ th{
 }
 
 .modal-box{
-  width:min(950px,100%);
+  width:min(1000px,100%);
   max-height:92vh;
   overflow:auto;
   background:#fff;
@@ -389,6 +505,53 @@ th{
 .modal-head h2{
   margin:0;
 }
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo-preview{
+  width:100px;
+  height:100px;
+  border-radius:12px;
+  object-fit:cover;
+  border:1px solid var(--border);
+  background:#f8fafc;
+  display:block;
+  margin-top:8px;
+}
+
+/* =========================================================
+   ATTENDANCE SUMMARY
+========================================================= */
+
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.summary-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px;
+}
+
+.summary-card small{
+  color:var(--muted);
+}
+
+.summary-card strong{
+  display:block;
+  font-size:22px;
+  margin-top:5px;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
 
 .loading{
   position:fixed;
@@ -410,6 +573,10 @@ th{
   box-shadow:0 10px 40px #0002;
 }
 
+/* =========================================================
+   TOAST
+========================================================= */
+
 .toast{
   position:fixed;
   right:20px;
@@ -426,16 +593,18 @@ th{
   display:block;
 }
 
-.report-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:1000px){
 
   .dashboard{
     grid-template-columns:repeat(2,1fr);
+  }
+
+  .summary-grid{
+    grid-template-columns:repeat(3,1fr);
   }
 
 }
@@ -476,6 +645,10 @@ th{
     grid-template-columns:1fr;
   }
 
+  .summary-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
 }
 
 </style>
@@ -483,7 +656,6 @@ th{
 </head>
 
 <body>
-
 
 <!-- ======================================================
      LOGIN
@@ -497,10 +669,11 @@ th{
   <div class="login-box">
 
     <img
+      id="loginLogo"
       src="./logo.png"
       class="login-logo"
       alt="Radiance Bangladesh"
-      onerror="this.style.display='none'"
+      onerror="this.onerror=null;this.src='./assets/logo.png'"
     >
 
     <h2>
@@ -510,7 +683,6 @@ th{
     <p>
       CRM & Business Management System
     </p>
-
 
     <div class="field">
 
@@ -524,7 +696,6 @@ th{
       >
 
     </div>
-
 
     <div class="field">
 
@@ -541,7 +712,6 @@ th{
 
     </div>
 
-
     <button
       class="btn"
       style="width:100%"
@@ -549,7 +719,6 @@ th{
     >
       Login
     </button>
-
 
     <div
       id="loginError"
@@ -580,7 +749,7 @@ th{
       <img
         src="./logo.png"
         alt="Radiance"
-        onerror="this.style.display='none'"
+        onerror="this.onerror=null;this.src='./assets/logo.png'"
       >
 
       <div>
@@ -596,7 +765,6 @@ th{
       </div>
 
     </div>
-
 
     <div id="navigation"></div>
 
@@ -624,7 +792,6 @@ th{
 
       </div>
 
-
       <div class="top-actions">
 
         <span
@@ -649,7 +816,6 @@ th{
       </div>
 
     </div>
-
 
     <div id="content"></div>
 
@@ -684,12 +850,10 @@ th{
 
     </div>
 
-
     <div
       id="form"
       class="form-grid"
     ></div>
-
 
     <div
       style="display:flex;justify-content:flex-end;gap:8px;margin-top:15px"
@@ -749,7 +913,7 @@ const API_URL =
 
 
 /* =========================================================
-   MODULE NAMES
+   MODULES
 ========================================================= */
 
 const MODULES = {
@@ -865,186 +1029,471 @@ const LABELS = {
 const HEADERS = {
 
 Users:[
-"Name","Email","Phone","Role","Username","Password","Status","Profile Photo"
+"Employee ID",
+"Full Name",
+"Username",
+"Email",
+"Phone",
+"Role",
+"Password",
+"Photo"
 ],
 
 Leads:[
-"Lead Date","Name","Phone","WhatsApp","Email","Source",
-"Interested Country","Interested Course","Intake",
-"Assigned Counsellor","Priority","Status","Next Follow-up","Notes"
+"Lead ID",
+"Lead Date",
+"Name",
+"Phone",
+"WhatsApp",
+"Email",
+"Source",
+"Interested Country",
+"Interested Course",
+"Intake",
+"Assigned Counsellor",
+"Priority",
+"Status",
+"Next Follow-up",
+"Notes"
 ],
 
 Students:[
-"Lead ID","Name","Phone","WhatsApp","Email","Date of Birth",
-"Gender","Address","Passport Number","Passport Issue Date",
-"Passport Expiry Date","Nationality","Marital Status",
-"SSC/O-Level","SSC/O-Level GPA","SSC/O-Level Passing Year",
-"HSC/A-Level","HSC/A-Level GPA","HSC/A-Level Passing Year",
-"Bachelor","Bachelor CGPA","Bachelor Passing Year",
-"Master","Master CGPA","Master Passing Year",
-"English Test","Overall Score","Listening","Reading","Writing",
-"Speaking","Test Date","Preferred Country",
-"Preferred University","Preferred Course","Preferred Intake",
-"Budget","Assigned Counsellor","Current Status","Notes"
+"Student ID",
+"Lead ID",
+"Name",
+"Phone",
+"WhatsApp",
+"Email",
+"Date of Birth",
+"Gender",
+"Address",
+"Passport Number",
+"Passport Issue Date",
+"Passport Expiry Date",
+"Nationality",
+"Marital Status",
+"SSC/O-Level",
+"SSC/O-Level GPA",
+"SSC/O-Level Passing Year",
+"HSC/A-Level",
+"HSC/A-Level GPA",
+"HSC/A-Level Passing Year",
+"Bachelor",
+"Bachelor CGPA",
+"Bachelor Passing Year",
+"Master",
+"Master CGPA",
+"Master Passing Year",
+"English Test",
+"Overall Score",
+"Listening",
+"Reading",
+"Writing",
+"Speaking",
+"Test Date",
+"Preferred Country",
+"Preferred University",
+"Preferred Course",
+"Preferred Intake",
+"Budget",
+"Assigned Counsellor",
+"Current Status",
+"Notes"
 ],
 
 Countries:[
-"Country Name","Country Code","Flag","Description","Status","Sort Order"
+"Country ID",
+"Country Name",
+"Country Code",
+"Flag",
+"Description",
+"Status",
+"Sort Order"
 ],
 
 Universities:[
-"University Name","Country","City","Website","Ranking",
-"Application Fee","Tuition Fee","Intakes",
-"IELTS Requirement","PTE Requirement","Duolingo Requirement",
-"GPA Requirement","Scholarship","Processing Time",
-"Partner Status","Status","Notes"
+"University ID",
+"University Name",
+"Country",
+"City",
+"Website",
+"Ranking",
+"Application Fee",
+"Tuition Fee",
+"Intakes",
+"IELTS Requirement",
+"PTE Requirement",
+"Duolingo Requirement",
+"GPA Requirement",
+"Scholarship",
+"Processing Time",
+"Partner Status",
+"Status",
+"Notes"
 ],
 
 Courses:[
-"University ID","University Name","Country","Course Name",
-"Degree Level","Duration","Tuition Fee","Intake",
-"IELTS Requirement","PTE Requirement",
-"Duolingo Requirement","Application Deadline","Status","Notes"
+"Course ID",
+"University ID",
+"University Name",
+"Country",
+"Course Name",
+"Degree Level",
+"Duration",
+"Tuition Fee",
+"Intake",
+"IELTS Requirement",
+"PTE Requirement",
+"Duolingo Requirement",
+"Application Deadline",
+"Status",
+"Notes"
 ],
 
 Applications:[
-"Student ID","Country","University","Course","Degree Level",
-"Intake","Application Date","Application Deadline",
-"Assigned Officer","Application Status","Application Fee",
-"Payment Status","Notes"
+"Application ID",
+"Student ID",
+"Country",
+"University",
+"Course",
+"Degree Level",
+"Intake",
+"Application Date",
+"Application Deadline",
+"Assigned Officer",
+"Application Status",
+"Application Fee",
+"Payment Status",
+"Notes"
 ],
 
 Documents:[
-"Student ID","Application ID","Document Type","Document Name",
-"Expiry Date","Notes"
+"Document ID",
+"Student ID",
+"Application ID",
+"Document Type",
+"Document Name",
+"File URL",
+"Expiry Date",
+"Notes"
 ],
 
 DocumentChecklist:[
-"Student ID","Application ID","Document Type",
-"Required","Received","Verified","File URL","Remarks"
+"Checklist ID",
+"Student ID",
+"Application ID",
+"Document Type",
+"Required",
+"Received",
+"Verified",
+"File URL",
+"Remarks"
 ],
 
 Offers:[
-"Student ID","Application ID","University","Course","Offer Type",
-"Offer Date","Offer Deadline","Deposit Amount",
-"Deposit Deadline","Deposit Status","Offer Letter URL",
-"Status","Notes"
+"Offer ID",
+"Student ID",
+"Application ID",
+"University",
+"Course",
+"Offer Type",
+"Offer Date",
+"Offer Deadline",
+"Deposit Amount",
+"Deposit Deadline",
+"Deposit Status",
+"Offer Letter URL",
+"Status",
+"Notes"
 ],
 
 Visa:[
-"Student ID","Application ID","Country","University","Visa Type",
-"Application Date","Biometrics Date","Medical Date",
-"Interview Date","Decision Date","Visa Status",
-"Refusal Reason","Visa Letter URL","Assigned Officer","Notes"
+"Visa ID",
+"Student ID",
+"Application ID",
+"Country",
+"University",
+"Visa Type",
+"Application Date",
+"Biometrics Date",
+"Medical Date",
+"Interview Date",
+"Decision Date",
+"Visa Status",
+"Refusal Reason",
+"Visa Letter URL",
+"Assigned Officer",
+"Notes"
 ],
 
 IELTS_Batches:[
-"Batch Name","Teacher","Course Type","Start Date","End Date",
-"Class Days","Class Time","Room","Capacity","Status","Notes"
+"Batch ID",
+"Batch Name",
+"Teacher",
+"Course Type",
+"Start Date",
+"End Date",
+"Class Days",
+"Class Time",
+"Room",
+"Capacity",
+"Status",
+"Notes"
 ],
 
 IELTS_Students:[
-"Student ID","Batch ID","Enrollment Date","Course Fee","Paid","Status","Notes"
+"Enrollment ID",
+"Student ID",
+"Batch ID",
+"Enrollment Date",
+"Course Fee",
+"Paid",
+"Status",
+"Notes"
 ],
 
 IELTS_Attendance:[
-"Batch ID","Student ID","Date","Status","Remarks"
+"Attendance ID",
+"Batch ID",
+"Student ID",
+"Date",
+"Status",
+"Remarks"
 ],
 
 IELTS_MockTests:[
-"Student ID","Batch ID","Test Date","Listening","Reading",
-"Writing","Speaking","Overall","Remarks"
+"Mock Test ID",
+"Student ID",
+"Batch ID",
+"Test Date",
+"Listening",
+"Reading",
+"Writing",
+"Speaking",
+"Overall",
+"Remarks"
 ],
 
 IELTS_Results:[
-"Student ID","Test Type","Test Date","Listening","Reading",
-"Writing","Speaking","Overall","Certificate URL","Notes"
+"Result ID",
+"Student ID",
+"Test Type",
+"Test Date",
+"Listening",
+"Reading",
+"Writing",
+"Speaking",
+"Overall",
+"Certificate URL",
+"Notes"
 ],
 
 Payments:[
-"Student ID","Invoice ID","Date","Purpose","Description",
-"Amount","Payment Method","Transaction ID",
-"Received By","Receipt Number","Notes"
+"Payment ID",
+"Student ID",
+"Invoice ID",
+"Date",
+"Purpose",
+"Description",
+"Amount",
+"Payment Method",
+"Transaction ID",
+"Received By",
+"Receipt Number",
+"Notes"
 ],
 
 Expenses:[
-"Date","Category","Description","Amount",
-"Payment Method","Reference","Paid By","Notes"
+"Expense ID",
+"Date",
+"Category",
+"Description",
+"Amount",
+"Payment Method",
+"Reference",
+"Paid By",
+"Notes"
 ],
 
 Invoices:[
-"Student ID","Invoice Date","Due Date","Service","Description",
-"Total Amount","Paid Amount"
+"Invoice ID",
+"Student ID",
+"Invoice Date",
+"Due Date",
+"Service",
+"Description",
+"Total Amount",
+"Paid Amount",
+"Due Amount",
+"Status",
+"Notes"
 ],
 
 MoneyReceipts:[
-"Receipt Number","Student ID","Payment ID","Date","Purpose",
-"Amount","Payment Method","Received By","Notes"
+"Receipt ID",
+"Receipt Number",
+"Student ID",
+"Payment ID",
+"Date",
+"Purpose",
+"Amount",
+"Payment Method",
+"Received By",
+"Notes"
 ],
 
 Income:[
-"Date","Category","Description","Amount","Source",
-"Payment Method","Received By","Reference","Notes"
+"Income ID",
+"Date",
+"Category",
+"Description",
+"Amount",
+"Source",
+"Payment Method",
+"Received By",
+"Reference",
+"Notes"
 ],
 
 Intake:[
-"Country","University","Course","Intake Name",
-"Application Deadline","Deposit Deadline",
-"Visa Deadline","Status","Notes"
+"Intake ID",
+"Country",
+"University",
+"Course",
+"Intake Name",
+"Application Deadline",
+"Deposit Deadline",
+"Visa Deadline",
+"Status",
+"Notes"
 ],
 
 Counselling:[
-"Student ID","Lead ID","Date","Counsellor","Country",
-"Course","University","Budget","Student Requirement",
-"Counsellor Recommendation","Next Action",
-"Next Follow-up","Notes"
+"Counselling ID",
+"Student ID",
+"Lead ID",
+"Date",
+"Counsellor",
+"Country",
+"Course",
+"University",
+"Budget",
+"Student Requirement",
+"Counsellor Recommendation",
+"Next Action",
+"Next Follow-up",
+"Notes"
 ],
 
 FollowUps:[
-"Lead ID","Student ID","Assigned To","Follow-up Date",
-"Follow-up Time","Type","Subject","Notes",
-"Outcome","Next Follow-up","Status"
+"Follow-up ID",
+"Lead ID",
+"Student ID",
+"Assigned To",
+"Follow-up Date",
+"Follow-up Time",
+"Type",
+"Subject",
+"Notes",
+"Outcome",
+"Next Follow-up",
+"Status"
 ],
 
 Tasks:[
-"Title","Description","Assigned To","Related Student",
-"Related Application","Priority","Due Date",
-"Status","Completed At"
+"Task ID",
+"Title",
+"Description",
+"Assigned To",
+"Related Student",
+"Related Application",
+"Priority",
+"Due Date",
+"Status",
+"Completed At"
 ],
 
 EmployeeAttendance:[
-"Employee ID","Employee Name","Date",
-"Check In","Check Out","Status","Remarks"
+"Attendance ID",
+"Employee ID",
+"Employee Name",
+"Date",
+"Check In",
+"Check Out",
+"Status",
+"Remarks",
+"Marked By"
 ],
 
 LeaveManagement:[
-"Employee ID","Employee Name","Leave Type",
-"Start Date","End Date","Total Days","Reason",
-"Status","Approved By","Remarks"
+"Leave ID",
+"Employee ID",
+"Employee Name",
+"Leave Type",
+"Start Date",
+"End Date",
+"Total Days",
+"Reason",
+"Status",
+"Approved By",
+"Remarks"
 ],
 
 Roles:[
-"Role Name","Permissions","Status"
+"Role ID",
+"Role Name",
+"Permissions"
 ],
 
 Settings:[
-"Setting Name","Setting Value","Description","Status"
+"Setting ID",
+"Key",
+"Value",
+"Description"
 ],
 
 Notifications:[
-"User ID","Title","Message","Type","Related ID","Is Read"
+"Notification ID",
+"User ID",
+"Title",
+"Message",
+"Type",
+"Related ID",
+"Is Read"
 ],
 
 Timeline:[
-"Student ID","Date","Event Type","Description","User ID"
+"Timeline ID",
+"Student ID",
+"Date",
+"Event Type",
+"Description",
+"User ID"
 ],
 
 LeadSources:[
-"Source Name","Status","Notes"
+"Source ID",
+"Source Name",
+"Status",
+"Notes"
 ],
 
 StudentPortal:[
-"Student ID","Username","Password","Status"
+"Portal ID",
+"Student ID",
+"Username",
+"Password",
+"Status"
+],
+
+ActivityLog:[
+"Log ID",
+"Date",
+"User",
+"Action",
+"Module",
+"Record ID",
+"Details"
 ]
 
 };
@@ -1058,8 +1507,20 @@ let user = null;
 let currentModule = "";
 let records = [];
 let currentRow = null;
+
 let dropdowns = null;
-let cache = {};
+
+let moduleCache = {};
+
+let currentPage = 1;
+let pageSize = 25;
+let totalRecords = 0;
+
+let attendanceFilters = {
+  date:"",
+  month:"",
+  employeeId:""
+};
 
 
 /* =========================================================
@@ -1098,27 +1559,26 @@ function loading(show){
 function toast(message){
 
   const el =
-    document.getElementById(
-      "toast"
-    );
+    document.getElementById("toast");
 
   el.textContent =
-    message;
+    message || "";
 
-  el.classList.add(
-    "show"
+  el.classList.add("show");
+
+  clearTimeout(
+    window.__toastTimer
   );
 
-  setTimeout(
-    function(){
+  window.__toastTimer =
+    setTimeout(
+      function(){
 
-      el.classList.remove(
-        "show"
-      );
+        el.classList.remove("show");
 
-    },
-    2500
-  );
+      },
+      2800
+    );
 
 }
 
@@ -1133,15 +1593,19 @@ async function api(
 ){
 
   const payload = {
-
-    action:action,
-
-    ...data,
-
-    user:user
-
+    action,
+    ...data
   };
 
+  if(
+    user &&
+    user.token
+  ){
+
+    payload.token =
+      user.token;
+
+  }
 
   const response =
     await fetch(
@@ -1155,8 +1619,36 @@ async function api(
       }
     );
 
+  const text =
+    await response.text();
 
-  return response.json();
+  let result;
+
+  try{
+
+    result =
+      JSON.parse(text);
+
+  }catch(error){
+
+    throw new Error(
+      "Invalid response from CRM server."
+    );
+
+  }
+
+  if(
+    result &&
+    result.authenticated === false
+  ){
+
+    sessionStorage.clear();
+
+    location.reload();
+
+  }
+
+  return result;
 
 }
 
@@ -1169,40 +1661,34 @@ async function login(){
 
   const username =
     document
-      .getElementById(
-        "loginUsername"
-      )
+      .getElementById("loginUsername")
       .value
       .trim();
 
-
   const password =
     document
-      .getElementById(
-        "loginPassword"
-      )
+      .getElementById("loginPassword")
       .value;
 
+  const errorEl =
+    document
+      .getElementById("loginError");
+
+  errorEl.textContent = "";
 
   if(
     !username ||
     !password
   ){
 
-    document
-      .getElementById(
-        "loginError"
-      )
-      .textContent =
+    errorEl.textContent =
       "Enter username and password.";
 
     return;
 
   }
 
-
   loading(true);
-
 
   try{
 
@@ -1215,41 +1701,35 @@ async function login(){
         }
       );
 
-
     if(!result.success){
 
-      document
-        .getElementById(
-          "loginError"
-        )
-        .textContent =
-        result.message;
+      errorEl.textContent =
+        result.message ||
+        "Login failed.";
 
       return;
 
     }
 
-
     user =
       result.user;
 
+    sessionStorage.setItem(
+      "radiance_token",
+      user.token
+    );
 
     sessionStorage.setItem(
       "radiance_user",
       JSON.stringify(user)
     );
 
-
     start();
-
 
   }catch(error){
 
-    document
-      .getElementById(
-        "loginError"
-      )
-      .textContent =
+    errorEl.textContent =
+      error.message ||
       "Unable to connect to CRM.";
 
   }finally{
@@ -1268,56 +1748,49 @@ async function login(){
 function start(){
 
   document
-    .getElementById(
-      "loginScreen"
-    )
+    .getElementById("loginScreen")
     .style.display =
     "none";
 
-
   document
-    .getElementById(
-      "app"
-    )
+    .getElementById("app")
     .style.display =
     "block";
 
-
   document
-    .getElementById(
-      "userInfo"
-    )
+    .getElementById("userInfo")
     .textContent =
-    user.name +
+    (
+      user.name ||
+      user["Full Name"] ||
+      ""
+    ) +
     " • " +
-    user.role;
-
+    (
+      user.role ||
+      user.Role ||
+      ""
+    );
 
   buildNav();
 
-
-  openModule(
-    "Dashboard"
-  );
+  openModule("Dashboard");
 
 }
 
 
 /* =========================================================
-   NAV
+   NAVIGATION
 ========================================================= */
 
 function buildNav(){
 
   const nav =
-    document
-      .getElementById(
-        "navigation"
-      );
-
+    document.getElementById(
+      "navigation"
+    );
 
   nav.innerHTML = "";
-
 
   Object.keys(
     MODULES
@@ -1329,19 +1802,15 @@ function buildNav(){
         "div"
       );
 
-
     title.className =
       "nav-group";
-
 
     title.textContent =
       group;
 
-
     nav.appendChild(
       title
     );
-
 
     MODULES[group]
       .forEach(function(module){
@@ -1351,19 +1820,15 @@ function buildNav(){
             "button"
           );
 
-
         btn.className =
           "nav-btn";
-
 
         btn.dataset.module =
           module;
 
-
         btn.textContent =
           LABELS[module] ||
           module;
-
 
         btn.onclick =
           function(){
@@ -1372,8 +1837,19 @@ function buildNav(){
               module
             );
 
-          };
+            if(
+              window.innerWidth <= 700
+            ){
 
+              document
+                .getElementById("sidebar")
+                .classList.remove(
+                  "open"
+                );
+
+            }
+
+          };
 
         nav.appendChild(
           btn
@@ -1389,9 +1865,7 @@ function buildNav(){
 function activeNav(){
 
   document
-    .querySelectorAll(
-      ".nav-btn"
-    )
+    .querySelectorAll(".nav-btn")
     .forEach(function(btn){
 
       btn.classList.toggle(
@@ -1416,80 +1890,51 @@ async function openModule(
   currentModule =
     module;
 
+  currentPage = 1;
 
   activeNav();
 
-
   document
-    .getElementById(
-      "pageTitle"
-    )
+    .getElementById("pageTitle")
     .textContent =
     LABELS[module] ||
     module;
 
-
   if(
-    module ===
-    "Dashboard"
+    module === "Dashboard"
   ){
 
     await dashboard();
-
     return;
 
   }
 
-
   if(
-    module ===
-    "Reports"
+    module === "Reports"
   ){
 
     await reports();
-
     return;
 
   }
-
-
-  await loadDropdowns();
-
 
   if(
-    module ===
-    "DuePayments"
+    module === "DuePayments"
   ){
 
-    const data =
-      await loadRecords(
-        "Invoices"
-      );
-
-
-    records =
-      data.filter(
-        function(x){
-
-          return (
-            Number(
-              x["Due Amount"]
-            ) || 0
-          ) > 0;
-
-        }
-      );
-
-
-    renderTable(
-      "Due Payments"
-    );
-
-
+    await duePayments();
     return;
 
   }
 
+  if(
+    module === "EmployeeAttendance"
+  ){
+
+    await renderAttendanceModule();
+    return;
+
+  }
 
   await loadRecords(
     module
@@ -1502,30 +1947,36 @@ async function openModule(
    DROPDOWNS
 ========================================================= */
 
-async function loadDropdowns(){
+async function loadDropdowns(
+  force=false
+){
 
-  if(dropdowns)
+  if(
+    dropdowns &&
+    !force
+  ){
+
     return dropdowns;
 
+  }
 
   const result =
     await api(
       "dropdowns"
     );
 
-
   if(!result.success){
 
     throw new Error(
-      result.message
+      result.message ||
+      "Unable to load dropdowns."
     );
 
   }
 
-
   dropdowns =
-    result.data;
-
+    result.data ||
+    {};
 
   return dropdowns;
 
@@ -1537,28 +1988,58 @@ async function loadDropdowns(){
 ========================================================= */
 
 async function loadRecords(
-  module
+  module,
+  options={}
 ){
 
-  if(cache[module]){
+  const page =
+    options.page ||
+    currentPage;
+
+  const size =
+    options.pageSize ||
+    pageSize;
+
+  const search =
+    options.search ||
+    "";
+
+  const cacheKey =
+    module +
+    "|" +
+    page +
+    "|" +
+    size +
+    "|" +
+    search;
+
+  if(
+    moduleCache[
+      cacheKey
+    ]
+  ){
+
+    const cached =
+      moduleCache[
+        cacheKey
+      ];
 
     records =
-      cache[module];
+      cached.records;
 
+    totalRecords =
+      cached.total;
 
     renderTable(
       LABELS[module] ||
       module
     );
 
-
-    return records;
+    return cached;
 
   }
 
-
   loading(true);
-
 
   try{
 
@@ -1566,39 +2047,55 @@ async function loadRecords(
       await api(
         "list",
         {
-          module:module
+          module,
+          page,
+          pageSize:size,
+          search
         }
       );
-
 
     if(!result.success){
 
       toast(
-        result.message
+        result.message ||
+        "Unable to load records."
       );
 
-      return [];
+      return {
+        records:[],
+        total:0
+      };
 
     }
-
 
     records =
       result.records ||
       [];
 
+    totalRecords =
+      Number(
+        result.total ||
+        records.length
+      );
 
-    cache[module] =
-      records;
-
+    moduleCache[
+      cacheKey
+    ] = {
+      records,
+      total:
+        totalRecords
+    };
 
     renderTable(
       LABELS[module] ||
       module
     );
 
-
-    return records;
-
+    return {
+      records,
+      total:
+        totalRecords
+    };
 
   }catch(error){
 
@@ -1606,9 +2103,10 @@ async function loadRecords(
       error.message
     );
 
-
-    return [];
-
+    return {
+      records:[],
+      total:0
+    };
 
   }finally{
 
@@ -1632,29 +2130,47 @@ function renderTable(
       "content"
     );
 
-
   const toolbar = `
 
     <div class="toolbar">
 
-      <input
-        id="search"
-        class="search"
-        placeholder="Search..."
-        oninput="filterTable()"
-      >
+      <div class="toolbar-left">
 
-      <button
-        class="btn"
-        onclick="openModal()"
-      >
-        + Add New
-      </button>
+        <input
+          id="search"
+          class="search"
+          placeholder="Search ${esc(title)}..."
+          value=""
+          onkeydown="
+            if(event.key==='Enter'){
+              searchCurrentModule();
+            }
+          "
+        >
+
+        <button
+          class="btn btn-light"
+          onclick="searchCurrentModule()"
+        >
+          Search
+        </button>
+
+      </div>
+
+      <div class="toolbar-right">
+
+        <button
+          class="btn"
+          onclick="openModal()"
+        >
+          + Add New
+        </button>
+
+      </div>
 
     </div>
 
   `;
-
 
   if(!records.length){
 
@@ -1676,11 +2192,9 @@ function renderTable(
 
       `;
 
-
     return;
 
   }
-
 
   let keys =
     Object.keys(
@@ -1688,20 +2202,14 @@ function renderTable(
     )
     .filter(function(key){
 
-      return key !== "_row";
+      return (
+        key !== "_row"
+      );
 
     });
 
-
   keys =
-    prioritize(
-      keys
-    )
-    .slice(
-      0,
-      10
-    );
-
+    prioritize(keys);
 
   content.innerHTML =
     toolbar +
@@ -1751,6 +2259,8 @@ function renderTable(
 
       </div>
 
+      ${paginationHtml()}
+
     </div>
 
     `;
@@ -1764,13 +2274,16 @@ function prioritize(
 
   const first = [
 
+    "Employee ID",
+    "Employee Name",
+
     "Student ID",
     "Lead ID",
     "Application ID",
     "Invoice ID",
 
     "Name",
-    "Employee Name",
+    "Full Name",
 
     "Phone",
     "WhatsApp",
@@ -1779,14 +2292,12 @@ function prioritize(
     "University",
     "Course",
 
-    "Status",
-    "Date"
+    "Date",
+    "Status"
 
   ];
 
-
   const output = [];
-
 
   first.forEach(function(name){
 
@@ -1801,7 +2312,6 @@ function prioritize(
 
   });
 
-
   keys.forEach(function(name){
 
     if(
@@ -1813,7 +2323,6 @@ function prioritize(
     }
 
   });
-
 
   return output;
 
@@ -1836,12 +2345,16 @@ function rowsHtml(
           .map(function(key){
 
             return `
+
               <td>
+
                 ${cell(
                   row[key],
                   key
                 )}
+
               </td>
+
             `;
 
           })
@@ -1852,19 +2365,50 @@ function rowsHtml(
 
           <div class="actions">
 
+            ${
+              currentModule ===
+              "Notifications"
+              &&
+              String(
+                row["Is Read"] ||
+                ""
+              ).toLowerCase() !==
+              "yes"
+              ?
+              `
+              <button
+                class="btn btn-success btn-small"
+                onclick="markNotificationRead(${row._row})"
+              >
+                Mark Read
+              </button>
+              `
+              :
+              ""
+            }
+
             <button
-              class="btn btn-light"
+              class="btn btn-light btn-small"
               onclick="openModal(${row._row})"
             >
               Edit
             </button>
 
-            <button
-              class="btn btn-danger"
-              onclick="deleteRecord(${row._row})"
-            >
-              Delete
-            </button>
+            ${
+              currentModule ===
+              "ActivityLog"
+              ?
+              ""
+              :
+              `
+              <button
+                class="btn btn-danger btn-small"
+                onclick="deleteRecord(${row._row})"
+              >
+                Delete
+              </button>
+              `
+            }
 
           </div>
 
@@ -1895,10 +2439,8 @@ function cell(
 
   }
 
-
   const text =
     String(value);
-
 
   if(
     key === "Phone" ||
@@ -1920,7 +2462,6 @@ function cell(
 
   }
 
-
   if(
     key.toLowerCase()
       .includes("url")
@@ -1931,6 +2472,7 @@ function cell(
       <a
         href="${esc(text)}"
         target="_blank"
+        rel="noopener"
       >
         Open
       </a>
@@ -1939,10 +2481,32 @@ function cell(
 
   }
 
+  if(
+    key === "Photo"
+  ){
+
+    return `
+
+      <img
+        src="${esc(normalizeDriveImage(text))}"
+        style="
+          width:42px;
+          height:42px;
+          border-radius:50%;
+          object-fit:cover;
+        "
+        onerror="this.style.display='none'"
+      >
+
+    `;
+
+  }
 
   if(
     key === "Status" ||
-    key.endsWith(" Status")
+    key.endsWith(" Status") ||
+    key === "Application Status" ||
+    key === "Visa Status"
   ){
 
     return `
@@ -1953,15 +2517,21 @@ function cell(
 
   }
 
+  if(
+    text.length > 120
+  ){
 
-  if(text.length > 70){
-
-    return esc(
-      text.substring(0,67)
-    ) + "...";
+    return (
+      esc(
+        text.substring(
+          0,
+          117
+        )
+      ) +
+      "..."
+    );
 
   }
-
 
   return esc(text);
 
@@ -1969,153 +2539,135 @@ function cell(
 
 
 /* =========================================================
-   SEARCH
+   PAGINATION
 ========================================================= */
 
-function filterTable(){
+function paginationHtml(){
 
-  const query =
-    (
-      document
-        .getElementById(
-          "search"
-        )
-        .value ||
-      ""
-    )
-    .toLowerCase();
-
-
-  const filtered =
-    records.filter(function(row){
-
-      return JSON.stringify(
-        row
+  const totalPages =
+    Math.max(
+      1,
+      Math.ceil(
+        totalRecords /
+        pageSize
       )
-      .toLowerCase()
-      .includes(
-        query
-      );
-
-    });
-
-
-  const keys =
-    prioritize(
-      Object.keys(
-        records[0] || {}
-      )
-      .filter(function(k){
-
-        return k !== "_row";
-
-      })
-    )
-    .slice(0,10);
-
-
-  document
-    .getElementById(
-      "tableBody"
-    )
-    .innerHTML =
-    rowsHtml(
-      filtered,
-      keys
     );
 
+  return `
+
+    <div class="pagination">
+
+      <div>
+        Page
+        <strong>
+          ${currentPage}
+        </strong>
+        of
+        <strong>
+          ${totalPages}
+        </strong>
+
+        •
+        ${totalRecords}
+        records
+      </div>
+
+      <div class="page-buttons">
+
+        <button
+          class="btn btn-light btn-small"
+          onclick="changePage(-1)"
+          ${currentPage <= 1 ? "disabled" : ""}
+        >
+          Previous
+        </button>
+
+        <button
+          class="btn btn-light btn-small"
+          onclick="changePage(1)"
+          ${currentPage >= totalPages ? "disabled" : ""}
+        >
+          Next
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
 }
 
 
-/* =========================================================
-   SYSTEM FIELDS
-========================================================= */
-
-const AUTO_FIELDS = [
-
-"User ID",
-"Lead ID",
-"Student ID",
-"Counselling ID",
-"Follow-up ID",
-"Task ID",
-"Country ID",
-"University ID",
-"Course ID",
-"Application ID",
-"Document ID",
-"Checklist ID",
-"Offer ID",
-"Visa ID",
-"Batch ID",
-"Enrollment ID",
-"Attendance ID",
-"Mock Test ID",
-"Result ID",
-"Payment ID",
-"Expense ID",
-"Invoice ID",
-"Receipt ID",
-"Notification ID",
-"Log ID",
-"Intake ID",
-"Income ID",
-"Timeline ID",
-"Source ID",
-"Portal ID",
-"Role ID",
-
-"Created At",
-"Updated At",
-"Created By",
-"Uploaded By",
-"Uploaded At",
-"Drive File ID",
-"Password Hash",
-"Due Amount"
-
-];
-
-
-function isAuto(
-  field
+async function changePage(
+  direction
 ){
 
-  return AUTO_FIELDS.includes(
-    field
+  const totalPages =
+    Math.max(
+      1,
+      Math.ceil(
+        totalRecords /
+        pageSize
+      )
+    );
+
+  const next =
+    currentPage +
+    direction;
+
+  if(
+    next < 1 ||
+    next > totalPages
+  ){
+
+    return;
+
+  }
+
+  currentPage =
+    next;
+
+  await loadRecords(
+    currentModule,
+    {
+      page:
+        currentPage,
+      pageSize
+    }
+  );
+
+}
+
+
+async function searchCurrentModule(){
+
+  currentPage = 1;
+
+  const searchEl =
+    document.getElementById(
+      "search"
+    );
+
+  const search =
+    searchEl
+      ? searchEl.value.trim()
+      : "";
+
+  await loadRecords(
+    currentModule,
+    {
+      page:1,
+      pageSize,
+      search
+    }
   );
 
 }
 
 
 /* =========================================================
-   FIELD ID
-========================================================= */
-
-function fid(
-  field
-){
-
-  return (
-    "f_" +
-    Array.from(
-      field
-    )
-    .map(function(ch){
-
-      return ch.charCodeAt(
-        0
-      );
-
-    })
-    .join("_")
-  );
-
-}
-
-
-/* =========================================================
-   OPTIONS
+   DROPDOWN OPTIONS
 ========================================================= */
 
 function optionsFor(
@@ -2125,310 +2677,539 @@ function optionsFor(
   if(!dropdowns)
     return null;
 
-
   const f =
     field.toLowerCase();
 
+  /* EMPLOYEE ID */
 
   if(
-    field ===
-    "Student ID"
+    field === "Employee ID"
   ){
 
-    return dropdowns.students
-      .map(function(x){
+    return (
+      dropdowns.employees ||
+      dropdowns.users ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Student ID"],
-          label:
-            x["Student ID"] +
-            " — " +
-            x.Name
-        };
+      const id =
+        x["Employee ID"] ||
+        x.employeeId ||
+        x["User ID"] ||
+        "";
 
-      });
+      const name =
+        x["Full Name"] ||
+        x.Name ||
+        x.name ||
+        "";
+
+      const role =
+        x.Role ||
+        x.role ||
+        "";
+
+      return {
+        value:id,
+        label:
+          id +
+          " — " +
+          name +
+          (
+            role
+              ? " (" +
+                role +
+                ")"
+              : ""
+          )
+      };
+
+    })
+    .filter(function(x){
+
+      return x.value;
+
+    });
 
   }
 
 
+  /* EMPLOYEE NAME */
+
   if(
-    field ===
-    "Lead ID"
+    field === "Employee Name"
   ){
 
-    return dropdowns.leads
-      .map(function(x){
+    return (
+      dropdowns.employees ||
+      dropdowns.users ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Lead ID"],
-          label:
-            x["Lead ID"] +
-            " — " +
-            x.Name
-        };
+      const id =
+        x["Employee ID"] ||
+        x.employeeId ||
+        x["User ID"] ||
+        "";
 
-      });
+      const name =
+        x["Full Name"] ||
+        x.Name ||
+        x.name ||
+        "";
+
+      return {
+        value:name,
+        label:
+          name +
+          (
+            id
+              ? " — " +
+                id
+              : ""
+          )
+      };
+
+    })
+    .filter(function(x){
+
+      return x.value;
+
+    });
 
   }
 
 
+  /* STUDENTS */
+
   if(
-    field ===
-    "Invoice ID"
+    field === "Student ID"
   ){
 
-    return dropdowns.invoices
-      .map(function(x){
+    return (
+      dropdowns.students ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Invoice ID"],
-          label:
-            x["Invoice ID"] +
-            " — " +
-            (
-              x.Service || ""
-            )
-        };
+      const id =
+        x["Student ID"] ||
+        "";
 
-      });
+      return {
+        value:id,
+        label:
+          id +
+          " — " +
+          (
+            x.Name ||
+            ""
+          )
+      };
+
+    });
 
   }
 
 
+  /* LEADS */
+
   if(
-    field ===
-    "Application ID"
+    field === "Lead ID"
   ){
 
-    return dropdowns.applications
-      .map(function(x){
+    return (
+      dropdowns.leads ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Application ID"],
-          label:
-            x["Application ID"] +
-            " — " +
-            (
-              x.University || ""
-            )
-        };
+      const id =
+        x["Lead ID"] ||
+        "";
 
-      });
+      return {
+        value:id,
+        label:
+          id +
+          " — " +
+          (
+            x.Name ||
+            ""
+          )
+      };
+
+    });
 
   }
 
 
+  /* APPLICATION */
+
   if(
-    field ===
-    "Employee ID"
+    field === "Application ID"
   ){
 
-    return dropdowns.users
-      .map(function(x){
+    return (
+      dropdowns.applications ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["User ID"],
-          label:
-            x["User ID"] +
-            " — " +
-            x.Name +
-            " (" +
-            x.Role +
-            ")"
-        };
+      const id =
+        x["Application ID"] ||
+        "";
 
-      });
+      return {
+        value:id,
+        label:
+          id +
+          " — " +
+          (
+            x.University ||
+            x.Country ||
+            ""
+          )
+      };
+
+    });
 
   }
 
 
+  /* INVOICE */
+
   if(
-    field ===
-    "Batch ID"
+    field === "Invoice ID"
   ){
 
-    return dropdowns.batches
-      .map(function(x){
+    return (
+      dropdowns.invoices ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Batch ID"],
-          label:
-            x["Batch ID"] +
-            " — " +
-            x["Batch Name"]
-        };
+      const id =
+        x["Invoice ID"] ||
+        "";
 
-      });
+      return {
+        value:id,
+        label:
+          id +
+          " — " +
+          (
+            x.Service ||
+            x["Student ID"] ||
+            ""
+          )
+      };
+
+    });
 
   }
 
 
+  /* BATCH */
+
   if(
-    f === "role"
+    field === "Batch ID"
   ){
 
-    return dropdowns.roles
-      .map(function(x){
+    return (
+      dropdowns.batches ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Role Name"],
-          label:
-            x["Role Name"]
-        };
+      const id =
+        x["Batch ID"] ||
+        "";
 
-      });
+      return {
+        value:id,
+        label:
+          id +
+          " — " +
+          (
+            x["Batch Name"] ||
+            ""
+          )
+      };
+
+    });
 
   }
 
 
+  /* COUNTRY */
+
   if(
-    f === "country" ||
+    field === "Country" ||
+    field === "Preferred Country" ||
     f.includes("country")
   ){
 
-    return dropdowns.countries
-      .map(function(x){
+    return (
+      dropdowns.countries ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Country Name"],
-          label:
-            (
-              x.Flag || ""
-            ) +
-            " " +
-            x["Country Name"]
-        };
+      const name =
+        x["Country Name"] ||
+        x.Country ||
+        "";
 
-      });
+      return {
+        value:name,
+        label:
+          (
+            x.Flag ||
+            ""
+          ) +
+          " " +
+          name
+      };
+
+    })
+    .filter(function(x){
+
+      return x.value;
+
+    });
 
   }
 
+
+  /* UNIVERSITY */
 
   if(
     f.includes("university")
   ){
 
-    return dropdowns.universities
-      .map(function(x){
+    return (
+      dropdowns.universities ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["University Name"],
-          label:
-            x["University Name"] +
-            " — " +
-            (
-              x.Country || ""
-            )
-        };
+      const name =
+        x["University Name"] ||
+        x.University ||
+        "";
 
-      });
+      return {
+        value:name,
+        label:
+          name +
+          " — " +
+          (
+            x.Country ||
+            ""
+          )
+      };
+
+    })
+    .filter(function(x){
+
+      return x.value;
+
+    });
 
   }
 
+
+  /* COURSE */
 
   if(
     f.includes("course")
   ){
 
-    return dropdowns.courses
-      .map(function(x){
+    return (
+      dropdowns.courses ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Course Name"],
-          label:
-            x["Course Name"] +
-            " — " +
-            (
-              x["University Name"] ||
-              ""
-            )
-        };
+      const name =
+        x["Course Name"] ||
+        x.Course ||
+        "";
 
-      });
+      return {
+        value:name,
+        label:
+          name +
+          " — " +
+          (
+            x["University Name"] ||
+            x.University ||
+            ""
+          )
+      };
+
+    })
+    .filter(function(x){
+
+      return x.value;
+
+    });
 
   }
 
 
+  /* ROLE */
+
   if(
-    f.includes("counsellor") ||
-    f.includes("assigned") ||
-    f.includes("teacher") ||
-    f.includes("received by") ||
-    f.includes("paid by") ||
-    f.includes("approved by") ||
-    f.includes("marked by")
+    field === "Role"
   ){
 
-    return dropdowns.users
-      .map(function(x){
+    return (
+      dropdowns.roles ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x.Name,
-          label:
-            x.Name +
-            " — " +
-            x.Role
-        };
+      const role =
+        x["Role Name"] ||
+        x.role ||
+        x.name ||
+        "";
 
-      });
+      return {
+        value:role,
+        label:role
+      };
+
+    })
+    .filter(function(x){
+
+      return x.value;
+
+    });
 
   }
 
 
+  /* EMPLOYEE-RELATED SINGLE FIELD */
+
   if(
-    field ===
-    "Source"
+    f.includes("assigned to") ||
+    f.includes("assigned officer") ||
+    f.includes("assigned counsellor") ||
+    f === "counsellor" ||
+    f === "teacher" ||
+    f === "received by" ||
+    f === "paid by" ||
+    f === "approved by"
   ){
 
-    return dropdowns.leadSources
-      .map(function(x){
+    return (
+      dropdowns.employees ||
+      dropdowns.users ||
+      []
+    )
+    .map(function(x){
 
-        return {
-          value:
-            x["Source Name"],
-          label:
-            x["Source Name"]
-        };
+      const id =
+        x["Employee ID"] ||
+        x.employeeId ||
+        x["User ID"] ||
+        "";
 
-      });
+      const name =
+        x["Full Name"] ||
+        x.Name ||
+        x.name ||
+        "";
+
+      return {
+        value:id,
+        label:
+          id +
+          " — " +
+          name
+      };
+
+    })
+    .filter(function(x){
+
+      return x.value;
+
+    });
 
   }
 
 
+  /* SOURCE */
+
   if(
-    f === "status" ||
-    f.endsWith(" status")
+    field === "Source"
+  ){
+
+    return (
+      dropdowns.leadSources ||
+      []
+    )
+    .map(function(x){
+
+      const value =
+        x["Source Name"] ||
+        "";
+
+      return {
+        value,
+        label:value
+      };
+
+    });
+
+  }
+
+
+  /* ATTENDANCE STATUS */
+
+  if(
+    currentModule ===
+    "EmployeeAttendance" &&
+    field === "Status"
   ){
 
     return [
-      "Active",
-      "Inactive",
+      "Present",
+      "Absent",
+      "Late",
+      "Half Day",
+      "Leave"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  /* LEAVE STATUS */
+
+  if(
+    currentModule ===
+    "LeaveManagement" &&
+    field === "Status"
+  ){
+
+    return [
       "Pending",
       "Approved",
       "Rejected",
-      "Cancelled",
-      "Completed",
-      "Present",
-      "Late",
-      "Absent",
-      "Half Day",
-      "Leave",
-      "Paid",
-      "Partial",
-      "Due",
-      "Submitted",
-      "Under Review"
+      "Cancelled"
     ]
     .map(function(x){
 
@@ -2442,34 +3223,10 @@ function optionsFor(
   }
 
 
-  if(
-    field ===
-    "Attendance Status"
-  ){
-
-    return [
-      "Present",
-      "Late",
-      "Absent",
-      "Half Day",
-      "Leave",
-      "Holiday"
-    ]
-    .map(function(x){
-
-      return {
-        value:x,
-        label:x
-      };
-
-    });
-
-  }
-
+  /* LEAVE TYPE */
 
   if(
-    field ===
-    "Leave Type"
+    field === "Leave Type"
   ){
 
     return [
@@ -2492,9 +3249,10 @@ function optionsFor(
   }
 
 
+  /* PAYMENT METHOD */
+
   if(
-    field ===
-    "Payment Method"
+    field === "Payment Method"
   ){
 
     return [
@@ -2516,6 +3274,8 @@ function optionsFor(
 
   }
 
+
+  /* YES / NO */
 
   if(
     field === "Required" ||
@@ -2540,6 +3300,41 @@ function optionsFor(
   }
 
 
+  /* COMMON STATUS */
+
+  if(
+    field === "Status" ||
+    field.endsWith(" Status")
+  ){
+
+    return [
+      "Active",
+      "Inactive",
+      "Pending",
+      "Approved",
+      "Rejected",
+      "Cancelled",
+      "Completed",
+      "In Progress",
+      "Submitted",
+      "Under Review",
+      "Paid",
+      "Partially Paid",
+      "Due",
+      "Draft",
+      "Withdrawn"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
   return null;
 
 }
@@ -2557,12 +3352,122 @@ function formField(
   const id =
     fid(field);
 
-
   const options =
     optionsFor(field);
 
 
+  /* AUTO ID */
+
+  if(
+    isAutoField(
+      currentModule,
+      field
+    )
+  ){
+
+    if(
+      !currentRow
+    ){
+
+      return "";
+
+    }
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          value="${esc(value || "")}"
+          readonly
+          style="background:#f8fafc"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* MARKED BY */
+
+  if(
+    field === "Marked By"
+  ){
+
+    const marked =
+      (
+        user.employeeId ||
+        user["Employee ID"] ||
+        user.name ||
+        user["Full Name"] ||
+        ""
+      );
+
+    return `
+
+      <div class="field">
+
+        <label>
+          Marked By
+        </label>
+
+        <input
+          id="${id}"
+          value="${esc(
+            value ||
+            marked
+          )}"
+          readonly
+          style="background:#f8fafc"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* SELECT */
+
   if(options){
+
+    let optionList =
+      options;
+
+    /*
+     * Preserve an old value that is not
+     * currently present in the dropdown.
+     */
+
+    if(
+      value &&
+      !optionList.some(function(o){
+
+        return String(o.value) ===
+          String(value);
+
+      })
+    ){
+
+      optionList = [
+        {
+          value:String(value),
+          label:
+            String(value) +
+            " (existing value)"
+        },
+        ...optionList
+      ];
+
+    }
 
     return `
 
@@ -2574,13 +3479,14 @@ function formField(
 
         <select
           id="${id}"
+          onchange="fieldChanged('${esc(field)}')"
         >
 
           <option value="">
             Select...
           </option>
 
-          ${options
+          ${optionList
             .map(function(o){
 
               return `
@@ -2616,9 +3522,10 @@ function formField(
   }
 
 
+  /* PASSWORD */
+
   if(
-    field ===
-    "Password"
+    field === "Password"
   ){
 
     return `
@@ -2646,6 +3553,8 @@ function formField(
   }
 
 
+  /* PHONE */
+
   if(
     field === "Phone" ||
     field === "WhatsApp"
@@ -2667,12 +3576,18 @@ function formField(
           placeholder="017XXXXXXXX"
         >
 
+        <small>
+          Phone is stored as text so leading 0 is preserved.
+        </small>
+
       </div>
 
     `;
 
   }
 
+
+  /* DATE */
 
   if(
     field.toLowerCase()
@@ -2691,9 +3606,9 @@ function formField(
           id="${id}"
           type="date"
           value="${esc(
-            String(
-              value || ""
-            ).substring(0,10)
+            normalizeDateValue(
+              value
+            )
           )}"
         >
 
@@ -2703,6 +3618,8 @@ function formField(
 
   }
 
+
+  /* TIME */
 
   if(
     field.toLowerCase()
@@ -2722,8 +3639,12 @@ function formField(
           type="time"
           value="${esc(
             String(
-              value || ""
-            ).substring(0,5)
+              value ||
+              ""
+            ).substring(
+              0,
+              5
+            )
           )}"
         >
 
@@ -2734,9 +3655,10 @@ function formField(
   }
 
 
+  /* TOTAL DAYS */
+
   if(
-    field ===
-    "Total Days"
+    field === "Total Days"
   ){
 
     return `
@@ -2752,6 +3674,7 @@ function formField(
           type="number"
           value="${esc(value || "")}"
           readonly
+          style="background:#f8fafc"
         >
 
       </div>
@@ -2760,6 +3683,8 @@ function formField(
 
   }
 
+
+  /* NUMERIC */
 
   if(
     field.toLowerCase()
@@ -2775,7 +3700,8 @@ function formField(
     field.toLowerCase()
       .includes("ranking") ||
     field.toLowerCase()
-      .includes("capacity")
+      .includes("capacity") ||
+    field === "Sort Order"
   ){
 
     return `
@@ -2789,6 +3715,7 @@ function formField(
         <input
           id="${id}"
           type="number"
+          step="any"
           value="${esc(value || "")}"
         >
 
@@ -2798,6 +3725,8 @@ function formField(
 
   }
 
+
+  /* TEXTAREA */
 
   if(
     field.toLowerCase()
@@ -2815,7 +3744,9 @@ function formField(
     field.toLowerCase()
       .includes("recommendation") ||
     field.toLowerCase()
-      === "message"
+      .includes("message") ||
+    field.toLowerCase()
+      .includes("reference")
   ){
 
     return `
@@ -2858,264 +3789,762 @@ function formField(
 
 
 /* =========================================================
+   AUTO ID FIELDS
+========================================================= */
+
+const AUTO_ID_FIELDS = {
+
+  Leads:"Lead ID",
+  Students:"Student ID",
+  Counselling:"Counselling ID",
+  FollowUps:"Follow-up ID",
+  Tasks:"Task ID",
+  Countries:"Country ID",
+  Universities:"University ID",
+  Courses:"Course ID",
+  Applications:"Application ID",
+  Documents:"Document ID",
+  DocumentChecklist:"Checklist ID",
+  Offers:"Offer ID",
+  Visa:"Visa ID",
+  IELTS_Batches:"Batch ID",
+  IELTS_Students:"Enrollment ID",
+  IELTS_Attendance:"Attendance ID",
+  IELTS_MockTests:"Mock Test ID",
+  IELTS_Results:"Result ID",
+  Payments:"Payment ID",
+  Expenses:"Expense ID",
+  Invoices:"Invoice ID",
+  MoneyReceipts:"Receipt ID",
+  Income:"Income ID",
+  Intake:"Intake ID",
+  EmployeeAttendance:"Attendance ID",
+  LeaveManagement:"Leave ID",
+  Roles:"Role ID",
+  Settings:"Setting ID",
+  Notifications:"Notification ID",
+  Timeline:"Timeline ID",
+  LeadSources:"Source ID",
+  StudentPortal:"Portal ID",
+  ActivityLog:"Log ID"
+
+};
+
+
+function isAutoField(
+  module,
+  field
+){
+
+  return (
+    AUTO_ID_FIELDS[module] ===
+    field
+  );
+
+}
+
+
+/* =========================================================
+   FIELD ID
+========================================================= */
+
+function fid(
+  field
+){
+
+  return (
+    "f_" +
+    Array.from(field)
+      .map(function(ch){
+
+        return ch.charCodeAt(0);
+
+      })
+      .join("_")
+  );
+
+}
+
+
+/* =========================================================
    OPEN MODAL
 ========================================================= */
 
-function openModal(
+async function openModal(
   row
 ){
 
   currentRow =
     row || null;
 
+  /*
+   * Dropdowns are loaded only when a form
+   * is actually opened. This keeps module
+   * switching fast.
+   */
 
-  const existing =
-    row
-      ? records.find(
-          function(x){
+  loading(true);
+
+  try{
+
+    await loadDropdowns();
+
+    const existing =
+      row
+        ? records.find(function(x){
 
             return (
               Number(x._row) ===
               Number(row)
             );
 
-          }
-        ) || {}
-      : {};
+          }) || {}
+        : {};
+
+    let fields =
+      HEADERS[currentModule];
+
+    if(!fields){
+
+      fields =
+        records.length
+          ? Object.keys(
+              records[0]
+            )
+            .filter(function(k){
+
+              return (
+                k !== "_row"
+              );
+
+            })
+          : [];
+
+    }
+
+    let html =
+      fields
+        .map(function(field){
+
+          return formField(
+            field,
+            existing[field]
+          );
+
+        })
+        .join("");
 
 
-  let fields =
-    HEADERS[currentModule];
+    /* USERS PHOTO */
+
+    if(
+      currentModule ===
+      "Users"
+    ){
+
+      html += `
+
+        <div class="field">
+
+          <label>
+            Staff / User Photo
+          </label>
+
+          <input
+            id="staffPhoto"
+            type="file"
+            accept="image/*"
+            onchange="previewStaffPhoto(this)"
+          >
+
+          <small>
+            Photo will be uploaded to Google Drive.
+          </small>
+
+          <img
+            id="staffPhotoPreview"
+            class="photo-preview"
+            src="${
+              normalizeDriveImage(
+                existing.Photo ||
+                ""
+              )
+            }"
+            ${
+              existing.Photo
+                ? ""
+                : "style='display:none'"
+            }
+            onerror="this.style.display='none'"
+          >
+
+        </div>
+
+      `;
+
+    }
 
 
-  if(!fields){
+    /* DOCUMENT UPLOAD */
 
-    fields =
-      records.length
-        ? Object.keys(
-            records[0]
-          )
-          .filter(function(k){
+    if(
+      currentModule ===
+      "Documents"
+    ){
 
-            return (
-              k !== "_row" &&
-              !isAuto(k)
-            );
+      html += `
 
-          })
-        : [];
+        <div class="field">
 
-  }
+          <label>
+            Upload Document
+          </label>
 
+          <input
+            id="documentFile"
+            type="file"
+          >
 
-  /*
-   * Employee Attendance:
-   * Employee Name is automatically populated,
-   * but we keep it visible/read-only.
-   */
-  let html =
-    fields
-      .map(function(field){
+          <small>
+            The selected file will be uploaded to Google Drive.
+          </small>
 
-        return formField(
-          field,
-          existing[field]
-        );
+        </div>
 
-      })
-      .join("");
+      `;
+
+    }
 
 
-  if(
-    currentModule ===
-    "Documents"
-  ){
-
-    html += `
-
-      <div class="field">
-
-        <label>
-          Upload File
-        </label>
-
-        <input
-          id="documentFile"
-          type="file"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  document
-    .getElementById(
-      "modalTitle"
-    )
-    .textContent =
-    (
-      row
-        ? "Edit "
-        : "Add "
-    ) +
-    (
-      LABELS[
+    document
+      .getElementById(
+        "modalTitle"
+      )
+      .textContent =
+      (
+        row
+          ? "Edit "
+          : "Add "
+      ) +
+      (
+        LABELS[currentModule] ||
         currentModule
-      ] ||
-      currentModule
+      );
+
+
+    document
+      .getElementById("form")
+      .innerHTML =
+      html;
+
+
+    setupEmployeeSync();
+
+    setupDependentDropdowns();
+
+    setupLeaveCalculation();
+
+
+    document
+      .getElementById("modal")
+      .classList.add(
+        "show"
+      );
+
+  }catch(error){
+
+    toast(
+      error.message
     );
 
+  }finally{
 
-  document
-    .getElementById(
-      "form"
-    )
-    .innerHTML =
-    html;
-
-
-  /*
-   * Employee name readonly.
-   */
-  if(
-    currentModule ===
-    "EmployeeAttendance" ||
-    currentModule ===
-    "LeaveManagement"
-  ){
-
-    const employeeName =
-      document.getElementById(
-        fid("Employee Name")
-      );
-
-
-    if(employeeName){
-
-      employeeName.readOnly =
-        true;
-
-    }
-
-    const employeeId =
-      document.getElementById(
-        fid("Employee ID")
-      );
-
-
-    if(employeeId){
-
-      employeeId.addEventListener(
-        "change",
-        autoEmployeeName
-      );
-
-    }
+    loading(false);
 
   }
-
-
-  /*
-   * Leave date calculation.
-   */
-  if(
-    currentModule ===
-    "LeaveManagement"
-  ){
-
-    const start =
-      document.getElementById(
-        fid("Start Date")
-      );
-
-    const end =
-      document.getElementById(
-        fid("End Date")
-      );
-
-
-    if(start)
-      start.addEventListener(
-        "change",
-        calculateLeaveDays
-      );
-
-
-    if(end)
-      end.addEventListener(
-        "change",
-        calculateLeaveDays
-      );
-
-  }
-
-
-  document
-    .getElementById(
-      "modal"
-    )
-    .classList.add(
-      "show"
-    );
 
 }
 
 
 /* =========================================================
-   EMPLOYEE NAME
+   EMPLOYEE SYNC
 ========================================================= */
 
-function autoEmployeeName(){
+function setupEmployeeSync(){
 
-  const id =
+  const idEl =
     document.getElementById(
       fid("Employee ID")
     );
 
-
-  const name =
+  const nameEl =
     document.getElementById(
       fid("Employee Name")
     );
 
-
   if(
-    !id ||
-    !name ||
-    !dropdowns
-  )
+    !idEl ||
+    !nameEl
+  ){
+
     return;
 
+  }
+
+  idEl.addEventListener(
+    "change",
+    function(){
+
+      syncEmployeeFromId();
+
+    }
+  );
+
+  nameEl.addEventListener(
+    "change",
+    function(){
+
+      syncEmployeeFromName();
+
+    }
+  );
+
+  /*
+   * If existing record has Employee ID,
+   * populate the matching name.
+   */
+
+  if(
+    idEl.value
+  ){
+
+    syncEmployeeFromId();
+
+  }else if(
+    nameEl.value
+  ){
+
+    syncEmployeeFromName();
+
+  }
+
+}
+
+
+function getEmployees(){
+
+  return (
+    dropdowns &&
+    (
+      dropdowns.employees ||
+      dropdowns.users
+    )
+  ) || [];
+
+}
+
+
+function employeeIdOf(
+  employee
+){
+
+  return (
+    employee["Employee ID"] ||
+    employee.employeeId ||
+    employee["User ID"] ||
+    ""
+  );
+
+}
+
+
+function employeeNameOf(
+  employee
+){
+
+  return (
+    employee["Full Name"] ||
+    employee.Name ||
+    employee.name ||
+    ""
+  );
+
+}
+
+
+function syncEmployeeFromId(){
+
+  const idEl =
+    document.getElementById(
+      fid("Employee ID")
+    );
+
+  const nameEl =
+    document.getElementById(
+      fid("Employee Name")
+    );
+
+  if(
+    !idEl ||
+    !nameEl
+  ){
+
+    return;
+
+  }
 
   const employee =
-    dropdowns.users.find(
+    getEmployees().find(
       function(x){
 
-        return (
-          String(
-            x["User ID"]
-          ) ===
-          String(
-            id.value
-          )
+        return String(
+          employeeIdOf(x)
+        ) ===
+        String(
+          idEl.value
         );
 
       }
     );
 
+  nameEl.value =
+    employee
+      ? employeeNameOf(employee)
+      : "";
 
-  if(employee){
+}
 
-    name.value =
-      employee.Name;
 
-  }else{
+function syncEmployeeFromName(){
 
-    name.value =
-      "";
+  const idEl =
+    document.getElementById(
+      fid("Employee ID")
+    );
+
+  const nameEl =
+    document.getElementById(
+      fid("Employee Name")
+    );
+
+  if(
+    !idEl ||
+    !nameEl
+  ){
+
+    return;
+
+  }
+
+  const employee =
+    getEmployees().find(
+      function(x){
+
+        return String(
+          employeeNameOf(x)
+        ) ===
+        String(
+          nameEl.value
+        );
+
+      }
+    );
+
+  idEl.value =
+    employee
+      ? employeeIdOf(employee)
+      : "";
+
+}
+
+
+/* =========================================================
+   DEPENDENT DROPDOWNS
+========================================================= */
+
+function setupDependentDropdowns(){
+
+  const country =
+    document.getElementById(
+      fid("Country")
+    );
+
+  const university =
+    document.getElementById(
+      fid("University")
+    );
+
+  const preferredCountry =
+    document.getElementById(
+      fid("Preferred Country")
+    );
+
+  const preferredUniversity =
+    document.getElementById(
+      fid("Preferred University")
+    );
+
+  if(country){
+
+    country.addEventListener(
+      "change",
+      function(){
+
+        filterUniversities(
+          country.value,
+          "University"
+        );
+
+      }
+    );
+
+  }
+
+  if(preferredCountry){
+
+    preferredCountry.addEventListener(
+      "change",
+      function(){
+
+        filterUniversities(
+          preferredCountry.value,
+          "Preferred University"
+        );
+
+      }
+    );
+
+  }
+
+  if(university){
+
+    university.addEventListener(
+      "change",
+      function(){
+
+        filterCourses(
+          university.value,
+          "Course"
+        );
+
+      }
+    );
+
+  }
+
+  if(preferredUniversity){
+
+    preferredUniversity.addEventListener(
+      "change",
+      function(){
+
+        filterCourses(
+          preferredUniversity.value,
+          "Preferred Course"
+        );
+
+      }
+    );
+
+  }
+
+}
+
+
+function filterUniversities(
+  country,
+  field
+){
+
+  const el =
+    document.getElementById(
+      fid(field)
+    );
+
+  if(
+    !el ||
+    !dropdowns
+  ){
+
+    return;
+
+  }
+
+  const list =
+    (
+      dropdowns.universities ||
+      []
+    )
+    .filter(function(x){
+
+      return (
+        !country ||
+        String(
+          x.Country ||
+          ""
+        ) ===
+        String(country)
+      );
+
+    });
+
+  const old =
+    el.value;
+
+  el.innerHTML =
+    `<option value="">Select...</option>` +
+    list
+      .map(function(x){
+
+        const name =
+          x["University Name"] ||
+          x.University ||
+          "";
+
+        return `
+
+          <option
+            value="${esc(name)}"
+          >
+            ${esc(name)}
+          </option>
+
+        `;
+
+      })
+      .join("");
+
+  if(
+    old &&
+    list.some(function(x){
+
+      return String(
+        x["University Name"] ||
+        x.University ||
+        ""
+      ) ===
+      String(old);
+
+    })
+  ){
+
+    el.value =
+      old;
+
+  }
+
+}
+
+
+function filterCourses(
+  university,
+  field
+){
+
+  const el =
+    document.getElementById(
+      fid(field)
+    );
+
+  if(
+    !el ||
+    !dropdowns
+  ){
+
+    return;
+
+  }
+
+  const list =
+    (
+      dropdowns.courses ||
+      []
+    )
+    .filter(function(x){
+
+      return (
+        !university ||
+        String(
+          x["University Name"] ||
+          x.University ||
+          ""
+        ) ===
+        String(university)
+      );
+
+    });
+
+  const old =
+    el.value;
+
+  el.innerHTML =
+    `<option value="">Select...</option>` +
+    list
+      .map(function(x){
+
+        const name =
+          x["Course Name"] ||
+          x.Course ||
+          "";
+
+        return `
+
+          <option
+            value="${esc(name)}"
+          >
+            ${esc(name)}
+          </option>
+
+        `;
+
+      })
+      .join("");
+
+  if(
+    old &&
+    list.some(function(x){
+
+      return String(
+        x["Course Name"] ||
+        x.Course ||
+        ""
+      ) ===
+      String(old);
+
+    })
+  ){
+
+    el.value =
+      old;
+
+  }
+
+}
+
+
+/* =========================================================
+   FIELD CHANGE
+========================================================= */
+
+function fieldChanged(
+  field
+){
+
+  if(
+    field ===
+    "Employee ID"
+  ){
+
+    syncEmployeeFromId();
+
+  }
+
+  if(
+    field ===
+    "Employee Name"
+  ){
+
+    syncEmployeeFromName();
 
   }
 
@@ -3126,6 +4555,50 @@ function autoEmployeeName(){
    LEAVE DAYS
 ========================================================= */
 
+function setupLeaveCalculation(){
+
+  if(
+    currentModule !==
+    "LeaveManagement"
+  ){
+
+    return;
+
+  }
+
+  const start =
+    document.getElementById(
+      fid("Start Date")
+    );
+
+  const end =
+    document.getElementById(
+      fid("End Date")
+    );
+
+  if(start){
+
+    start.addEventListener(
+      "change",
+      calculateLeaveDays
+    );
+
+  }
+
+  if(end){
+
+    end.addEventListener(
+      "change",
+      calculateLeaveDays
+    );
+
+  }
+
+  calculateLeaveDays();
+
+}
+
+
 function calculateLeaveDays(){
 
   const start =
@@ -3133,60 +4606,59 @@ function calculateLeaveDays(){
       fid("Start Date")
     );
 
-
   const end =
     document.getElementById(
       fid("End Date")
     );
-
 
   const total =
     document.getElementById(
       fid("Total Days")
     );
 
-
   if(
     !start ||
     !end ||
-    !total ||
-    !start.value ||
-    !end.value
+    !total
   ){
-
-    if(total)
-      total.value = "";
 
     return;
 
   }
 
+  if(
+    !start.value ||
+    !end.value
+  ){
+
+    total.value = "";
+    return;
+
+  }
 
   const s =
     new Date(
-      start.value
+      start.value +
+      "T00:00:00"
     );
 
   const e =
     new Date(
-      end.value
+      end.value +
+      "T00:00:00"
     );
-
 
   if(
     e < s
   ){
 
-    total.value =
-      "";
-
+    total.value = "";
     return;
 
   }
 
-
   total.value =
-    Math.floor(
+    Math.round(
       (
         e - s
       ) /
@@ -3197,7 +4669,7 @@ function calculateLeaveDays(){
 
 
 /* =========================================================
-   SAVE
+   SAVE RECORD
 ========================================================= */
 
 async function saveRecord(){
@@ -3206,9 +4678,7 @@ async function saveRecord(){
     HEADERS[currentModule] ||
     [];
 
-
   const record = {};
-
 
   fields.forEach(function(field){
 
@@ -3216,7 +4686,6 @@ async function saveRecord(){
       document.getElementById(
         fid(field)
       );
-
 
     if(element){
 
@@ -3228,7 +4697,9 @@ async function saveRecord(){
   });
 
 
-  if(currentRow){
+  if(
+    currentRow
+  ){
 
     record._row =
       currentRow;
@@ -3236,9 +4707,8 @@ async function saveRecord(){
   }
 
 
-  /*
-   * Password is only sent when filled.
-   */
+  /* USERS */
+
   if(
     currentModule ===
     "Users"
@@ -3249,10 +4719,8 @@ async function saveRecord(){
         fid("Password")
       );
 
-
     if(
-      password &&
-      password.value
+      password
     ){
 
       record.Password =
@@ -3263,9 +4731,42 @@ async function saveRecord(){
   }
 
 
-  /*
-   * Document upload.
-   */
+  /* EMPLOYEE VALIDATION */
+
+  if(
+    record["Employee ID"] ||
+    record["Employee Name"]
+  ){
+
+    if(
+      !record["Employee ID"]
+    ){
+
+      toast(
+        "Please select Employee ID."
+      );
+
+      return;
+
+    }
+
+    if(
+      !record["Employee Name"]
+    ){
+
+      toast(
+        "Please select Employee Name."
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  /* DOCUMENT */
+
   if(
     currentModule ===
     "Documents"
@@ -3276,13 +4777,13 @@ async function saveRecord(){
         "documentFile"
       );
 
-
     if(
       file &&
+      file.files &&
       file.files.length
     ){
 
-      await uploadFile(
+      await uploadDocumentAndSave(
         record,
         file.files[0]
       );
@@ -3294,8 +4795,52 @@ async function saveRecord(){
   }
 
 
-  loading(true);
+  /* STAFF PHOTO */
 
+  if(
+    currentModule ===
+    "Users"
+  ){
+
+    const photo =
+      document.getElementById(
+        "staffPhoto"
+      );
+
+    if(
+      photo &&
+      photo.files &&
+      photo.files.length
+    ){
+
+      await uploadStaffPhotoAndSave(
+        record,
+        photo.files[0]
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  await saveRecordDirect(
+    record
+  );
+
+}
+
+
+/* =========================================================
+   DIRECT SAVE
+========================================================= */
+
+async function saveRecordDirect(
+  record
+){
+
+  loading(true);
 
   try{
 
@@ -3305,44 +4850,148 @@ async function saveRecord(){
         {
           module:
             currentModule,
-          record:
-            record
+          record
         }
       );
-
 
     if(!result.success){
 
       toast(
-        result.message
+        result.message ||
+        "Save failed."
       );
 
       return;
 
     }
 
-
     closeModal();
 
-
-    delete cache[
-      currentModule
-    ];
-
-
-    dropdowns =
-      null;
-
+    clearCaches();
 
     await openModule(
       currentModule
     );
 
-
     toast(
       "Saved successfully."
     );
 
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   STAFF PHOTO
+========================================================= */
+
+function previewStaffPhoto(
+  input
+){
+
+  const preview =
+    document.getElementById(
+      "staffPhotoPreview"
+    );
+
+  if(
+    !preview ||
+    !input.files ||
+    !input.files.length
+  ){
+
+    return;
+
+  }
+
+  const file =
+    input.files[0];
+
+  const url =
+    URL.createObjectURL(
+      file
+    );
+
+  preview.src =
+    url;
+
+  preview.style.display =
+    "block";
+
+}
+
+
+/* =========================================================
+   STAFF PHOTO UPLOAD
+========================================================= */
+
+async function uploadStaffPhotoAndSave(
+  record,
+  file
+){
+
+  loading(true);
+
+  try{
+
+    const compressed =
+      await compressImage(
+        file,
+        1200,
+        0.82
+      );
+
+    const base64 =
+      await toBase64(
+        compressed
+      );
+
+    const upload =
+      await api(
+        "uploadStaffPhoto",
+        {
+          base64,
+          fileName:
+            file.name,
+          mimeType:
+            compressed.type ||
+            "image/jpeg"
+        }
+      );
+
+    if(
+      !upload.success
+    ){
+
+      toast(
+        upload.message ||
+        "Photo upload failed."
+      );
+
+      return;
+
+    }
+
+    record.Photo =
+      upload.url ||
+      upload.viewUrl ||
+      upload.fileUrl ||
+      "";
+
+    await saveRecordDirect(
+      record
+    );
 
   }catch(error){
 
@@ -3363,13 +5012,12 @@ async function saveRecord(){
    DOCUMENT UPLOAD
 ========================================================= */
 
-async function uploadFile(
+async function uploadDocumentAndSave(
   record,
   file
 ){
 
   loading(true);
-
 
   try{
 
@@ -3378,14 +5026,12 @@ async function uploadFile(
         file
       );
 
-
     const result =
       await api(
         "uploadDocument",
         {
 
-          base64:
-            base64,
+          base64,
 
           fileName:
             file.name,
@@ -3416,30 +5062,54 @@ async function uploadFile(
         }
       );
 
-
-    if(!result.success){
+    if(
+      !result.success
+    ){
 
       toast(
-        result.message
+        result.message ||
+        "Document upload failed."
       );
 
       return;
 
     }
 
+    record["File URL"] =
+      result.url ||
+      result.viewUrl ||
+      result.fileUrl ||
+      "";
 
-    closeModal();
+    /*
+     * If backend uploadDocument has already
+     * created the Documents record, don't
+     * save it a second time.
+     */
 
-    delete cache.Documents;
+    if(
+      result.savedRecord
+    ){
 
-    await openModule(
-      "Documents"
+      closeModal();
+
+      clearCaches();
+
+      await openModule(
+        "Documents"
+      );
+
+      toast(
+        "Document uploaded successfully."
+      );
+
+      return;
+
+    }
+
+    await saveRecordDirect(
+      record
     );
-
-    toast(
-      "Document uploaded successfully."
-    );
-
 
   }catch(error){
 
@@ -3456,6 +5126,10 @@ async function uploadFile(
 }
 
 
+/* =========================================================
+   FILE HELPERS
+========================================================= */
+
 function toBase64(
   file
 ){
@@ -3466,23 +5140,172 @@ function toBase64(
       const reader =
         new FileReader();
 
-
       reader.onload =
         function(){
 
-          resolve(
+          const result =
             String(
               reader.result
-            )
-            .split(",")[1]
+            );
+
+          resolve(
+            result.split(",")[1]
           );
 
         };
 
-
       reader.onerror =
         reject;
 
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+function compressImage(
+  file,
+  maxSize,
+  quality
+){
+
+  return new Promise(
+    function(resolve,reject){
+
+      if(
+        !file.type.startsWith(
+          "image/"
+        )
+      ){
+
+        resolve(file);
+        return;
+
+      }
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        function(){
+
+          const img =
+            new Image();
+
+          img.onload =
+            function(){
+
+              let width =
+                img.width;
+
+              let height =
+                img.height;
+
+              if(
+                width > maxSize ||
+                height > maxSize
+              ){
+
+                const ratio =
+                  Math.min(
+                    maxSize /
+                      width,
+                    maxSize /
+                      height
+                  );
+
+                width =
+                  Math.round(
+                    width *
+                    ratio
+                  );
+
+                height =
+                  Math.round(
+                    height *
+                    ratio
+                  );
+
+              }
+
+              const canvas =
+                document.createElement(
+                  "canvas"
+                );
+
+              canvas.width =
+                width;
+
+              canvas.height =
+                height;
+
+              const ctx =
+                canvas.getContext(
+                  "2d"
+                );
+
+              ctx.drawImage(
+                img,
+                0,
+                0,
+                width,
+                height
+              );
+
+              canvas.toBlob(
+                function(blob){
+
+                  if(!blob){
+
+                    reject(
+                      new Error(
+                        "Image compression failed."
+                      )
+                    );
+
+                    return;
+
+                  }
+
+                  const compressed =
+                    new File(
+                      [blob],
+                      file.name.replace(
+                        /\.[^/.]+$/,
+                        ""
+                      ) +
+                      ".jpg",
+                      {
+                        type:
+                          "image/jpeg"
+                      }
+                    );
+
+                  resolve(
+                    compressed
+                  );
+
+                },
+                "image/jpeg",
+                quality
+              );
+
+            };
+
+          img.onerror =
+            reject;
+
+          img.src =
+            reader.result;
+
+        };
+
+      reader.onerror =
+        reject;
 
       reader.readAsDataURL(
         file
@@ -3503,12 +5326,27 @@ async function deleteRecord(
 ){
 
   if(
+    currentModule ===
+    "ActivityLog"
+  ){
+
+    toast(
+      "Activity Log is read-only."
+    );
+
+    return;
+
+  }
+
+  if(
     !confirm(
       "Are you sure you want to delete this record?"
     )
-  )
+  ){
+
     return;
 
+  }
 
   const module =
     currentModule ===
@@ -3516,9 +5354,7 @@ async function deleteRecord(
       ? "Invoices"
       : currentModule;
 
-
   loading(true);
-
 
   try{
 
@@ -3526,43 +5362,33 @@ async function deleteRecord(
       await api(
         "delete",
         {
-          module:
-            module,
-          row:
-            row
+          module,
+          row
         }
       );
 
-
-    if(!result.success){
+    if(
+      !result.success
+    ){
 
       toast(
-        result.message
+        result.message ||
+        "Delete failed."
       );
 
       return;
 
     }
 
-
-    delete cache[
-      module
-    ];
-
-
-    dropdowns =
-      null;
-
+    clearCaches();
 
     await openModule(
       currentModule
     );
 
-
     toast(
       "Deleted successfully."
     );
-
 
   }catch(error){
 
@@ -3580,19 +5406,72 @@ async function deleteRecord(
 
 
 /* =========================================================
+   NOTIFICATION
+========================================================= */
+
+async function markNotificationRead(
+  row
+){
+
+  try{
+
+    const result =
+      await api(
+        "markNotificationRead",
+        {
+          row
+        }
+      );
+
+    if(
+      !result.success
+    ){
+
+      toast(
+        result.message ||
+        "Unable to mark notification."
+      );
+
+      return;
+
+    }
+
+    clearCaches();
+
+    await openModule(
+      "Notifications"
+    );
+
+    toast(
+      "Notification marked as read."
+    );
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =========================================================
    CLOSE MODAL
 ========================================================= */
 
 function closeModal(){
 
   document
-    .getElementById(
-      "modal"
-    )
+    .getElementById("modal")
     .classList.remove(
       "show"
     );
 
+  document
+    .getElementById("form")
+    .innerHTML = "";
 
   currentRow =
     null;
@@ -3608,7 +5487,6 @@ async function dashboard(){
 
   loading(true);
 
-
   try{
 
     const result =
@@ -3616,8 +5494,9 @@ async function dashboard(){
         "dashboard"
       );
 
-
-    if(!result.success){
+    if(
+      !result.success
+    ){
 
       toast(
         result.message
@@ -3627,62 +5506,68 @@ async function dashboard(){
 
     }
 
-
     const d =
-      result.data;
-
+      result.data ||
+      {};
 
     document
-      .getElementById(
-        "content"
-      )
+      .getElementById("content")
       .innerHTML = `
 
       <div class="dashboard">
 
         ${stat(
           "Total Leads",
-          d.totalLeads
+          d.totalLeads ||
+          0
         )}
 
         ${stat(
           "Total Students",
-          d.totalStudents
+          d.totalStudents ||
+          0
         )}
 
         ${stat(
           "Applications",
-          d.totalApplications
+          d.totalApplications ||
+          0
         )}
 
         ${stat(
           "Due Payments",
           "৳ " +
-          d.totalDue
+          (
+            d.totalDue ||
+            0
+          )
         )}
 
         ${stat(
           "Countries",
-          d.totalCountries
+          d.totalCountries ||
+          0
         )}
 
         ${stat(
           "Universities",
-          d.totalUniversities
+          d.totalUniversities ||
+          0
         )}
 
         ${stat(
           "Courses",
-          d.totalCourses
+          d.totalCourses ||
+          0
         )}
 
         ${stat(
           "Employees",
-          d.totalEmployees
+          d.totalEmployees ||
+          0
         )}
 
       </div>
-
 
       <div
         class="report-grid"
@@ -3696,7 +5581,10 @@ async function dashboard(){
           </small>
 
           <h2>
-            ৳ ${d.totalPayments}
+            ৳ ${esc(
+              d.totalPayments ||
+              0
+            )}
           </h2>
 
         </div>
@@ -3708,7 +5596,10 @@ async function dashboard(){
           </small>
 
           <h2>
-            ৳ ${d.totalExpenses}
+            ৳ ${esc(
+              d.totalExpenses ||
+              0
+            )}
           </h2>
 
         </div>
@@ -3720,7 +5611,10 @@ async function dashboard(){
           </small>
 
           <h2>
-            ৳ ${d.netBalance}
+            ৳ ${esc(
+              d.netBalance ||
+              0
+            )}
           </h2>
 
         </div>
@@ -3728,7 +5622,6 @@ async function dashboard(){
       </div>
 
     `;
-
 
   }catch(error){
 
@@ -3770,23 +5663,33 @@ function stat(
 
 
 /* =========================================================
-   REPORTS
+   EMPLOYEE ATTENDANCE
 ========================================================= */
 
-async function reports(){
+async function renderAttendanceModule(){
 
   loading(true);
 
-
   try{
+
+    await loadDropdowns();
 
     const result =
       await api(
-        "reports"
+        "list",
+        {
+          module:
+            "EmployeeAttendance",
+          page:
+            currentPage,
+          pageSize,
+          search:""
+        }
       );
 
-
-    if(!result.success){
+    if(
+      !result.success
+    ){
 
       toast(
         result.message
@@ -3796,47 +5699,407 @@ async function reports(){
 
     }
 
+    records =
+      result.records ||
+      [];
 
-    const d =
-      result.data;
+    totalRecords =
+      Number(
+        result.total ||
+        records.length
+      );
 
+    let summary = {
+      Present:0,
+      Absent:0,
+      Late:0,
+      "Half Day":0,
+      Leave:0
+    };
+
+    try{
+
+      const summaryResult =
+        await api(
+          "attendanceSummary",
+          {
+            date:
+              attendanceFilters.date,
+            month:
+              attendanceFilters.month,
+            employeeId:
+              attendanceFilters.employeeId
+          }
+        );
+
+      if(
+        summaryResult.success
+      ){
+
+        summary =
+          {
+            ...summary,
+            ...(
+              summaryResult.data ||
+              {}
+            )
+          };
+
+      }
+
+    }catch(error){}
+
+    const employeeOptions =
+      (
+        dropdowns.employees ||
+        dropdowns.users ||
+        []
+      )
+      .map(function(x){
+
+        const id =
+          employeeIdOf(x);
+
+        const name =
+          employeeNameOf(x);
+
+        return `
+
+          <option value="${esc(id)}">
+
+            ${esc(id)}
+            —
+            ${esc(name)}
+
+          </option>
+
+        `;
+
+      })
+      .join("");
 
     document
-      .getElementById(
-        "content"
-      )
+      .getElementById("content")
+      .innerHTML = `
+
+      <div class="toolbar">
+
+        <div class="toolbar-left">
+
+          <input
+            id="attendanceDate"
+            type="date"
+            value="${esc(
+              attendanceFilters.date
+            )}"
+            onchange="attendanceFilterChanged()"
+          >
+
+          <input
+            id="attendanceMonth"
+            type="month"
+            value="${esc(
+              attendanceFilters.month
+            )}"
+            onchange="attendanceFilterChanged()"
+          >
+
+          <select
+            id="attendanceEmployee"
+            onchange="attendanceFilterChanged()"
+          >
+
+            <option value="">
+              All Employees
+            </option>
+
+            ${employeeOptions}
+
+          </select>
+
+        </div>
+
+        <div class="toolbar-right">
+
+          <button
+            class="btn"
+            onclick="openModal()"
+          >
+            + Mark Attendance
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="summary-grid">
+
+        ${summaryCard(
+          "Present",
+          summary.Present || 0
+        )}
+
+        ${summaryCard(
+          "Absent",
+          summary.Absent || 0
+        )}
+
+        ${summaryCard(
+          "Late",
+          summary.Late || 0
+        )}
+
+        ${summaryCard(
+          "Half Day",
+          summary["Half Day"] || 0
+        )}
+
+        ${summaryCard(
+          "Leave",
+          summary.Leave || 0
+        )}
+
+      </div>
+
+
+      <div class="table-card">
+
+        <div class="table-wrap">
+
+          ${
+            records.length
+              ?
+              `
+              <table>
+
+                <thead>
+
+                  <tr>
+
+                    ${
+                      Object.keys(
+                        records[0]
+                      )
+                      .filter(function(k){
+
+                        return k !== "_row";
+
+                      })
+                      .map(function(k){
+
+                        return `
+                          <th>
+                            ${esc(k)}
+                          </th>
+                        `;
+
+                      })
+                      .join("")
+                    }
+
+                    <th>
+                      Actions
+                    </th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  ${rowsHtml(
+                    records,
+                    Object.keys(
+                      records[0]
+                    )
+                    .filter(function(k){
+
+                      return k !== "_row";
+
+                    })
+                  )}
+
+                </tbody>
+
+              </table>
+              `
+              :
+              `
+              <div class="empty">
+                No attendance records found.
+              </div>
+              `
+          }
+
+        </div>
+
+        ${
+          records.length
+            ? paginationHtml()
+            : ""
+        }
+
+      </div>
+
+    `;
+
+    const employee =
+      document.getElementById(
+        "attendanceEmployee"
+      );
+
+    if(employee){
+
+      employee.value =
+        attendanceFilters.employeeId;
+
+    }
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+function summaryCard(
+  title,
+  value
+){
+
+  return `
+
+    <div class="summary-card">
+
+      <small>
+        ${esc(title)}
+      </small>
+
+      <strong>
+        ${esc(value)}
+      </strong>
+
+    </div>
+
+  `;
+
+}
+
+
+async function attendanceFilterChanged(){
+
+  attendanceFilters.date =
+    document.getElementById(
+      "attendanceDate"
+    )?.value ||
+    "";
+
+  attendanceFilters.month =
+    document.getElementById(
+      "attendanceMonth"
+    )?.value ||
+    "";
+
+  attendanceFilters.employeeId =
+    document.getElementById(
+      "attendanceEmployee"
+    )?.value ||
+    "";
+
+  await renderAttendanceModule();
+
+}
+
+
+/* =========================================================
+   REPORTS
+========================================================= */
+
+async function reports(){
+
+  loading(true);
+
+  try{
+
+    const result =
+      await api(
+        "reports"
+      );
+
+    if(
+      !result.success
+    ){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+    const d =
+      result.data ||
+      {};
+
+    document
+      .getElementById("content")
       .innerHTML = `
 
       <div class="dashboard">
 
         ${stat(
           "Leads",
-          d.leads
+          d.leads ||
+          0
         )}
 
         ${stat(
           "Students",
-          d.students
+          d.students ||
+          0
         )}
 
         ${stat(
           "Applications",
-          d.applications
+          d.applications ||
+          0
         )}
 
         ${stat(
           "Income",
-          "৳ " + d.income
+          "৳ " +
+          (
+            d.income ||
+            0
+          )
         )}
 
         ${stat(
           "Expenses",
-          "৳ " + d.expenses
+          "৳ " +
+          (
+            d.expenses ||
+            0
+          )
         )}
 
         ${stat(
           "Due",
-          "৳ " + d.due
+          "৳ " +
+          (
+            d.due ||
+            0
+          )
         )}
 
       </div>
@@ -3875,7 +6138,6 @@ async function reports(){
 
     `;
 
-
   }catch(error){
 
     toast(
@@ -3897,11 +6159,13 @@ function reportTable(
 
   const entries =
     Object.entries(
-      data || {}
+      data ||
+      {}
     );
 
-
-  if(!entries.length){
+  if(
+    !entries.length
+  ){
 
     return `
       <p>
@@ -3910,7 +6174,6 @@ function reportTable(
     `;
 
   }
-
 
   return `
 
@@ -3932,7 +6195,7 @@ function reportTable(
                 </td>
 
                 <td>
-                  ${x[1]}
+                  ${esc(x[1])}
                 </td>
 
               </tr>
@@ -3953,6 +6216,107 @@ function reportTable(
 
 
 /* =========================================================
+   DUE PAYMENTS
+========================================================= */
+
+async function duePayments(){
+
+  loading(true);
+
+  try{
+
+    const result =
+      await api(
+        "duePayments"
+      );
+
+    if(
+      result.success
+    ){
+
+      records =
+        result.records ||
+        [];
+
+      totalRecords =
+        records.length;
+
+      renderTable(
+        "Due Payments"
+      );
+
+      return;
+
+    }
+
+    /*
+     * Fallback for backend versions
+     * that don't have duePayments action.
+     */
+
+    const invoiceResult =
+      await api(
+        "list",
+        {
+          module:
+            "Invoices",
+          page:1,
+          pageSize:100,
+          search:""
+        }
+      );
+
+    if(
+      !invoiceResult.success
+    ){
+
+      toast(
+        invoiceResult.message
+      );
+
+      return;
+
+    }
+
+    records =
+      (
+        invoiceResult.records ||
+        []
+      )
+      .filter(function(x){
+
+        return (
+          Number(
+            x["Due Amount"] ||
+            0
+          ) > 0
+        );
+
+      });
+
+    totalRecords =
+      records.length;
+
+    renderTable(
+      "Due Payments"
+    );
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
    WHATSAPP
 ========================================================= */
 
@@ -3962,13 +6326,13 @@ function whatsapp(
 
   let number =
     String(
-      phone || ""
+      phone ||
+      ""
     )
     .replace(
       /\D/g,
       ""
     );
-
 
   if(
     number.startsWith("0")
@@ -3988,7 +6352,6 @@ function whatsapp(
 
   }
 
-
   if(
     number.length < 11
   ){
@@ -4001,7 +6364,6 @@ function whatsapp(
 
   }
 
-
   window.open(
     "https://wa.me/" +
     number,
@@ -4012,10 +6374,150 @@ function whatsapp(
 
 
 /* =========================================================
-   REFRESH
+   DRIVE IMAGE
 ========================================================= */
 
+function normalizeDriveImage(
+  url
+){
+
+  if(
+    !url
+  ){
+
+    return "";
+
+  }
+
+  const text =
+    String(url);
+
+  const match =
+    text.match(
+      /[?&]id=([^&]+)/i
+    );
+
+  if(match){
+
+    return (
+      "https://drive.google.com/uc?export=view&id=" +
+      match[1]
+    );
+
+  }
+
+  const fileMatch =
+    text.match(
+      /\/d\/([^/]+)/
+    );
+
+  if(fileMatch){
+
+    return (
+      "https://drive.google.com/uc?export=view&id=" +
+      fileMatch[1]
+    );
+
+  }
+
+  return text;
+
+}
+
+
+/* =========================================================
+   NORMALIZE DATE
+========================================================= */
+
+function normalizeDateValue(
+  value
+){
+
+  if(
+    !value
+  ){
+
+    return "";
+
+  }
+
+  const text =
+    String(value);
+
+  if(
+    /^\d{4}-\d{2}-\d{2}$/
+      .test(text)
+  ){
+
+    return text;
+
+  }
+
+  const d =
+    new Date(value);
+
+  if(
+    isNaN(d.getTime())
+  ){
+
+    return text.substring(
+      0,
+      10
+    );
+
+  }
+
+  const year =
+    d.getFullYear();
+
+  const month =
+    String(
+      d.getMonth()+1
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+  const day =
+    String(
+      d.getDate()
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day
+  );
+
+}
+
+
+/* =========================================================
+   REFRESH / CACHE
+========================================================= */
+
+function clearCaches(){
+
+  moduleCache = {};
+
+  dropdowns =
+    null;
+
+}
+
+
 async function refresh(){
+
+  clearCaches();
+
+  currentPage = 1;
 
   if(
     currentModule ===
@@ -4023,11 +6525,9 @@ async function refresh(){
   ){
 
     await dashboard();
-
     return;
 
   }
-
 
   if(
     currentModule ===
@@ -4035,31 +6535,29 @@ async function refresh(){
   ){
 
     await reports();
-
     return;
 
   }
-
 
   if(
     currentModule ===
     "DuePayments"
   ){
 
-    delete cache.Invoices;
-
-  }else{
-
-    delete cache[
-      currentModule
-    ];
+    await duePayments();
+    return;
 
   }
 
+  if(
+    currentModule ===
+    "EmployeeAttendance"
+  ){
 
-  dropdowns =
-    null;
+    await renderAttendanceModule();
+    return;
 
+  }
 
   await openModule(
     currentModule
@@ -4075,9 +6573,7 @@ async function refresh(){
 function toggleSidebar(){
 
   document
-    .getElementById(
-      "sidebar"
-    )
+    .getElementById("sidebar")
     .classList.toggle(
       "open"
     );
@@ -4099,15 +6595,16 @@ async function logout(){
 
   }catch(error){}
 
+  sessionStorage.removeItem(
+    "radiance_token"
+  );
 
   sessionStorage.removeItem(
     "radiance_user"
   );
 
-
   user =
     null;
-
 
   location.reload();
 
@@ -4122,28 +6619,35 @@ async function logout(){
 
   try{
 
-    const saved =
+    const savedUser =
       sessionStorage.getItem(
         "radiance_user"
       );
 
+    const savedToken =
+      sessionStorage.getItem(
+        "radiance_token"
+      );
 
-    if(saved){
+    if(
+      savedUser &&
+      savedToken
+    ){
 
       const parsed =
         JSON.parse(
-          saved
+          savedUser
         );
 
-
       if(
-        parsed &&
-        parsed.token
+        parsed
       ){
+
+        parsed.token =
+          savedToken;
 
         user =
           parsed;
-
 
         start();
 
@@ -4157,9 +6661,14 @@ async function logout(){
       "radiance_user"
     );
 
+    sessionStorage.removeItem(
+      "radiance_token"
+    );
+
   }
 
 })();
+
 
 </script>
 
