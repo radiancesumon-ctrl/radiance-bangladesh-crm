@@ -1,6677 +1,3945 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1.0"
->
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Radiance Bangladesh CRM</title>
 
 <style>
-
 :root{
-  --primary:#6d28d9;
-  --secondary:#4f46e5;
-  --dark:#111827;
-  --bg:#f5f7fb;
-  --card:#ffffff;
-  --text:#172033;
-  --muted:#667085;
-  --border:#e5e7eb;
-  --success:#16a34a;
-  --danger:#dc2626;
-  --warning:#d97706;
-  --info:#2563eb;
+--p:#6d28d9;
+--p2:#4f46e5;
+--bg:#f5f7fb;
+--card:#fff;
+--text:#172033;
+--muted:#64748b;
+--bd:#e5e7eb;
+--danger:#b91c1c;
+--success:#166534
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+margin:0;
+font:14px Arial,sans-serif;
+background:var(--bg);
+color:var(--text)
 }
 
-button,
-input,
-select,
-textarea{
-  font:inherit;
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+.login{
+min-height:100vh;
+display:grid;
+place-items:center;
+padding:20px;
+background:linear-gradient(135deg,#6d28d9,#2563eb)
 }
 
-button{
-  cursor:pointer;
+.loginbox{
+width:min(430px,100%);
+background:#fff;
+border-radius:20px;
+padding:30px;
+box-shadow:0 20px 60px #0004;
+text-align:center
 }
 
-img{
-  max-width:100%;
+.logo{
+width:92px;
+height:92px;
+object-fit:contain
 }
 
-/* =========================================================
-   LOGIN
-========================================================= */
-
-.login-screen{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(
-    135deg,
-    #eef2ff,
-    #faf5ff
-  );
+.loginbox input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid var(--bd);
+border-radius:9px
 }
 
-.login-box{
-  width:min(420px,92%);
-  background:#fff;
-  padding:32px;
-  border-radius:18px;
-  box-shadow:0 20px 60px #0002;
+.primary{
+background:var(--p);
+color:#fff;
+border:0;
+padding:10px 15px;
+border-radius:8px
 }
 
-.login-logo{
-  display:block;
-  width:100px;
-  height:100px;
-  object-fit:contain;
-  margin:auto auto 15px;
+.secondary{
+background:#eef2ff;
+color:#3730a3;
+border:0;
+padding:8px 12px;
+border-radius:8px
 }
 
-.login-box h2{
-  text-align:center;
-  margin:0;
+.danger{
+background:#fee2e2;
+color:#991b1b;
+border:0;
+padding:7px 10px;
+border-radius:7px
 }
 
-.login-box p{
-  text-align:center;
-  color:var(--muted);
+.success{
+background:#dcfce7;
+color:#166534;
+border:0;
+padding:7px 10px;
+border-radius:7px
 }
 
-/* =========================================================
-   FORM
-========================================================= */
+.app{min-height:100vh}
 
-.field{
-  margin-bottom:13px;
+.side{
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+width:240px;
+background:#111827;
+color:#fff;
+padding:16px 10px;
+overflow:auto
+}
+
+.brand{
+display:flex;
+gap:9px;
+align-items:center;
+margin:3px 8px 18px
+}
+
+.brand img{
+width:42px;
+height:42px;
+object-fit:contain;
+background:#fff;
+border-radius:8px
+}
+
+.brand b{display:block}
+.brand small{color:#9ca3af}
+
+.nav button{
+display:block;
+width:100%;
+text-align:left;
+background:transparent;
+color:#d1d5db;
+border:0;
+padding:9px 11px;
+border-radius:7px;
+margin:2px 0
+}
+
+.nav button:hover,
+.nav button.active{
+background:#312e81;
+color:#fff
+}
+
+.logout{
+width:100%;
+margin-top:15px;
+padding:9px;
+border:0;
+border-radius:7px
+}
+
+.main{
+margin-left:240px;
+padding:20px
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px
+}
+
+.top h1{margin:0 0 3px}
+
+.muted{color:var(--muted)}
+
+.user{
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.avatar{
+width:40px;
+height:40px;
+border-radius:50%;
+object-fit:cover;
+background:#eee
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px
+}
+
+.stat,.card{
+background:var(--card);
+border:1px solid var(--bd);
+border-radius:13px;
+padding:16px
+}
+
+.stat span{
+display:block;
+color:var(--muted);
+font-size:12px
+}
+
+.stat b{
+display:block;
+font-size:26px;
+margin-top:6px
+}
+
+.toolbar{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+align-items:center;
+margin-bottom:12px
+}
+
+.toolbar input,
+.toolbar select{
+padding:9px;
+border:1px solid var(--bd);
+border-radius:8px;
+background:#fff
+}
+
+.tablewrap{
+overflow:auto;
+border:1px solid var(--bd);
+border-radius:9px;
+background:#fff
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+min-width:900px
+}
+
+.table th,
+.table td{
+padding:9px;
+border-bottom:1px solid var(--bd);
+text-align:left;
+white-space:nowrap;
+font-size:12px;
+vertical-align:top
+}
+
+.table th{
+background:#f8fafc;
+position:sticky;
+top:0
+}
+
+.actions{
+display:flex;
+gap:5px
+}
+
+.wa{
+background:#dcfce7;
+color:#166534;
+padding:5px 8px;
+border-radius:5px;
+text-decoration:none
+}
+
+.pager{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding-top:12px
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:#0008;
+display:grid;
+place-items:center;
+padding:18px;
+z-index:50
+}
+
+.modalbox{
+background:#fff;
+width:min(960px,100%);
+max-height:94vh;
+overflow:auto;
+border-radius:14px;
+padding:20px
+}
+
+.formgrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
 }
 
 .field label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:5px;
+display:block;
+font-weight:bold;
+font-size:12px;
+margin-bottom:5px
 }
 
 .field input,
 .field select,
 .field textarea{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:10px;
-  background:#fff;
-  color:var(--text);
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-  outline:none;
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px #6d28d922;
+width:100%;
+padding:9px;
+border:1px solid var(--bd);
+border-radius:7px;
+background:#fff
 }
 
 .field textarea{
-  min-height:85px;
-  resize:vertical;
+min-height:78px;
+resize:vertical
 }
 
-.field small{
-  display:block;
-  margin-top:4px;
-  color:var(--muted);
-  font-size:11px;
+.full{grid-column:1/-1}
+
+.photo{
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:9px;
+border:1px solid var(--bd);
+display:block;
+margin-top:7px
 }
 
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+.modalhead{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px
 }
 
-.form-full{
-  grid-column:1/-1;
+.modalhead h2{margin:0}
+
+.close{
+background:#f1f5f9;
+border:0;
+border-radius:7px;
+padding:7px 10px
 }
 
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.btn{
-  border:0;
-  border-radius:8px;
-  padding:9px 13px;
-  background:var(--primary);
-  color:#fff;
+.formactions{
+display:flex;
+justify-content:flex-end;
+gap:8px;
+margin-top:16px
 }
-
-.btn:hover{
-  opacity:.92;
-}
-
-.btn-light{
-  background:#fff;
-  color:var(--text);
-  border:1px solid var(--border);
-}
-
-.btn-danger{
-  background:var(--danger);
-}
-
-.btn-success{
-  background:var(--success);
-}
-
-.btn-warning{
-  background:var(--warning);
-}
-
-.btn-info{
-  background:var(--info);
-}
-
-.btn-small{
-  padding:6px 9px;
-  font-size:12px;
-}
-
-/* =========================================================
-   APP
-========================================================= */
-
-.app{
-  min-height:100vh;
-}
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-.sidebar{
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  width:250px;
-  background:#111827;
-  color:#fff;
-  overflow-y:auto;
-  z-index:100;
-}
-
-.brand{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  padding:16px;
-  border-bottom:1px solid #273043;
-}
-
-.brand img{
-  width:45px;
-  height:45px;
-  object-fit:contain;
-  background:#fff;
-  border-radius:8px;
-  padding:4px;
-}
-
-.brand-title{
-  font-size:15px;
-  font-weight:bold;
-}
-
-.brand-sub{
-  color:#9ca3af;
-  font-size:11px;
-}
-
-.nav-group{
-  color:#8b95a7;
-  font-size:10px;
-  padding:14px 12px 5px;
-  text-transform:uppercase;
-}
-
-.nav-btn{
-  display:block;
-  width:calc(100% - 16px);
-  margin:2px 8px;
-  border:0;
-  background:transparent;
-  color:#cbd5e1;
-  padding:10px 12px;
-  text-align:left;
-  border-radius:8px;
-}
-
-.nav-btn:hover,
-.nav-btn.active{
-  background:#293244;
-  color:#fff;
-}
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.main{
-  margin-left:250px;
-  padding:18px;
-}
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-  gap:10px;
-}
-
-.topbar h1{
-  font-size:23px;
-  margin:0;
-}
-
-.top-actions{
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-
-.user-info{
-  font-size:13px;
-  color:var(--muted);
-}
-
-.menu-btn{
-  display:none;
-}
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
-
-.dashboard{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.stat{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:18px;
-}
-
-.stat small{
-  color:var(--muted);
-}
-
-.stat strong{
-  display:block;
-  font-size:25px;
-  margin-top:7px;
-}
-
-.card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:18px;
-}
-
-.report-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-
-/* =========================================================
-   TOOLBAR
-========================================================= */
-
-.toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:12px;
-}
-
-.toolbar-left,
-.toolbar-right{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  flex-wrap:wrap;
-}
-
-.search{
-  width:300px;
-  max-width:100%;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:10px;
-}
-
-/* =========================================================
-   TABLE
-========================================================= */
-
-.table-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-}
-
-.table-wrap{
-  overflow:auto;
-  max-height:70vh;
-}
-
-table{
-  border-collapse:collapse;
-  width:100%;
-  min-width:900px;
-}
-
-th,
-td{
-  padding:10px;
-  border-bottom:1px solid var(--border);
-  text-align:left;
-  font-size:13px;
-  white-space:nowrap;
-}
-
-th{
-  position:sticky;
-  top:0;
-  background:#f8fafc;
-  z-index:2;
-}
-
-tbody tr:hover{
-  background:#fafafa;
-}
-
-.badge{
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:30px;
-  background:#eef2ff;
-  font-size:11px;
-}
-
-.actions{
-  display:flex;
-  gap:5px;
-}
-
-.whatsapp{
-  background:#16a34a;
-  color:#fff;
-  border:0;
-  border-radius:5px;
-  padding:4px 7px;
-  font-size:11px;
-  margin-left:5px;
-}
-
-.empty{
-  padding:45px;
-  text-align:center;
-  color:var(--muted);
-}
-
-/* =========================================================
-   PAGINATION
-========================================================= */
-
-.pagination{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px;
-  gap:10px;
-  border-top:1px solid var(--border);
-}
-
-.page-buttons{
-  display:flex;
-  gap:5px;
-}
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:#0008;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-  z-index:200;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  width:min(1000px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:#fff;
-  border-radius:14px;
-  padding:20px;
-}
-
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
-
-.modal-head h2{
-  margin:0;
-}
-
-/* =========================================================
-   PHOTO
-========================================================= */
-
-.photo-preview{
-  width:100px;
-  height:100px;
-  border-radius:12px;
-  object-fit:cover;
-  border:1px solid var(--border);
-  background:#f8fafc;
-  display:block;
-  margin-top:8px;
-}
-
-/* =========================================================
-   ATTENDANCE SUMMARY
-========================================================= */
-
-.summary-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.summary-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:14px;
-}
-
-.summary-card small{
-  color:var(--muted);
-}
-
-.summary-card strong{
-  display:block;
-  font-size:22px;
-  margin-top:5px;
-}
-
-/* =========================================================
-   LOADING
-========================================================= */
-
-.loading{
-  position:fixed;
-  inset:0;
-  display:none;
-  place-items:center;
-  background:#fff9;
-  z-index:500;
-}
-
-.loading.show{
-  display:grid;
-}
-
-.loading-box{
-  background:#fff;
-  padding:18px 25px;
-  border-radius:10px;
-  box-shadow:0 10px 40px #0002;
-}
-
-/* =========================================================
-   TOAST
-========================================================= */
 
 .toast{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  padding:12px 17px;
-  background:#111827;
-  color:#fff;
-  border-radius:8px;
-  display:none;
-  z-index:600;
+position:fixed;
+right:20px;
+bottom:20px;
+background:#111827;
+color:#fff;
+padding:12px 15px;
+border-radius:8px;
+z-index:100;
+max-width:420px
 }
 
-.toast.show{
-  display:block;
+.toast.err{background:#991b1b}
+
+.summary{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:10px;
+margin-bottom:14px
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+.summary .stat{padding:11px}
+.summary .stat b{font-size:20px}
 
-@media(max-width:1000px){
-
-  .dashboard{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .summary-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
+.empty{
+padding:30px;
+text-align:center;
+color:var(--muted)
 }
 
-@media(max-width:700px){
-
-  .sidebar{
-    transform:translateX(-100%);
-    transition:.2s;
-  }
-
-  .sidebar.open{
-    transform:translateX(0);
-  }
-
-  .main{
-    margin-left:0;
-    padding:12px;
-  }
-
-  .menu-btn{
-    display:inline-block;
-  }
-
-  .user-info{
-    display:none;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .dashboard{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .report-grid{
-    grid-template-columns:1fr;
-  }
-
-  .summary-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
+.loading{
+padding:30px;
+text-align:center;
+color:var(--muted)
 }
 
+.note{
+background:#fffbeb;
+border:1px solid #fde68a;
+padding:10px;
+border-radius:8px;
+margin-bottom:12px
+}
+
+.link{
+color:#4f46e5;
+text-decoration:none
+}
+
+.filehint{
+font-size:11px;
+color:var(--muted);
+margin-top:4px
+}
+
+.nav-title{
+padding:10px 11px 4px;
+color:#9ca3af;
+font-size:11px;
+text-transform:uppercase;
+font-weight:bold
+}
+
+@media(max-width:900px){
+.side{
+position:relative;
+width:100%;
+height:auto
+}
+
+.main{margin-left:0}
+
+.grid{
+grid-template-columns:1fr 1fr
+}
+
+.summary{
+grid-template-columns:repeat(3,1fr)
+}
+}
+
+@media(max-width:600px){
+.grid,
+.formgrid{
+grid-template-columns:1fr
+}
+
+.summary{
+grid-template-columns:1fr 1fr
+}
+
+.top{
+display:block
+}
+
+.user{
+margin-top:10px
+}
+}
 </style>
-
 </head>
 
 <body>
 
-<!-- ======================================================
-     LOGIN
-====================================================== -->
+<div id="login" class="login">
+<div class="loginbox">
 
-<div
-  id="loginScreen"
-  class="login-screen"
+<img
+class="logo"
+src="./logo.png"
+onerror="this.onerror=null;this.src='./assets/logo.png'"
 >
 
-  <div class="login-box">
+<h2>Radiance Bangladesh CRM</h2>
 
-    <img
-      id="loginLogo"
-      src="./logo.png"
-      class="login-logo"
-      alt="Radiance Bangladesh"
-      onerror="this.onerror=null;this.src='./assets/logo.png'"
-    >
+<p class="muted">
+CRM & Business Management System
+</p>
 
-    <h2>
-      Radiance Bangladesh
-    </h2>
-
-    <p>
-      CRM & Business Management System
-    </p>
-
-    <div class="field">
-
-      <label>
-        Username
-      </label>
-
-      <input
-        id="loginUsername"
-        autocomplete="username"
-      >
-
-    </div>
-
-    <div class="field">
-
-      <label>
-        Password
-      </label>
-
-      <input
-        id="loginPassword"
-        type="password"
-        autocomplete="current-password"
-        onkeydown="if(event.key==='Enter')login()"
-      >
-
-    </div>
-
-    <button
-      class="btn"
-      style="width:100%"
-      onclick="login()"
-    >
-      Login
-    </button>
-
-    <div
-      id="loginError"
-      style="color:#dc2626;text-align:center;margin-top:10px"
-    ></div>
-
-  </div>
-
-</div>
-
-
-<!-- ======================================================
-     APPLICATION
-====================================================== -->
-
-<div
-  id="app"
-  style="display:none"
+<input
+id="lu"
+placeholder="Username"
+autocomplete="username"
 >
 
-  <aside
-    id="sidebar"
-    class="sidebar"
-  >
-
-    <div class="brand">
-
-      <img
-        src="./logo.png"
-        alt="Radiance"
-        onerror="this.onerror=null;this.src='./assets/logo.png'"
-      >
-
-      <div>
-
-        <div class="brand-title">
-          Radiance Bangladesh
-        </div>
-
-        <div class="brand-sub">
-          CRM / BMS
-        </div>
-
-      </div>
-
-    </div>
-
-    <div id="navigation"></div>
-
-  </aside>
-
-
-  <main class="main">
-
-    <div class="topbar">
-
-      <div
-        style="display:flex;align-items:center;gap:10px"
-      >
-
-        <button
-          class="btn btn-light menu-btn"
-          onclick="toggleSidebar()"
-        >
-          ☰
-        </button>
-
-        <h1 id="pageTitle">
-          Dashboard
-        </h1>
-
-      </div>
-
-      <div class="top-actions">
-
-        <span
-          id="userInfo"
-          class="user-info"
-        ></span>
-
-        <button
-          class="btn btn-light"
-          onclick="refresh()"
-        >
-          Refresh
-        </button>
-
-        <button
-          class="btn btn-danger"
-          onclick="logout()"
-        >
-          Logout
-        </button>
-
-      </div>
-
-    </div>
-
-    <div id="content"></div>
-
-  </main>
-
-</div>
-
-
-<!-- ======================================================
-     MODAL
-====================================================== -->
-
-<div
-  id="modal"
-  class="modal"
+<input
+id="lp"
+type="password"
+placeholder="Password"
+autocomplete="current-password"
+onkeydown="if(event.key==='Enter')login()"
 >
 
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2 id="modalTitle">
-        Add Record
-      </h2>
-
-      <button
-        class="btn btn-light"
-        onclick="closeModal()"
-      >
-        Close
-      </button>
-
-    </div>
-
-    <div
-      id="form"
-      class="form-grid"
-    ></div>
-
-    <div
-      style="display:flex;justify-content:flex-end;gap:8px;margin-top:15px"
-    >
-
-      <button
-        class="btn btn-light"
-        onclick="closeModal()"
-      >
-        Cancel
-      </button>
-
-      <button
-        class="btn"
-        onclick="saveRecord()"
-      >
-        Save
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- LOADING -->
-
-<div
-  id="loading"
-  class="loading"
+<button
+id="loginBtn"
+class="primary"
+style="width:100%;margin-top:8px"
+onclick="login()"
 >
+Login
+</button>
 
-  <div class="loading-box">
-    Please wait…
-  </div>
-
-</div>
-
-
-<!-- TOAST -->
+<button
+type="button"
+class="secondary"
+style="width:100%;margin-top:9px"
+onclick="openForgot()"
+>
+Forgot Password?
+</button>
 
 <div
-  id="toast"
-  class="toast"
+id="loginMsg"
+class="muted"
+style="margin-top:10px"
 ></div>
+
+</div>
+</div>
+
+
+<div id="app" class="app hidden">
+
+<aside class="side">
+
+<div class="brand">
+
+<img
+src="./logo.png"
+onerror="this.onerror=null;this.src='./assets/logo.png'"
+>
+
+<div>
+<b>Radiance Bangladesh</b>
+<small>CRM & BMS</small>
+</div>
+
+</div>
+
+
+<div class="nav-title">CRM</div>
+<div id="navCRM" class="nav"></div>
+
+
+<div class="nav-title">Staff Management</div>
+<div id="navStaff" class="nav"></div>
+
+
+<div class="nav-title">Study Abroad</div>
+<div id="navStudy" class="nav"></div>
+
+
+<div class="nav-title">IELTS</div>
+<div id="navIELTS" class="nav"></div>
+
+
+<div class="nav-title">Accounts</div>
+<div id="navAccounts" class="nav"></div>
+
+
+<div class="nav-title">Administration</div>
+<div id="navAdmin" class="nav"></div>
+
+
+<button
+class="logout"
+onclick="logout()"
+>
+Logout
+</button>
+
+</aside>
+
+
+<main class="main">
+
+<div class="top">
+
+<div>
+<h1 id="title">Dashboard</h1>
+<span class="muted">Radiance Bangladesh</span>
+</div>
+
+<div class="user">
+
+<img
+id="up"
+class="avatar"
+src="./logo.png"
+onerror="this.onerror=null;this.src='./assets/logo.png'"
+>
+
+<span id="un"></span>
+
+</div>
+
+</div>
+
+<div id="content"></div>
+
+</main>
+
+</div>
+
+
+<div
+id="modal"
+class="modal hidden"
+></div>
+
+<div
+id="toast"
+class="toast hidden"
+></div>
+
+
+<div
+id="forgot"
+class="modal hidden"
+>
+
+<div
+class="modalbox"
+style="max-width:460px"
+>
+
+<div class="modalhead">
+
+<h2>Forgot Password</h2>
+
+<button
+class="close"
+onclick="closeForgot()"
+>
+Close
+</button>
+
+</div>
+
+
+<p class="muted">
+Enter your registered Username or Email.
+We will send a 6-digit reset code to your registered email.
+</p>
+
+
+<div id="forgotStep1">
+
+<div class="field">
+
+<label>Username or Email</label>
+
+<input
+id="forgotIdentifier"
+type="text"
+autocomplete="username"
+>
+
+</div>
+
+
+<div class="formactions">
+
+<button
+class="secondary"
+onclick="closeForgot()"
+>
+Cancel
+</button>
+
+<button
+class="primary"
+onclick="requestReset()"
+>
+Send Reset Code
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="forgotStep2"
+class="hidden"
+>
+
+<div class="note">
+Check your registered email.
+The reset code is valid for 15 minutes.
+</div>
+
+
+<div class="field">
+
+<label>6-digit Reset Code</label>
+
+<input
+id="resetOtp"
+inputmode="numeric"
+maxlength="6"
+autocomplete="one-time-code"
+>
+
+</div>
+
+
+<div
+class="field"
+style="margin-top:10px"
+>
+
+<label>New Password</label>
+
+<input
+id="resetPassword1"
+type="password"
+minlength="6"
+autocomplete="new-password"
+>
+
+</div>
+
+
+<div
+class="field"
+style="margin-top:10px"
+>
+
+<label>Confirm New Password</label>
+
+<input
+id="resetPassword2"
+type="password"
+minlength="6"
+autocomplete="new-password"
+>
+
+</div>
+
+
+<div class="formactions">
+
+<button
+class="secondary"
+onclick="closeForgot()"
+>
+Cancel
+</button>
+
+<button
+class="primary"
+onclick="resetPassword()"
+>
+Reset Password
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="forgotMsg"
+class="muted"
+style="margin-top:10px"
+></div>
+
+</div>
+
+</div>
 
 
 <script>
 
-/* =========================================================
-   CONFIG
-========================================================= */
+const API =
+'https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec';
 
-const API_URL =
-"https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec";
+const API_URL=API;
 
 
-/* =========================================================
-   MODULES
-========================================================= */
+const ADMIN_ONLY=[
+'Users',
+'Roles',
+'Settings',
+'ActivityLog'
+];
 
-const MODULES = {
 
-  "CRM":[
-    "Dashboard",
-    "Leads",
-    "Students",
-    "Counselling",
-    "FollowUps",
-    "Tasks"
-  ],
+const MODULES=[
 
-  "Staff Management":[
-    "Users",
-    "EmployeeAttendance",
-    "LeaveManagement"
-  ],
+['Dashboard','Dashboard'],
+['Leads','Leads'],
+['Students','Students'],
+['Counselling','Counselling'],
+['FollowUps','Follow Ups'],
+['Tasks','Tasks'],
 
-  "Study Abroad":[
-    "Countries",
-    "Universities",
-    "Courses",
-    "Intake",
-    "Applications",
-    "Documents",
-    "DocumentChecklist",
-    "Offers",
-    "Visa"
-  ],
+['Users','Employee Management'],
+['EmployeeAttendance','Employee Attendance'],
+['LeaveManagement','Leave Management'],
 
-  "IELTS":[
-    "IELTS_Batches",
-    "IELTS_Students",
-    "IELTS_Attendance",
-    "IELTS_MockTests",
-    "IELTS_Results"
-  ],
+['Countries','Countries'],
+['Universities','Universities'],
+['Courses','Courses'],
+['Intake','Intake'],
+['Applications','Applications'],
+['Documents','Documents'],
+['DocumentChecklist','Document Checklist'],
+['Offers','Offers'],
+['Visa','Visa'],
 
-  "Accounts":[
-    "Payments",
-    "Invoices",
-    "MoneyReceipts",
-    "Income",
-    "Expenses",
-    "DuePayments",
-    "Reports"
-  ],
+['IELTS_Batches','IELTS Batches'],
+['IELTS_Students','IELTS Students'],
+['IELTS_Attendance','IELTS Attendance'],
+['IELTS_MockTests','IELTS Mock Tests'],
+['IELTS_Results','IELTS Results'],
 
-  "Administration":[
-    "Roles",
-    "Notifications",
-    "Timeline",
-    "LeadSources",
-    "ActivityLog",
-    "Settings",
-    "StudentPortal"
-  ]
+['Payments','Payments'],
+['Invoices','Invoices'],
+['MoneyReceipts','Money Receipts'],
+['Income','Income'],
+['Expenses','Expenses'],
+['DuePayments','Due Payments'],
+['Reports','Reports'],
 
+['Notifications','Notifications'],
+['Timeline','Timeline'],
+['LeadSources','Lead Sources'],
+['ActivityLog','Activity Log'],
+['Settings','Settings'],
+['StudentPortal','Student Portal'],
+['Roles','Roles']
+
+];
+
+
+let token=
+sessionStorage.getItem('radiance_token')||'';
+
+let user=
+readJSON('radiance_user');
+
+let dd=null;
+
+let moduleCache={};
+
+let current={
+module:'Dashboard',
+page:1,
+size:20,
+search:'',
+filters:{}
 };
 
 
-const LABELS = {
-
-  FollowUps:"Follow-ups",
-
-  EmployeeAttendance:
-    "Employee Attendance",
-
-  LeaveManagement:
-    "Leave Management",
-
-  IELTS_Batches:
-    "IELTS Batches",
-
-  IELTS_Students:
-    "IELTS Students",
-
-  IELTS_Attendance:
-    "IELTS Attendance",
-
-  IELTS_MockTests:
-    "IELTS Mock Tests",
-
-  IELTS_Results:
-    "IELTS Results",
-
-  DocumentChecklist:
-    "Document Checklist",
-
-  MoneyReceipts:
-    "Money Receipts",
-
-  DuePayments:
-    "Due Payments",
-
-  LeadSources:
-    "Lead Sources",
-
-  StudentPortal:
-    "Student Portal",
-
-  ActivityLog:
-    "Activity Log"
-
-};
+const $=id=>document.getElementById(id);
 
 
-/* =========================================================
-   FRONTEND SCHEMAS
-========================================================= */
+function readJSON(k){
 
-const HEADERS = {
+try{
+return JSON.parse(
+sessionStorage.getItem(k)||'null'
+);
+}catch(e){
+return null;
+}
 
-Users:[
-"Employee ID",
-"Full Name",
-"Username",
-"Email",
-"Phone",
-"Role",
-"Password",
-"Photo"
+}
+
+
+function esc(v){
+
+return String(v??'').replace(
+/[&<>'"]/g,
+m=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+"'":'&#39;',
+'"':'&quot;'
+}[m])
+);
+
+}
+
+
+function toast(msg,err=false){
+
+const t=$('toast');
+
+t.textContent=msg;
+
+t.className='toast'+
+(err?' err':'');
+
+clearTimeout(window.__toast);
+
+window.__toast=setTimeout(
+()=>t.classList.add('hidden'),
+3500
+);
+
+}
+
+
+function label(m){
+
+return(
+MODULES.find(x=>x[0]===m)||[m,m]
+)[1];
+
+}
+
+
+async function api(action,data={}){
+
+const res=await fetch(
+API,
+{
+method:'POST',
+headers:{
+'Content-Type':
+'text/plain;charset=utf-8'
+},
+body:JSON.stringify({
+action,
+token,
+...data
+})
+}
+);
+
+let x;
+
+try{
+x=await res.json();
+}catch(e){
+throw Error(
+'API response was not valid JSON. Check the Apps Script deployment.'
+);
+}
+
+if(!x.ok){
+
+if(
+/session expired/i.test(
+x.error||''
+)
+){
+
+sessionStorage.removeItem(
+'radiance_token'
+);
+
+sessionStorage.removeItem(
+'radiance_user'
+);
+
+token='';
+user=null;
+
+showLogin();
+
+}
+
+throw Error(
+x.error||'Request failed'
+);
+
+}
+
+return x;
+
+}
+
+
+async function apiPublic(action,data={}){
+
+const res=await fetch(
+API_URL,
+{
+method:'POST',
+headers:{
+'Content-Type':
+'text/plain;charset=utf-8'
+},
+body:JSON.stringify({
+action,
+...data
+})
+}
+);
+
+let x;
+
+try{
+x=await res.json();
+}catch(e){
+throw Error(
+'Invalid server response.'
+);
+}
+
+if(!x.ok){
+throw Error(
+x.error||'Request failed.'
+);
+}
+
+return x;
+
+}
+
+
+function showLogin(){
+
+$('app').classList.add(
+'hidden'
+);
+
+$('login').classList.remove(
+'hidden'
+);
+
+}
+
+
+function openForgot(){
+
+$('forgotIdentifier').value=
+$('lu').value.trim();
+
+$('forgotStep1')
+.classList.remove('hidden');
+
+$('forgotStep2')
+.classList.add('hidden');
+
+$('forgotMsg').textContent='';
+
+$('forgot').classList.remove(
+'hidden'
+);
+
+}
+
+
+function closeForgot(){
+
+$('forgot')
+.classList.add('hidden');
+
+}
+
+
+let resetToken='';
+
+
+async function requestReset(){
+
+const identifier=
+$('forgotIdentifier').value.trim();
+
+if(!identifier){
+
+$('forgotMsg').textContent=
+'Enter your Username or Email.';
+
+return;
+
+}
+
+$('forgotMsg').textContent=
+'Sending reset code...';
+
+try{
+
+const x=
+await apiPublic(
+'forgotPassword',
+{identifier}
+);
+
+resetToken=
+x.resetToken||'';
+
+$('forgotStep1')
+.classList.add('hidden');
+
+$('forgotStep2')
+.classList.remove('hidden');
+
+$('forgotMsg').textContent=
+x.message||
+'Check your registered email for the reset code.';
+
+}catch(e){
+
+$('forgotMsg').textContent=
+e.message;
+
+}
+
+}
+
+
+async function resetPassword(){
+
+const otp=
+$('resetOtp').value.trim();
+
+const p1=
+$('resetPassword1').value;
+
+const p2=
+$('resetPassword2').value;
+
+
+if(!resetToken){
+
+$('forgotMsg').textContent=
+'Please request a new reset code.';
+
+return;
+
+}
+
+
+if(!/^\d{6}$/.test(otp)){
+
+$('forgotMsg').textContent=
+'Enter the 6-digit reset code.';
+
+return;
+
+}
+
+
+if(p1.length<6){
+
+$('forgotMsg').textContent=
+'New password must be at least 6 characters.';
+
+return;
+
+}
+
+
+if(p1!==p2){
+
+$('forgotMsg').textContent=
+'Passwords do not match.';
+
+return;
+
+}
+
+
+$('forgotMsg').textContent=
+'Resetting password...';
+
+
+try{
+
+const x=
+await apiPublic(
+'resetPassword',
+{
+resetToken,
+otp,
+newPassword:p1
+}
+);
+
+closeForgot();
+
+$('lp').value='';
+
+$('loginMsg').textContent=
+x.message||
+'Password reset successfully. Please login.';
+
+toast(
+x.message||
+'Password reset successfully.'
+);
+
+}catch(e){
+
+$('forgotMsg').textContent=
+e.message;
+
+}
+
+}
+
+
+async function login(){
+
+const username=
+$('lu').value.trim();
+
+const password=
+$('lp').value;
+
+
+if(!username||!password){
+
+$('loginMsg').textContent=
+'Username and password are required.';
+
+return;
+
+}
+
+
+const b=$('loginBtn');
+
+b.disabled=true;
+
+b.textContent='Signing in...';
+
+$('loginMsg').textContent='';
+
+
+try{
+
+const x=
+await api(
+'login',
+{
+username,
+password
+}
+);
+
+
+token=x.token;
+
+user=x.user;
+
+
+sessionStorage.setItem(
+'radiance_token',
+token
+);
+
+sessionStorage.setItem(
+'radiance_user',
+JSON.stringify(user)
+);
+
+
+start();
+
+
+}catch(e){
+
+$('loginMsg').textContent=
+e.message;
+
+toast(
+e.message,
+true
+);
+
+
+}finally{
+
+b.disabled=false;
+
+b.textContent='Login';
+
+}
+
+}
+
+
+async function logout(){
+
+try{
+
+if(token)
+await api('logout',{});
+
+}catch(e){}
+
+
+sessionStorage.removeItem(
+'radiance_token'
+);
+
+sessionStorage.removeItem(
+'radiance_user'
+);
+
+token='';
+
+user=null;
+
+moduleCache={};
+
+dd=null;
+
+showLogin();
+
+}
+
+
+function start(){
+
+if(!token||!user){
+
+showLogin();
+
+return;
+
+}
+
+
+$('login').classList.add(
+'hidden'
+);
+
+$('app').classList.remove(
+'hidden'
+);
+
+
+$('un').textContent=
+(user.name||user.username)+
+' • '+
+(user.role||'');
+
+
+if(user.photo){
+
+$('up').src=user.photo;
+
+}
+
+
+buildNav();
+
+openModule('Dashboard');
+
+}
+
+
+function buildNav(){
+
+const groups={
+
+navCRM:[
+'Dashboard',
+'Leads',
+'Students',
+'Counselling',
+'FollowUps',
+'Tasks'
 ],
 
-Leads:[
-"Lead ID",
-"Lead Date",
-"Name",
-"Phone",
-"WhatsApp",
-"Email",
-"Source",
-"Interested Country",
-"Interested Course",
-"Intake",
-"Assigned Counsellor",
-"Priority",
-"Status",
-"Next Follow-up",
-"Notes"
+navStaff:[
+'Users',
+'EmployeeAttendance',
+'LeaveManagement'
 ],
 
-Students:[
-"Student ID",
-"Lead ID",
-"Name",
-"Phone",
-"WhatsApp",
-"Email",
-"Date of Birth",
-"Gender",
-"Address",
-"Passport Number",
-"Passport Issue Date",
-"Passport Expiry Date",
-"Nationality",
-"Marital Status",
-"SSC/O-Level",
-"SSC/O-Level GPA",
-"SSC/O-Level Passing Year",
-"HSC/A-Level",
-"HSC/A-Level GPA",
-"HSC/A-Level Passing Year",
-"Bachelor",
-"Bachelor CGPA",
-"Bachelor Passing Year",
-"Master",
-"Master CGPA",
-"Master Passing Year",
-"English Test",
-"Overall Score",
-"Listening",
-"Reading",
-"Writing",
-"Speaking",
-"Test Date",
-"Preferred Country",
-"Preferred University",
-"Preferred Course",
-"Preferred Intake",
-"Budget",
-"Assigned Counsellor",
-"Current Status",
-"Notes"
+navStudy:[
+'Countries',
+'Universities',
+'Courses',
+'Intake',
+'Applications',
+'Documents',
+'DocumentChecklist',
+'Offers',
+'Visa'
 ],
 
-Countries:[
-"Country ID",
-"Country Name",
-"Country Code",
-"Flag",
-"Description",
-"Status",
-"Sort Order"
+navIELTS:[
+'IELTS_Batches',
+'IELTS_Students',
+'IELTS_Attendance',
+'IELTS_MockTests',
+'IELTS_Results'
 ],
 
-Universities:[
-"University ID",
-"University Name",
-"Country",
-"City",
-"Website",
-"Ranking",
-"Application Fee",
-"Tuition Fee",
-"Intakes",
-"IELTS Requirement",
-"PTE Requirement",
-"Duolingo Requirement",
-"GPA Requirement",
-"Scholarship",
-"Processing Time",
-"Partner Status",
-"Status",
-"Notes"
+navAccounts:[
+'Payments',
+'Invoices',
+'MoneyReceipts',
+'Income',
+'Expenses',
+'DuePayments',
+'Reports'
 ],
 
-Courses:[
-"Course ID",
-"University ID",
-"University Name",
-"Country",
-"Course Name",
-"Degree Level",
-"Duration",
-"Tuition Fee",
-"Intake",
-"IELTS Requirement",
-"PTE Requirement",
-"Duolingo Requirement",
-"Application Deadline",
-"Status",
-"Notes"
-],
-
-Applications:[
-"Application ID",
-"Student ID",
-"Country",
-"University",
-"Course",
-"Degree Level",
-"Intake",
-"Application Date",
-"Application Deadline",
-"Assigned Officer",
-"Application Status",
-"Application Fee",
-"Payment Status",
-"Notes"
-],
-
-Documents:[
-"Document ID",
-"Student ID",
-"Application ID",
-"Document Type",
-"Document Name",
-"File URL",
-"Expiry Date",
-"Notes"
-],
-
-DocumentChecklist:[
-"Checklist ID",
-"Student ID",
-"Application ID",
-"Document Type",
-"Required",
-"Received",
-"Verified",
-"File URL",
-"Remarks"
-],
-
-Offers:[
-"Offer ID",
-"Student ID",
-"Application ID",
-"University",
-"Course",
-"Offer Type",
-"Offer Date",
-"Offer Deadline",
-"Deposit Amount",
-"Deposit Deadline",
-"Deposit Status",
-"Offer Letter URL",
-"Status",
-"Notes"
-],
-
-Visa:[
-"Visa ID",
-"Student ID",
-"Application ID",
-"Country",
-"University",
-"Visa Type",
-"Application Date",
-"Biometrics Date",
-"Medical Date",
-"Interview Date",
-"Decision Date",
-"Visa Status",
-"Refusal Reason",
-"Visa Letter URL",
-"Assigned Officer",
-"Notes"
-],
-
-IELTS_Batches:[
-"Batch ID",
-"Batch Name",
-"Teacher",
-"Course Type",
-"Start Date",
-"End Date",
-"Class Days",
-"Class Time",
-"Room",
-"Capacity",
-"Status",
-"Notes"
-],
-
-IELTS_Students:[
-"Enrollment ID",
-"Student ID",
-"Batch ID",
-"Enrollment Date",
-"Course Fee",
-"Paid",
-"Status",
-"Notes"
-],
-
-IELTS_Attendance:[
-"Attendance ID",
-"Batch ID",
-"Student ID",
-"Date",
-"Status",
-"Remarks"
-],
-
-IELTS_MockTests:[
-"Mock Test ID",
-"Student ID",
-"Batch ID",
-"Test Date",
-"Listening",
-"Reading",
-"Writing",
-"Speaking",
-"Overall",
-"Remarks"
-],
-
-IELTS_Results:[
-"Result ID",
-"Student ID",
-"Test Type",
-"Test Date",
-"Listening",
-"Reading",
-"Writing",
-"Speaking",
-"Overall",
-"Certificate URL",
-"Notes"
-],
-
-Payments:[
-"Payment ID",
-"Student ID",
-"Invoice ID",
-"Date",
-"Purpose",
-"Description",
-"Amount",
-"Payment Method",
-"Transaction ID",
-"Received By",
-"Receipt Number",
-"Notes"
-],
-
-Expenses:[
-"Expense ID",
-"Date",
-"Category",
-"Description",
-"Amount",
-"Payment Method",
-"Reference",
-"Paid By",
-"Notes"
-],
-
-Invoices:[
-"Invoice ID",
-"Student ID",
-"Invoice Date",
-"Due Date",
-"Service",
-"Description",
-"Total Amount",
-"Paid Amount",
-"Due Amount",
-"Status",
-"Notes"
-],
-
-MoneyReceipts:[
-"Receipt ID",
-"Receipt Number",
-"Student ID",
-"Payment ID",
-"Date",
-"Purpose",
-"Amount",
-"Payment Method",
-"Received By",
-"Notes"
-],
-
-Income:[
-"Income ID",
-"Date",
-"Category",
-"Description",
-"Amount",
-"Source",
-"Payment Method",
-"Received By",
-"Reference",
-"Notes"
-],
-
-Intake:[
-"Intake ID",
-"Country",
-"University",
-"Course",
-"Intake Name",
-"Application Deadline",
-"Deposit Deadline",
-"Visa Deadline",
-"Status",
-"Notes"
-],
-
-Counselling:[
-"Counselling ID",
-"Student ID",
-"Lead ID",
-"Date",
-"Counsellor",
-"Country",
-"Course",
-"University",
-"Budget",
-"Student Requirement",
-"Counsellor Recommendation",
-"Next Action",
-"Next Follow-up",
-"Notes"
-],
-
-FollowUps:[
-"Follow-up ID",
-"Lead ID",
-"Student ID",
-"Assigned To",
-"Follow-up Date",
-"Follow-up Time",
-"Type",
-"Subject",
-"Notes",
-"Outcome",
-"Next Follow-up",
-"Status"
-],
-
-Tasks:[
-"Task ID",
-"Title",
-"Description",
-"Assigned To",
-"Related Student",
-"Related Application",
-"Priority",
-"Due Date",
-"Status",
-"Completed At"
-],
-
-EmployeeAttendance:[
-"Attendance ID",
-"Employee ID",
-"Employee Name",
-"Date",
-"Check In",
-"Check Out",
-"Status",
-"Remarks",
-"Marked By"
-],
-
-LeaveManagement:[
-"Leave ID",
-"Employee ID",
-"Employee Name",
-"Leave Type",
-"Start Date",
-"End Date",
-"Total Days",
-"Reason",
-"Status",
-"Approved By",
-"Remarks"
-],
-
-Roles:[
-"Role ID",
-"Role Name",
-"Permissions"
-],
-
-Settings:[
-"Setting ID",
-"Key",
-"Value",
-"Description"
-],
-
-Notifications:[
-"Notification ID",
-"User ID",
-"Title",
-"Message",
-"Type",
-"Related ID",
-"Is Read"
-],
-
-Timeline:[
-"Timeline ID",
-"Student ID",
-"Date",
-"Event Type",
-"Description",
-"User ID"
-],
-
-LeadSources:[
-"Source ID",
-"Source Name",
-"Status",
-"Notes"
-],
-
-StudentPortal:[
-"Portal ID",
-"Student ID",
-"Username",
-"Password",
-"Status"
-],
-
-ActivityLog:[
-"Log ID",
-"Date",
-"User",
-"Action",
-"Module",
-"Record ID",
-"Details"
+navAdmin:[
+'Notifications',
+'Timeline',
+'LeadSources',
+'ActivityLog',
+'Settings',
+'StudentPortal',
+'Roles'
 ]
 
 };
 
 
-/* =========================================================
-   STATE
-========================================================= */
+Object.entries(groups)
+.forEach(
+([container,mods])=>{
 
-let user = null;
-let currentModule = "";
-let records = [];
-let currentRow = null;
+const n=$(container);
 
-let dropdowns = null;
+if(!n)return;
 
-let moduleCache = {};
+n.innerHTML='';
 
-let currentPage = 1;
-let pageSize = 25;
-let totalRecords = 0;
 
-let attendanceFilters = {
-  date:"",
-  month:"",
-  employeeId:""
+mods.forEach(m=>{
+
+if(
+user.role!=='Admin' &&
+ADMIN_ONLY.includes(m)
+){
+return;
+}
+
+
+const b=
+document.createElement('button');
+
+b.type='button';
+
+b.textContent=
+m==='Users'
+?'+ Employee Management'
+:label(m);
+
+b.dataset.module=m;
+
+b.onclick=()=>{
+openModule(m);
+};
+
+n.appendChild(b);
+
+});
+
+});
+
+}
+
+
+function openModule(m){
+
+current={
+module:m,
+page:1,
+size:20,
+search:'',
+filters:{}
 };
 
 
-/* =========================================================
-   HELPERS
-========================================================= */
+$('title').textContent=
+m==='Users'
+?'Employee Management'
+:label(m);
 
-function esc(value){
 
-  return String(
-    value === null ||
-    value === undefined
-      ? ""
-      : value
-  )
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+document
+.querySelectorAll('.nav button')
+.forEach(
+b=>{
+b.classList.toggle(
+'active',
+b.dataset.module===m
+);
+}
+);
+
+
+if(m==='Dashboard')
+return renderDashboard();
+
+
+if(m==='Reports')
+return renderReports();
+
+
+if(m==='DuePayments')
+return renderDuePayments();
+
+
+if(m==='EmployeeAttendance')
+return renderAttendance();
+
+
+renderList();
 
 }
 
 
-function loading(show){
+async function renderDashboard(){
 
-  document
-    .getElementById("loading")
-    .classList.toggle(
-      "show",
-      show
-    );
+const c=$('content');
+
+c.innerHTML=
+'<div class="loading">Loading dashboard...</div>';
+
+
+try{
+
+const x=
+await api('dashboard');
+
+const q=
+x.data.counts||{};
+
+
+c.innerHTML=
+'<div class="grid">'+
+
+[
+['Leads','Leads'],
+['Students','Students'],
+['Applications','Applications'],
+['Invoices','Invoices'],
+['Payments','Payments'],
+['Expenses','Expenses'],
+['Users','Users'],
+['EmployeeAttendance','Employee Attendance']
+]
+
+.map(
+a=>
+`<div class="stat">
+<span>${a[0]}</span>
+<b>${q[a[1]]??0}</b>
+</div>`
+)
+.join('')+
+
+'</div>'+
+
+`<div class="card" style="margin-top:14px">
+<b>Welcome, ${
+esc(user.name||user.username)
+}</b>
+
+<p class="muted">
+Use the left menu to manage students,
+applications, IELTS, staff, attendance,
+leave, finance and other CRM records.
+</p>
+</div>`;
+
+
+}catch(e){
+
+c.innerHTML=
+`<div class="card">
+${esc(e.message)}
+</div>`;
+
+}
 
 }
 
 
-function toast(message){
+async function renderList(){
 
-  const el =
-    document.getElementById("toast");
+const c=$('content');
 
-  el.textContent =
-    message || "";
 
-  el.classList.add("show");
+const key=
+current.module+
+'|'+
+current.page+
+'|'+
+current.size+
+'|'+
+current.search+
+'|'+
+JSON.stringify(current.filters);
 
-  clearTimeout(
-    window.__toastTimer
-  );
 
-  window.__toastTimer =
-    setTimeout(
-      function(){
+if(moduleCache[key]){
 
-        el.classList.remove("show");
+drawList(
+moduleCache[key]
+);
 
-      },
-      2800
-    );
+return;
 
 }
 
 
-/* =========================================================
-   API
-========================================================= */
+c.innerHTML=
+`<div class="loading">
+Loading ${esc(label(current.module))}...
+</div>`;
 
-async function api(
-  action,
-  data={}
+
+try{
+
+const x=
+await api(
+'list',
+{
+module:current.module,
+page:current.page,
+pageSize:current.size,
+search:current.search,
+filters:current.filters
+}
+);
+
+
+moduleCache[key]=
+x.data;
+
+
+drawList(x.data);
+
+
+}catch(e){
+
+c.innerHTML=
+`<div class="card">
+${esc(e.message)}
+</div>`;
+
+}
+
+}
+
+
+function drawList(data){
+
+const c=$('content');
+
+
+let employeeBanner='';
+
+
+if(current.module==='Users'){
+
+employeeBanner=`
+
+<div class="note">
+
+<b>Staff / Employee Management</b>
+
+<br><br>
+
+Manage all Radiance employees from this master list.
+
+Employee ID is entered manually.
+
+New employees automatically become available in employee-related dropdowns throughout the CRM.
+
+<br><br>
+
+<b>Employee-related fields:</b>
+Employee ID, Employee Name, Assigned To,
+Counsellor, Teacher, Received By, Paid By,
+Approved By and other employee selectors.
+
+</div>
+
+`;
+
+}
+
+
+let toolbar=`
+
+<div class="toolbar">
+
+<input
+id="search"
+value="${esc(current.search)}"
+placeholder="Search ${esc(label(current.module))}..."
+onkeydown="
+if(event.key==='Enter'){
+current.search=this.value;
+current.page=1;
+renderList()
+}
+"
+>
+
+<button
+class="primary"
+onclick="
+current.search=$('search').value;
+current.page=1;
+renderList()
+"
+>
+Search
+</button>
+
+<button
+class="secondary"
+onclick="
+current.search='';
+current.page=1;
+renderList()
+"
+>
+Clear
+</button>
+`;
+
+
+if(current.module!=='ActivityLog'){
+
+toolbar+=`
+
+<button
+class="primary"
+onclick="openForm()"
+>
+${
+current.module==='Users'
+?'+ Add Employee'
+:'+ Add New'
+}
+</button>
+
+`;
+
+}
+
+
+toolbar+=`
+
+<button
+class="secondary"
+onclick="invalidateAndRefresh()"
+>
+Refresh
+</button>
+
+</div>
+`;
+
+
+let table=`
+
+<div class="tablewrap">
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+${
+data.headers
+.map(
+h=>`<th>${esc(h)}</th>`
+)
+.join('')
+}
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+`;
+
+
+if(!data.rows.length){
+
+table+=`
+
+<tr>
+
+<td
+colspan="${data.headers.length+1}"
+>
+
+<div class="empty">
+No records found.
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+}
+
+
+data.rows.forEach(r=>{
+
+table+=
+'<tr>'+
+r.map(
+(v,i)=>
+cell(
+data.headers[i],
+v
+)
+).join('')+
+'<td>'+
+actionsForRow(
+data.headers,
+r
+)+
+'</td>'+
+'</tr>';
+
+});
+
+
+table+=`
+
+</tbody>
+
+</table>
+
+</div>
+`;
+
+
+const pages=
+Math.max(
+1,
+Math.ceil(
+data.total/data.pageSize
+)
+);
+
+
+c.innerHTML=
+employeeBanner+
+toolbar+
+table+
+
+`
+
+<div class="pager">
+
+<span>
+Page ${data.page} of ${pages}
+• ${data.total} records
+</span>
+
+<span>
+
+<button
+class="secondary"
+${data.page<=1?'disabled':''}
+onclick="
+current.page--;
+renderList()
+"
+>
+Previous
+</button>
+
+<button
+class="secondary"
+${data.page>=pages?'disabled':''}
+onclick="
+current.page++;
+renderList()
+"
+>
+Next
+</button>
+
+</span>
+
+</div>
+
+`;
+
+}
+
+
+function cell(h,v){
+
+if(
+[
+'Phone',
+'WhatsApp',
+'Mobile',
+'Contact',
+'Phone Number',
+'Mobile Number'
+].includes(h)
+&&
+String(v).trim()
 ){
 
-  const payload = {
-    action,
-    ...data
-  };
+return `
 
-  if(
-    user &&
-    user.token
-  ){
+<td>
 
-    payload.token =
-      user.token;
+${esc(v)}
 
-  }
+<a
+class="wa"
+target="_blank"
+href="https://wa.me/${waNumber(v)}"
+>
+WhatsApp
+</a>
 
-  const response =
-    await fetch(
-      API_URL,
-      {
-        method:"POST",
-        body:
-          JSON.stringify(
-            payload
-          )
-      }
-    );
+</td>
 
-  const text =
-    await response.text();
-
-  let result;
-
-  try{
-
-    result =
-      JSON.parse(text);
-
-  }catch(error){
-
-    throw new Error(
-      "Invalid response from CRM server."
-    );
-
-  }
-
-  if(
-    result &&
-    result.authenticated === false
-  ){
-
-    sessionStorage.clear();
-
-    location.reload();
-
-  }
-
-  return result;
+`;
 
 }
 
 
-/* =========================================================
-   LOGIN
-========================================================= */
-
-async function login(){
-
-  const username =
-    document
-      .getElementById("loginUsername")
-      .value
-      .trim();
-
-  const password =
-    document
-      .getElementById("loginPassword")
-      .value;
-
-  const errorEl =
-    document
-      .getElementById("loginError");
-
-  errorEl.textContent = "";
-
-  if(
-    !username ||
-    !password
-  ){
-
-    errorEl.textContent =
-      "Enter username and password.";
-
-    return;
-
-  }
-
-  loading(true);
-
-  try{
-
-    const result =
-      await api(
-        "login",
-        {
-          username,
-          password
-        }
-      );
-
-    if(!result.success){
-
-      errorEl.textContent =
-        result.message ||
-        "Login failed.";
-
-      return;
-
-    }
-
-    user =
-      result.user;
-
-    sessionStorage.setItem(
-      "radiance_token",
-      user.token
-    );
-
-    sessionStorage.setItem(
-      "radiance_user",
-      JSON.stringify(user)
-    );
-
-    start();
-
-  }catch(error){
-
-    errorEl.textContent =
-      error.message ||
-      "Unable to connect to CRM.";
-
-  }finally{
-
-    loading(false);
-
-  }
-
-}
-
-
-/* =========================================================
-   START
-========================================================= */
-
-function start(){
-
-  document
-    .getElementById("loginScreen")
-    .style.display =
-    "none";
-
-  document
-    .getElementById("app")
-    .style.display =
-    "block";
-
-  document
-    .getElementById("userInfo")
-    .textContent =
-    (
-      user.name ||
-      user["Full Name"] ||
-      ""
-    ) +
-    " • " +
-    (
-      user.role ||
-      user.Role ||
-      ""
-    );
-
-  buildNav();
-
-  openModule("Dashboard");
-
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function buildNav(){
-
-  const nav =
-    document.getElementById(
-      "navigation"
-    );
-
-  nav.innerHTML = "";
-
-  Object.keys(
-    MODULES
-  )
-  .forEach(function(group){
-
-    const title =
-      document.createElement(
-        "div"
-      );
-
-    title.className =
-      "nav-group";
-
-    title.textContent =
-      group;
-
-    nav.appendChild(
-      title
-    );
-
-    MODULES[group]
-      .forEach(function(module){
-
-        const btn =
-          document.createElement(
-            "button"
-          );
-
-        btn.className =
-          "nav-btn";
-
-        btn.dataset.module =
-          module;
-
-        btn.textContent =
-          LABELS[module] ||
-          module;
-
-        btn.onclick =
-          function(){
-
-            openModule(
-              module
-            );
-
-            if(
-              window.innerWidth <= 700
-            ){
-
-              document
-                .getElementById("sidebar")
-                .classList.remove(
-                  "open"
-                );
-
-            }
-
-          };
-
-        nav.appendChild(
-          btn
-        );
-
-      });
-
-  });
-
-}
-
-
-function activeNav(){
-
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(function(btn){
-
-      btn.classList.toggle(
-        "active",
-        btn.dataset.module ===
-        currentModule
-      );
-
-    });
-
-}
-
-
-/* =========================================================
-   OPEN MODULE
-========================================================= */
-
-async function openModule(
-  module
+if(
+h==='Photo' &&
+String(v).startsWith('http')
 ){
 
-  currentModule =
-    module;
+return `
 
-  currentPage = 1;
+<td>
 
-  activeNav();
+<img
+class="photo"
+src="${esc(v)}"
+onerror="this.style.display='none'"
+>
 
-  document
-    .getElementById("pageTitle")
-    .textContent =
-    LABELS[module] ||
-    module;
+</td>
 
-  if(
-    module === "Dashboard"
-  ){
-
-    await dashboard();
-    return;
-
-  }
-
-  if(
-    module === "Reports"
-  ){
-
-    await reports();
-    return;
-
-  }
-
-  if(
-    module === "DuePayments"
-  ){
-
-    await duePayments();
-    return;
-
-  }
-
-  if(
-    module === "EmployeeAttendance"
-  ){
-
-    await renderAttendanceModule();
-    return;
-
-  }
-
-  await loadRecords(
-    module
-  );
+`;
 
 }
 
 
-/* =========================================================
-   DROPDOWNS
-========================================================= */
-
-async function loadDropdowns(
-  force=false
+if(
+h==='File URL' &&
+String(v).startsWith('http')
 ){
 
-  if(
-    dropdowns &&
-    !force
-  ){
+return `
 
-    return dropdowns;
+<td>
 
-  }
+<a
+class="link"
+target="_blank"
+href="${esc(v)}"
+>
+Open file
+</a>
 
-  const result =
-    await api(
-      "dropdowns"
-    );
+</td>
 
-  if(!result.success){
-
-    throw new Error(
-      result.message ||
-      "Unable to load dropdowns."
-    );
-
-  }
-
-  dropdowns =
-    result.data ||
-    {};
-
-  return dropdowns;
+`;
 
 }
 
 
-/* =========================================================
-   LOAD RECORDS
-========================================================= */
+return '<td>'+
+esc(v)+
+'</td>';
 
-async function loadRecords(
-  module,
-  options={}
+}
+
+
+function waNumber(v){
+
+let s=
+String(v)
+.replace(/\D/g,'');
+
+
+if(s.startsWith('880'))
+return s;
+
+
+if(s.startsWith('0'))
+return '880'+s.slice(1);
+
+
+if(s.startsWith('1'))
+return '880'+s;
+
+
+return s;
+
+}
+
+
+function actionsForRow(headers,row){
+
+if(
+current.module==='ActivityLog'
+)
+return '<span class="muted">Read only</span>';
+
+
+const id=
+String(row[0]??'');
+
+
+let out=`
+
+<div class="actions">
+
+<button
+class="secondary"
+onclick='openForm(${JSON.stringify(id)})'
+>
+Edit
+</button>
+
+`;
+
+
+if(
+current.module==='Notifications'
+&&
+String(
+row[
+headers.indexOf('Is Read')
+]||''
+).toLowerCase()!=='yes'
 ){
 
-  const page =
-    options.page ||
-    currentPage;
+out+=`
 
-  const size =
-    options.pageSize ||
-    pageSize;
+<button
+class="success"
+onclick='markRead(${JSON.stringify(id)})'
+>
+Mark read
+</button>
 
-  const search =
-    options.search ||
-    "";
-
-  const cacheKey =
-    module +
-    "|" +
-    page +
-    "|" +
-    size +
-    "|" +
-    search;
-
-  if(
-    moduleCache[
-      cacheKey
-    ]
-  ){
-
-    const cached =
-      moduleCache[
-        cacheKey
-      ];
-
-    records =
-      cached.records;
-
-    totalRecords =
-      cached.total;
-
-    renderTable(
-      LABELS[module] ||
-      module
-    );
-
-    return cached;
-
-  }
-
-  loading(true);
-
-  try{
-
-    const result =
-      await api(
-        "list",
-        {
-          module,
-          page,
-          pageSize:size,
-          search
-        }
-      );
-
-    if(!result.success){
-
-      toast(
-        result.message ||
-        "Unable to load records."
-      );
-
-      return {
-        records:[],
-        total:0
-      };
-
-    }
-
-    records =
-      result.records ||
-      [];
-
-    totalRecords =
-      Number(
-        result.total ||
-        records.length
-      );
-
-    moduleCache[
-      cacheKey
-    ] = {
-      records,
-      total:
-        totalRecords
-    };
-
-    renderTable(
-      LABELS[module] ||
-      module
-    );
-
-    return {
-      records,
-      total:
-        totalRecords
-    };
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-    return {
-      records:[],
-      total:0
-    };
-
-  }finally{
-
-    loading(false);
-
-  }
+`;
 
 }
 
 
-/* =========================================================
-   TABLE
-========================================================= */
+out+=`
 
-function renderTable(
-  title
+<button
+class="danger"
+onclick='removeRecord(${JSON.stringify(id)})'
+>
+Delete
+</button>
+
+</div>
+
+`;
+
+
+return out;
+
+}
+
+
+async function invalidateAndRefresh(){
+
+moduleCache={};
+
+dd=null;
+
+renderList();
+
+}
+
+
+async function loadDropdowns(){
+
+if(dd)return dd;
+
+
+const x=
+await api('dropdowns');
+
+
+dd=x.data;
+
+
+return dd;
+
+}
+
+
+function fieldType(h,m){
+
+if(
+[
+'Created At',
+'Updated At',
+'Password Hash'
+].includes(h)
+)
+return 'hidden';
+
+
+if(
+h==='Password' &&
+m==='Users'
+)
+return 'password';
+
+
+if(
+h==='Photo' &&
+m==='Users'
+)
+return 'photo';
+
+
+if(
+h==='File URL' &&
+m==='Documents'
+)
+return 'hidden';
+
+
+if(
+h==='Date' ||
+h.endsWith(' Date') ||
+h==='DOB' ||
+h==='Start Date' ||
+h==='End Date' ||
+h==='Due Date' ||
+h==='Deadline' ||
+h==='Offer Date' ||
+h==='Application Date' ||
+h==='Submission Date' ||
+h==='Decision Date' ||
+h==='Enrollment Date' ||
+h==='Income Date' ||
+h==='Expense Date' ||
+h==='Receipt Date' ||
+h==='Test Date'
+)
+return 'date';
+
+
+if(
+h==='Time' ||
+h==='Check In' ||
+h==='Check Out'
+)
+return 'time';
+
+
+if(
+h.includes('Description') ||
+h==='Notes' ||
+h==='Remarks' ||
+h==='Reason' ||
+h==='Message' ||
+h==='Details' ||
+h==='Schedule'
+)
+return 'textarea';
+
+
+return 'text';
+
+}
+
+
+function employeeKind(h){
+
+if(
+h==='Employee ID' ||
+h==='Staff ID' ||
+h==='Teacher ID'
+)
+return 'id';
+
+
+if(
+h==='Employee Name' ||
+h==='Staff Name'
+)
+return 'name';
+
+
+if(
+[
+'Employee',
+'Teacher',
+'Assigned Employee',
+'Assigned To',
+'Counsellor',
+'Received By',
+'Paid By',
+'Approved By'
+].includes(h)
+)
+return 'combo';
+
+
+return '';
+
+}
+
+
+function optionsFor(h,m,value){
+
+const v=
+String(value??'');
+
+let arr=[];
+
+
+const ek=
+employeeKind(h);
+
+
+if(ek){
+
+const es=
+dd.employees||[];
+
+
+if(ek==='id'){
+
+arr=
+es.map(
+e=>[
+e.id,
+e.id+' — '+e.name
+]
+);
+
+}else if(ek==='name'){
+
+arr=
+es.map(
+e=>[
+e.name,
+e.name+' — '+e.id
+]
+);
+
+}else{
+
+arr=
+es.map(
+e=>[
+e.id,
+e.id+' — '+e.name
+]
+);
+
+}
+
+}
+
+
+else if(h==='Role'){
+
+arr=
+(dd.roles||[])
+.map(
+x=>[
+x.name,
+x.name
+]
+);
+
+}
+
+
+else if(
+h==='Country' ||
+h==='Country Name'
 ){
 
-  const content =
-    document.getElementById(
-      "content"
-    );
-
-  const toolbar = `
-
-    <div class="toolbar">
-
-      <div class="toolbar-left">
-
-        <input
-          id="search"
-          class="search"
-          placeholder="Search ${esc(title)}..."
-          value=""
-          onkeydown="
-            if(event.key==='Enter'){
-              searchCurrentModule();
-            }
-          "
-        >
-
-        <button
-          class="btn btn-light"
-          onclick="searchCurrentModule()"
-        >
-          Search
-        </button>
-
-      </div>
-
-      <div class="toolbar-right">
-
-        <button
-          class="btn"
-          onclick="openModal()"
-        >
-          + Add New
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-  if(!records.length){
-
-    content.innerHTML =
-      toolbar +
-      `
-
-      <div class="card">
-
-        <h3>
-          ${esc(title)}
-        </h3>
-
-        <div class="empty">
-          No records found.
-        </div>
-
-      </div>
-
-      `;
-
-    return;
-
-  }
-
-  let keys =
-    Object.keys(
-      records[0]
-    )
-    .filter(function(key){
-
-      return (
-        key !== "_row"
-      );
-
-    });
-
-  keys =
-    prioritize(keys);
-
-  content.innerHTML =
-    toolbar +
-    `
-
-    <div class="table-card">
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              ${keys
-                .map(function(key){
-
-                  return `
-                    <th>
-                      ${esc(key)}
-                    </th>
-                  `;
-
-                })
-                .join("")
-              }
-
-              <th>
-                Actions
-              </th>
-
-            </tr>
-
-          </thead>
-
-          <tbody id="tableBody">
-
-            ${rowsHtml(
-              records,
-              keys
-            )}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      ${paginationHtml()}
-
-    </div>
-
-    `;
+arr=
+(dd.countries||[])
+.map(
+x=>[
+x.name,
+x.name
+]
+);
 
 }
 
 
-function prioritize(
-  keys
+else if(h==='University ID'){
+
+arr=
+(dd.universities||[])
+.map(
+x=>[
+x.id,
+x.id+' — '+x.name
+]
+);
+
+}
+
+
+else if(h==='Course ID'){
+
+arr=
+(dd.courses||[])
+.map(
+x=>[
+x.id,
+x.id+' — '+x.name
+]
+);
+
+}
+
+
+else if(h==='Student ID'){
+
+arr=
+(dd.students||[])
+.map(
+x=>[
+x.id,
+x.id+' — '+x.label
+]
+);
+
+}
+
+
+else if(h==='Lead ID'){
+
+arr=
+(dd.leads||[])
+.map(
+x=>[
+x.id,
+x.id+' — '+x.label
+]
+);
+
+}
+
+
+else if(h==='Application ID'){
+
+arr=
+(dd.applications||[])
+.map(
+x=>[
+x.id,
+x.id+' — '+x.label
+]
+);
+
+}
+
+
+else if(h==='Invoice ID'){
+
+arr=
+(dd.invoices||[])
+.map(
+x=>[
+x.id,
+x.id+' — '+x.label
+]
+);
+
+}
+
+
+else if(h==='Batch ID'){
+
+arr=
+(dd.batches||[])
+.map(
+x=>[
+x.id,
+x.id+' — '+x.label
+]
+);
+
+}
+
+
+else if(h==='IELTS Student ID'){
+
+arr=
+(dd.ieltsStudents||[])
+.map(
+x=>[
+x.id,
+x.id+' — '+x.label
+]
+);
+
+}
+
+
+else if(h==='Source'){
+
+arr=
+(dd.sources||[])
+.map(
+x=>[
+x.label,
+x.label
+]
+);
+
+}
+
+
+else if(h==='Status'){
+
+arr=
+statusOptions(m);
+
+}
+
+
+else if(h==='Application Status'){
+
+arr=[
+'Draft',
+'Submitted',
+'Offer',
+'Conditional Offer',
+'Rejected',
+'Withdrawn',
+'Completed'
+].map(
+x=>[x,x]
+);
+
+}
+
+
+else if(h==='Offer Type'){
+
+arr=[
+'Conditional',
+'Unconditional'
+].map(
+x=>[x,x]
+);
+
+}
+
+
+else if(
+h==='Payment Method' ||
+h==='Method'
 ){
 
-  const first = [
-
-    "Employee ID",
-    "Employee Name",
-
-    "Student ID",
-    "Lead ID",
-    "Application ID",
-    "Invoice ID",
-
-    "Name",
-    "Full Name",
-
-    "Phone",
-    "WhatsApp",
-
-    "Country",
-    "University",
-    "Course",
-
-    "Date",
-    "Status"
-
-  ];
-
-  const output = [];
-
-  first.forEach(function(name){
-
-    if(
-      keys.includes(name) &&
-      !output.includes(name)
-    ){
-
-      output.push(name);
-
-    }
-
-  });
-
-  keys.forEach(function(name){
-
-    if(
-      !output.includes(name)
-    ){
-
-      output.push(name);
-
-    }
-
-  });
-
-  return output;
+arr=[
+'Cash',
+'bKash',
+'Nagad',
+'Rocket',
+'Bank',
+'Card',
+'Other'
+].map(
+x=>[x,x]
+);
 
 }
 
 
-function rowsHtml(
-  data,
-  keys
+else if(h==='Priority'){
+
+arr=[
+'Low',
+'Medium',
+'High',
+'Urgent'
+].map(
+x=>[x,x]
+);
+
+}
+
+
+else if(
+[
+'Received',
+'Verified',
+'Required',
+'Is Read'
+].includes(h)
 ){
 
-  return data
-    .map(function(row){
-
-      return `
-
-      <tr>
-
-        ${keys
-          .map(function(key){
-
-            return `
-
-              <td>
-
-                ${cell(
-                  row[key],
-                  key
-                )}
-
-              </td>
-
-            `;
-
-          })
-          .join("")
-        }
-
-        <td>
-
-          <div class="actions">
-
-            ${
-              currentModule ===
-              "Notifications"
-              &&
-              String(
-                row["Is Read"] ||
-                ""
-              ).toLowerCase() !==
-              "yes"
-              ?
-              `
-              <button
-                class="btn btn-success btn-small"
-                onclick="markNotificationRead(${row._row})"
-              >
-                Mark Read
-              </button>
-              `
-              :
-              ""
-            }
-
-            <button
-              class="btn btn-light btn-small"
-              onclick="openModal(${row._row})"
-            >
-              Edit
-            </button>
-
-            ${
-              currentModule ===
-              "ActivityLog"
-              ?
-              ""
-              :
-              `
-              <button
-                class="btn btn-danger btn-small"
-                onclick="deleteRecord(${row._row})"
-              >
-                Delete
-              </button>
-              `
-            }
-
-          </div>
-
-        </td>
-
-      </tr>
-
-      `;
-
-    })
-    .join("");
+arr=[
+'Yes',
+'No'
+].map(
+x=>[x,x]
+);
 
 }
 
 
-function cell(
-  value,
-  key
+else if(h==='Gender'){
+
+arr=[
+'Male',
+'Female',
+'Other'
+].map(
+x=>[x,x]
+);
+
+}
+
+
+if(
+v &&
+!arr.some(
+x=>String(x[0])===v
+)
 ){
 
-  if(
-    value === null ||
-    value === undefined ||
-    value === ""
-  ){
-
-    return "";
-
-  }
-
-  const text =
-    String(value);
-
-  if(
-    key === "Phone" ||
-    key === "WhatsApp"
-  ){
-
-    return `
-
-      ${esc(text)}
-
-      <button
-        class="whatsapp"
-        onclick="whatsapp('${esc(text)}')"
-      >
-        WhatsApp
-      </button>
-
-    `;
-
-  }
-
-  if(
-    key.toLowerCase()
-      .includes("url")
-  ){
-
-    return `
-
-      <a
-        href="${esc(text)}"
-        target="_blank"
-        rel="noopener"
-      >
-        Open
-      </a>
-
-    `;
-
-  }
-
-  if(
-    key === "Photo"
-  ){
-
-    return `
-
-      <img
-        src="${esc(normalizeDriveImage(text))}"
-        style="
-          width:42px;
-          height:42px;
-          border-radius:50%;
-          object-fit:cover;
-        "
-        onerror="this.style.display='none'"
-      >
-
-    `;
-
-  }
-
-  if(
-    key === "Status" ||
-    key.endsWith(" Status") ||
-    key === "Application Status" ||
-    key === "Visa Status"
-  ){
-
-    return `
-      <span class="badge">
-        ${esc(text)}
-      </span>
-    `;
-
-  }
-
-  if(
-    text.length > 120
-  ){
-
-    return (
-      esc(
-        text.substring(
-          0,
-          117
-        )
-      ) +
-      "..."
-    );
-
-  }
-
-  return esc(text);
+arr.unshift([v,v]);
 
 }
 
 
-/* =========================================================
-   PAGINATION
-========================================================= */
-
-function paginationHtml(){
-
-  const totalPages =
-    Math.max(
-      1,
-      Math.ceil(
-        totalRecords /
-        pageSize
-      )
-    );
-
-  return `
-
-    <div class="pagination">
-
-      <div>
-        Page
-        <strong>
-          ${currentPage}
-        </strong>
-        of
-        <strong>
-          ${totalPages}
-        </strong>
-
-        •
-        ${totalRecords}
-        records
-      </div>
-
-      <div class="page-buttons">
-
-        <button
-          class="btn btn-light btn-small"
-          onclick="changePage(-1)"
-          ${currentPage <= 1 ? "disabled" : ""}
-        >
-          Previous
-        </button>
-
-        <button
-          class="btn btn-light btn-small"
-          onclick="changePage(1)"
-          ${currentPage >= totalPages ? "disabled" : ""}
-        >
-          Next
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
+return arr;
 
 }
 
 
-async function changePage(
-  direction
+function statusOptions(m){
+
+if(
+m==='EmployeeAttendance'
 ){
 
-  const totalPages =
-    Math.max(
-      1,
-      Math.ceil(
-        totalRecords /
-        pageSize
-      )
-    );
-
-  const next =
-    currentPage +
-    direction;
-
-  if(
-    next < 1 ||
-    next > totalPages
-  ){
-
-    return;
-
-  }
-
-  currentPage =
-    next;
-
-  await loadRecords(
-    currentModule,
-    {
-      page:
-        currentPage,
-      pageSize
-    }
-  );
+return[
+'Present',
+'Absent',
+'Late',
+'Half Day',
+'Leave'
+].map(
+x=>[x,x]
+);
 
 }
 
 
-async function searchCurrentModule(){
-
-  currentPage = 1;
-
-  const searchEl =
-    document.getElementById(
-      "search"
-    );
-
-  const search =
-    searchEl
-      ? searchEl.value.trim()
-      : "";
-
-  await loadRecords(
-    currentModule,
-    {
-      page:1,
-      pageSize,
-      search
-    }
-  );
-
-}
-
-
-/* =========================================================
-   DROPDOWN OPTIONS
-========================================================= */
-
-function optionsFor(
-  field
+if(
+m==='LeaveManagement'
 ){
 
-  if(!dropdowns)
-    return null;
-
-  const f =
-    field.toLowerCase();
-
-  /* EMPLOYEE ID */
-
-  if(
-    field === "Employee ID"
-  ){
-
-    return (
-      dropdowns.employees ||
-      dropdowns.users ||
-      []
-    )
-    .map(function(x){
-
-      const id =
-        x["Employee ID"] ||
-        x.employeeId ||
-        x["User ID"] ||
-        "";
-
-      const name =
-        x["Full Name"] ||
-        x.Name ||
-        x.name ||
-        "";
-
-      const role =
-        x.Role ||
-        x.role ||
-        "";
-
-      return {
-        value:id,
-        label:
-          id +
-          " — " +
-          name +
-          (
-            role
-              ? " (" +
-                role +
-                ")"
-              : ""
-          )
-      };
-
-    })
-    .filter(function(x){
-
-      return x.value;
-
-    });
-
-  }
-
-
-  /* EMPLOYEE NAME */
-
-  if(
-    field === "Employee Name"
-  ){
-
-    return (
-      dropdowns.employees ||
-      dropdowns.users ||
-      []
-    )
-    .map(function(x){
-
-      const id =
-        x["Employee ID"] ||
-        x.employeeId ||
-        x["User ID"] ||
-        "";
-
-      const name =
-        x["Full Name"] ||
-        x.Name ||
-        x.name ||
-        "";
-
-      return {
-        value:name,
-        label:
-          name +
-          (
-            id
-              ? " — " +
-                id
-              : ""
-          )
-      };
-
-    })
-    .filter(function(x){
-
-      return x.value;
-
-    });
-
-  }
-
-
-  /* STUDENTS */
-
-  if(
-    field === "Student ID"
-  ){
-
-    return (
-      dropdowns.students ||
-      []
-    )
-    .map(function(x){
-
-      const id =
-        x["Student ID"] ||
-        "";
-
-      return {
-        value:id,
-        label:
-          id +
-          " — " +
-          (
-            x.Name ||
-            ""
-          )
-      };
-
-    });
-
-  }
-
-
-  /* LEADS */
-
-  if(
-    field === "Lead ID"
-  ){
-
-    return (
-      dropdowns.leads ||
-      []
-    )
-    .map(function(x){
-
-      const id =
-        x["Lead ID"] ||
-        "";
-
-      return {
-        value:id,
-        label:
-          id +
-          " — " +
-          (
-            x.Name ||
-            ""
-          )
-      };
-
-    });
-
-  }
-
-
-  /* APPLICATION */
-
-  if(
-    field === "Application ID"
-  ){
-
-    return (
-      dropdowns.applications ||
-      []
-    )
-    .map(function(x){
-
-      const id =
-        x["Application ID"] ||
-        "";
-
-      return {
-        value:id,
-        label:
-          id +
-          " — " +
-          (
-            x.University ||
-            x.Country ||
-            ""
-          )
-      };
-
-    });
-
-  }
-
-
-  /* INVOICE */
-
-  if(
-    field === "Invoice ID"
-  ){
-
-    return (
-      dropdowns.invoices ||
-      []
-    )
-    .map(function(x){
-
-      const id =
-        x["Invoice ID"] ||
-        "";
-
-      return {
-        value:id,
-        label:
-          id +
-          " — " +
-          (
-            x.Service ||
-            x["Student ID"] ||
-            ""
-          )
-      };
-
-    });
-
-  }
-
-
-  /* BATCH */
-
-  if(
-    field === "Batch ID"
-  ){
-
-    return (
-      dropdowns.batches ||
-      []
-    )
-    .map(function(x){
-
-      const id =
-        x["Batch ID"] ||
-        "";
-
-      return {
-        value:id,
-        label:
-          id +
-          " — " +
-          (
-            x["Batch Name"] ||
-            ""
-          )
-      };
-
-    });
-
-  }
-
-
-  /* COUNTRY */
-
-  if(
-    field === "Country" ||
-    field === "Preferred Country" ||
-    f.includes("country")
-  ){
-
-    return (
-      dropdowns.countries ||
-      []
-    )
-    .map(function(x){
-
-      const name =
-        x["Country Name"] ||
-        x.Country ||
-        "";
-
-      return {
-        value:name,
-        label:
-          (
-            x.Flag ||
-            ""
-          ) +
-          " " +
-          name
-      };
-
-    })
-    .filter(function(x){
-
-      return x.value;
-
-    });
-
-  }
-
-
-  /* UNIVERSITY */
-
-  if(
-    f.includes("university")
-  ){
-
-    return (
-      dropdowns.universities ||
-      []
-    )
-    .map(function(x){
-
-      const name =
-        x["University Name"] ||
-        x.University ||
-        "";
-
-      return {
-        value:name,
-        label:
-          name +
-          " — " +
-          (
-            x.Country ||
-            ""
-          )
-      };
-
-    })
-    .filter(function(x){
-
-      return x.value;
-
-    });
-
-  }
-
-
-  /* COURSE */
-
-  if(
-    f.includes("course")
-  ){
-
-    return (
-      dropdowns.courses ||
-      []
-    )
-    .map(function(x){
-
-      const name =
-        x["Course Name"] ||
-        x.Course ||
-        "";
-
-      return {
-        value:name,
-        label:
-          name +
-          " — " +
-          (
-            x["University Name"] ||
-            x.University ||
-            ""
-          )
-      };
-
-    })
-    .filter(function(x){
-
-      return x.value;
-
-    });
-
-  }
-
-
-  /* ROLE */
-
-  if(
-    field === "Role"
-  ){
-
-    return (
-      dropdowns.roles ||
-      []
-    )
-    .map(function(x){
-
-      const role =
-        x["Role Name"] ||
-        x.role ||
-        x.name ||
-        "";
-
-      return {
-        value:role,
-        label:role
-      };
-
-    })
-    .filter(function(x){
-
-      return x.value;
-
-    });
-
-  }
-
-
-  /* EMPLOYEE-RELATED SINGLE FIELD */
-
-  if(
-    f.includes("assigned to") ||
-    f.includes("assigned officer") ||
-    f.includes("assigned counsellor") ||
-    f === "counsellor" ||
-    f === "teacher" ||
-    f === "received by" ||
-    f === "paid by" ||
-    f === "approved by"
-  ){
-
-    return (
-      dropdowns.employees ||
-      dropdowns.users ||
-      []
-    )
-    .map(function(x){
-
-      const id =
-        x["Employee ID"] ||
-        x.employeeId ||
-        x["User ID"] ||
-        "";
-
-      const name =
-        x["Full Name"] ||
-        x.Name ||
-        x.name ||
-        "";
-
-      return {
-        value:id,
-        label:
-          id +
-          " — " +
-          name
-      };
-
-    })
-    .filter(function(x){
-
-      return x.value;
-
-    });
-
-  }
-
-
-  /* SOURCE */
-
-  if(
-    field === "Source"
-  ){
-
-    return (
-      dropdowns.leadSources ||
-      []
-    )
-    .map(function(x){
-
-      const value =
-        x["Source Name"] ||
-        "";
-
-      return {
-        value,
-        label:value
-      };
-
-    });
-
-  }
-
-
-  /* ATTENDANCE STATUS */
-
-  if(
-    currentModule ===
-    "EmployeeAttendance" &&
-    field === "Status"
-  ){
-
-    return [
-      "Present",
-      "Absent",
-      "Late",
-      "Half Day",
-      "Leave"
-    ]
-    .map(function(x){
-
-      return {
-        value:x,
-        label:x
-      };
-
-    });
-
-  }
-
-
-  /* LEAVE STATUS */
-
-  if(
-    currentModule ===
-    "LeaveManagement" &&
-    field === "Status"
-  ){
-
-    return [
-      "Pending",
-      "Approved",
-      "Rejected",
-      "Cancelled"
-    ]
-    .map(function(x){
-
-      return {
-        value:x,
-        label:x
-      };
-
-    });
-
-  }
-
-
-  /* LEAVE TYPE */
-
-  if(
-    field === "Leave Type"
-  ){
-
-    return [
-      "Casual Leave",
-      "Sick Leave",
-      "Annual Leave",
-      "Emergency Leave",
-      "Maternity Leave",
-      "Other"
-    ]
-    .map(function(x){
-
-      return {
-        value:x,
-        label:x
-      };
-
-    });
-
-  }
-
-
-  /* PAYMENT METHOD */
-
-  if(
-    field === "Payment Method"
-  ){
-
-    return [
-      "Cash",
-      "bKash",
-      "Nagad",
-      "Rocket",
-      "Bank Transfer",
-      "Card"
-    ]
-    .map(function(x){
-
-      return {
-        value:x,
-        label:x
-      };
-
-    });
-
-  }
-
-
-  /* YES / NO */
-
-  if(
-    field === "Required" ||
-    field === "Received" ||
-    field === "Verified" ||
-    field === "Is Read"
-  ){
-
-    return [
-      "Yes",
-      "No"
-    ]
-    .map(function(x){
-
-      return {
-        value:x,
-        label:x
-      };
-
-    });
-
-  }
-
-
-  /* COMMON STATUS */
-
-  if(
-    field === "Status" ||
-    field.endsWith(" Status")
-  ){
-
-    return [
-      "Active",
-      "Inactive",
-      "Pending",
-      "Approved",
-      "Rejected",
-      "Cancelled",
-      "Completed",
-      "In Progress",
-      "Submitted",
-      "Under Review",
-      "Paid",
-      "Partially Paid",
-      "Due",
-      "Draft",
-      "Withdrawn"
-    ]
-    .map(function(x){
-
-      return {
-        value:x,
-        label:x
-      };
-
-    });
-
-  }
-
-  return null;
+return[
+'Pending',
+'Approved',
+'Rejected',
+'Cancelled'
+].map(
+x=>[x,x]
+);
 
 }
 
 
-/* =========================================================
-   FORM FIELD
-========================================================= */
-
-function formField(
-  field,
-  value
+if(
+m==='Countries' ||
+m==='LeadSources'
 ){
 
-  const id =
-    fid(field);
-
-  const options =
-    optionsFor(field);
-
-
-  /* AUTO ID */
-
-  if(
-    isAutoField(
-      currentModule,
-      field
-    )
-  ){
-
-    if(
-      !currentRow
-    ){
-
-      return "";
-
-    }
-
-    return `
-
-      <div class="field">
-
-        <label>
-          ${esc(field)}
-        </label>
-
-        <input
-          id="${id}"
-          value="${esc(value || "")}"
-          readonly
-          style="background:#f8fafc"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* MARKED BY */
-
-  if(
-    field === "Marked By"
-  ){
-
-    const marked =
-      (
-        user.employeeId ||
-        user["Employee ID"] ||
-        user.name ||
-        user["Full Name"] ||
-        ""
-      );
-
-    return `
-
-      <div class="field">
-
-        <label>
-          Marked By
-        </label>
-
-        <input
-          id="${id}"
-          value="${esc(
-            value ||
-            marked
-          )}"
-          readonly
-          style="background:#f8fafc"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* SELECT */
-
-  if(options){
-
-    let optionList =
-      options;
-
-    /*
-     * Preserve an old value that is not
-     * currently present in the dropdown.
-     */
-
-    if(
-      value &&
-      !optionList.some(function(o){
-
-        return String(o.value) ===
-          String(value);
-
-      })
-    ){
-
-      optionList = [
-        {
-          value:String(value),
-          label:
-            String(value) +
-            " (existing value)"
-        },
-        ...optionList
-      ];
-
-    }
-
-    return `
-
-      <div class="field">
-
-        <label>
-          ${esc(field)}
-        </label>
-
-        <select
-          id="${id}"
-          onchange="fieldChanged('${esc(field)}')"
-        >
-
-          <option value="">
-            Select...
-          </option>
-
-          ${optionList
-            .map(function(o){
-
-              return `
-
-                <option
-                  value="${esc(o.value)}"
-                  ${
-                    String(
-                      value || ""
-                    ) ===
-                    String(
-                      o.value
-                    )
-                      ? "selected"
-                      : ""
-                  }
-                >
-                  ${esc(o.label)}
-                </option>
-
-              `;
-
-            })
-            .join("")
-          }
-
-        </select>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* PASSWORD */
-
-  if(
-    field === "Password"
-  ){
-
-    return `
-
-      <div class="field">
-
-        <label>
-          Password
-        </label>
-
-        <input
-          id="${id}"
-          type="password"
-          placeholder="${
-            currentRow
-              ? "Leave blank to keep existing password"
-              : ""
-          }"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* PHONE */
-
-  if(
-    field === "Phone" ||
-    field === "WhatsApp"
-  ){
-
-    return `
-
-      <div class="field">
-
-        <label>
-          ${esc(field)}
-        </label>
-
-        <input
-          id="${id}"
-          type="tel"
-          inputmode="tel"
-          value="${esc(value || "")}"
-          placeholder="017XXXXXXXX"
-        >
-
-        <small>
-          Phone is stored as text so leading 0 is preserved.
-        </small>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* DATE */
-
-  if(
-    field.toLowerCase()
-      .includes("date")
-  ){
-
-    return `
-
-      <div class="field">
-
-        <label>
-          ${esc(field)}
-        </label>
-
-        <input
-          id="${id}"
-          type="date"
-          value="${esc(
-            normalizeDateValue(
-              value
-            )
-          )}"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* TIME */
-
-  if(
-    field.toLowerCase()
-      .includes("time")
-  ){
-
-    return `
-
-      <div class="field">
-
-        <label>
-          ${esc(field)}
-        </label>
-
-        <input
-          id="${id}"
-          type="time"
-          value="${esc(
-            String(
-              value ||
-              ""
-            ).substring(
-              0,
-              5
-            )
-          )}"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* TOTAL DAYS */
-
-  if(
-    field === "Total Days"
-  ){
-
-    return `
-
-      <div class="field">
-
-        <label>
-          Total Days
-        </label>
-
-        <input
-          id="${id}"
-          type="number"
-          value="${esc(value || "")}"
-          readonly
-          style="background:#f8fafc"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* NUMERIC */
-
-  if(
-    field.toLowerCase()
-      .includes("amount") ||
-    field.toLowerCase()
-      .includes("fee") ||
-    field.toLowerCase()
-      .includes("budget") ||
-    field.toLowerCase()
-      .includes("score") ||
-    field.toLowerCase()
-      .includes("gpa") ||
-    field.toLowerCase()
-      .includes("ranking") ||
-    field.toLowerCase()
-      .includes("capacity") ||
-    field === "Sort Order"
-  ){
-
-    return `
-
-      <div class="field">
-
-        <label>
-          ${esc(field)}
-        </label>
-
-        <input
-          id="${id}"
-          type="number"
-          step="any"
-          value="${esc(value || "")}"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* TEXTAREA */
-
-  if(
-    field.toLowerCase()
-      .includes("description") ||
-    field.toLowerCase()
-      .includes("notes") ||
-    field.toLowerCase()
-      .includes("remarks") ||
-    field.toLowerCase()
-      .includes("reason") ||
-    field.toLowerCase()
-      .includes("address") ||
-    field.toLowerCase()
-      .includes("requirement") ||
-    field.toLowerCase()
-      .includes("recommendation") ||
-    field.toLowerCase()
-      .includes("message") ||
-    field.toLowerCase()
-      .includes("reference")
-  ){
-
-    return `
-
-      <div class="field">
-
-        <label>
-          ${esc(field)}
-        </label>
-
-        <textarea
-          id="${id}"
-        >${esc(value || "")}</textarea>
-
-      </div>
-
-    `;
-
-  }
-
-
-  return `
-
-    <div class="field">
-
-      <label>
-        ${esc(field)}
-      </label>
-
-      <input
-        id="${id}"
-        value="${esc(value || "")}"
-      >
-
-    </div>
-
-  `;
+return[
+'Active',
+'Inactive'
+].map(
+x=>[x,x]
+);
 
 }
 
 
-/* =========================================================
-   AUTO ID FIELDS
-========================================================= */
+if(m==='Tasks'){
 
-const AUTO_ID_FIELDS = {
+return[
+'Pending',
+'In Progress',
+'Completed',
+'Cancelled'
+].map(
+x=>[x,x]
+);
 
-  Leads:"Lead ID",
-  Students:"Student ID",
-  Counselling:"Counselling ID",
-  FollowUps:"Follow-up ID",
-  Tasks:"Task ID",
-  Countries:"Country ID",
-  Universities:"University ID",
-  Courses:"Course ID",
-  Applications:"Application ID",
-  Documents:"Document ID",
-  DocumentChecklist:"Checklist ID",
-  Offers:"Offer ID",
-  Visa:"Visa ID",
-  IELTS_Batches:"Batch ID",
-  IELTS_Students:"Enrollment ID",
-  IELTS_Attendance:"Attendance ID",
-  IELTS_MockTests:"Mock Test ID",
-  IELTS_Results:"Result ID",
-  Payments:"Payment ID",
-  Expenses:"Expense ID",
-  Invoices:"Invoice ID",
-  MoneyReceipts:"Receipt ID",
-  Income:"Income ID",
-  Intake:"Intake ID",
-  EmployeeAttendance:"Attendance ID",
-  LeaveManagement:"Leave ID",
-  Roles:"Role ID",
-  Settings:"Setting ID",
-  Notifications:"Notification ID",
-  Timeline:"Timeline ID",
-  LeadSources:"Source ID",
-  StudentPortal:"Portal ID",
-  ActivityLog:"Log ID"
+}
+
+
+if(m==='Invoices'){
+
+return[
+'Unpaid',
+'Partially Paid',
+'Paid',
+'Overdue'
+].map(
+x=>[x,x]
+);
+
+}
+
+
+if(m==='Visa'){
+
+return[
+'Pending',
+'Submitted',
+'Approved',
+'Refused',
+'Withdrawn'
+].map(
+x=>[x,x]
+);
+
+}
+
+
+return[
+'Active',
+'Inactive'
+].map(
+x=>[x,x]
+);
+
+}
+
+
+async function openForm(id=''){
+
+try{
+
+await loadDropdowns();
+
+
+let record={};
+
+
+if(id){
+
+const x=
+await api(
+'list',
+{
+module:current.module,
+page:1,
+pageSize:100,
+search:String(id)
+}
+);
+
+
+const d=x.data;
+
+
+const idx=
+d.rows.findIndex(
+r=>String(r[0])===String(id)
+);
+
+
+if(idx<0)
+throw Error(
+'Record not found.'
+);
+
+
+d.headers.forEach(
+(h,i)=>{
+record[h]=d.rows[idx][i];
+}
+);
+
+}
+
+
+const headers=
+Object.keys(record).length
+?Object.keys(record)
+:await schemaHeaders(
+current.module
+);
+
+
+renderForm(
+headers,
+record,
+id
+);
+
+
+}catch(e){
+
+toast(
+e.message,
+true
+);
+
+}
+
+}
+
+
+async function schemaHeaders(m){
+
+const x=
+await api(
+'list',
+{
+module:m,
+page:1,
+pageSize:1
+}
+);
+
+return x.data.headers;
+
+}
+
+
+function renderForm(
+headers,
+record,
+id
+){
+
+const m=
+current.module;
+
+
+let html=`
+
+<div class="modalbox">
+
+<div class="modalhead">
+
+<h2>
+
+${id?'Edit ':'Add '}
+
+${
+m==='Users'
+?'Employee'
+:esc(label(m))
+}
+
+</h2>
+
+<button
+class="close"
+onclick="closeModal()"
+>
+Close
+</button>
+
+</div>
+`;
+
+
+if(m==='Users'){
+
+html+=`
+
+<div class="note">
+
+<b>Staff / Employee Management</b>
+
+<br><br>
+
+Employee ID is <b>manual</b>.
+Enter the official Employee ID yourself.
+
+<br><br>
+
+The employee will automatically appear in all employee-related dropdowns after saving.
+
+</div>
+
+`;
+
+}
+
+
+html+=`
+
+<form
+id="recordForm"
+onsubmit="submitForm(event)"
+>
+
+<div class="formgrid">
+
+`;
+
+
+headers.forEach(h=>{
+
+if(
+[
+'Password Hash',
+'Created At',
+'Updated At'
+].includes(h)
+)
+return;
+
+
+const val=
+record[h]??'';
+
+
+const type=
+fieldType(h,m);
+
+
+if(type==='hidden')
+return;
+
+
+let req='';
+
+
+if(
+m==='Users' &&
+[
+'Employee ID',
+'Full Name',
+'Username',
+'Email',
+'Role'
+].includes(h)
+)
+req='required';
+
+
+if(
+m==='Users' &&
+h==='Phone'
+)
+req='required';
+
+
+const ek=
+employeeKind(h);
+
+
+if(
+ek ||
+optionsFor(
+h,m,val
+).length
+){
+
+const opts=
+optionsFor(
+h,m,val
+);
+
+
+html+=`
+
+<div class="field">
+
+<label>
+${esc(h)}
+</label>
+
+<select
+data-field="${esc(h)}"
+${req}
+onchange="syncEmployee(this)"
+>
+
+<option value="">
+Select ${esc(h)}
+</option>
+
+${
+opts.map(
+o=>
+`<option
+value="${esc(o[0])}"
+${
+String(o[0])===
+String(val)
+?'selected':''
+}
+>
+${esc(o[1])}
+</option>`
+).join('')
+}
+
+</select>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+if(type==='textarea'){
+
+html+=`
+
+<div class="field full">
+
+<label>${esc(h)}</label>
+
+<textarea
+data-field="${esc(h)}"
+>
+${esc(val)}
+</textarea>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+if(type==='photo'){
+
+html+=`
+
+<div class="field">
+
+<label>Staff Photo</label>
+
+<input
+type="file"
+id="staffPhoto"
+accept="image/*"
+onchange="previewPhoto(this)"
+>
+
+${
+val
+?
+`<img
+id="photoPreview"
+class="photo"
+src="${esc(val)}"
+>`
+:
+`<img
+id="photoPreview"
+class="photo hidden"
+>`
+}
+
+<div class="filehint">
+Photo will be uploaded to Google Drive.
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+html+=`
+
+<div class="field">
+
+<label>${esc(h)}</label>
+
+<input
+data-field="${esc(h)}"
+type="${
+type==='date'
+?'date'
+:type==='time'
+?'time'
+:type==='password'
+?'password'
+:'text'
+}"
+value="${esc(
+formatInputValue(val,type)
+)}"
+${req}
+>
+
+</div>
+
+`;
+
+});
+
+
+if(m==='Users'){
+
+html+=`
+
+<div class="field">
+
+<label>Password</label>
+
+<input
+data-field="Password"
+type="password"
+value=""
+${id?'':'required'}
+autocomplete="new-password"
+>
+
+</div>
+
+`;
+
+
+if(id){
+
+html+=`
+
+<div class="field full">
+
+<div class="note">
+
+Leave Password blank to keep the existing password.
+
+</div>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+if(m==='Documents'){
+
+html+=`
+
+<div class="field full">
+
+<label>Upload Document File</label>
+
+<input
+type="file"
+id="documentFile"
+>
+
+<div class="filehint">
+The selected file will be uploaded to Google Drive when you save.
+</div>
+
+</div>
+
+`;
+
+}
+
+
+html+=`
+
+</div>
+
+<div class="formactions">
+
+<button
+type="button"
+class="secondary"
+onclick="closeModal()"
+>
+Cancel
+</button>
+
+<button
+class="primary"
+type="submit"
+>
+Save
+</button>
+
+</div>
+
+</form>
+
+</div>
+`;
+
+
+$('modal').innerHTML=html;
+
+$('modal').classList.remove(
+'hidden'
+);
+
+
+window.__editingId=id;
+
+window.__record=record;
+
+window.__headers=headers;
+
+
+applyDefaults(
+m,
+record
+);
+
+}
+
+
+function formatInputValue(
+v,
+type
+){
+
+if(!v)return '';
+
+if(type==='date')
+return String(v).slice(0,10);
+
+if(type==='time')
+return String(v).slice(0,5);
+
+return v;
+
+}
+
+
+function applyDefaults(
+m,
+r
+){
+
+const set=(f,v)=>{
+
+const e=
+document.querySelector(
+`[data-field="${CSS.escape(f)}"]`
+);
+
+if(
+e &&
+!String(r[f]??'')
+)
+e.value=v;
 
 };
 
 
-function isAutoField(
-  module,
-  field
+if(
+m==='EmployeeAttendance'
 ){
 
-  return (
-    AUTO_ID_FIELDS[module] ===
-    field
-  );
+set(
+'Date',
+new Date()
+.toISOString()
+.slice(0,10)
+);
+
+set(
+'Status',
+'Present'
+);
 
 }
 
 
-/* =========================================================
-   FIELD ID
-========================================================= */
-
-function fid(
-  field
+if(
+m==='LeaveManagement'
 ){
 
-  return (
-    "f_" +
-    Array.from(field)
-      .map(function(ch){
-
-        return ch.charCodeAt(0);
-
-      })
-      .join("_")
-  );
+set(
+'Status',
+'Pending'
+);
 
 }
 
 
-/* =========================================================
-   OPEN MODAL
-========================================================= */
+syncAllEmployees();
 
-async function openModal(
-  row
+}
+
+
+function syncEmployee(el){
+
+const f=
+el.dataset.field;
+
+const val=
+el.value;
+
+
+if(
+!dd ||
+!dd.employees
+)
+return;
+
+
+let e;
+
+
+if(
+[
+'Employee ID',
+'Staff ID',
+'Teacher ID'
+].includes(f)
 ){
 
-  currentRow =
-    row || null;
-
-  /*
-   * Dropdowns are loaded only when a form
-   * is actually opened. This keeps module
-   * switching fast.
-   */
-
-  loading(true);
-
-  try{
-
-    await loadDropdowns();
-
-    const existing =
-      row
-        ? records.find(function(x){
-
-            return (
-              Number(x._row) ===
-              Number(row)
-            );
-
-          }) || {}
-        : {};
-
-    let fields =
-      HEADERS[currentModule];
-
-    if(!fields){
-
-      fields =
-        records.length
-          ? Object.keys(
-              records[0]
-            )
-            .filter(function(k){
-
-              return (
-                k !== "_row"
-              );
-
-            })
-          : [];
-
-    }
-
-    let html =
-      fields
-        .map(function(field){
-
-          return formField(
-            field,
-            existing[field]
-          );
-
-        })
-        .join("");
-
-
-    /* USERS PHOTO */
-
-    if(
-      currentModule ===
-      "Users"
-    ){
-
-      html += `
-
-        <div class="field">
-
-          <label>
-            Staff / User Photo
-          </label>
-
-          <input
-            id="staffPhoto"
-            type="file"
-            accept="image/*"
-            onchange="previewStaffPhoto(this)"
-          >
-
-          <small>
-            Photo will be uploaded to Google Drive.
-          </small>
-
-          <img
-            id="staffPhotoPreview"
-            class="photo-preview"
-            src="${
-              normalizeDriveImage(
-                existing.Photo ||
-                ""
-              )
-            }"
-            ${
-              existing.Photo
-                ? ""
-                : "style='display:none'"
-            }
-            onerror="this.style.display='none'"
-          >
-
-        </div>
-
-      `;
-
-    }
-
-
-    /* DOCUMENT UPLOAD */
-
-    if(
-      currentModule ===
-      "Documents"
-    ){
-
-      html += `
-
-        <div class="field">
-
-          <label>
-            Upload Document
-          </label>
-
-          <input
-            id="documentFile"
-            type="file"
-          >
-
-          <small>
-            The selected file will be uploaded to Google Drive.
-          </small>
-
-        </div>
-
-      `;
-
-    }
-
-
-    document
-      .getElementById(
-        "modalTitle"
-      )
-      .textContent =
-      (
-        row
-          ? "Edit "
-          : "Add "
-      ) +
-      (
-        LABELS[currentModule] ||
-        currentModule
-      );
-
-
-    document
-      .getElementById("form")
-      .innerHTML =
-      html;
-
-
-    setupEmployeeSync();
-
-    setupDependentDropdowns();
-
-    setupLeaveCalculation();
-
-
-    document
-      .getElementById("modal")
-      .classList.add(
-        "show"
-      );
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
+e=
+dd.employees.find(
+x=>x.id===val
+);
 
 }
 
 
-/* =========================================================
-   EMPLOYEE SYNC
-========================================================= */
-
-function setupEmployeeSync(){
-
-  const idEl =
-    document.getElementById(
-      fid("Employee ID")
-    );
-
-  const nameEl =
-    document.getElementById(
-      fid("Employee Name")
-    );
-
-  if(
-    !idEl ||
-    !nameEl
-  ){
-
-    return;
-
-  }
-
-  idEl.addEventListener(
-    "change",
-    function(){
-
-      syncEmployeeFromId();
-
-    }
-  );
-
-  nameEl.addEventListener(
-    "change",
-    function(){
-
-      syncEmployeeFromName();
-
-    }
-  );
-
-  /*
-   * If existing record has Employee ID,
-   * populate the matching name.
-   */
-
-  if(
-    idEl.value
-  ){
-
-    syncEmployeeFromId();
-
-  }else if(
-    nameEl.value
-  ){
-
-    syncEmployeeFromName();
-
-  }
-
-}
-
-
-function getEmployees(){
-
-  return (
-    dropdowns &&
-    (
-      dropdowns.employees ||
-      dropdowns.users
-    )
-  ) || [];
-
-}
-
-
-function employeeIdOf(
-  employee
+else if(
+[
+'Employee Name',
+'Staff Name'
+].includes(f)
 ){
 
-  return (
-    employee["Employee ID"] ||
-    employee.employeeId ||
-    employee["User ID"] ||
-    ""
-  );
+e=
+dd.employees.find(
+x=>x.name===val
+);
 
 }
 
 
-function employeeNameOf(
-  employee
+if(!e)return;
+
+
+const idFields=[
+'Employee ID',
+'Staff ID',
+'Teacher ID'
+];
+
+
+const nameFields=[
+'Employee Name',
+'Staff Name'
+];
+
+
+document
+.querySelectorAll(
+'[data-field]'
+)
+.forEach(x=>{
+
+if(
+idFields.includes(
+x.dataset.field
+)
+)
+x.value=e.id;
+
+
+if(
+nameFields.includes(
+x.dataset.field
+)
+)
+x.value=e.name;
+
+});
+
+}
+
+
+function syncAllEmployees(){
+
+const idEl=
+document.querySelector(
+'[data-field="Employee ID"]'
+);
+
+const nameEl=
+document.querySelector(
+'[data-field="Employee Name"]'
+);
+
+
+if(
+idEl &&
+idEl.value
 ){
 
-  return (
-    employee["Full Name"] ||
-    employee.Name ||
-    employee.name ||
-    ""
-  );
+syncEmployee(idEl);
 
-}
-
-
-function syncEmployeeFromId(){
-
-  const idEl =
-    document.getElementById(
-      fid("Employee ID")
-    );
-
-  const nameEl =
-    document.getElementById(
-      fid("Employee Name")
-    );
-
-  if(
-    !idEl ||
-    !nameEl
-  ){
-
-    return;
-
-  }
-
-  const employee =
-    getEmployees().find(
-      function(x){
-
-        return String(
-          employeeIdOf(x)
-        ) ===
-        String(
-          idEl.value
-        );
-
-      }
-    );
-
-  nameEl.value =
-    employee
-      ? employeeNameOf(employee)
-      : "";
-
-}
-
-
-function syncEmployeeFromName(){
-
-  const idEl =
-    document.getElementById(
-      fid("Employee ID")
-    );
-
-  const nameEl =
-    document.getElementById(
-      fid("Employee Name")
-    );
-
-  if(
-    !idEl ||
-    !nameEl
-  ){
-
-    return;
-
-  }
-
-  const employee =
-    getEmployees().find(
-      function(x){
-
-        return String(
-          employeeNameOf(x)
-        ) ===
-        String(
-          nameEl.value
-        );
-
-      }
-    );
-
-  idEl.value =
-    employee
-      ? employeeIdOf(employee)
-      : "";
-
-}
-
-
-/* =========================================================
-   DEPENDENT DROPDOWNS
-========================================================= */
-
-function setupDependentDropdowns(){
-
-  const country =
-    document.getElementById(
-      fid("Country")
-    );
-
-  const university =
-    document.getElementById(
-      fid("University")
-    );
-
-  const preferredCountry =
-    document.getElementById(
-      fid("Preferred Country")
-    );
-
-  const preferredUniversity =
-    document.getElementById(
-      fid("Preferred University")
-    );
-
-  if(country){
-
-    country.addEventListener(
-      "change",
-      function(){
-
-        filterUniversities(
-          country.value,
-          "University"
-        );
-
-      }
-    );
-
-  }
-
-  if(preferredCountry){
-
-    preferredCountry.addEventListener(
-      "change",
-      function(){
-
-        filterUniversities(
-          preferredCountry.value,
-          "Preferred University"
-        );
-
-      }
-    );
-
-  }
-
-  if(university){
-
-    university.addEventListener(
-      "change",
-      function(){
-
-        filterCourses(
-          university.value,
-          "Course"
-        );
-
-      }
-    );
-
-  }
-
-  if(preferredUniversity){
-
-    preferredUniversity.addEventListener(
-      "change",
-      function(){
-
-        filterCourses(
-          preferredUniversity.value,
-          "Preferred Course"
-        );
-
-      }
-    );
-
-  }
-
-}
-
-
-function filterUniversities(
-  country,
-  field
+}else if(
+nameEl &&
+nameEl.value
 ){
 
-  const el =
-    document.getElementById(
-      fid(field)
-    );
+syncEmployee(nameEl);
 
-  if(
-    !el ||
-    !dropdowns
-  ){
-
-    return;
-
-  }
-
-  const list =
-    (
-      dropdowns.universities ||
-      []
-    )
-    .filter(function(x){
-
-      return (
-        !country ||
-        String(
-          x.Country ||
-          ""
-        ) ===
-        String(country)
-      );
-
-    });
-
-  const old =
-    el.value;
-
-  el.innerHTML =
-    `<option value="">Select...</option>` +
-    list
-      .map(function(x){
-
-        const name =
-          x["University Name"] ||
-          x.University ||
-          "";
-
-        return `
-
-          <option
-            value="${esc(name)}"
-          >
-            ${esc(name)}
-          </option>
-
-        `;
-
-      })
-      .join("");
-
-  if(
-    old &&
-    list.some(function(x){
-
-      return String(
-        x["University Name"] ||
-        x.University ||
-        ""
-      ) ===
-      String(old);
-
-    })
-  ){
-
-    el.value =
-      old;
-
-  }
+}
 
 }
 
 
-function filterCourses(
-  university,
-  field
-){
+function previewPhoto(input){
 
-  const el =
-    document.getElementById(
-      fid(field)
-    );
+if(!input.files[0])
+return;
 
-  if(
-    !el ||
-    !dropdowns
-  ){
 
-    return;
+const img=
+$('photoPreview');
 
-  }
 
-  const list =
-    (
-      dropdowns.courses ||
-      []
-    )
-    .filter(function(x){
+img.src=
+URL.createObjectURL(
+input.files[0]
+);
 
-      return (
-        !university ||
-        String(
-          x["University Name"] ||
-          x.University ||
-          ""
-        ) ===
-        String(university)
-      );
-
-    });
-
-  const old =
-    el.value;
-
-  el.innerHTML =
-    `<option value="">Select...</option>` +
-    list
-      .map(function(x){
-
-        const name =
-          x["Course Name"] ||
-          x.Course ||
-          "";
-
-        return `
-
-          <option
-            value="${esc(name)}"
-          >
-            ${esc(name)}
-          </option>
-
-        `;
-
-      })
-      .join("");
-
-  if(
-    old &&
-    list.some(function(x){
-
-      return String(
-        x["Course Name"] ||
-        x.Course ||
-        ""
-      ) ===
-      String(old);
-
-    })
-  ){
-
-    el.value =
-      old;
-
-  }
+img.classList.remove(
+'hidden'
+);
 
 }
 
-
-/* =========================================================
-   FIELD CHANGE
-========================================================= */
-
-function fieldChanged(
-  field
-){
-
-  if(
-    field ===
-    "Employee ID"
-  ){
-
-    syncEmployeeFromId();
-
-  }
-
-  if(
-    field ===
-    "Employee Name"
-  ){
-
-    syncEmployeeFromName();
-
-  }
-
-}
-
-
-/* =========================================================
-   LEAVE DAYS
-========================================================= */
-
-function setupLeaveCalculation(){
-
-  if(
-    currentModule !==
-    "LeaveManagement"
-  ){
-
-    return;
-
-  }
-
-  const start =
-    document.getElementById(
-      fid("Start Date")
-    );
-
-  const end =
-    document.getElementById(
-      fid("End Date")
-    );
-
-  if(start){
-
-    start.addEventListener(
-      "change",
-      calculateLeaveDays
-    );
-
-  }
-
-  if(end){
-
-    end.addEventListener(
-      "change",
-      calculateLeaveDays
-    );
-
-  }
-
-  calculateLeaveDays();
-
-}
-
-
-function calculateLeaveDays(){
-
-  const start =
-    document.getElementById(
-      fid("Start Date")
-    );
-
-  const end =
-    document.getElementById(
-      fid("End Date")
-    );
-
-  const total =
-    document.getElementById(
-      fid("Total Days")
-    );
-
-  if(
-    !start ||
-    !end ||
-    !total
-  ){
-
-    return;
-
-  }
-
-  if(
-    !start.value ||
-    !end.value
-  ){
-
-    total.value = "";
-    return;
-
-  }
-
-  const s =
-    new Date(
-      start.value +
-      "T00:00:00"
-    );
-
-  const e =
-    new Date(
-      end.value +
-      "T00:00:00"
-    );
-
-  if(
-    e < s
-  ){
-
-    total.value = "";
-    return;
-
-  }
-
-  total.value =
-    Math.round(
-      (
-        e - s
-      ) /
-      86400000
-    ) + 1;
-
-}
-
-
-/* =========================================================
-   SAVE RECORD
-========================================================= */
-
-async function saveRecord(){
-
-  const fields =
-    HEADERS[currentModule] ||
-    [];
-
-  const record = {};
-
-  fields.forEach(function(field){
-
-    const element =
-      document.getElementById(
-        fid(field)
-      );
-
-    if(element){
-
-      record[field] =
-        element.value;
-
-    }
-
-  });
-
-
-  if(
-    currentRow
-  ){
-
-    record._row =
-      currentRow;
-
-  }
-
-
-  /* USERS */
-
-  if(
-    currentModule ===
-    "Users"
-  ){
-
-    const password =
-      document.getElementById(
-        fid("Password")
-      );
-
-    if(
-      password
-    ){
-
-      record.Password =
-        password.value;
-
-    }
-
-  }
-
-
-  /* EMPLOYEE VALIDATION */
-
-  if(
-    record["Employee ID"] ||
-    record["Employee Name"]
-  ){
-
-    if(
-      !record["Employee ID"]
-    ){
-
-      toast(
-        "Please select Employee ID."
-      );
-
-      return;
-
-    }
-
-    if(
-      !record["Employee Name"]
-    ){
-
-      toast(
-        "Please select Employee Name."
-      );
-
-      return;
-
-    }
-
-  }
-
-
-  /* DOCUMENT */
-
-  if(
-    currentModule ===
-    "Documents"
-  ){
-
-    const file =
-      document.getElementById(
-        "documentFile"
-      );
-
-    if(
-      file &&
-      file.files &&
-      file.files.length
-    ){
-
-      await uploadDocumentAndSave(
-        record,
-        file.files[0]
-      );
-
-      return;
-
-    }
-
-  }
-
-
-  /* STAFF PHOTO */
-
-  if(
-    currentModule ===
-    "Users"
-  ){
-
-    const photo =
-      document.getElementById(
-        "staffPhoto"
-      );
-
-    if(
-      photo &&
-      photo.files &&
-      photo.files.length
-    ){
-
-      await uploadStaffPhotoAndSave(
-        record,
-        photo.files[0]
-      );
-
-      return;
-
-    }
-
-  }
-
-
-  await saveRecordDirect(
-    record
-  );
-
-}
-
-
-/* =========================================================
-   DIRECT SAVE
-========================================================= */
-
-async function saveRecordDirect(
-  record
-){
-
-  loading(true);
-
-  try{
-
-    const result =
-      await api(
-        "save",
-        {
-          module:
-            currentModule,
-          record
-        }
-      );
-
-    if(!result.success){
-
-      toast(
-        result.message ||
-        "Save failed."
-      );
-
-      return;
-
-    }
-
-    closeModal();
-
-    clearCaches();
-
-    await openModule(
-      currentModule
-    );
-
-    toast(
-      "Saved successfully."
-    );
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
-
-}
-
-
-/* =========================================================
-   STAFF PHOTO
-========================================================= */
-
-function previewStaffPhoto(
-  input
-){
-
-  const preview =
-    document.getElementById(
-      "staffPhotoPreview"
-    );
-
-  if(
-    !preview ||
-    !input.files ||
-    !input.files.length
-  ){
-
-    return;
-
-  }
-
-  const file =
-    input.files[0];
-
-  const url =
-    URL.createObjectURL(
-      file
-    );
-
-  preview.src =
-    url;
-
-  preview.style.display =
-    "block";
-
-}
-
-
-/* =========================================================
-   STAFF PHOTO UPLOAD
-========================================================= */
-
-async function uploadStaffPhotoAndSave(
-  record,
-  file
-){
-
-  loading(true);
-
-  try{
-
-    const compressed =
-      await compressImage(
-        file,
-        1200,
-        0.82
-      );
-
-    const base64 =
-      await toBase64(
-        compressed
-      );
-
-    const upload =
-      await api(
-        "uploadStaffPhoto",
-        {
-          base64,
-          fileName:
-            file.name,
-          mimeType:
-            compressed.type ||
-            "image/jpeg"
-        }
-      );
-
-    if(
-      !upload.success
-    ){
-
-      toast(
-        upload.message ||
-        "Photo upload failed."
-      );
-
-      return;
-
-    }
-
-    record.Photo =
-      upload.url ||
-      upload.viewUrl ||
-      upload.fileUrl ||
-      "";
-
-    await saveRecordDirect(
-      record
-    );
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
-
-}
-
-
-/* =========================================================
-   DOCUMENT UPLOAD
-========================================================= */
-
-async function uploadDocumentAndSave(
-  record,
-  file
-){
-
-  loading(true);
-
-  try{
-
-    const base64 =
-      await toBase64(
-        file
-      );
-
-    const result =
-      await api(
-        "uploadDocument",
-        {
-
-          base64,
-
-          fileName:
-            file.name,
-
-          mimeType:
-            file.type,
-
-          studentId:
-            record["Student ID"] ||
-            "",
-
-          applicationId:
-            record["Application ID"] ||
-            "",
-
-          documentType:
-            record["Document Type"] ||
-            "Other",
-
-          expiryDate:
-            record["Expiry Date"] ||
-            "",
-
-          notes:
-            record.Notes ||
-            ""
-
-        }
-      );
-
-    if(
-      !result.success
-    ){
-
-      toast(
-        result.message ||
-        "Document upload failed."
-      );
-
-      return;
-
-    }
-
-    record["File URL"] =
-      result.url ||
-      result.viewUrl ||
-      result.fileUrl ||
-      "";
-
-    /*
-     * If backend uploadDocument has already
-     * created the Documents record, don't
-     * save it a second time.
-     */
-
-    if(
-      result.savedRecord
-    ){
-
-      closeModal();
-
-      clearCaches();
-
-      await openModule(
-        "Documents"
-      );
-
-      toast(
-        "Document uploaded successfully."
-      );
-
-      return;
-
-    }
-
-    await saveRecordDirect(
-      record
-    );
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
-
-}
-
-
-/* =========================================================
-   FILE HELPERS
-========================================================= */
-
-function toBase64(
-  file
-){
-
-  return new Promise(
-    function(resolve,reject){
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        function(){
-
-          const result =
-            String(
-              reader.result
-            );
-
-          resolve(
-            result.split(",")[1]
-          );
-
-        };
-
-      reader.onerror =
-        reject;
-
-      reader.readAsDataURL(
-        file
-      );
-
-    }
-  );
-
-}
-
-
-function compressImage(
-  file,
-  maxSize,
-  quality
-){
-
-  return new Promise(
-    function(resolve,reject){
-
-      if(
-        !file.type.startsWith(
-          "image/"
-        )
-      ){
-
-        resolve(file);
-        return;
-
-      }
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        function(){
-
-          const img =
-            new Image();
-
-          img.onload =
-            function(){
-
-              let width =
-                img.width;
-
-              let height =
-                img.height;
-
-              if(
-                width > maxSize ||
-                height > maxSize
-              ){
-
-                const ratio =
-                  Math.min(
-                    maxSize /
-                      width,
-                    maxSize /
-                      height
-                  );
-
-                width =
-                  Math.round(
-                    width *
-                    ratio
-                  );
-
-                height =
-                  Math.round(
-                    height *
-                    ratio
-                  );
-
-              }
-
-              const canvas =
-                document.createElement(
-                  "canvas"
-                );
-
-              canvas.width =
-                width;
-
-              canvas.height =
-                height;
-
-              const ctx =
-                canvas.getContext(
-                  "2d"
-                );
-
-              ctx.drawImage(
-                img,
-                0,
-                0,
-                width,
-                height
-              );
-
-              canvas.toBlob(
-                function(blob){
-
-                  if(!blob){
-
-                    reject(
-                      new Error(
-                        "Image compression failed."
-                      )
-                    );
-
-                    return;
-
-                  }
-
-                  const compressed =
-                    new File(
-                      [blob],
-                      file.name.replace(
-                        /\.[^/.]+$/,
-                        ""
-                      ) +
-                      ".jpg",
-                      {
-                        type:
-                          "image/jpeg"
-                      }
-                    );
-
-                  resolve(
-                    compressed
-                  );
-
-                },
-                "image/jpeg",
-                quality
-              );
-
-            };
-
-          img.onerror =
-            reject;
-
-          img.src =
-            reader.result;
-
-        };
-
-      reader.onerror =
-        reject;
-
-      reader.readAsDataURL(
-        file
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   DELETE
-========================================================= */
-
-async function deleteRecord(
-  row
-){
-
-  if(
-    currentModule ===
-    "ActivityLog"
-  ){
-
-    toast(
-      "Activity Log is read-only."
-    );
-
-    return;
-
-  }
-
-  if(
-    !confirm(
-      "Are you sure you want to delete this record?"
-    )
-  ){
-
-    return;
-
-  }
-
-  const module =
-    currentModule ===
-    "DuePayments"
-      ? "Invoices"
-      : currentModule;
-
-  loading(true);
-
-  try{
-
-    const result =
-      await api(
-        "delete",
-        {
-          module,
-          row
-        }
-      );
-
-    if(
-      !result.success
-    ){
-
-      toast(
-        result.message ||
-        "Delete failed."
-      );
-
-      return;
-
-    }
-
-    clearCaches();
-
-    await openModule(
-      currentModule
-    );
-
-    toast(
-      "Deleted successfully."
-    );
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
-
-}
-
-
-/* =========================================================
-   NOTIFICATION
-========================================================= */
-
-async function markNotificationRead(
-  row
-){
-
-  try{
-
-    const result =
-      await api(
-        "markNotificationRead",
-        {
-          row
-        }
-      );
-
-    if(
-      !result.success
-    ){
-
-      toast(
-        result.message ||
-        "Unable to mark notification."
-      );
-
-      return;
-
-    }
-
-    clearCaches();
-
-    await openModule(
-      "Notifications"
-    );
-
-    toast(
-      "Notification marked as read."
-    );
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
 
 function closeModal(){
 
-  document
-    .getElementById("modal")
-    .classList.remove(
-      "show"
-    );
+$('modal')
+.classList.add(
+'hidden'
+);
 
-  document
-    .getElementById("form")
-    .innerHTML = "";
+$('modal').innerHTML='';
 
-  currentRow =
-    null;
+window.__editingId='';
 
-}
+window.__record={};
 
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
-
-async function dashboard(){
-
-  loading(true);
-
-  try{
-
-    const result =
-      await api(
-        "dashboard"
-      );
-
-    if(
-      !result.success
-    ){
-
-      toast(
-        result.message
-      );
-
-      return;
-
-    }
-
-    const d =
-      result.data ||
-      {};
-
-    document
-      .getElementById("content")
-      .innerHTML = `
-
-      <div class="dashboard">
-
-        ${stat(
-          "Total Leads",
-          d.totalLeads ||
-          0
-        )}
-
-        ${stat(
-          "Total Students",
-          d.totalStudents ||
-          0
-        )}
-
-        ${stat(
-          "Applications",
-          d.totalApplications ||
-          0
-        )}
-
-        ${stat(
-          "Due Payments",
-          "৳ " +
-          (
-            d.totalDue ||
-            0
-          )
-        )}
-
-        ${stat(
-          "Countries",
-          d.totalCountries ||
-          0
-        )}
-
-        ${stat(
-          "Universities",
-          d.totalUniversities ||
-          0
-        )}
-
-        ${stat(
-          "Courses",
-          d.totalCourses ||
-          0
-        )}
-
-        ${stat(
-          "Employees",
-          d.totalEmployees ||
-          0
-        )}
-
-      </div>
-
-      <div
-        class="report-grid"
-        style="margin-top:15px"
-      >
-
-        <div class="card">
-
-          <small>
-            Total Payments
-          </small>
-
-          <h2>
-            ৳ ${esc(
-              d.totalPayments ||
-              0
-            )}
-          </h2>
-
-        </div>
-
-        <div class="card">
-
-          <small>
-            Total Expenses
-          </small>
-
-          <h2>
-            ৳ ${esc(
-              d.totalExpenses ||
-              0
-            )}
-          </h2>
-
-        </div>
-
-        <div class="card">
-
-          <small>
-            Net Balance
-          </small>
-
-          <h2>
-            ৳ ${esc(
-              d.netBalance ||
-              0
-            )}
-          </h2>
-
-        </div>
-
-      </div>
-
-    `;
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
+window.__headers=[];
 
 }
 
 
-function stat(
-  title,
-  value
+async function submitForm(ev){
+
+ev.preventDefault();
+
+
+const m=
+current.module;
+
+const record={};
+
+
+document
+.querySelectorAll(
+'#recordForm [data-field]'
+)
+.forEach(e=>{
+
+record[
+e.dataset.field
+]=e.value;
+
+});
+
+
+if(
+m==='EmployeeAttendance'
 ){
 
-  return `
+const mk=
+document.querySelector(
+'[data-field="Marked By"]'
+);
 
-    <div class="stat">
+if(mk){
 
-      <small>
-        ${esc(title)}
-      </small>
+record['Marked By']=
+user.employeeId||
+user.name||
+user.username;
 
-      <strong>
-        ${esc(value)}
-      </strong>
-
-    </div>
-
-  `;
+}
 
 }
 
 
-/* =========================================================
-   EMPLOYEE ATTENDANCE
-========================================================= */
-
-async function renderAttendanceModule(){
-
-  loading(true);
-
-  try{
-
-    await loadDropdowns();
-
-    const result =
-      await api(
-        "list",
-        {
-          module:
-            "EmployeeAttendance",
-          page:
-            currentPage,
-          pageSize,
-          search:""
-        }
-      );
-
-    if(
-      !result.success
-    ){
-
-      toast(
-        result.message
-      );
-
-      return;
-
-    }
-
-    records =
-      result.records ||
-      [];
-
-    totalRecords =
-      Number(
-        result.total ||
-        records.length
-      );
-
-    let summary = {
-      Present:0,
-      Absent:0,
-      Late:0,
-      "Half Day":0,
-      Leave:0
-    };
-
-    try{
-
-      const summaryResult =
-        await api(
-          "attendanceSummary",
-          {
-            date:
-              attendanceFilters.date,
-            month:
-              attendanceFilters.month,
-            employeeId:
-              attendanceFilters.employeeId
-          }
-        );
-
-      if(
-        summaryResult.success
-      ){
-
-        summary =
-          {
-            ...summary,
-            ...(
-              summaryResult.data ||
-              {}
-            )
-          };
-
-      }
-
-    }catch(error){}
-
-    const employeeOptions =
-      (
-        dropdowns.employees ||
-        dropdowns.users ||
-        []
-      )
-      .map(function(x){
-
-        const id =
-          employeeIdOf(x);
-
-        const name =
-          employeeNameOf(x);
-
-        return `
-
-          <option value="${esc(id)}">
-
-            ${esc(id)}
-            —
-            ${esc(name)}
-
-          </option>
-
-        `;
-
-      })
-      .join("");
-
-    document
-      .getElementById("content")
-      .innerHTML = `
-
-      <div class="toolbar">
-
-        <div class="toolbar-left">
-
-          <input
-            id="attendanceDate"
-            type="date"
-            value="${esc(
-              attendanceFilters.date
-            )}"
-            onchange="attendanceFilterChanged()"
-          >
-
-          <input
-            id="attendanceMonth"
-            type="month"
-            value="${esc(
-              attendanceFilters.month
-            )}"
-            onchange="attendanceFilterChanged()"
-          >
-
-          <select
-            id="attendanceEmployee"
-            onchange="attendanceFilterChanged()"
-          >
-
-            <option value="">
-              All Employees
-            </option>
-
-            ${employeeOptions}
-
-          </select>
-
-        </div>
-
-        <div class="toolbar-right">
-
-          <button
-            class="btn"
-            onclick="openModal()"
-          >
-            + Mark Attendance
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="summary-grid">
-
-        ${summaryCard(
-          "Present",
-          summary.Present || 0
-        )}
-
-        ${summaryCard(
-          "Absent",
-          summary.Absent || 0
-        )}
-
-        ${summaryCard(
-          "Late",
-          summary.Late || 0
-        )}
-
-        ${summaryCard(
-          "Half Day",
-          summary["Half Day"] || 0
-        )}
-
-        ${summaryCard(
-          "Leave",
-          summary.Leave || 0
-        )}
-
-      </div>
-
-
-      <div class="table-card">
-
-        <div class="table-wrap">
-
-          ${
-            records.length
-              ?
-              `
-              <table>
-
-                <thead>
-
-                  <tr>
-
-                    ${
-                      Object.keys(
-                        records[0]
-                      )
-                      .filter(function(k){
-
-                        return k !== "_row";
-
-                      })
-                      .map(function(k){
-
-                        return `
-                          <th>
-                            ${esc(k)}
-                          </th>
-                        `;
-
-                      })
-                      .join("")
-                    }
-
-                    <th>
-                      Actions
-                    </th>
-
-                  </tr>
-
-                </thead>
-
-                <tbody>
-
-                  ${rowsHtml(
-                    records,
-                    Object.keys(
-                      records[0]
-                    )
-                    .filter(function(k){
-
-                      return k !== "_row";
-
-                    })
-                  )}
-
-                </tbody>
-
-              </table>
-              `
-              :
-              `
-              <div class="empty">
-                No attendance records found.
-              </div>
-              `
-          }
-
-        </div>
-
-        ${
-          records.length
-            ? paginationHtml()
-            : ""
-        }
-
-      </div>
-
-    `;
-
-    const employee =
-      document.getElementById(
-        "attendanceEmployee"
-      );
-
-    if(employee){
-
-      employee.value =
-        attendanceFilters.employeeId;
-
-    }
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
-
-}
-
-
-function summaryCard(
-  title,
-  value
+if(
+m==='Documents'
 ){
 
-  return `
+const u=
+document.querySelector(
+'[data-field="Uploaded By"]'
+);
 
-    <div class="summary-card">
+if(u){
 
-      <small>
-        ${esc(title)}
-      </small>
+record['Uploaded By']=
+user.employeeId||
+user.name||
+user.username;
 
-      <strong>
-        ${esc(value)}
-      </strong>
-
-    </div>
-
-  `;
+}
 
 }
 
 
-async function attendanceFilterChanged(){
-
-  attendanceFilters.date =
-    document.getElementById(
-      "attendanceDate"
-    )?.value ||
-    "";
-
-  attendanceFilters.month =
-    document.getElementById(
-      "attendanceMonth"
-    )?.value ||
-    "";
-
-  attendanceFilters.employeeId =
-    document.getElementById(
-      "attendanceEmployee"
-    )?.value ||
-    "";
-
-  await renderAttendanceModule();
-
-}
+const btn=
+document.querySelector(
+'#recordForm button[type="submit"]'
+);
 
 
-/* =========================================================
-   REPORTS
-========================================================= */
+btn.disabled=true;
 
-async function reports(){
-
-  loading(true);
-
-  try{
-
-    const result =
-      await api(
-        "reports"
-      );
-
-    if(
-      !result.success
-    ){
-
-      toast(
-        result.message
-      );
-
-      return;
-
-    }
-
-    const d =
-      result.data ||
-      {};
-
-    document
-      .getElementById("content")
-      .innerHTML = `
-
-      <div class="dashboard">
-
-        ${stat(
-          "Leads",
-          d.leads ||
-          0
-        )}
-
-        ${stat(
-          "Students",
-          d.students ||
-          0
-        )}
-
-        ${stat(
-          "Applications",
-          d.applications ||
-          0
-        )}
-
-        ${stat(
-          "Income",
-          "৳ " +
-          (
-            d.income ||
-            0
-          )
-        )}
-
-        ${stat(
-          "Expenses",
-          "৳ " +
-          (
-            d.expenses ||
-            0
-          )
-        )}
-
-        ${stat(
-          "Due",
-          "৳ " +
-          (
-            d.due ||
-            0
-          )
-        )}
-
-      </div>
+btn.textContent='Saving...';
 
 
-      <div
-        class="card"
-        style="margin-top:15px"
-      >
-
-        <h3>
-          Applications by Country
-        </h3>
-
-        ${reportTable(
-          d.applicationsByCountry
-        )}
-
-      </div>
+try{
 
 
-      <div
-        class="card"
-        style="margin-top:15px"
-      >
+if(m==='Users'){
 
-        <h3>
-          Leads by Source
-        </h3>
-
-        ${reportTable(
-          d.leadsBySource
-        )}
-
-      </div>
-
-    `;
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
-
-}
+const f=
+$('staffPhoto');
 
 
-function reportTable(
-  data
+if(
+f &&
+f.files[0]
 ){
 
-  const entries =
-    Object.entries(
-      data ||
-      {}
-    );
+const b=
+await fileData(
+f.files[0],
+1200,
+.82
+);
 
-  if(
-    !entries.length
-  ){
 
-    return `
-      <p>
-        No data available.
-      </p>
-    `;
+const up=
+await api(
+'uploadStaffPhoto',
+b
+);
 
-  }
 
-  return `
+record.Photo=
+up.data.url;
 
-    <table
-      style="min-width:100%"
-    >
-
-      <tbody>
-
-        ${entries
-          .map(function(x){
-
-            return `
-
-              <tr>
-
-                <td>
-                  ${esc(x[0])}
-                </td>
-
-                <td>
-                  ${esc(x[1])}
-                </td>
-
-              </tr>
-
-            `;
-
-          })
-          .join("")
-        }
-
-      </tbody>
-
-    </table>
-
-  `;
+}
 
 }
 
 
-/* =========================================================
-   DUE PAYMENTS
-========================================================= */
+if(m==='Documents'){
 
-async function duePayments(){
-
-  loading(true);
-
-  try{
-
-    const result =
-      await api(
-        "duePayments"
-      );
-
-    if(
-      result.success
-    ){
-
-      records =
-        result.records ||
-        [];
-
-      totalRecords =
-        records.length;
-
-      renderTable(
-        "Due Payments"
-      );
-
-      return;
-
-    }
-
-    /*
-     * Fallback for backend versions
-     * that don't have duePayments action.
-     */
-
-    const invoiceResult =
-      await api(
-        "list",
-        {
-          module:
-            "Invoices",
-          page:1,
-          pageSize:100,
-          search:""
-        }
-      );
-
-    if(
-      !invoiceResult.success
-    ){
-
-      toast(
-        invoiceResult.message
-      );
-
-      return;
-
-    }
-
-    records =
-      (
-        invoiceResult.records ||
-        []
-      )
-      .filter(function(x){
-
-        return (
-          Number(
-            x["Due Amount"] ||
-            0
-          ) > 0
-        );
-
-      });
-
-    totalRecords =
-      records.length;
-
-    renderTable(
-      "Due Payments"
-    );
-
-  }catch(error){
-
-    toast(
-      error.message
-    );
-
-  }finally{
-
-    loading(false);
-
-  }
-
-}
+const f=
+$('documentFile');
 
 
-/* =========================================================
-   WHATSAPP
-========================================================= */
-
-function whatsapp(
-  phone
+if(
+f &&
+f.files[0]
 ){
 
-  let number =
-    String(
-      phone ||
-      ""
-    )
-    .replace(
-      /\D/g,
-      ""
-    );
+const b=
+await fileData(
+f.files[0],
+1600,
+.82
+);
 
-  if(
-    number.startsWith("0")
-  ){
 
-    number =
-      "880" +
-      number.substring(1);
+const up=
+await api(
+'uploadDocument',
+b
+);
 
-  }else if(
-    !number.startsWith("880")
-  ){
 
-    number =
-      "880" +
-      number;
+record['File URL']=
+up.data.url;
 
-  }
-
-  if(
-    number.length < 11
-  ){
-
-    toast(
-      "Invalid phone number."
-    );
-
-    return;
-
-  }
-
-  window.open(
-    "https://wa.me/" +
-    number,
-    "_blank"
-  );
+}
 
 }
 
 
-/* =========================================================
-   DRIVE IMAGE
-========================================================= */
+await api(
+'save',
+{
+module:m,
+record,
+id:window.__editingId
+}
+);
 
-function normalizeDriveImage(
-  url
+
+toast(
+'Saved successfully.'
+);
+
+
+closeModal();
+
+moduleCache={};
+
+dd=null;
+
+renderList();
+
+
+}catch(e){
+
+toast(
+e.message,
+true
+);
+
+
+}finally{
+
+btn.disabled=false;
+
+btn.textContent='Save';
+
+}
+
+}
+
+
+function fileData(
+file,
+max,
+quality
 ){
 
-  if(
-    !url
-  ){
+return new Promise(
+(resolve,reject)=>{
 
-    return "";
-
-  }
-
-  const text =
-    String(url);
-
-  const match =
-    text.match(
-      /[?&]id=([^&]+)/i
-    );
-
-  if(match){
-
-    return (
-      "https://drive.google.com/uc?export=view&id=" +
-      match[1]
-    );
-
-  }
-
-  const fileMatch =
-    text.match(
-      /\/d\/([^/]+)/
-    );
-
-  if(fileMatch){
-
-    return (
-      "https://drive.google.com/uc?export=view&id=" +
-      fileMatch[1]
-    );
-
-  }
-
-  return text;
-
-}
-
-
-/* =========================================================
-   NORMALIZE DATE
-========================================================= */
-
-function normalizeDateValue(
-  value
+if(
+!file.type.startsWith(
+'image/'
+)
 ){
 
-  if(
-    !value
-  ){
+const r=
+new FileReader();
 
-    return "";
+r.onload=()=>{
+resolve({
+data:r.result,
+fileName:file.name,
+mimeType:file.type
+});
+};
 
-  }
+r.onerror=reject;
 
-  const text =
-    String(value);
+r.readAsDataURL(file);
 
-  if(
-    /^\d{4}-\d{2}-\d{2}$/
-      .test(text)
-  ){
-
-    return text;
-
-  }
-
-  const d =
-    new Date(value);
-
-  if(
-    isNaN(d.getTime())
-  ){
-
-    return text.substring(
-      0,
-      10
-    );
-
-  }
-
-  const year =
-    d.getFullYear();
-
-  const month =
-    String(
-      d.getMonth()+1
-    )
-    .padStart(
-      2,
-      "0"
-    );
-
-  const day =
-    String(
-      d.getDate()
-    )
-    .padStart(
-      2,
-      "0"
-    );
-
-  return (
-    year +
-    "-" +
-    month +
-    "-" +
-    day
-  );
+return;
 
 }
 
 
-/* =========================================================
-   REFRESH / CACHE
-========================================================= */
-
-function clearCaches(){
-
-  moduleCache = {};
-
-  dropdowns =
-    null;
-
-}
+const r=
+new FileReader();
 
 
-async function refresh(){
+r.onload=()=>{
 
-  clearCaches();
+const img=
+new Image();
 
-  currentPage = 1;
 
-  if(
-    currentModule ===
-    "Dashboard"
-  ){
+img.onload=()=>{
 
-    await dashboard();
-    return;
+let w=img.width;
 
-  }
+let h=img.height;
 
-  if(
-    currentModule ===
-    "Reports"
-  ){
 
-    await reports();
-    return;
+if(
+Math.max(w,h)>max
+){
 
-  }
+const k=
+max/
+Math.max(w,h);
 
-  if(
-    currentModule ===
-    "DuePayments"
-  ){
+w=
+Math.round(w*k);
 
-    await duePayments();
-    return;
-
-  }
-
-  if(
-    currentModule ===
-    "EmployeeAttendance"
-  ){
-
-    await renderAttendanceModule();
-    return;
-
-  }
-
-  await openModule(
-    currentModule
-  );
+h=
+Math.round(h*k);
 
 }
 
 
-/* =========================================================
-   SIDEBAR
-========================================================= */
+const c=
+document.createElement(
+'canvas'
+);
 
-function toggleSidebar(){
+c.width=w;
 
-  document
-    .getElementById("sidebar")
-    .classList.toggle(
-      "open"
-    );
+c.height=h;
+
+
+c.getContext('2d')
+.drawImage(
+img,
+0,
+0,
+w,
+h
+);
+
+
+resolve({
+
+data:
+c.toDataURL(
+'image/jpeg',
+quality
+),
+
+fileName:
+(
+file.name.replace(
+/\.[^.]+$/,
+''
+)||'upload'
+)+
+'.jpg',
+
+mimeType:'image/jpeg'
+
+});
+
+};
+
+
+img.onerror=reject;
+
+img.src=r.result;
+
+};
+
+
+r.onerror=reject;
+
+r.readAsDataURL(file);
+
+});
 
 }
 
 
-/* =========================================================
-   LOGOUT
-========================================================= */
+async function removeRecord(id){
 
-async function logout(){
+if(
+!confirm(
+'Delete this record?'
+)
+)
+return;
 
-  try{
 
-    await api(
-      "logout"
-    );
+try{
 
-  }catch(error){}
+await api(
+'delete',
+{
+module:current.module,
+id
+}
+);
 
-  sessionStorage.removeItem(
-    "radiance_token"
-  );
 
-  sessionStorage.removeItem(
-    "radiance_user"
-  );
+toast(
+'Deleted successfully.'
+);
 
-  user =
-    null;
 
-  location.reload();
+moduleCache={};
+
+dd=null;
+
+renderList();
+
+
+}catch(e){
+
+toast(
+e.message,
+true
+);
+
+}
 
 }
 
 
-/* =========================================================
-   RESTORE SESSION
-========================================================= */
+async function markRead(id){
 
-(function(){
+try{
 
-  try{
+await api(
+'markNotificationRead',
+{id}
+);
 
-    const savedUser =
-      sessionStorage.getItem(
-        "radiance_user"
-      );
 
-    const savedToken =
-      sessionStorage.getItem(
-        "radiance_token"
-      );
+toast(
+'Notification marked as read.'
+);
 
-    if(
-      savedUser &&
-      savedToken
-    ){
 
-      const parsed =
-        JSON.parse(
-          savedUser
-        );
+moduleCache={};
 
-      if(
-        parsed
-      ){
+renderList();
 
-        parsed.token =
-          savedToken;
 
-        user =
-          parsed;
+}catch(e){
 
-        start();
+toast(
+e.message,
+true
+);
 
-      }
+}
 
-    }
+}
 
-  }catch(error){
 
-    sessionStorage.removeItem(
-      "radiance_user"
-    );
+async function renderAttendance(){
 
-    sessionStorage.removeItem(
-      "radiance_token"
-    );
+const c=$('content');
 
-  }
+c.innerHTML=
+'<div class="loading">Loading attendance...</div>';
 
-})();
 
+try{
+
+await loadDropdowns();
+
+
+const s=
+await api(
+'attendanceSummary',
+{}
+);
+
+
+const d=s.data||{};
+
+
+c.innerHTML=`
+
+<div class="summary">
+
+<div class="stat">
+<span>Total</span>
+<b>${d.total||0}</b>
+</div>
+
+<div class="stat">
+<span>Present</span>
+<b>${d.Present||0}</b>
+</div>
+
+<div class="stat">
+<span>Absent</span>
+<b>${d.Absent||0}</b>
+</div>
+
+<div class="stat">
+<span>Late</span>
+<b>${d.Late||0}</b>
+</div>
+
+<div class="stat">
+<span>Half Day</span>
+<b>${d['Half Day']||0}</b>
+</div>
+
+<div class="stat">
+<span>Leave</span>
+<b>${d.Leave||0}</b>
+</div>
+
+</div>
+
+`;
+
+
+current.module=
+'EmployeeAttendance';
+
+renderList();
+
+
+}catch(e){
+
+c.innerHTML=
+`<div class="card">
+${esc(e.message)}
+</div>`;
+
+}
+
+}
+
+
+function renderReports(){
+
+const c=$('content');
+
+
+c.innerHTML=`
+
+<div class="grid">
+
+<div class="card">
+
+<b>Reports</b>
+
+<p class="muted">
+Use module search and pagination for live records.
+Attendance has date and employee summary support.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<b>Employee Master</b>
+
+<p class="muted">
+All employee selectors are populated from Staff / Users.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<b>Countries</b>
+
+<p class="muted">
+Countries are managed dynamically from the Countries module.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<b>Phone / WhatsApp</b>
+
+<p class="muted">
+Bangladesh numbers are converted automatically for WhatsApp links.
+</p>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function renderDuePayments(){
+
+current.module='Invoices';
+
+current.search='Unpaid';
+
+$('title').textContent=
+'Due Payments';
+
+renderList();
+
+}
+
+
+window.addEventListener(
+'load',
+()=>{
+
+if(token&&user)
+start();
+else
+showLogin();
+
+}
+);
 
 </script>
 
 </body>
-
 </html>
