@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
 <meta
   name="viewport"
-  content="width=device-width, initial-scale=1.0"
+  content="width=device-width,initial-scale=1.0"
 >
 
 <title>Radiance Bangladesh CRM</title>
 
-<link
-  rel="icon"
-  href="../logo.png"
->
-
 <style>
+
+:root{
+  --primary:#6d28d9;
+  --secondary:#4f46e5;
+  --dark:#111827;
+  --bg:#f5f7fb;
+  --card:#fff;
+  --text:#172033;
+  --muted:#667085;
+  --border:#e5e7eb;
+  --success:#16a34a;
+  --danger:#dc2626;
+  --warning:#d97706;
+}
 
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0;
 }
 
 body{
+  margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7fb;
-  color:#1f2937;
+  background:var(--bg);
+  color:var(--text);
 }
 
 button,
@@ -41,615 +50,401 @@ button{
   cursor:pointer;
 }
 
-.hidden{
-  display:none!important;
-}
-
-
-/* LOGIN */
-
 .login-screen{
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#111827,#2563eb);
-  padding:20px;
+  align-items:center;
+  background:linear-gradient(
+    135deg,
+    #eef2ff,
+    #faf5ff
+  );
 }
 
 .login-box{
-  width:100%;
-  max-width:420px;
-  background:white;
-  border-radius:18px;
-  padding:35px;
-  box-shadow:0 25px 70px rgba(0,0,0,.2);
+  width:min(410px,92%);
+  background:#fff;
+  padding:32px;
+  border-radius:16px;
+  box-shadow:0 20px 60px #0002;
 }
 
 .login-logo{
   display:block;
-  width:110px;
-  height:110px;
+  width:90px;
+  height:90px;
   object-fit:contain;
-  margin:0 auto 15px;
+  margin:auto auto 15px;
 }
 
-.login-title{
+.login-box h2{
   text-align:center;
-  font-size:25px;
-  font-weight:700;
+  margin:0;
+}
+
+.login-box p{
+  text-align:center;
+  color:var(--muted);
+}
+
+.field{
+  margin-bottom:13px;
+}
+
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
   margin-bottom:5px;
 }
 
-.login-subtitle{
-  text-align:center;
-  color:#6b7280;
-  margin-bottom:25px;
-}
-
-.form-group{
-  margin-bottom:15px;
-}
-
-.form-group label{
-  display:block;
-  font-size:13px;
-  font-weight:600;
-  margin-bottom:6px;
-}
-
-.form-control{
+.field input,
+.field select,
+.field textarea{
   width:100%;
-  border:1px solid #d1d5db;
+  border:1px solid var(--border);
   border-radius:8px;
-  padding:11px 12px;
-  outline:none;
-  background:white;
-}
-
-.form-control:focus{
-  border-color:#2563eb;
-  box-shadow:0 0 0 3px rgba(37,99,235,.1);
-}
-
-textarea.form-control{
-  min-height:100px;
-  resize:vertical;
-}
-
-.login-btn{
-  width:100%;
-  border:0;
-  border-radius:8px;
-  padding:12px;
-  background:#2563eb;
-  color:white;
-  font-weight:700;
-}
-
-.login-btn:hover{
-  background:#1d4ed8;
-}
-
-.login-error{
-  color:#dc2626;
-  background:#fee2e2;
   padding:10px;
-  border-radius:7px;
-  margin-bottom:15px;
-  font-size:13px;
+  background:#fff;
 }
 
-
-/* APP */
-
-.app{
-  display:flex;
-  min-height:100vh;
-}
-
-
-/* SIDEBAR */
-
-.sidebar{
-  width:260px;
-  background:#111827;
-  color:white;
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  overflow-y:auto;
-  z-index:1000;
-}
-
-.brand{
-  padding:20px;
-  border-bottom:1px solid rgba(255,255,255,.1);
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brand img{
-  width:42px;
-  height:42px;
-  object-fit:contain;
-  background:white;
-  border-radius:8px;
-}
-
-.brand-title{
-  font-weight:700;
-  font-size:17px;
-}
-
-.brand-subtitle{
-  font-size:11px;
-  color:#9ca3af;
-  margin-top:2px;
-}
-
-.menu{
-  padding:12px;
-}
-
-.menu-section{
-  color:#6b7280;
-  font-size:10px;
-  font-weight:700;
-  text-transform:uppercase;
-  margin:16px 10px 7px;
-}
-
-.menu button{
-  width:100%;
-  text-align:left;
-  border:0;
-  background:transparent;
-  color:#d1d5db;
-  padding:10px 12px;
-  border-radius:7px;
-  margin-bottom:2px;
-}
-
-.menu button:hover,
-.menu button.active{
-  background:#2563eb;
-  color:white;
-}
-
-
-/* MAIN */
-
-.main{
-  margin-left:260px;
-  width:calc(100% - 260px);
-  min-height:100vh;
-}
-
-.topbar{
-  height:70px;
-  background:white;
-  border-bottom:1px solid #e5e7eb;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 25px;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.topbar-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.mobile-menu{
-  display:none;
-  border:0;
-  background:#f3f4f6;
-  border-radius:7px;
-  padding:8px 12px;
-}
-
-.page-title{
-  font-size:20px;
-  font-weight:700;
-}
-
-.user-area{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.user-info{
-  text-align:right;
-}
-
-.user-name{
-  font-size:14px;
-  font-weight:700;
-}
-
-.user-role{
-  font-size:11px;
-  color:#6b7280;
-}
-
-.logout-btn{
-  border:0;
-  background:#fee2e2;
-  color:#dc2626;
-  padding:8px 12px;
-  border-radius:7px;
-  font-weight:600;
-}
-
-.logout-btn:hover{
-  background:#fecaca;
-}
-
-.content{
-  padding:25px;
-}
-
-
-/* DASHBOARD */
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-bottom:25px;
-}
-
-.stat-card{
-  background:white;
-  border-radius:12px;
-  padding:20px;
-  border:1px solid #e5e7eb;
-}
-
-.stat-label{
-  color:#6b7280;
-  font-size:13px;
-  margin-bottom:8px;
-}
-
-.stat-value{
-  font-size:28px;
-  font-weight:700;
-}
-
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:20px;
-}
-
-.card{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  overflow:hidden;
-}
-
-.card-header{
-  padding:17px 20px;
-  border-bottom:1px solid #e5e7eb;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.card-title{
-  font-weight:700;
-}
-
-.card-body{
-  padding:20px;
-}
-
-
-/* MODULE */
-
-.module-toolbar{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:15px;
-  display:flex;
-  gap:10px;
-  margin-bottom:15px;
-  align-items:center;
-}
-
-.search{
-  flex:1;
-  padding:10px 12px;
-  border:1px solid #d1d5db;
-  border-radius:7px;
-}
-
-.btn{
-  border:0;
-  border-radius:7px;
-  padding:10px 14px;
-  font-weight:600;
-}
-
-.btn-primary{
-  background:#2563eb;
-  color:white;
-}
-
-.btn-primary:hover{
-  background:#1d4ed8;
-}
-
-.btn-secondary{
-  background:#e5e7eb;
-  color:#374151;
-}
-
-.btn-danger{
-  background:#fee2e2;
-  color:#dc2626;
-}
-
-.btn-success{
-  background:#dcfce7;
-  color:#15803d;
-}
-
-.table-card{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  overflow:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:900px;
-}
-
-th{
-  background:#f9fafb;
-  text-align:left;
-  font-size:12px;
-  color:#6b7280;
-  padding:12px;
-  border-bottom:1px solid #e5e7eb;
-  white-space:nowrap;
-}
-
-td{
-  padding:11px 12px;
-  border-bottom:1px solid #f0f0f0;
-  font-size:13px;
-  vertical-align:top;
-}
-
-tr:hover td{
-  background:#fafafa;
-}
-
-.actions{
-  white-space:nowrap;
-}
-
-.action-btn{
-  border:0;
-  padding:6px 9px;
-  border-radius:5px;
-  font-size:12px;
-  margin-right:4px;
-}
-
-.edit-btn{
-  background:#dbeafe;
-  color:#1d4ed8;
-}
-
-.delete-btn{
-  background:#fee2e2;
-  color:#dc2626;
-}
-
-
-/* BADGE */
-
-.badge{
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:20px;
-  background:#e5e7eb;
-  font-size:11px;
-}
-
-.badge.active,
-.badge.paid,
-.badge.completed{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.badge.pending,
-.badge.due{
-  background:#fef3c7;
-  color:#92400e;
-}
-
-.badge.inactive,
-.badge.rejected,
-.badge.cancelled{
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-
-/* MODAL */
-
-.modal-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.5);
-  z-index:2000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal-overlay.show{
-  display:flex;
-}
-
-.modal{
-  width:100%;
-  max-width:850px;
-  max-height:90vh;
-  overflow-y:auto;
-  background:white;
-  border-radius:14px;
-}
-
-.modal-header{
-  padding:18px 20px;
-  border-bottom:1px solid #e5e7eb;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.modal-title{
-  font-size:18px;
-  font-weight:700;
-}
-
-.close-btn{
-  border:0;
-  background:#f3f4f6;
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  font-size:18px;
-}
-
-.modal-body{
-  padding:20px;
-}
-
-.modal-footer{
-  padding:15px 20px;
-  border-top:1px solid #e5e7eb;
-  display:flex;
-  justify-content:flex-end;
-  gap:10px;
+.field textarea{
+  min-height:85px;
+  resize:vertical;
 }
 
 .form-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
-.full{
-  grid-column:1/-1;
+.btn{
+  border:0;
+  border-radius:8px;
+  padding:9px 13px;
+  background:var(--primary);
+  color:#fff;
 }
 
+.btn-light{
+  background:#fff;
+  color:var(--text);
+  border:1px solid var(--border);
+}
 
-/* REPORT */
+.btn-danger{
+  background:var(--danger);
+}
 
-.report-grid{
+.btn-success{
+  background:var(--success);
+}
+
+.btn-warning{
+  background:var(--warning);
+}
+
+.app{
+  min-height:100vh;
+}
+
+.sidebar{
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  width:250px;
+  background:#111827;
+  color:#fff;
+  overflow-y:auto;
+  z-index:100;
+}
+
+.brand{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:16px;
+  border-bottom:1px solid #273043;
+}
+
+.brand img{
+  width:45px;
+  height:45px;
+  object-fit:contain;
+  background:#fff;
+  border-radius:8px;
+  padding:4px;
+}
+
+.brand-title{
+  font-size:15px;
+  font-weight:bold;
+}
+
+.brand-sub{
+  color:#9ca3af;
+  font-size:11px;
+}
+
+.nav-group{
+  color:#8b95a7;
+  font-size:10px;
+  padding:14px 12px 5px;
+  text-transform:uppercase;
+}
+
+.nav-btn{
+  display:block;
+  width:calc(100% - 16px);
+  margin:2px 8px;
+  border:0;
+  background:transparent;
+  color:#cbd5e1;
+  padding:10px 12px;
+  text-align:left;
+  border-radius:8px;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  background:#293244;
+  color:#fff;
+}
+
+.main{
+  margin-left:250px;
+  padding:18px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+  gap:10px;
+}
+
+.topbar h1{
+  font-size:23px;
+  margin:0;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.user-info{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.menu-btn{
+  display:none;
+}
+
+.dashboard{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:15px;
+  gap:14px;
 }
 
-.report-box{
-  background:white;
-  border:1px solid #e5e7eb;
+.stat{
+  background:#fff;
+  border:1px solid var(--border);
   border-radius:12px;
+  padding:18px;
+}
+
+.stat small{
+  color:var(--muted);
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  margin-top:7px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+}
+
+.table-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.search{
+  width:300px;
+  max-width:100%;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px;
+}
+
+.table-wrap{
+  overflow:auto;
+  max-height:70vh;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:900px;
+}
+
+th,
+td{
+  padding:10px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+th{
+  position:sticky;
+  top:0;
+  background:#f8fafc;
+  z-index:2;
+}
+
+.badge{
+  padding:4px 8px;
+  border-radius:30px;
+  background:#eef2ff;
+  font-size:11px;
+}
+
+.actions{
+  display:flex;
+  gap:5px;
+}
+
+.whatsapp{
+  background:#16a34a;
+  color:#fff;
+  border:0;
+  border-radius:5px;
+  padding:4px 7px;
+  font-size:11px;
+}
+
+.empty{
+  padding:45px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  z-index:200;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(950px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:14px;
   padding:20px;
 }
 
-.report-box h4{
-  color:#6b7280;
-  font-size:12px;
-  margin-bottom:8px;
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
 }
 
-.report-box strong{
-  font-size:25px;
+.modal-head h2{
+  margin:0;
 }
-
-
-/* LOADING */
 
 .loading{
-  padding:40px;
-  text-align:center;
-  color:#6b7280;
+  position:fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:#fff9;
+  z-index:500;
 }
 
+.loading.show{
+  display:grid;
+}
 
-/* TOAST */
+.loading-box{
+  background:#fff;
+  padding:18px 25px;
+  border-radius:10px;
+  box-shadow:0 10px 40px #0002;
+}
 
 .toast{
   position:fixed;
   right:20px;
   bottom:20px;
-  z-index:5000;
+  padding:12px 17px;
   background:#111827;
-  color:white;
-  padding:12px 18px;
+  color:#fff;
   border-radius:8px;
   display:none;
-  max-width:350px;
+  z-index:600;
 }
 
 .toast.show{
   display:block;
 }
 
-.toast.error{
-  background:#dc2626;
+.report-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
 }
 
-.toast.success{
-  background:#15803d;
-}
+@media(max-width:1000px){
 
-
-/* RESPONSIVE */
-
-@media(max-width:1100px){
-
-  .stats{
+  .dashboard{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .dashboard-grid{
-    grid-template-columns:1fr;
-  }
-
-  .report-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
 }
 
-@media(max-width:800px){
+@media(max-width:700px){
 
   .sidebar{
     transform:translateX(-100%);
-    transition:.25s;
+    transition:.2s;
   }
 
   .sidebar.open{
@@ -658,149 +453,133 @@ tr:hover td{
 
   .main{
     margin-left:0;
-    width:100%;
+    padding:12px;
   }
 
-  .mobile-menu{
-    display:block;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
+  .menu-btn{
+    display:inline-block;
   }
 
   .user-info{
     display:none;
   }
 
-  .content{
-    padding:15px;
+  .form-grid{
+    grid-template-columns:1fr;
   }
 
-  .topbar{
-    padding:0 15px;
+  .dashboard{
+    grid-template-columns:1fr 1fr;
   }
-}
 
-@media(max-width:500px){
-
-  .stats,
   .report-grid{
     grid-template-columns:1fr;
   }
 
-  .module-toolbar{
-    flex-wrap:wrap;
-  }
-
-  .search{
-    flex-basis:100%;
-  }
 }
 
 </style>
 
 </head>
 
-
 <body>
 
 
-<!-- =====================================================
+<!-- ======================================================
      LOGIN
-===================================================== -->
+====================================================== -->
 
-<div id="loginScreen" class="login-screen">
+<div
+  id="loginScreen"
+  class="login-screen"
+>
 
   <div class="login-box">
 
     <img
-      src="../logo.png"
+      src="./logo.png"
       class="login-logo"
+      alt="Radiance Bangladesh"
       onerror="this.style.display='none'"
     >
 
-    <div class="login-title">
+    <h2>
       Radiance Bangladesh
+    </h2>
+
+    <p>
+      CRM & Business Management System
+    </p>
+
+
+    <div class="field">
+
+      <label>
+        Username
+      </label>
+
+      <input
+        id="loginUsername"
+        autocomplete="username"
+      >
+
     </div>
 
-    <div class="login-subtitle">
-      CRM / Business Management System
+
+    <div class="field">
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="loginPassword"
+        type="password"
+        autocomplete="current-password"
+        onkeydown="if(event.key==='Enter')login()"
+      >
+
     </div>
+
+
+    <button
+      class="btn"
+      style="width:100%"
+      onclick="login()"
+    >
+      Login
+    </button>
+
 
     <div
       id="loginError"
-      class="login-error hidden"
+      style="color:#dc2626;text-align:center;margin-top:10px"
     ></div>
-
-    <form id="loginForm">
-
-      <div class="form-group">
-
-        <label>Username</label>
-
-        <input
-          id="loginUsername"
-          class="form-control"
-          type="text"
-          autocomplete="username"
-          required
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Password</label>
-
-        <input
-          id="loginPassword"
-          class="form-control"
-          type="password"
-          autocomplete="current-password"
-          required
-        >
-
-      </div>
-
-
-      <button
-        type="submit"
-        class="login-btn"
-      >
-        Login
-      </button>
-
-    </form>
 
   </div>
 
 </div>
 
 
-<!-- =====================================================
-     APP
-===================================================== -->
+<!-- ======================================================
+     APPLICATION
+====================================================== -->
 
 <div
   id="app"
-  class="app hidden"
+  style="display:none"
 >
 
-
-  <!-- SIDEBAR -->
-
-  <aside id="sidebar" class="sidebar">
+  <aside
+    id="sidebar"
+    class="sidebar"
+  >
 
     <div class="brand">
 
       <img
-        src="../logo.png"
+        src="./logo.png"
+        alt="Radiance"
         onerror="this.style.display='none'"
       >
 
@@ -810,7 +589,7 @@ tr:hover td{
           Radiance Bangladesh
         </div>
 
-        <div class="brand-subtitle">
+        <div class="brand-sub">
           CRM / BMS
         </div>
 
@@ -819,151 +598,49 @@ tr:hover td{
     </div>
 
 
-    <div class="menu">
-
-
-      <div class="menu-section">
-        Main
-      </div>
-
-      <button data-module="dashboard">
-        🏠 Dashboard
-      </button>
-
-
-      <div class="menu-section">
-        CRM
-      </div>
-
-      <button data-module="Leads">👤 Leads</button>
-      <button data-module="Students">🎓 Students</button>
-      <button data-module="Counselling">💬 Counselling</button>
-      <button data-module="FollowUps">📞 Follow-ups</button>
-      <button data-module="Tasks">✅ Tasks</button>
-
-
-      <div class="menu-section">
-        IELTS
-      </div>
-
-      <button data-module="IELTS_Batches">📚 IELTS Batches</button>
-      <button data-module="IELTS_Students">👨‍🎓 IELTS Students</button>
-      <button data-module="IELTS_Attendance">📅 Attendance</button>
-      <button data-module="IELTS_MockTests">📝 Mock Tests</button>
-      <button data-module="IELTS_Results">📊 IELTS Results</button>
-
-
-      <div class="menu-section">
-        Study Abroad
-      </div>
-
-      <button data-module="Countries">🌍 Countries</button>
-      <button data-module="Universities">🏫 Universities</button>
-      <button data-module="Courses">📖 Courses</button>
-      <button data-module="Intake">📆 Intake & Deadline</button>
-      <button data-module="Applications">📋 Applications</button>
-      <button data-module="Documents">📁 Documents</button>
-      <button data-module="DocumentChecklist">☑️ Document Checklist</button>
-      <button data-module="Offers">🎁 Offers</button>
-      <button data-module="Visa">🛂 Visa Management</button>
-
-
-      <div class="menu-section">
-        Accounts
-      </div>
-
-      <button data-module="Payments">💰 Payments</button>
-      <button data-module="Invoices">🧾 Invoices</button>
-      <button data-module="MoneyReceipts">🧾 Money Receipts</button>
-      <button data-module="Income">📈 Income</button>
-      <button data-module="Expenses">📉 Expenses</button>
-      <button data-module="DuePayments">⚠️ Due Payments</button>
-
-
-      <div class="menu-section">
-        Reports
-      </div>
-
-      <button data-module="Reports">📊 Reports</button>
-
-
-      <div class="menu-section">
-        Administration
-      </div>
-
-      <button data-module="Users">👥 Staff Management</button>
-      <button data-module="Roles">🔐 Roles & Permissions</button>
-      <button data-module="Notifications">🔔 Notifications</button>
-      <button data-module="Timeline">🕒 Student Timeline</button>
-      <button data-module="LeadSources">📢 Lead Sources</button>
-      <button data-module="ActivityLog">📜 Activity Log</button>
-      <button data-module="Settings">⚙️ Settings</button>
-
-
-      <div style="margin-top:20px">
-
-        <button
-          onclick="logout()"
-          style="background:#7f1d1d;color:white"
-        >
-          🚪 Logout
-        </button>
-
-      </div>
-
-    </div>
+    <div id="navigation"></div>
 
   </aside>
 
 
-  <!-- MAIN -->
-
   <main class="main">
 
-    <header class="topbar">
+    <div class="topbar">
 
-      <div class="topbar-left">
+      <div
+        style="display:flex;align-items:center;gap:10px"
+      >
 
         <button
-          id="mobileMenu"
-          class="mobile-menu"
+          class="btn btn-light menu-btn"
+          onclick="toggleSidebar()"
         >
           ☰
         </button>
 
-        <div
-          id="pageTitle"
-          class="page-title"
-        >
+        <h1 id="pageTitle">
           Dashboard
-        </div>
+        </h1>
 
       </div>
 
 
-      <div class="user-area">
+      <div class="top-actions">
 
-        <div class="user-info">
-
-          <div
-            id="topUserName"
-            class="user-name"
-          >
-            Radiance
-          </div>
-
-          <div
-            id="topUserRole"
-            class="user-role"
-          >
-            Super Admin
-          </div>
-
-        </div>
-
+        <span
+          id="userInfo"
+          class="user-info"
+        ></span>
 
         <button
-          class="logout-btn"
+          class="btn btn-light"
+          onclick="refresh()"
+        >
+          Refresh
+        </button>
+
+        <button
+          class="btn btn-danger"
           onclick="logout()"
         >
           Logout
@@ -971,68 +648,63 @@ tr:hover td{
 
       </div>
 
-    </header>
+    </div>
 
 
-    <section
-      id="content"
-      class="content"
-    ></section>
+    <div id="content"></div>
 
   </main>
 
 </div>
 
 
-<!-- =====================================================
+<!-- ======================================================
      MODAL
-===================================================== -->
+====================================================== -->
 
 <div
-  id="modalOverlay"
-  class="modal-overlay"
+  id="modal"
+  class="modal"
 >
 
-  <div class="modal">
+  <div class="modal-box">
 
-    <div class="modal-header">
+    <div class="modal-head">
 
-      <div
-        id="modalTitle"
-        class="modal-title"
-      >
+      <h2 id="modalTitle">
         Add Record
-      </div>
+      </h2>
 
       <button
-        class="close-btn"
+        class="btn btn-light"
         onclick="closeModal()"
       >
-        ×
+        Close
       </button>
 
     </div>
 
 
     <div
-      id="modalBody"
-      class="modal-body"
+      id="form"
+      class="form-grid"
     ></div>
 
 
-    <div class="modal-footer">
+    <div
+      style="display:flex;justify-content:flex-end;gap:8px;margin-top:15px"
+    >
 
       <button
-        class="btn btn-secondary"
+        class="btn btn-light"
         onclick="closeModal()"
       >
         Cancel
       </button>
 
       <button
-        id="saveBtn"
-        class="btn btn-primary"
-        onclick="submitForm()"
+        class="btn"
+        onclick="saveRecord()"
       >
         Save
       </button>
@@ -1044,2438 +716,3453 @@ tr:hover td{
 </div>
 
 
-<div id="toast" class="toast"></div>
+<!-- LOADING -->
+
+<div
+  id="loading"
+  class="loading"
+>
+
+  <div class="loading-box">
+    Please wait…
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+  id="toast"
+  class="toast"
+></div>
 
 
 <script>
 
-
-/* =====================================================
+/* =========================================================
    CONFIG
-===================================================== */
+========================================================= */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec";
 
 
-let currentUser = null;
-let currentModule = "dashboard";
-let currentRecords = [];
-let currentEditRecord = null;
-let dropdowns = {};
-
-
-/* =====================================================
+/* =========================================================
    MODULE NAMES
-===================================================== */
+========================================================= */
 
-const moduleNames = {
+const MODULES = {
 
-  dashboard:"Dashboard",
+  "CRM":[
+    "Dashboard",
+    "Leads",
+    "Students",
+    "Counselling",
+    "FollowUps",
+    "Tasks"
+  ],
 
-  Leads:"Leads",
-  Students:"Students",
-  Counselling:"Counselling",
-  FollowUps:"Follow-ups",
-  Tasks:"Tasks",
+  "Staff Management":[
+    "Users",
+    "EmployeeAttendance",
+    "LeaveManagement"
+  ],
 
-  IELTS_Batches:"IELTS Batches",
-  IELTS_Students:"IELTS Students",
-  IELTS_Attendance:"IELTS Attendance",
-  IELTS_MockTests:"IELTS Mock Tests",
-  IELTS_Results:"IELTS Results",
+  "Study Abroad":[
+    "Countries",
+    "Universities",
+    "Courses",
+    "Intake",
+    "Applications",
+    "Documents",
+    "DocumentChecklist",
+    "Offers",
+    "Visa"
+  ],
 
-  Countries:"Countries",
-  Universities:"Universities",
-  Courses:"Courses",
-  Intake:"Intake & Deadline",
-  Applications:"Applications",
-  Documents:"Documents",
-  DocumentChecklist:"Document Checklist",
-  Offers:"Offers",
-  Visa:"Visa Management",
+  "IELTS":[
+    "IELTS_Batches",
+    "IELTS_Students",
+    "IELTS_Attendance",
+    "IELTS_MockTests",
+    "IELTS_Results"
+  ],
 
-  Payments:"Payments",
-  Invoices:"Invoices",
-  MoneyReceipts:"Money Receipts",
-  Income:"Income",
-  Expenses:"Expenses",
+  "Accounts":[
+    "Payments",
+    "Invoices",
+    "MoneyReceipts",
+    "Income",
+    "Expenses",
+    "DuePayments",
+    "Reports"
+  ],
 
-  DuePayments:"Due Payments",
-  Reports:"Reports",
+  "Administration":[
+    "Roles",
+    "Notifications",
+    "Timeline",
+    "LeadSources",
+    "ActivityLog",
+    "Settings",
+    "StudentPortal"
+  ]
 
-  Users:"Staff Management",
-  Roles:"Roles & Permissions",
-  Notifications:"Notifications",
-  Timeline:"Student Timeline",
-  LeadSources:"Lead Sources",
-  ActivityLog:"Activity Log",
-  Settings:"Settings"
 };
 
 
-/* =====================================================
-   INIT
-===================================================== */
+const LABELS = {
 
-document.addEventListener("DOMContentLoaded", function(){
+  FollowUps:"Follow-ups",
+
+  EmployeeAttendance:
+    "Employee Attendance",
+
+  LeaveManagement:
+    "Leave Management",
+
+  IELTS_Batches:
+    "IELTS Batches",
+
+  IELTS_Students:
+    "IELTS Students",
+
+  IELTS_Attendance:
+    "IELTS Attendance",
+
+  IELTS_MockTests:
+    "IELTS Mock Tests",
+
+  IELTS_Results:
+    "IELTS Results",
+
+  DocumentChecklist:
+    "Document Checklist",
+
+  MoneyReceipts:
+    "Money Receipts",
+
+  DuePayments:
+    "Due Payments",
+
+  LeadSources:
+    "Lead Sources",
+
+  StudentPortal:
+    "Student Portal",
+
+  ActivityLog:
+    "Activity Log"
+
+};
+
+
+/* =========================================================
+   FRONTEND SCHEMAS
+========================================================= */
+
+const HEADERS = {
+
+Users:[
+"Name","Email","Phone","Role","Username","Password","Status","Profile Photo"
+],
+
+Leads:[
+"Lead Date","Name","Phone","WhatsApp","Email","Source",
+"Interested Country","Interested Course","Intake",
+"Assigned Counsellor","Priority","Status","Next Follow-up","Notes"
+],
+
+Students:[
+"Lead ID","Name","Phone","WhatsApp","Email","Date of Birth",
+"Gender","Address","Passport Number","Passport Issue Date",
+"Passport Expiry Date","Nationality","Marital Status",
+"SSC/O-Level","SSC/O-Level GPA","SSC/O-Level Passing Year",
+"HSC/A-Level","HSC/A-Level GPA","HSC/A-Level Passing Year",
+"Bachelor","Bachelor CGPA","Bachelor Passing Year",
+"Master","Master CGPA","Master Passing Year",
+"English Test","Overall Score","Listening","Reading","Writing",
+"Speaking","Test Date","Preferred Country",
+"Preferred University","Preferred Course","Preferred Intake",
+"Budget","Assigned Counsellor","Current Status","Notes"
+],
+
+Countries:[
+"Country Name","Country Code","Flag","Description","Status","Sort Order"
+],
+
+Universities:[
+"University Name","Country","City","Website","Ranking",
+"Application Fee","Tuition Fee","Intakes",
+"IELTS Requirement","PTE Requirement","Duolingo Requirement",
+"GPA Requirement","Scholarship","Processing Time",
+"Partner Status","Status","Notes"
+],
+
+Courses:[
+"University ID","University Name","Country","Course Name",
+"Degree Level","Duration","Tuition Fee","Intake",
+"IELTS Requirement","PTE Requirement",
+"Duolingo Requirement","Application Deadline","Status","Notes"
+],
+
+Applications:[
+"Student ID","Country","University","Course","Degree Level",
+"Intake","Application Date","Application Deadline",
+"Assigned Officer","Application Status","Application Fee",
+"Payment Status","Notes"
+],
+
+Documents:[
+"Student ID","Application ID","Document Type","Document Name",
+"Expiry Date","Notes"
+],
+
+DocumentChecklist:[
+"Student ID","Application ID","Document Type",
+"Required","Received","Verified","File URL","Remarks"
+],
+
+Offers:[
+"Student ID","Application ID","University","Course","Offer Type",
+"Offer Date","Offer Deadline","Deposit Amount",
+"Deposit Deadline","Deposit Status","Offer Letter URL",
+"Status","Notes"
+],
+
+Visa:[
+"Student ID","Application ID","Country","University","Visa Type",
+"Application Date","Biometrics Date","Medical Date",
+"Interview Date","Decision Date","Visa Status",
+"Refusal Reason","Visa Letter URL","Assigned Officer","Notes"
+],
+
+IELTS_Batches:[
+"Batch Name","Teacher","Course Type","Start Date","End Date",
+"Class Days","Class Time","Room","Capacity","Status","Notes"
+],
+
+IELTS_Students:[
+"Student ID","Batch ID","Enrollment Date","Course Fee","Paid","Status","Notes"
+],
+
+IELTS_Attendance:[
+"Batch ID","Student ID","Date","Status","Remarks"
+],
+
+IELTS_MockTests:[
+"Student ID","Batch ID","Test Date","Listening","Reading",
+"Writing","Speaking","Overall","Remarks"
+],
+
+IELTS_Results:[
+"Student ID","Test Type","Test Date","Listening","Reading",
+"Writing","Speaking","Overall","Certificate URL","Notes"
+],
+
+Payments:[
+"Student ID","Invoice ID","Date","Purpose","Description",
+"Amount","Payment Method","Transaction ID",
+"Received By","Receipt Number","Notes"
+],
+
+Expenses:[
+"Date","Category","Description","Amount",
+"Payment Method","Reference","Paid By","Notes"
+],
+
+Invoices:[
+"Student ID","Invoice Date","Due Date","Service","Description",
+"Total Amount","Paid Amount"
+],
+
+MoneyReceipts:[
+"Receipt Number","Student ID","Payment ID","Date","Purpose",
+"Amount","Payment Method","Received By","Notes"
+],
+
+Income:[
+"Date","Category","Description","Amount","Source",
+"Payment Method","Received By","Reference","Notes"
+],
+
+Intake:[
+"Country","University","Course","Intake Name",
+"Application Deadline","Deposit Deadline",
+"Visa Deadline","Status","Notes"
+],
+
+Counselling:[
+"Student ID","Lead ID","Date","Counsellor","Country",
+"Course","University","Budget","Student Requirement",
+"Counsellor Recommendation","Next Action",
+"Next Follow-up","Notes"
+],
+
+FollowUps:[
+"Lead ID","Student ID","Assigned To","Follow-up Date",
+"Follow-up Time","Type","Subject","Notes",
+"Outcome","Next Follow-up","Status"
+],
+
+Tasks:[
+"Title","Description","Assigned To","Related Student",
+"Related Application","Priority","Due Date",
+"Status","Completed At"
+],
+
+EmployeeAttendance:[
+"Employee ID","Employee Name","Date",
+"Check In","Check Out","Status","Remarks"
+],
+
+LeaveManagement:[
+"Employee ID","Employee Name","Leave Type",
+"Start Date","End Date","Total Days","Reason",
+"Status","Approved By","Remarks"
+],
+
+Roles:[
+"Role Name","Permissions","Status"
+],
+
+Settings:[
+"Setting Name","Setting Value","Description","Status"
+],
+
+Notifications:[
+"User ID","Title","Message","Type","Related ID","Is Read"
+],
+
+Timeline:[
+"Student ID","Date","Event Type","Description","User ID"
+],
+
+LeadSources:[
+"Source Name","Status","Notes"
+],
+
+StudentPortal:[
+"Student ID","Username","Password","Status"
+]
+
+};
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let user = null;
+let currentModule = "";
+let records = [];
+let currentRow = null;
+let dropdowns = null;
+let cache = {};
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function esc(value){
+
+  return String(
+    value === null ||
+    value === undefined
+      ? ""
+      : value
+  )
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+
+function loading(show){
 
   document
-    .querySelectorAll(".menu button[data-module]")
-    .forEach(function(button){
-
-      button.addEventListener("click", function(){
-
-        navigate(
-          button.dataset.module
-        );
-
-      });
-
-    });
-
-
-  document
-    .getElementById("loginForm")
-    .addEventListener(
-      "submit",
-      handleLogin
+    .getElementById("loading")
+    .classList.toggle(
+      "show",
+      show
     );
 
+}
 
-  document
-    .getElementById("mobileMenu")
-    .addEventListener(
-      "click",
-      function(){
-        document
-          .getElementById("sidebar")
-          .classList.toggle("open");
+
+function toast(message){
+
+  const el =
+    document.getElementById(
+      "toast"
+    );
+
+  el.textContent =
+    message;
+
+  el.classList.add(
+    "show"
+  );
+
+  setTimeout(
+    function(){
+
+      el.classList.remove(
+        "show"
+      );
+
+    },
+    2500
+  );
+
+}
+
+
+/* =========================================================
+   API
+========================================================= */
+
+async function api(
+  action,
+  data={}
+){
+
+  const payload = {
+
+    action:action,
+
+    ...data,
+
+    user:user
+
+  };
+
+
+  const response =
+    await fetch(
+      API_URL,
+      {
+        method:"POST",
+        body:
+          JSON.stringify(
+            payload
+          )
       }
     );
 
 
-  restoreSession();
+  return response.json();
 
-});
-
-
-/* =====================================================
-   API
-===================================================== */
-
-async function api(payload){
-
-  const response =
-    await fetch(API_URL,{
-      method:"POST",
-      headers:{
-        "Content-Type":"text/plain;charset=utf-8"
-      },
-      body:JSON.stringify(payload)
-    });
-
-  const text =
-    await response.text();
-
-  let data;
-
-  try{
-    data = JSON.parse(text);
-  }catch(e){
-    throw new Error(
-      "Server returned invalid response."
-    );
-  }
-
-  if(!data.success){
-    throw new Error(
-      data.message || "Operation failed."
-    );
-  }
-
-  return data;
 }
 
 
-/* =====================================================
+/* =========================================================
    LOGIN
-===================================================== */
+========================================================= */
 
-async function handleLogin(event){
-
-  event.preventDefault();
+async function login(){
 
   const username =
     document
-      .getElementById("loginUsername")
+      .getElementById(
+        "loginUsername"
+      )
       .value
       .trim();
 
+
   const password =
     document
-      .getElementById("loginPassword")
+      .getElementById(
+        "loginPassword"
+      )
       .value;
 
 
-  const errorBox =
-    document.getElementById("loginError");
+  if(
+    !username ||
+    !password
+  ){
 
-  errorBox.classList.add("hidden");
+    document
+      .getElementById(
+        "loginError"
+      )
+      .textContent =
+      "Enter username and password.";
+
+    return;
+
+  }
+
+
+  loading(true);
 
 
   try{
 
     const result =
-      await api({
-        action:"login",
-        username:username,
-        password:password
-      });
+      await api(
+        "login",
+        {
+          username,
+          password
+        }
+      );
 
 
-    currentUser =
+    if(!result.success){
+
+      document
+        .getElementById(
+          "loginError"
+        )
+        .textContent =
+        result.message;
+
+      return;
+
+    }
+
+
+    user =
       result.user;
 
 
     sessionStorage.setItem(
       "radiance_user",
-      JSON.stringify(currentUser)
+      JSON.stringify(user)
     );
 
 
-    showApplication();
+    start();
+
 
   }catch(error){
 
-    errorBox.textContent =
-      error.message;
+    document
+      .getElementById(
+        "loginError"
+      )
+      .textContent =
+      "Unable to connect to CRM.";
 
-    errorBox.classList.remove(
-      "hidden"
-    );
+  }finally{
+
+    loading(false);
+
   }
+
 }
 
 
-/* =====================================================
-   RESTORE
-===================================================== */
+/* =========================================================
+   START
+========================================================= */
 
-function restoreSession(){
-
-  const saved =
-    sessionStorage.getItem(
-      "radiance_user"
-    );
-
-  if(!saved){
-    return;
-  }
-
-  try{
-
-    currentUser =
-      JSON.parse(saved);
-
-    showApplication();
-
-  }catch(e){
-
-    sessionStorage.removeItem(
-      "radiance_user"
-    );
-  }
-}
-
-
-/* =====================================================
-   SHOW APP
-===================================================== */
-
-function showApplication(){
+function start(){
 
   document
-    .getElementById("loginScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("app")
-    .classList.remove("hidden");
+    .getElementById(
+      "loginScreen"
+    )
+    .style.display =
+    "none";
 
 
   document
-    .getElementById("topUserName")
+    .getElementById(
+      "app"
+    )
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById(
+      "userInfo"
+    )
     .textContent =
-      currentUser.name || "Radiance";
+    user.name +
+    " • " +
+    user.role;
 
 
-  document
-    .getElementById("topUserRole")
-    .textContent =
-      currentUser.role || "";
+  buildNav();
 
 
-  navigate("dashboard");
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-function logout(){
-
-  sessionStorage.removeItem(
-    "radiance_user"
+  openModule(
+    "Dashboard"
   );
 
-  currentUser = null;
+}
 
-  document
-    .getElementById("app")
-    .classList.add("hidden");
 
-  document
-    .getElementById("loginScreen")
-    .classList.remove("hidden");
+/* =========================================================
+   NAV
+========================================================= */
 
-  document
-    .getElementById("loginPassword")
-    .value = "";
+function buildNav(){
+
+  const nav =
+    document
+      .getElementById(
+        "navigation"
+      );
+
+
+  nav.innerHTML = "";
+
+
+  Object.keys(
+    MODULES
+  )
+  .forEach(function(group){
+
+    const title =
+      document.createElement(
+        "div"
+      );
+
+
+    title.className =
+      "nav-group";
+
+
+    title.textContent =
+      group;
+
+
+    nav.appendChild(
+      title
+    );
+
+
+    MODULES[group]
+      .forEach(function(module){
+
+        const btn =
+          document.createElement(
+            "button"
+          );
+
+
+        btn.className =
+          "nav-btn";
+
+
+        btn.dataset.module =
+          module;
+
+
+        btn.textContent =
+          LABELS[module] ||
+          module;
+
+
+        btn.onclick =
+          function(){
+
+            openModule(
+              module
+            );
+
+          };
+
+
+        nav.appendChild(
+          btn
+        );
+
+      });
+
+  });
 
 }
 
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+function activeNav(){
 
-async function navigate(module){
+  document
+    .querySelectorAll(
+      ".nav-btn"
+    )
+    .forEach(function(btn){
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.module ===
+        currentModule
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   OPEN MODULE
+========================================================= */
+
+async function openModule(
+  module
+){
 
   currentModule =
     module;
 
-  document
-    .querySelectorAll(
-      ".menu button[data-module]"
-    )
-    .forEach(function(button){
 
-      button.classList.toggle(
-        "active",
-        button.dataset.module === module
-      );
+  activeNav();
 
-    });
-
-
-  document
-    .getElementById("pageTitle")
-    .textContent =
-      moduleNames[module] || module;
-
-
-  document
-    .getElementById("sidebar")
-    .classList.remove("open");
-
-
-  if(module === "dashboard"){
-
-    await renderDashboard();
-    return;
-  }
-
-
-  if(module === "Reports"){
-
-    await renderReports();
-    return;
-  }
-
-
-  if(module === "DuePayments"){
-
-    await renderDuePayments();
-    return;
-  }
-
-
-  await renderModule(module);
-}
-
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-async function renderDashboard(){
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML =
-    `<div class="loading">Loading dashboard...</div>`;
-
-
-  try{
-
-    const result =
-      await api({
-        action:"dashboard",
-        user:currentUser
-      });
-
-
-    const d =
-      result.data;
-
-
-    content.innerHTML = `
-
-      <div class="stats">
-
-        ${statCard(
-          "Total Leads",
-          d.totalLeads
-        )}
-
-        ${statCard(
-          "Total Students",
-          d.totalStudents
-        )}
-
-        ${statCard(
-          "Applications",
-          d.totalApplications
-        )}
-
-        ${statCard(
-          "Due Payments",
-          formatMoney(d.pendingPayments)
-        )}
-
-      </div>
-
-
-      <div class="stats">
-
-        ${statCard(
-          "Countries",
-          d.totalCountries
-        )}
-
-        ${statCard(
-          "Universities",
-          d.totalUniversities
-        )}
-
-        ${statCard(
-          "Courses",
-          d.totalCourses
-        )}
-
-        ${statCard(
-          "Tasks",
-          d.totalTasks
-        )}
-
-      </div>
-
-
-      <div class="dashboard-grid">
-
-        <div class="card">
-
-          <div class="card-header">
-
-            <div class="card-title">
-              Recent Activity
-            </div>
-
-            <button
-              class="btn btn-secondary"
-              onclick="navigate('ActivityLog')"
-            >
-              View All
-            </button>
-
-          </div>
-
-          <div class="card-body">
-
-            ${
-              d.recentActivity &&
-              d.recentActivity.length
-              ?
-              renderActivityTable(
-                d.recentActivity
-              )
-              :
-              "<p>No activity yet.</p>"
-            }
-
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-header">
-
-            <div class="card-title">
-              Financial Summary
-            </div>
-
-          </div>
-
-          <div class="card-body">
-
-            <p>
-              <strong>Total Payments:</strong>
-              ${formatMoney(d.totalPayments)}
-            </p>
-
-            <br>
-
-            <p>
-              <strong>Total Expenses:</strong>
-              ${formatMoney(d.totalExpenses)}
-            </p>
-
-            <br>
-
-            <p>
-              <strong>Net Balance:</strong>
-              ${formatMoney(d.netBalance)}
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-    `;
-
-  }catch(error){
-
-    showError(error);
-  }
-}
-
-
-function statCard(label,value){
-
-  return `
-    <div class="stat-card">
-
-      <div class="stat-label">
-        ${escapeHtml(label)}
-      </div>
-
-      <div class="stat-value">
-        ${escapeHtml(String(value))}
-      </div>
-
-    </div>
-  `;
-}
-
-
-/* =====================================================
-   GENERIC MODULE
-===================================================== */
-
-async function renderModule(module){
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML =
-    `<div class="loading">Loading ${escapeHtml(moduleNames[module] || module)}...</div>`;
-
-
-  try{
-
-    await loadDropdowns();
-
-
-    const result =
-      await api({
-        action:"list",
-        module:module,
-        user:currentUser
-      });
-
-
-    currentRecords =
-      result.records || [];
-
-
-    renderModuleTable();
-
-  }catch(error){
-
-    showError(error);
-  }
-}
-
-
-/* =====================================================
-   MODULE TABLE
-===================================================== */
-
-function renderModuleTable(){
-
-  const module =
-    currentModule;
-
-  let records =
-    currentRecords.slice();
-
-
-  const search =
-    document.getElementById("moduleSearch");
-
-  const query =
-    search
-      ? search.value.toLowerCase().trim()
-      : "";
-
-
-  if(query){
-
-    records =
-      records.filter(function(record){
-
-        return Object.keys(record)
-          .some(function(key){
-
-            return String(
-              record[key]
-            )
-            .toLowerCase()
-            .includes(query);
-
-          });
-
-      });
-
-  }
-
-
-  const readonly =
-    [
-      "ActivityLog"
-    ].includes(module);
-
-
-  const content =
-    document.getElementById("content");
-
-
-  let html = `
-
-    <div class="module-toolbar">
-
-      <input
-        id="moduleSearch"
-        class="search"
-        placeholder="Search ${escapeHtml(moduleNames[module] || module)}..."
-        value="${escapeHtml(query)}"
-        oninput="renderModuleTable()"
-      >
-
-      ${
-        readonly
-        ? ""
-        :
-        `
-        <button
-          class="btn btn-primary"
-          onclick="openAddModal()"
-        >
-          + Add New
-        </button>
-        `
-      }
-
-      <button
-        class="btn btn-secondary"
-        onclick="renderModule('${module}')"
-      >
-        Refresh
-      </button>
-
-    </div>
-
-
-    <div class="table-card">
-
-      ${
-        records.length
-        ?
-        buildTable(records,module)
-        :
-        `<div class="loading">
-          No records found.
-        </div>`
-      }
-
-    </div>
-  `;
-
-
-  content.innerHTML =
-    html;
-}
-
-
-/* =====================================================
-   TABLE
-===================================================== */
-
-function buildTable(records,module){
-
-  if(!records.length){
-    return "";
-  }
-
-
-  const headers =
-    Object.keys(records[0])
-      .filter(function(key){
-        return key !== "_row" &&
-          key !== "Password Hash";
-      });
-
-
-  let html =
-    "<table><thead><tr>";
-
-
-  headers
-    .slice(0,10)
-    .forEach(function(header){
-
-      html +=
-        `<th>${escapeHtml(header)}</th>`;
-
-    });
-
-
-  if(!["ActivityLog"].includes(module)){
-    html += "<th>Actions</th>";
-  }
-
-
-  html +=
-    "</tr></thead><tbody>";
-
-
-  records.forEach(function(record){
-
-    html += "<tr>";
-
-
-    headers
-      .slice(0,10)
-      .forEach(function(header){
-
-        let value =
-          record[header];
-
-        if(
-          header === "Status" ||
-          header === "Payment Status" ||
-          header === "Application Status" ||
-          header === "Visa Status"
-        ){
-
-          html +=
-            `<td>${statusBadge(value)}</td>`;
-
-        }else{
-
-          html +=
-            `<td>${formatCell(value)}</td>`;
-        }
-
-      });
-
-
-    if(!["ActivityLog"].includes(module)){
-
-      html += `
-
-        <td class="actions">
-
-          <button
-            class="action-btn edit-btn"
-            onclick="editRecord(${record._row})"
-          >
-            Edit
-          </button>
-
-          <button
-            class="action-btn delete-btn"
-            onclick="deleteRecord(${record._row})"
-          >
-            Delete
-          </button>
-
-        </td>
-
-      `;
-    }
-
-
-    html += "</tr>";
-
-  });
-
-
-  html +=
-    "</tbody></table>";
-
-
-  return html;
-}
-
-
-/* =====================================================
-   ADD MODAL
-===================================================== */
-
-async function openAddModal(){
-
-  currentEditRecord = null;
-
-  await loadDropdowns();
-
-  openRecordModal(
-    null,
-    "Add New " +
-    (moduleNames[currentModule] || currentModule)
-  );
-}
-
-
-/* =====================================================
-   EDIT
-===================================================== */
-
-async function editRecord(row){
-
-  const record =
-    currentRecords.find(function(item){
-
-      return Number(item._row) ===
-        Number(row);
-
-    });
-
-
-  if(!record){
-    showToast(
-      "Record not found.",
-      "error"
-    );
-    return;
-  }
-
-
-  currentEditRecord =
-    record;
-
-
-  await loadDropdowns();
-
-
-  openRecordModal(
-    record,
-    "Edit " +
-    (moduleNames[currentModule] || currentModule)
-  );
-}
-
-
-/* =====================================================
-   FORM
-===================================================== */
-
-function openRecordModal(record,title){
-
-  const modal =
-    document.getElementById(
-      "modalOverlay"
-    );
-
-  document
-    .getElementById("modalTitle")
-    .textContent =
-      title;
-
-
-  const body =
-    document.getElementById(
-      "modalBody"
-    );
-
-
-  const headers =
-    getModuleHeaders(
-      currentModule
-    );
-
-
-  let html =
-    `<div class="form-grid">`;
-
-
-  headers.forEach(function(header){
-
-    if(
-      header === "Password Hash" ||
-      header === "Created At" ||
-      header === "Updated At" ||
-      header === "Last Login" ||
-      header === "Uploaded At" ||
-      header === "Timestamp" ||
-      header === "Completed At"
-    ){
-      return;
-    }
-
-
-    if(
-      header.endsWith(" ID") &&
-      record &&
-      record[header]
-    ){
-
-      html += field(
-        header,
-        record[header],
-        "text",
-        true
-      );
-
-      return;
-    }
-
-
-    let value =
-      record
-        ? record[header] || ""
-        : "";
-
-
-    html +=
-      createDynamicField(
-        header,
-        value
-      );
-
-  });
-
-
-  html +=
-    `</div>`;
-
-
-  body.innerHTML =
-    html;
-
-
-  modal.classList.add(
-    "show"
-  );
-}
-
-
-/* =====================================================
-   FIELD GENERATION
-===================================================== */
-
-function createDynamicField(header,value){
-
-  const id =
-    fieldId(header);
-
-  const lower =
-    header.toLowerCase();
-
-
-  let full =
-    lower.includes("description") ||
-    lower.includes("notes") ||
-    lower.includes("remarks") ||
-    lower.includes("requirement") ||
-    lower.includes("recommendation") ||
-    lower.includes("message") ||
-    lower.includes("address");
-
-
-  /* COUNTRY */
-
-  if(lower === "country" ||
-     lower.includes("preferred country") ||
-     lower.includes("interested country")){
-
-    const options =
-      dropdowns.countries || [];
-
-    return selectField(
-      header,
-      value,
-      options.map(function(x){
-        return {
-          value:x["Country Name"],
-          label:
-            (x.Flag || "") +
-            " " +
-            x["Country Name"]
-        };
-      }),
-      full
-    );
-  }
-
-
-  /* STUDENT */
-
-  if(lower === "student id" ||
-     lower === "related student"){
-
-    const options =
-      dropdowns.students || [];
-
-    return selectField(
-      header,
-      value,
-      options.map(function(x){
-        return {
-          value:x["Student ID"],
-          label:
-            x["Student ID"] +
-            " - " +
-            x.Name
-        };
-      }),
-      full
-    );
-  }
-
-
-  /* LEAD */
-
-  if(lower === "lead id"){
-
-    const options =
-      dropdowns.leads || [];
-
-    return selectField(
-      header,
-      value,
-      options.map(function(x){
-        return {
-          value:x["Lead ID"],
-          label:
-            x["Lead ID"] +
-            " - " +
-            x.Name
-        };
-      }),
-      full
-    );
-  }
-
-
-  /* USER */
-
-  if(
-    lower.includes("assigned") ||
-    lower === "counsellor" ||
-    lower === "teacher" ||
-    lower === "received by" ||
-    lower === "paid by"
-  ){
-
-    const options =
-      dropdowns.users || [];
-
-    return selectField(
-      header,
-      value,
-      options.map(function(x){
-        return {
-          value:x.name,
-          label:
-            x.name +
-            " (" +
-            x.role +
-            ")"
-        };
-      }),
-      full
-    );
-  }
-
-
-  /* UNIVERSITY */
-
-  if(
-    lower === "university" ||
-    lower === "preferred university"
-  ){
-
-    const options =
-      dropdowns.universities || [];
-
-    return selectField(
-      header,
-      value,
-      options.map(function(x){
-        return {
-          value:x["University Name"],
-          label:x["University Name"]
-        };
-      }),
-      full
-    );
-  }
-
-
-  /* COURSE */
-
-  if(
-    lower === "course" ||
-    lower === "preferred course"
-  ){
-
-    const options =
-      dropdowns.courses || [];
-
-    return selectField(
-      header,
-      value,
-      options.map(function(x){
-        return {
-          value:x["Course Name"],
-          label:x["Course Name"]
-        };
-      }),
-      full
-    );
-  }
-
-
-  /* ROLE */
-
-  if(header === "Role"){
-
-    return selectField(
-      header,
-      value,
-      [
-        "Super Admin",
-        "Counsellor",
-        "Application Officer",
-        "Visa Officer",
-        "Accountant",
-        "IELTS Teacher"
-      ].map(function(x){
-        return {
-          value:x,
-          label:x
-        };
-      }),
-      false
-    );
-  }
-
-
-  /* PASSWORD */
-
-  if(header === "Password"){
-
-    return field(
-      header,
-      value,
-      "password",
-      false
-    );
-  }
-
-
-  /* BOOLEAN */
-
-  if(
-    ["Required","Received","Verified","Is Read","Featured"]
-      .includes(header)
-  ){
-
-    return selectField(
-      header,
-      value,
-      [
-        {value:"Yes",label:"Yes"},
-        {value:"No",label:"No"}
-      ],
-      false
-    );
-  }
-
-
-  /* STATUS */
-
-  if(
-    header === "Status" ||
-    header === "Application Status" ||
-    header === "Payment Status" ||
-    header === "Visa Status" ||
-    header === "Verification Status" ||
-    header === "Partner Status" ||
-    header === "Deposit Status"
-  ){
-
-    const options =
-      statusOptions(header);
-
-    return selectField(
-      header,
-      value,
-      options.map(function(x){
-        return {
-          value:x,
-          label:x
-        };
-      }),
-      false
-    );
-  }
-
-
-  /* PAYMENT METHOD */
-
-  if(header === "Payment Method"){
-
-    return selectField(
-      header,
-      value,
-      [
-        "Cash",
-        "Bank",
-        "bKash",
-        "Nagad",
-        "Rocket",
-        "Card",
-        "Other"
-      ].map(function(x){
-        return {
-          value:x,
-          label:x
-        };
-      }),
-      false
-    );
-  }
-
-
-  /* TEXTAREA */
-
-  if(full){
-
-    return `
-      <div class="form-group full">
-
-        <label>
-          ${escapeHtml(header)}
-        </label>
-
-        <textarea
-          id="${id}"
-          class="form-control"
-        >${escapeHtml(String(value))}</textarea>
-
-      </div>
-    `;
-  }
-
-
-  /* DATE */
-
-  if(
-    lower.includes("date") ||
-    lower.includes("deadline")
-  ){
-
-    return field(
-      header,
-      value,
-      "date",
-      false
-    );
-  }
-
-
-  /* TIME */
-
-  if(lower.includes("time")){
-
-    return field(
-      header,
-      value,
-      "time",
-      false
-    );
-  }
-
-
-  /* NUMBER */
-
-  if(
-    lower.includes("amount") ||
-    lower.includes("fee") ||
-    lower.includes("budget") ||
-    lower.includes("score") ||
-    lower.includes("gpa") ||
-    lower.includes("ranking") ||
-    lower.includes("capacity") ||
-    lower.includes("year")
-  ){
-
-    return field(
-      header,
-      value,
-      "number",
-      false
-    );
-  }
-
-
-  /* USERS PASSWORD FIELD */
-
-  if(
-    currentModule === "Users" &&
-    header === "Password"
-  ){
-
-    return field(
-      header,
-      value,
-      "password",
-      false
-    );
-  }
-
-
-  return field(
-    header,
-    value,
-    "text",
-    false
-  );
-}
-
-
-/* =====================================================
-   FIELD
-===================================================== */
-
-function field(
-  header,
-  value,
-  type,
-  readonly
-){
-
-  const id =
-    fieldId(header);
-
-
-  return `
-    <div class="form-group">
-
-      <label>
-        ${escapeHtml(header)}
-      </label>
-
-      <input
-        id="${id}"
-        class="form-control"
-        type="${type}"
-        value="${escapeHtml(String(value || ""))}"
-        ${readonly ? "readonly" : ""}
-      >
-
-    </div>
-  `;
-}
-
-
-function selectField(
-  header,
-  value,
-  options,
-  full
-){
-
-  const id =
-    fieldId(header);
-
-
-  let html =
-    `<div class="form-group ${full ? "full" : ""}">
-
-      <label>
-        ${escapeHtml(header)}
-      </label>
-
-      <select
-        id="${id}"
-        class="form-control"
-      >
-
-      <option value="">
-        Select ${escapeHtml(header)}
-      </option>`;
-
-
-  options.forEach(function(option){
-
-    html += `
-      <option
-        value="${escapeHtml(String(option.value))}"
-        ${String(option.value) === String(value) ? "selected" : ""}
-      >
-        ${escapeHtml(String(option.label))}
-      </option>
-    `;
-
-  });
-
-
-  html +=
-    `</select></div>`;
-
-
-  return html;
-}
-
-
-/* =====================================================
-   STATUS OPTIONS
-===================================================== */
-
-function statusOptions(header){
-
-  if(header === "Application Status"){
-    return [
-      "Pending",
-      "Submitted",
-      "Under Review",
-      "Conditional Offer",
-      "Unconditional Offer",
-      "Rejected",
-      "Withdrawn",
-      "Completed"
-    ];
-  }
-
-
-  if(header === "Payment Status"){
-    return [
-      "Pending",
-      "Partial",
-      "Paid",
-      "Due",
-      "Refunded"
-    ];
-  }
-
-
-  if(header === "Visa Status"){
-    return [
-      "Not Started",
-      "Preparing",
-      "Submitted",
-      "Biometrics",
-      "Medical",
-      "Interview",
-      "Granted",
-      "Refused",
-      "Withdrawn"
-    ];
-  }
-
-
-  if(header === "Verification Status"){
-    return [
-      "Pending",
-      "Verified",
-      "Rejected"
-    ];
-  }
-
-
-  if(header === "Partner Status"){
-    return [
-      "Partner",
-      "Non-Partner",
-      "Pending"
-    ];
-  }
-
-
-  if(header === "Deposit Status"){
-    return [
-      "Pending",
-      "Paid",
-      "Not Required"
-    ];
-  }
-
-
-  return [
-    "Active",
-    "Inactive",
-    "Pending",
-    "Completed",
-    "Cancelled",
-    "Rejected"
-  ];
-}
-
-
-/* =====================================================
-   SUBMIT
-===================================================== */
-
-async function submitForm(){
-
-  const module =
-    currentModule;
-
-
-  const headers =
-    getModuleHeaders(module);
-
-
-  const record = {};
-
-
-  headers.forEach(function(header){
-
-    if(
-      header === "Password Hash" ||
-      header === "Created At" ||
-      header === "Updated At" ||
-      header === "Last Login" ||
-      header === "Uploaded At" ||
-      header === "Timestamp" ||
-      header === "Completed At"
-    ){
-      return;
-    }
-
-
-    const element =
-      document.getElementById(
-        fieldId(header)
-      );
-
-
-    if(element){
-
-      record[header] =
-        element.value;
-    }
-
-  });
-
-
-  if(currentEditRecord){
-
-    record._row =
-      currentEditRecord._row;
-  }
-
-
-  /* USERS PASSWORD */
-
-  if(module === "Users"){
-
-    const passwordElement =
-      document.getElementById(
-        fieldId("Password")
-      );
-
-    if(passwordElement){
-
-      record.Password =
-        passwordElement.value;
-    }
-  }
-
-
-  const saveButton =
-    document.getElementById(
-      "saveBtn"
-    );
-
-  saveButton.disabled = true;
-  saveButton.textContent = "Saving...";
-
-
-  try{
-
-    await api({
-
-      action:"save",
-
-      module:module,
-
-      record:record,
-
-      user:currentUser
-
-    });
-
-
-    closeModal();
-
-    showToast(
-      "Saved successfully.",
-      "success"
-    );
-
-
-    await renderModule(module);
-
-
-  }catch(error){
-
-    showToast(
-      error.message,
-      "error"
-    );
-
-  }finally{
-
-    saveButton.disabled = false;
-    saveButton.textContent = "Save";
-
-  }
-}
-
-
-/* =====================================================
-   DELETE
-===================================================== */
-
-async function deleteRecord(row){
-
-  const record =
-    currentRecords.find(function(item){
-
-      return Number(item._row) ===
-        Number(row);
-
-    });
-
-
-  if(!record){
-    return;
-  }
-
-
-  const name =
-    record.Name ||
-    record["Country Name"] ||
-    record["University Name"] ||
-    record["Course Name"] ||
-    record["Student ID"] ||
-    record["Lead ID"] ||
-    record["Application ID"] ||
-    record[Object.keys(record)[1]] ||
-    "this record";
-
-
-  if(
-    !confirm(
-      "Are you sure you want to delete " +
-      name +
-      "?"
-    )
-  ){
-    return;
-  }
-
-
-  try{
-
-    await api({
-
-      action:"delete",
-
-      module:currentModule,
-
-      row:row,
-
-      user:currentUser
-
-    });
-
-
-    showToast(
-      "Deleted successfully.",
-      "success"
-    );
-
-
-    await renderModule(
-      currentModule
-    );
-
-
-  }catch(error){
-
-    showToast(
-      error.message,
-      "error"
-    );
-  }
-}
-
-
-/* =====================================================
-   REPORTS
-===================================================== */
-
-async function renderReports(){
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML =
-    `<div class="loading">Loading reports...</div>`;
-
-
-  try{
-
-    const result =
-      await api({
-        action:"reports",
-        user:currentUser
-      });
-
-
-    const d =
-      result.data;
-
-
-    let countryRows = "";
-
-    Object.keys(
-      d.applicationsByCountry
-    ).forEach(function(country){
-
-      countryRows += `
-        <tr>
-          <td>${escapeHtml(country)}</td>
-          <td>${d.applicationsByCountry[country]}</td>
-        </tr>
-      `;
-
-    });
-
-
-    let sourceRows = "";
-
-    Object.keys(
-      d.leadsBySource
-    ).forEach(function(source){
-
-      sourceRows += `
-        <tr>
-          <td>${escapeHtml(source)}</td>
-          <td>${d.leadsBySource[source]}</td>
-        </tr>
-      `;
-
-    });
-
-
-    content.innerHTML = `
-
-      <div class="report-grid">
-
-        ${statCard("Leads",d.totalLeads)}
-
-        ${statCard("Students",d.totalStudents)}
-
-        ${statCard("Applications",d.totalApplications)}
-
-        ${statCard("Due",formatMoney(d.due))}
-
-        ${statCard("Income",formatMoney(d.income))}
-
-        ${statCard("Expenses",formatMoney(d.expenses))}
-
-        ${statCard("Net",formatMoney(d.net))}
-
-      </div>
-
-
-      <br>
-
-
-      <div class="dashboard-grid">
-
-        <div class="card">
-
-          <div class="card-header">
-            <div class="card-title">
-              Applications by Country
-            </div>
-          </div>
-
-          <div class="card-body">
-
-            <table style="min-width:0">
-
-              <thead>
-                <tr>
-                  <th>Country</th>
-                  <th>Applications</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                ${countryRows || `
-                  <tr>
-                    <td colspan="2">
-                      No data
-                    </td>
-                  </tr>
-                `}
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-header">
-            <div class="card-title">
-              Leads by Source
-            </div>
-          </div>
-
-          <div class="card-body">
-
-            <table style="min-width:0">
-
-              <thead>
-                <tr>
-                  <th>Source</th>
-                  <th>Leads</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                ${sourceRows || `
-                  <tr>
-                    <td colspan="2">
-                      No data
-                    </td>
-                  </tr>
-                `}
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-    `;
-
-
-  }catch(error){
-
-    showError(error);
-  }
-}
-
-
-/* =====================================================
-   DUE PAYMENTS
-===================================================== */
-
-async function renderDuePayments(){
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML =
-    `<div class="loading">Loading due payments...</div>`;
-
-
-  try{
-
-    const result =
-      await api({
-        action:"list",
-        module:"Invoices",
-        user:currentUser
-      });
-
-
-    const records =
-      (result.records || [])
-        .filter(function(x){
-          return Number(
-            x["Due Amount"]
-          ) > 0;
-        });
-
-
-    currentModule =
-      "Invoices";
-
-    currentRecords =
-      records;
-
-
-    document
-      .getElementById("pageTitle")
-      .textContent =
-        "Due Payments";
-
-
-    const total =
-      records.reduce(
-        function(sum,x){
-          return sum +
-            (Number(x["Due Amount"]) || 0);
-        },
-        0
-      );
-
-
-    content.innerHTML = `
-
-      <div class="stats">
-
-        ${statCard(
-          "Total Due Invoices",
-          records.length
-        )}
-
-        ${statCard(
-          "Total Due Amount",
-          formatMoney(total)
-        )}
-
-      </div>
-
-
-      <div class="table-card">
-
-        ${
-          records.length
-          ?
-          buildTable(
-            records,
-            "Invoices"
-          )
-          :
-          `<div class="loading">
-            No due payments.
-          </div>`
-        }
-
-      </div>
-    `;
-
-
-  }catch(error){
-
-    showError(error);
-  }
-}
-
-
-/* =====================================================
-   DROPDOWNS
-===================================================== */
-
-async function loadDropdowns(){
-
-  try{
-
-    const result =
-      await api({
-        action:"dropdowns",
-        user:currentUser
-      });
-
-    dropdowns =
-      result.data || {};
-
-  }catch(error){
-
-    console.error(error);
-  }
-}
-
-
-/* =====================================================
-   MODULE HEADERS
-===================================================== */
-
-function getModuleHeaders(module){
-
-  const headerMap = {
-
-    Settings:[
-      "Setting ID","Setting Name","Setting Value",
-      "Description","Status"
-    ],
-
-    Users:[
-      "User ID","Name","Email","Phone","Role",
-      "Username","Password","Status","Profile Photo"
-    ],
-
-    Leads:[
-      "Lead ID","Lead Date","Name","Phone","WhatsApp","Email",
-      "Source","Interested Country","Interested Course","Intake",
-      "Assigned Counsellor","Priority","Status","Next Follow-up","Notes"
-    ],
-
-    Students:[
-      "Student ID","Lead ID","Name","Photo","Phone","WhatsApp","Email",
-      "Date of Birth","Gender","Address","Passport Number",
-      "Passport Issue Date","Passport Expiry Date","Nationality",
-      "Marital Status","SSC/O-Level","SSC/O-Level GPA",
-      "SSC/O-Level Passing Year","HSC/A-Level","HSC/A-Level GPA",
-      "HSC/A-Level Passing Year","Bachelor","Bachelor CGPA",
-      "Bachelor Passing Year","Master","Master CGPA",
-      "Master Passing Year","English Test","Overall Score",
-      "Listening","Reading","Writing","Speaking","Test Date",
-      "Preferred Country","Preferred University","Preferred Course",
-      "Preferred Intake","Budget","Assigned Counsellor",
-      "Current Status","Notes"
-    ],
-
-    Counselling:[
-      "Counselling ID","Student ID","Lead ID","Date","Counsellor",
-      "Country","Course","University","Budget","Student Requirement",
-      "Counsellor Recommendation","Next Action","Next Follow-up","Notes"
-    ],
-
-    FollowUps:[
-      "Follow-up ID","Lead ID","Student ID","Assigned To",
-      "Follow-up Date","Follow-up Time","Type","Subject","Notes",
-      "Outcome","Next Follow-up","Status"
-    ],
-
-    Tasks:[
-      "Task ID","Title","Description","Assigned To","Related Student",
-      "Related Application","Priority","Due Date","Status"
-    ],
-
-    Countries:[
-      "Country ID","Country Name","Country Code","Flag",
-      "Description","Status","Sort Order"
-    ],
-
-    Universities:[
-      "University ID","University Name","Country","City","Website",
-      "Ranking","Application Fee","Tuition Fee","Intakes",
-      "IELTS Requirement","PTE Requirement","Duolingo Requirement",
-      "GPA Requirement","Scholarship","Processing Time",
-      "Partner Status","Status","Notes"
-    ],
-
-    Courses:[
-      "Course ID","University ID","University Name","Country",
-      "Course Name","Degree Level","Duration","Tuition Fee",
-      "Intake","IELTS Requirement","PTE Requirement",
-      "Duolingo Requirement","Application Deadline","Status","Notes"
-    ],
-
-    Applications:[
-      "Application ID","Student ID","Country","University","Course",
-      "Degree Level","Intake","Application Date","Application Deadline",
-      "Assigned Officer","Application Status","Application Fee",
-      "Payment Status","Notes"
-    ],
-
-    Documents:[
-      "Document ID","Student ID","Application ID","Document Type",
-      "Document Name","File URL","Drive File ID",
-      "Verification Status","Expiry Date","Notes"
-    ],
-
-    DocumentChecklist:[
-      "Checklist ID","Student ID","Application ID","Document Type",
-      "Required","Received","Verified","File URL","Remarks"
-    ],
-
-    Offers:[
-      "Offer ID","Student ID","Application ID","University","Course",
-      "Offer Type","Offer Date","Offer Deadline","Deposit Amount",
-      "Deposit Deadline","Deposit Status","Offer Letter URL",
-      "Status","Notes"
-    ],
-
-    Visa:[
-      "Visa ID","Student ID","Application ID","Country","University",
-      "Visa Type","Application Date","Biometrics Date","Medical Date",
-      "Interview Date","Decision Date","Visa Status","Refusal Reason",
-      "Visa Letter URL","Assigned Officer","Notes"
-    ],
-
-    IELTS_Batches:[
-      "Batch ID","Batch Name","Teacher","Course Type","Start Date",
-      "End Date","Class Days","Class Time","Room","Capacity",
-      "Status","Notes"
-    ],
-
-    IELTS_Students:[
-      "Enrollment ID","Student ID","Batch ID","Enrollment Date",
-      "Course Fee","Paid","Due","Status","Notes"
-    ],
-
-    IELTS_Attendance:[
-      "Attendance ID","Batch ID","Student ID","Date","Status",
-      "Remarks","Marked By"
-    ],
-
-    IELTS_MockTests:[
-      "Mock Test ID","Student ID","Batch ID","Test Date","Listening",
-      "Reading","Writing","Speaking","Overall","Remarks"
-    ],
-
-    IELTS_Results:[
-      "Result ID","Student ID","Test Type","Test Date","Listening",
-      "Reading","Writing","Speaking","Overall","Certificate URL","Notes"
-    ],
-
-    Payments:[
-      "Payment ID","Student ID","Invoice ID","Date","Purpose",
-      "Description","Amount","Payment Method","Transaction ID",
-      "Received By","Receipt Number","Notes"
-    ],
-
-    Expenses:[
-      "Expense ID","Date","Category","Description","Amount",
-      "Payment Method","Reference","Paid By","Notes"
-    ],
-
-    Invoices:[
-      "Invoice ID","Student ID","Invoice Date","Due Date","Service",
-      "Description","Total Amount","Paid Amount","Due Amount","Status"
-    ],
-
-    MoneyReceipts:[
-      "Receipt ID","Receipt Number","Student ID","Payment ID","Date",
-      "Purpose","Amount","Payment Method","Received By","Notes"
-    ],
-
-    Notifications:[
-      "Notification ID","User ID","Title","Message","Type",
-      "Related ID","Is Read"
-    ],
-
-    ActivityLog:[
-      "Log ID","User ID","User Name","Action","Module",
-      "Record ID","Description","Timestamp","IP Address"
-    ],
-
-    Intake:[
-      "Intake ID","Country","University","Course","Intake Name",
-      "Application Deadline","Deposit Deadline","Visa Deadline",
-      "Status","Notes"
-    ],
-
-    Income:[
-      "Income ID","Date","Category","Description","Amount",
-      "Source","Payment Method","Received By","Reference","Notes"
-    ],
-
-    Timeline:[
-      "Timeline ID","Student ID","Date","Event Type","Description",
-      "User ID"
-    ],
-
-    LeadSources:[
-      "Source ID","Source Name","Status","Notes"
-    ],
-
-    StudentPortal:[
-      "Portal ID","Student ID","Username","Password","Status"
-    ],
-
-    Roles:[
-      "Role ID","Role Name","Permissions","Status"
-    ]
-
-  };
-
-
-  return headerMap[module] || [];
-}
-
-
-/* =====================================================
-   MODAL CLOSE
-===================================================== */
-
-function closeModal(){
 
   document
     .getElementById(
-      "modalOverlay"
+      "pageTitle"
     )
-    .classList.remove(
-      "show"
-    );
+    .textContent =
+    LABELS[module] ||
+    module;
 
-  currentEditRecord = null;
-}
-
-
-/* =====================================================
-   HELPERS
-===================================================== */
-
-function fieldId(header){
-
-  return "field_" +
-    header
-      .replace(/[^a-zA-Z0-9]/g,"_");
-}
-
-
-function formatMoney(value){
-
-  const number =
-    Number(value) || 0;
-
-  return "৳ " +
-    number.toLocaleString(
-      "en-BD",
-      {
-        maximumFractionDigits:2
-      }
-    );
-}
-
-
-function formatCell(value){
 
   if(
-    value === null ||
-    value === undefined ||
-    value === ""
+    module ===
+    "Dashboard"
   ){
-    return "-";
+
+    await dashboard();
+
+    return;
+
   }
 
-  const text =
-    String(value);
 
-  if(text.length > 120){
+  if(
+    module ===
+    "Reports"
+  ){
 
-    return escapeHtml(
-      text.substring(0,120) +
-      "..."
-    );
+    await reports();
+
+    return;
+
   }
 
-  return escapeHtml(text);
-}
+
+  await loadDropdowns();
 
 
-function statusBadge(value){
+  if(
+    module ===
+    "DuePayments"
+  ){
 
-  const text =
-    String(value || "—");
-
-  const cls =
-    text
-      .toLowerCase()
-      .replace(/\s+/g,"-");
-
-
-  return `
-    <span class="badge ${cls}">
-      ${escapeHtml(text)}
-    </span>
-  `;
-}
+    const data =
+      await loadRecords(
+        "Invoices"
+      );
 
 
-function escapeHtml(value){
+    records =
+      data.filter(
+        function(x){
 
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
+          return (
+            Number(
+              x["Due Amount"]
+            ) || 0
+          ) > 0;
+
+        }
+      );
 
 
-function showToast(message,type){
-
-  const toast =
-    document.getElementById(
-      "toast"
+    renderTable(
+      "Due Payments"
     );
 
-  toast.textContent =
-    message;
 
-  toast.className =
-    "toast show " +
-    (type || "");
+    return;
+
+  }
 
 
-  setTimeout(function(){
+  await loadRecords(
+    module
+  );
 
-    toast.classList.remove(
-      "show"
-    );
-
-  },3500);
 }
 
 
-function showError(error){
+/* =========================================================
+   DROPDOWNS
+========================================================= */
 
-  console.error(error);
+async function loadDropdowns(){
+
+  if(dropdowns)
+    return dropdowns;
+
+
+  const result =
+    await api(
+      "dropdowns"
+    );
+
+
+  if(!result.success){
+
+    throw new Error(
+      result.message
+    );
+
+  }
+
+
+  dropdowns =
+    result.data;
+
+
+  return dropdowns;
+
+}
+
+
+/* =========================================================
+   LOAD RECORDS
+========================================================= */
+
+async function loadRecords(
+  module
+){
+
+  if(cache[module]){
+
+    records =
+      cache[module];
+
+
+    renderTable(
+      LABELS[module] ||
+      module
+    );
+
+
+    return records;
+
+  }
+
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "list",
+        {
+          module:module
+        }
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return [];
+
+    }
+
+
+    records =
+      result.records ||
+      [];
+
+
+    cache[module] =
+      records;
+
+
+    renderTable(
+      LABELS[module] ||
+      module
+    );
+
+
+    return records;
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+
+    return [];
+
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+function renderTable(
+  title
+){
 
   const content =
     document.getElementById(
       "content"
     );
 
-  content.innerHTML = `
 
-    <div class="card">
+  const toolbar = `
 
-      <div class="card-body">
+    <div class="toolbar">
+
+      <input
+        id="search"
+        class="search"
+        placeholder="Search..."
+        oninput="filterTable()"
+      >
+
+      <button
+        class="btn"
+        onclick="openModal()"
+      >
+        + Add New
+      </button>
+
+    </div>
+
+  `;
+
+
+  if(!records.length){
+
+    content.innerHTML =
+      toolbar +
+      `
+
+      <div class="card">
 
         <h3>
-          Something went wrong
+          ${esc(title)}
         </h3>
 
-        <br>
+        <div class="empty">
+          No records found.
+        </div>
 
-        <p>
-          ${escapeHtml(
-            error.message ||
-            String(error)
-          )}
-        </p>
+      </div>
 
-        <br>
+      `;
 
-        <button
-          class="btn btn-primary"
-          onclick="navigate('${currentModule}')"
-        >
-          Try Again
-        </button>
+
+    return;
+
+  }
+
+
+  let keys =
+    Object.keys(
+      records[0]
+    )
+    .filter(function(key){
+
+      return key !== "_row";
+
+    });
+
+
+  keys =
+    prioritize(
+      keys
+    )
+    .slice(
+      0,
+      10
+    );
+
+
+  content.innerHTML =
+    toolbar +
+    `
+
+    <div class="table-card">
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              ${keys
+                .map(function(key){
+
+                  return `
+                    <th>
+                      ${esc(key)}
+                    </th>
+                  `;
+
+                })
+                .join("")
+              }
+
+              <th>
+                Actions
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="tableBody">
+
+            ${rowsHtml(
+              records,
+              keys
+            )}
+
+          </tbody>
+
+        </table>
 
       </div>
 
     </div>
-  `;
 
-  showToast(
-    error.message ||
-    "Something went wrong.",
-    "error"
-  );
+    `;
+
 }
 
 
-function renderActivityTable(records){
+function prioritize(
+  keys
+){
 
-  let html =
-    `<table style="min-width:0">
+  const first = [
 
-      <thead>
+    "Student ID",
+    "Lead ID",
+    "Application ID",
+    "Invoice ID",
 
-        <tr>
-          <th>Time</th>
-          <th>User</th>
-          <th>Action</th>
-          <th>Module</th>
-          <th>Description</th>
-        </tr>
+    "Name",
+    "Employee Name",
 
-      </thead>
+    "Phone",
+    "WhatsApp",
 
-      <tbody>`;
+    "Country",
+    "University",
+    "Course",
+
+    "Status",
+    "Date"
+
+  ];
 
 
-  records.forEach(function(item){
+  const output = [];
 
-    html += `
 
-      <tr>
+  first.forEach(function(name){
 
-        <td>
-          ${formatCell(item.Timestamp)}
-        </td>
+    if(
+      keys.includes(name) &&
+      !output.includes(name)
+    ){
 
-        <td>
-          ${formatCell(item["User Name"])}
-        </td>
+      output.push(name);
 
-        <td>
-          ${formatCell(item.Action)}
-        </td>
-
-        <td>
-          ${formatCell(item.Module)}
-        </td>
-
-        <td>
-          ${formatCell(item.Description)}
-        </td>
-
-      </tr>
-
-    `;
+    }
 
   });
 
 
-  html +=
-    "</tbody></table>";
+  keys.forEach(function(name){
+
+    if(
+      !output.includes(name)
+    ){
+
+      output.push(name);
+
+    }
+
+  });
 
 
-  return html;
+  return output;
+
 }
+
+
+function rowsHtml(
+  data,
+  keys
+){
+
+  return data
+    .map(function(row){
+
+      return `
+
+      <tr>
+
+        ${keys
+          .map(function(key){
+
+            return `
+              <td>
+                ${cell(
+                  row[key],
+                  key
+                )}
+              </td>
+            `;
+
+          })
+          .join("")
+        }
+
+        <td>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-light"
+              onclick="openModal(${row._row})"
+            >
+              Edit
+            </button>
+
+            <button
+              class="btn btn-danger"
+              onclick="deleteRecord(${row._row})"
+            >
+              Delete
+            </button>
+
+          </div>
+
+        </td>
+
+      </tr>
+
+      `;
+
+    })
+    .join("");
+
+}
+
+
+function cell(
+  value,
+  key
+){
+
+  if(
+    value === null ||
+    value === undefined ||
+    value === ""
+  ){
+
+    return "";
+
+  }
+
+
+  const text =
+    String(value);
+
+
+  if(
+    key === "Phone" ||
+    key === "WhatsApp"
+  ){
+
+    return `
+
+      ${esc(text)}
+
+      <button
+        class="whatsapp"
+        onclick="whatsapp('${esc(text)}')"
+      >
+        WhatsApp
+      </button>
+
+    `;
+
+  }
+
+
+  if(
+    key.toLowerCase()
+      .includes("url")
+  ){
+
+    return `
+
+      <a
+        href="${esc(text)}"
+        target="_blank"
+      >
+        Open
+      </a>
+
+    `;
+
+  }
+
+
+  if(
+    key === "Status" ||
+    key.endsWith(" Status")
+  ){
+
+    return `
+      <span class="badge">
+        ${esc(text)}
+      </span>
+    `;
+
+  }
+
+
+  if(text.length > 70){
+
+    return esc(
+      text.substring(0,67)
+    ) + "...";
+
+  }
+
+
+  return esc(text);
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function filterTable(){
+
+  const query =
+    (
+      document
+        .getElementById(
+          "search"
+        )
+        .value ||
+      ""
+    )
+    .toLowerCase();
+
+
+  const filtered =
+    records.filter(function(row){
+
+      return JSON.stringify(
+        row
+      )
+      .toLowerCase()
+      .includes(
+        query
+      );
+
+    });
+
+
+  const keys =
+    prioritize(
+      Object.keys(
+        records[0] || {}
+      )
+      .filter(function(k){
+
+        return k !== "_row";
+
+      })
+    )
+    .slice(0,10);
+
+
+  document
+    .getElementById(
+      "tableBody"
+    )
+    .innerHTML =
+    rowsHtml(
+      filtered,
+      keys
+    );
+
+}
+
+
+/* =========================================================
+   SYSTEM FIELDS
+========================================================= */
+
+const AUTO_FIELDS = [
+
+"User ID",
+"Lead ID",
+"Student ID",
+"Counselling ID",
+"Follow-up ID",
+"Task ID",
+"Country ID",
+"University ID",
+"Course ID",
+"Application ID",
+"Document ID",
+"Checklist ID",
+"Offer ID",
+"Visa ID",
+"Batch ID",
+"Enrollment ID",
+"Attendance ID",
+"Mock Test ID",
+"Result ID",
+"Payment ID",
+"Expense ID",
+"Invoice ID",
+"Receipt ID",
+"Notification ID",
+"Log ID",
+"Intake ID",
+"Income ID",
+"Timeline ID",
+"Source ID",
+"Portal ID",
+"Role ID",
+
+"Created At",
+"Updated At",
+"Created By",
+"Uploaded By",
+"Uploaded At",
+"Drive File ID",
+"Password Hash",
+"Due Amount"
+
+];
+
+
+function isAuto(
+  field
+){
+
+  return AUTO_FIELDS.includes(
+    field
+  );
+
+}
+
+
+/* =========================================================
+   FIELD ID
+========================================================= */
+
+function fid(
+  field
+){
+
+  return (
+    "f_" +
+    Array.from(
+      field
+    )
+    .map(function(ch){
+
+      return ch.charCodeAt(
+        0
+      );
+
+    })
+    .join("_")
+  );
+
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+function optionsFor(
+  field
+){
+
+  if(!dropdowns)
+    return null;
+
+
+  const f =
+    field.toLowerCase();
+
+
+  if(
+    field ===
+    "Student ID"
+  ){
+
+    return dropdowns.students
+      .map(function(x){
+
+        return {
+          value:
+            x["Student ID"],
+          label:
+            x["Student ID"] +
+            " — " +
+            x.Name
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Lead ID"
+  ){
+
+    return dropdowns.leads
+      .map(function(x){
+
+        return {
+          value:
+            x["Lead ID"],
+          label:
+            x["Lead ID"] +
+            " — " +
+            x.Name
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Invoice ID"
+  ){
+
+    return dropdowns.invoices
+      .map(function(x){
+
+        return {
+          value:
+            x["Invoice ID"],
+          label:
+            x["Invoice ID"] +
+            " — " +
+            (
+              x.Service || ""
+            )
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Application ID"
+  ){
+
+    return dropdowns.applications
+      .map(function(x){
+
+        return {
+          value:
+            x["Application ID"],
+          label:
+            x["Application ID"] +
+            " — " +
+            (
+              x.University || ""
+            )
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Employee ID"
+  ){
+
+    return dropdowns.users
+      .map(function(x){
+
+        return {
+          value:
+            x["User ID"],
+          label:
+            x["User ID"] +
+            " — " +
+            x.Name +
+            " (" +
+            x.Role +
+            ")"
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Batch ID"
+  ){
+
+    return dropdowns.batches
+      .map(function(x){
+
+        return {
+          value:
+            x["Batch ID"],
+          label:
+            x["Batch ID"] +
+            " — " +
+            x["Batch Name"]
+        };
+
+      });
+
+  }
+
+
+  if(
+    f === "role"
+  ){
+
+    return dropdowns.roles
+      .map(function(x){
+
+        return {
+          value:
+            x["Role Name"],
+          label:
+            x["Role Name"]
+        };
+
+      });
+
+  }
+
+
+  if(
+    f === "country" ||
+    f.includes("country")
+  ){
+
+    return dropdowns.countries
+      .map(function(x){
+
+        return {
+          value:
+            x["Country Name"],
+          label:
+            (
+              x.Flag || ""
+            ) +
+            " " +
+            x["Country Name"]
+        };
+
+      });
+
+  }
+
+
+  if(
+    f.includes("university")
+  ){
+
+    return dropdowns.universities
+      .map(function(x){
+
+        return {
+          value:
+            x["University Name"],
+          label:
+            x["University Name"] +
+            " — " +
+            (
+              x.Country || ""
+            )
+        };
+
+      });
+
+  }
+
+
+  if(
+    f.includes("course")
+  ){
+
+    return dropdowns.courses
+      .map(function(x){
+
+        return {
+          value:
+            x["Course Name"],
+          label:
+            x["Course Name"] +
+            " — " +
+            (
+              x["University Name"] ||
+              ""
+            )
+        };
+
+      });
+
+  }
+
+
+  if(
+    f.includes("counsellor") ||
+    f.includes("assigned") ||
+    f.includes("teacher") ||
+    f.includes("received by") ||
+    f.includes("paid by") ||
+    f.includes("approved by") ||
+    f.includes("marked by")
+  ){
+
+    return dropdowns.users
+      .map(function(x){
+
+        return {
+          value:
+            x.Name,
+          label:
+            x.Name +
+            " — " +
+            x.Role
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Source"
+  ){
+
+    return dropdowns.leadSources
+      .map(function(x){
+
+        return {
+          value:
+            x["Source Name"],
+          label:
+            x["Source Name"]
+        };
+
+      });
+
+  }
+
+
+  if(
+    f === "status" ||
+    f.endsWith(" status")
+  ){
+
+    return [
+      "Active",
+      "Inactive",
+      "Pending",
+      "Approved",
+      "Rejected",
+      "Cancelled",
+      "Completed",
+      "Present",
+      "Late",
+      "Absent",
+      "Half Day",
+      "Leave",
+      "Paid",
+      "Partial",
+      "Due",
+      "Submitted",
+      "Under Review"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  if(
+    field ===
+    "Attendance Status"
+  ){
+
+    return [
+      "Present",
+      "Late",
+      "Absent",
+      "Half Day",
+      "Leave",
+      "Holiday"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  if(
+    field ===
+    "Leave Type"
+  ){
+
+    return [
+      "Casual Leave",
+      "Sick Leave",
+      "Annual Leave",
+      "Emergency Leave",
+      "Maternity Leave",
+      "Other"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  if(
+    field ===
+    "Payment Method"
+  ){
+
+    return [
+      "Cash",
+      "bKash",
+      "Nagad",
+      "Rocket",
+      "Bank Transfer",
+      "Card"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  if(
+    field === "Required" ||
+    field === "Received" ||
+    field === "Verified" ||
+    field === "Is Read"
+  ){
+
+    return [
+      "Yes",
+      "No"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =========================================================
+   FORM FIELD
+========================================================= */
+
+function formField(
+  field,
+  value
+){
+
+  const id =
+    fid(field);
+
+
+  const options =
+    optionsFor(field);
+
+
+  if(options){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <select
+          id="${id}"
+        >
+
+          <option value="">
+            Select...
+          </option>
+
+          ${options
+            .map(function(o){
+
+              return `
+
+                <option
+                  value="${esc(o.value)}"
+                  ${
+                    String(
+                      value || ""
+                    ) ===
+                    String(
+                      o.value
+                    )
+                      ? "selected"
+                      : ""
+                  }
+                >
+                  ${esc(o.label)}
+                </option>
+
+              `;
+
+            })
+            .join("")
+          }
+
+        </select>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field ===
+    "Password"
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          Password
+        </label>
+
+        <input
+          id="${id}"
+          type="password"
+          placeholder="${
+            currentRow
+              ? "Leave blank to keep existing password"
+              : ""
+          }"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field === "Phone" ||
+    field === "WhatsApp"
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          type="tel"
+          inputmode="tel"
+          value="${esc(value || "")}"
+          placeholder="017XXXXXXXX"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field.toLowerCase()
+      .includes("date")
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          type="date"
+          value="${esc(
+            String(
+              value || ""
+            ).substring(0,10)
+          )}"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field.toLowerCase()
+      .includes("time")
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          type="time"
+          value="${esc(
+            String(
+              value || ""
+            ).substring(0,5)
+          )}"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field ===
+    "Total Days"
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          Total Days
+        </label>
+
+        <input
+          id="${id}"
+          type="number"
+          value="${esc(value || "")}"
+          readonly
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field.toLowerCase()
+      .includes("amount") ||
+    field.toLowerCase()
+      .includes("fee") ||
+    field.toLowerCase()
+      .includes("budget") ||
+    field.toLowerCase()
+      .includes("score") ||
+    field.toLowerCase()
+      .includes("gpa") ||
+    field.toLowerCase()
+      .includes("ranking") ||
+    field.toLowerCase()
+      .includes("capacity")
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          type="number"
+          value="${esc(value || "")}"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field.toLowerCase()
+      .includes("description") ||
+    field.toLowerCase()
+      .includes("notes") ||
+    field.toLowerCase()
+      .includes("remarks") ||
+    field.toLowerCase()
+      .includes("reason") ||
+    field.toLowerCase()
+      .includes("address") ||
+    field.toLowerCase()
+      .includes("requirement") ||
+    field.toLowerCase()
+      .includes("recommendation") ||
+    field.toLowerCase()
+      === "message"
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <textarea
+          id="${id}"
+        >${esc(value || "")}</textarea>
+
+      </div>
+
+    `;
+
+  }
+
+
+  return `
+
+    <div class="field">
+
+      <label>
+        ${esc(field)}
+      </label>
+
+      <input
+        id="${id}"
+        value="${esc(value || "")}"
+      >
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
+
+function openModal(
+  row
+){
+
+  currentRow =
+    row || null;
+
+
+  const existing =
+    row
+      ? records.find(
+          function(x){
+
+            return (
+              Number(x._row) ===
+              Number(row)
+            );
+
+          }
+        ) || {}
+      : {};
+
+
+  let fields =
+    HEADERS[currentModule];
+
+
+  if(!fields){
+
+    fields =
+      records.length
+        ? Object.keys(
+            records[0]
+          )
+          .filter(function(k){
+
+            return (
+              k !== "_row" &&
+              !isAuto(k)
+            );
+
+          })
+        : [];
+
+  }
+
+
+  /*
+   * Employee Attendance:
+   * Employee Name is automatically populated,
+   * but we keep it visible/read-only.
+   */
+  let html =
+    fields
+      .map(function(field){
+
+        return formField(
+          field,
+          existing[field]
+        );
+
+      })
+      .join("");
+
+
+  if(
+    currentModule ===
+    "Documents"
+  ){
+
+    html += `
+
+      <div class="field">
+
+        <label>
+          Upload File
+        </label>
+
+        <input
+          id="documentFile"
+          type="file"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  document
+    .getElementById(
+      "modalTitle"
+    )
+    .textContent =
+    (
+      row
+        ? "Edit "
+        : "Add "
+    ) +
+    (
+      LABELS[
+        currentModule
+      ] ||
+      currentModule
+    );
+
+
+  document
+    .getElementById(
+      "form"
+    )
+    .innerHTML =
+    html;
+
+
+  /*
+   * Employee name readonly.
+   */
+  if(
+    currentModule ===
+    "EmployeeAttendance" ||
+    currentModule ===
+    "LeaveManagement"
+  ){
+
+    const employeeName =
+      document.getElementById(
+        fid("Employee Name")
+      );
+
+
+    if(employeeName){
+
+      employeeName.readOnly =
+        true;
+
+    }
+
+    const employeeId =
+      document.getElementById(
+        fid("Employee ID")
+      );
+
+
+    if(employeeId){
+
+      employeeId.addEventListener(
+        "change",
+        autoEmployeeName
+      );
+
+    }
+
+  }
+
+
+  /*
+   * Leave date calculation.
+   */
+  if(
+    currentModule ===
+    "LeaveManagement"
+  ){
+
+    const start =
+      document.getElementById(
+        fid("Start Date")
+      );
+
+    const end =
+      document.getElementById(
+        fid("End Date")
+      );
+
+
+    if(start)
+      start.addEventListener(
+        "change",
+        calculateLeaveDays
+      );
+
+
+    if(end)
+      end.addEventListener(
+        "change",
+        calculateLeaveDays
+      );
+
+  }
+
+
+  document
+    .getElementById(
+      "modal"
+    )
+    .classList.add(
+      "show"
+    );
+
+}
+
+
+/* =========================================================
+   EMPLOYEE NAME
+========================================================= */
+
+function autoEmployeeName(){
+
+  const id =
+    document.getElementById(
+      fid("Employee ID")
+    );
+
+
+  const name =
+    document.getElementById(
+      fid("Employee Name")
+    );
+
+
+  if(
+    !id ||
+    !name ||
+    !dropdowns
+  )
+    return;
+
+
+  const employee =
+    dropdowns.users.find(
+      function(x){
+
+        return (
+          String(
+            x["User ID"]
+          ) ===
+          String(
+            id.value
+          )
+        );
+
+      }
+    );
+
+
+  if(employee){
+
+    name.value =
+      employee.Name;
+
+  }else{
+
+    name.value =
+      "";
+
+  }
+
+}
+
+
+/* =========================================================
+   LEAVE DAYS
+========================================================= */
+
+function calculateLeaveDays(){
+
+  const start =
+    document.getElementById(
+      fid("Start Date")
+    );
+
+
+  const end =
+    document.getElementById(
+      fid("End Date")
+    );
+
+
+  const total =
+    document.getElementById(
+      fid("Total Days")
+    );
+
+
+  if(
+    !start ||
+    !end ||
+    !total ||
+    !start.value ||
+    !end.value
+  ){
+
+    if(total)
+      total.value = "";
+
+    return;
+
+  }
+
+
+  const s =
+    new Date(
+      start.value
+    );
+
+  const e =
+    new Date(
+      end.value
+    );
+
+
+  if(
+    e < s
+  ){
+
+    total.value =
+      "";
+
+    return;
+
+  }
+
+
+  total.value =
+    Math.floor(
+      (
+        e - s
+      ) /
+      86400000
+    ) + 1;
+
+}
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+async function saveRecord(){
+
+  const fields =
+    HEADERS[currentModule] ||
+    [];
+
+
+  const record = {};
+
+
+  fields.forEach(function(field){
+
+    const element =
+      document.getElementById(
+        fid(field)
+      );
+
+
+    if(element){
+
+      record[field] =
+        element.value;
+
+    }
+
+  });
+
+
+  if(currentRow){
+
+    record._row =
+      currentRow;
+
+  }
+
+
+  /*
+   * Password is only sent when filled.
+   */
+  if(
+    currentModule ===
+    "Users"
+  ){
+
+    const password =
+      document.getElementById(
+        fid("Password")
+      );
+
+
+    if(
+      password &&
+      password.value
+    ){
+
+      record.Password =
+        password.value;
+
+    }
+
+  }
+
+
+  /*
+   * Document upload.
+   */
+  if(
+    currentModule ===
+    "Documents"
+  ){
+
+    const file =
+      document.getElementById(
+        "documentFile"
+      );
+
+
+    if(
+      file &&
+      file.files.length
+    ){
+
+      await uploadFile(
+        record,
+        file.files[0]
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "save",
+        {
+          module:
+            currentModule,
+          record:
+            record
+        }
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    closeModal();
+
+
+    delete cache[
+      currentModule
+    ];
+
+
+    dropdowns =
+      null;
+
+
+    await openModule(
+      currentModule
+    );
+
+
+    toast(
+      "Saved successfully."
+    );
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   DOCUMENT UPLOAD
+========================================================= */
+
+async function uploadFile(
+  record,
+  file
+){
+
+  loading(true);
+
+
+  try{
+
+    const base64 =
+      await toBase64(
+        file
+      );
+
+
+    const result =
+      await api(
+        "uploadDocument",
+        {
+
+          base64:
+            base64,
+
+          fileName:
+            file.name,
+
+          mimeType:
+            file.type,
+
+          studentId:
+            record["Student ID"] ||
+            "",
+
+          applicationId:
+            record["Application ID"] ||
+            "",
+
+          documentType:
+            record["Document Type"] ||
+            "Other",
+
+          expiryDate:
+            record["Expiry Date"] ||
+            "",
+
+          notes:
+            record.Notes ||
+            ""
+
+        }
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    closeModal();
+
+    delete cache.Documents;
+
+    await openModule(
+      "Documents"
+    );
+
+    toast(
+      "Document uploaded successfully."
+    );
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+function toBase64(
+  file
+){
+
+  return new Promise(
+    function(resolve,reject){
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function(){
+
+          resolve(
+            String(
+              reader.result
+            )
+            .split(",")[1]
+          );
+
+        };
+
+
+      reader.onerror =
+        reject;
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+async function deleteRecord(
+  row
+){
+
+  if(
+    !confirm(
+      "Are you sure you want to delete this record?"
+    )
+  )
+    return;
+
+
+  const module =
+    currentModule ===
+    "DuePayments"
+      ? "Invoices"
+      : currentModule;
+
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "delete",
+        {
+          module:
+            module,
+          row:
+            row
+        }
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    delete cache[
+      module
+    ];
+
+
+    dropdowns =
+      null;
+
+
+    await openModule(
+      currentModule
+    );
+
+
+    toast(
+      "Deleted successfully."
+    );
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal(){
+
+  document
+    .getElementById(
+      "modal"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  currentRow =
+    null;
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+async function dashboard(){
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "dashboard"
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    const d =
+      result.data;
+
+
+    document
+      .getElementById(
+        "content"
+      )
+      .innerHTML = `
+
+      <div class="dashboard">
+
+        ${stat(
+          "Total Leads",
+          d.totalLeads
+        )}
+
+        ${stat(
+          "Total Students",
+          d.totalStudents
+        )}
+
+        ${stat(
+          "Applications",
+          d.totalApplications
+        )}
+
+        ${stat(
+          "Due Payments",
+          "৳ " +
+          d.totalDue
+        )}
+
+        ${stat(
+          "Countries",
+          d.totalCountries
+        )}
+
+        ${stat(
+          "Universities",
+          d.totalUniversities
+        )}
+
+        ${stat(
+          "Courses",
+          d.totalCourses
+        )}
+
+        ${stat(
+          "Employees",
+          d.totalEmployees
+        )}
+
+      </div>
+
+
+      <div
+        class="report-grid"
+        style="margin-top:15px"
+      >
+
+        <div class="card">
+
+          <small>
+            Total Payments
+          </small>
+
+          <h2>
+            ৳ ${d.totalPayments}
+          </h2>
+
+        </div>
+
+        <div class="card">
+
+          <small>
+            Total Expenses
+          </small>
+
+          <h2>
+            ৳ ${d.totalExpenses}
+          </h2>
+
+        </div>
+
+        <div class="card">
+
+          <small>
+            Net Balance
+          </small>
+
+          <h2>
+            ৳ ${d.netBalance}
+          </h2>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+function stat(
+  title,
+  value
+){
+
+  return `
+
+    <div class="stat">
+
+      <small>
+        ${esc(title)}
+      </small>
+
+      <strong>
+        ${esc(value)}
+      </strong>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   REPORTS
+========================================================= */
+
+async function reports(){
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "reports"
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    const d =
+      result.data;
+
+
+    document
+      .getElementById(
+        "content"
+      )
+      .innerHTML = `
+
+      <div class="dashboard">
+
+        ${stat(
+          "Leads",
+          d.leads
+        )}
+
+        ${stat(
+          "Students",
+          d.students
+        )}
+
+        ${stat(
+          "Applications",
+          d.applications
+        )}
+
+        ${stat(
+          "Income",
+          "৳ " + d.income
+        )}
+
+        ${stat(
+          "Expenses",
+          "৳ " + d.expenses
+        )}
+
+        ${stat(
+          "Due",
+          "৳ " + d.due
+        )}
+
+      </div>
+
+
+      <div
+        class="card"
+        style="margin-top:15px"
+      >
+
+        <h3>
+          Applications by Country
+        </h3>
+
+        ${reportTable(
+          d.applicationsByCountry
+        )}
+
+      </div>
+
+
+      <div
+        class="card"
+        style="margin-top:15px"
+      >
+
+        <h3>
+          Leads by Source
+        </h3>
+
+        ${reportTable(
+          d.leadsBySource
+        )}
+
+      </div>
+
+    `;
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+function reportTable(
+  data
+){
+
+  const entries =
+    Object.entries(
+      data || {}
+    );
+
+
+  if(!entries.length){
+
+    return `
+      <p>
+        No data available.
+      </p>
+    `;
+
+  }
+
+
+  return `
+
+    <table
+      style="min-width:100%"
+    >
+
+      <tbody>
+
+        ${entries
+          .map(function(x){
+
+            return `
+
+              <tr>
+
+                <td>
+                  ${esc(x[0])}
+                </td>
+
+                <td>
+                  ${x[1]}
+                </td>
+
+              </tr>
+
+            `;
+
+          })
+          .join("")
+        }
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+function whatsapp(
+  phone
+){
+
+  let number =
+    String(
+      phone || ""
+    )
+    .replace(
+      /\D/g,
+      ""
+    );
+
+
+  if(
+    number.startsWith("0")
+  ){
+
+    number =
+      "880" +
+      number.substring(1);
+
+  }else if(
+    !number.startsWith("880")
+  ){
+
+    number =
+      "880" +
+      number;
+
+  }
+
+
+  if(
+    number.length < 11
+  ){
+
+    toast(
+      "Invalid phone number."
+    );
+
+    return;
+
+  }
+
+
+  window.open(
+    "https://wa.me/" +
+    number,
+    "_blank"
+  );
+
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+async function refresh(){
+
+  if(
+    currentModule ===
+    "Dashboard"
+  ){
+
+    await dashboard();
+
+    return;
+
+  }
+
+
+  if(
+    currentModule ===
+    "Reports"
+  ){
+
+    await reports();
+
+    return;
+
+  }
+
+
+  if(
+    currentModule ===
+    "DuePayments"
+  ){
+
+    delete cache.Invoices;
+
+  }else{
+
+    delete cache[
+      currentModule
+    ];
+
+  }
+
+
+  dropdowns =
+    null;
+
+
+  await openModule(
+    currentModule
+  );
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+function toggleSidebar(){
+
+  document
+    .getElementById(
+      "sidebar"
+    )
+    .classList.toggle(
+      "open"
+    );
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout(){
+
+  try{
+
+    await api(
+      "logout"
+    );
+
+  }catch(error){}
+
+
+  sessionStorage.removeItem(
+    "radiance_user"
+  );
+
+
+  user =
+    null;
+
+
+  location.reload();
+
+}
+
+
+/* =========================================================
+   RESTORE SESSION
+========================================================= */
+
+(function(){
+
+  try{
+
+    const saved =
+      sessionStorage.getItem(
+        "radiance_user"
+      );
+
+
+    if(saved){
+
+      const parsed =
+        JSON.parse(
+          saved
+        );
+
+
+      if(
+        parsed &&
+        parsed.token
+      ){
+
+        user =
+          parsed;
+
+
+        start();
+
+      }
+
+    }
+
+  }catch(error){
+
+    sessionStorage.removeItem(
+      "radiance_user"
+    );
+
+  }
+
+})();
 
 </script>
 
 </body>
+
 </html>
