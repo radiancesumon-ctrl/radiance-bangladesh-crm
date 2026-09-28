@@ -1,63 +1,4168 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0"
+>
+
 <title>Radiance Bangladesh CRM</title>
+
 <style>
-:root{--p:#6d28d9;--p2:#4f46e5;--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#64748b;--bd:#e5e7eb;--danger:#b91c1c;--success:#166534}*{box-sizing:border-box}body{margin:0;font:14px Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.login{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#6d28d9,#2563eb)}.loginbox{width:min(430px,100%);background:#fff;border-radius:20px;padding:30px;box-shadow:0 20px 60px #0004;text-align:center}.logo{width:92px;height:92px;object-fit:contain}.loginbox input{width:100%;padding:12px;margin:8px 0;border:1px solid var(--bd);border-radius:9px}.primary{background:var(--p);color:#fff;border:0;padding:10px 15px;border-radius:8px}.secondary{background:#eef2ff;color:#3730a3;border:0;padding:8px 12px;border-radius:8px}.danger{background:#fee2e2;color:#991b1b;border:0;padding:7px 10px;border-radius:7px}.success{background:#dcfce7;color:#166534;border:0;padding:7px 10px;border-radius:7px}.app{min-height:100vh}.side{position:fixed;left:0;top:0;bottom:0;width:240px;background:#111827;color:#fff;padding:16px 10px;overflow:auto}.brand{display:flex;gap:9px;align-items:center;margin:3px 8px 18px}.brand img{width:42px;height:42px;object-fit:contain;background:#fff;border-radius:8px}.brand b{display:block}.brand small{color:#9ca3af}.nav button{display:block;width:100%;text-align:left;background:transparent;color:#d1d5db;border:0;padding:9px 11px;border-radius:7px;margin:2px 0}.nav button:hover,.nav button.active{background:#312e81;color:#fff}.logout{width:100%;margin-top:15px;padding:9px;border:0;border-radius:7px}.main{margin-left:240px;padding:20px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.top h1{margin:0 0 3px}.muted{color:var(--muted)}.user{display:flex;align-items:center;gap:9px}.avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#eee}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat,.card{background:var(--card);border:1px solid var(--bd);border-radius:13px;padding:16px}.stat span{display:block;color:var(--muted);font-size:12px}.stat b{display:block;font-size:26px;margin-top:6px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.toolbar input,.toolbar select{padding:9px;border:1px solid var(--bd);border-radius:8px;background:#fff}.tablewrap{overflow:auto;border:1px solid var(--bd);border-radius:9px;background:#fff}.table{width:100%;border-collapse:collapse;min-width:900px}.table th,.table td{padding:9px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap;font-size:12px;vertical-align:top}.table th{background:#f8fafc;position:sticky;top:0}.actions{display:flex;gap:5px}.wa{background:#dcfce7;color:#166534;padding:5px 8px;border-radius:5px;text-decoration:none}.pager{display:flex;justify-content:space-between;align-items:center;padding-top:12px}.modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:18px;z-index:50}.modalbox{background:#fff;width:min(960px,100%);max-height:94vh;overflow:auto;border-radius:14px;padding:20px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-weight:bold;font-size:12px;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;padding:9px;border:1px solid var(--bd);border-radius:7px;background:#fff}.field textarea{min-height:78px;resize:vertical}.full{grid-column:1/-1}.photo{width:90px;height:90px;object-fit:cover;border-radius:9px;border:1px solid var(--bd);display:block;margin-top:7px}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.modalhead h2{margin:0}.close{background:#f1f5f9;border:0;border-radius:7px;padding:7px 10px}.formactions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:12px 15px;border-radius:8px;z-index:100;max-width:420px}.toast.err{background:#991b1b}.summary{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.summary .stat{padding:11px}.summary .stat b{font-size:20px}.empty{padding:30px;text-align:center;color:var(--muted)}.loading{padding:30px;text-align:center;color:var(--muted)}.note{background:#fffbeb;border:1px solid #fde68a;padding:10px;border-radius:8px;margin-bottom:12px}.link{color:#4f46e5;text-decoration:none}.filehint{font-size:11px;color:var(--muted);margin-top:4px}@media(max-width:900px){.side{position:relative;width:100%;height:auto}.main{margin-left:0}.grid{grid-template-columns:1fr 1fr}.summary{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.grid,.formgrid{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.top{display:block}.user{margin-top:10px}}
+
+:root{
+  --primary:#6d28d9;
+  --secondary:#4f46e5;
+  --dark:#111827;
+  --bg:#f5f7fb;
+  --card:#fff;
+  --text:#172033;
+  --muted:#667085;
+  --border:#e5e7eb;
+  --success:#16a34a;
+  --danger:#dc2626;
+  --warning:#d97706;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.login-screen{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(
+    135deg,
+    #eef2ff,
+    #faf5ff
+  );
+}
+
+.login-box{
+  width:min(410px,92%);
+  background:#fff;
+  padding:32px;
+  border-radius:16px;
+  box-shadow:0 20px 60px #0002;
+}
+
+.login-logo{
+  display:block;
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  margin:auto auto 15px;
+}
+
+.login-box h2{
+  text-align:center;
+  margin:0;
+}
+
+.login-box p{
+  text-align:center;
+  color:var(--muted);
+}
+
+.field{
+  margin-bottom:13px;
+}
+
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px;
+  background:#fff;
+}
+
+.field textarea{
+  min-height:85px;
+  resize:vertical;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.btn{
+  border:0;
+  border-radius:8px;
+  padding:9px 13px;
+  background:var(--primary);
+  color:#fff;
+}
+
+.btn-light{
+  background:#fff;
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
+.btn-danger{
+  background:var(--danger);
+}
+
+.btn-success{
+  background:var(--success);
+}
+
+.btn-warning{
+  background:var(--warning);
+}
+
+.app{
+  min-height:100vh;
+}
+
+.sidebar{
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  width:250px;
+  background:#111827;
+  color:#fff;
+  overflow-y:auto;
+  z-index:100;
+}
+
+.brand{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:16px;
+  border-bottom:1px solid #273043;
+}
+
+.brand img{
+  width:45px;
+  height:45px;
+  object-fit:contain;
+  background:#fff;
+  border-radius:8px;
+  padding:4px;
+}
+
+.brand-title{
+  font-size:15px;
+  font-weight:bold;
+}
+
+.brand-sub{
+  color:#9ca3af;
+  font-size:11px;
+}
+
+.nav-group{
+  color:#8b95a7;
+  font-size:10px;
+  padding:14px 12px 5px;
+  text-transform:uppercase;
+}
+
+.nav-btn{
+  display:block;
+  width:calc(100% - 16px);
+  margin:2px 8px;
+  border:0;
+  background:transparent;
+  color:#cbd5e1;
+  padding:10px 12px;
+  text-align:left;
+  border-radius:8px;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  background:#293244;
+  color:#fff;
+}
+
+.main{
+  margin-left:250px;
+  padding:18px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+  gap:10px;
+}
+
+.topbar h1{
+  font-size:23px;
+  margin:0;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.user-info{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.menu-btn{
+  display:none;
+}
+
+.dashboard{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+}
+
+.stat small{
+  color:var(--muted);
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  margin-top:7px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+}
+
+.table-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.search{
+  width:300px;
+  max-width:100%;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px;
+}
+
+.table-wrap{
+  overflow:auto;
+  max-height:70vh;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:900px;
+}
+
+th,
+td{
+  padding:10px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+th{
+  position:sticky;
+  top:0;
+  background:#f8fafc;
+  z-index:2;
+}
+
+.badge{
+  padding:4px 8px;
+  border-radius:30px;
+  background:#eef2ff;
+  font-size:11px;
+}
+
+.actions{
+  display:flex;
+  gap:5px;
+}
+
+.whatsapp{
+  background:#16a34a;
+  color:#fff;
+  border:0;
+  border-radius:5px;
+  padding:4px 7px;
+  font-size:11px;
+}
+
+.empty{
+  padding:45px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  z-index:200;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(950px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:14px;
+  padding:20px;
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.modal-head h2{
+  margin:0;
+}
+
+.loading{
+  position:fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:#fff9;
+  z-index:500;
+}
+
+.loading.show{
+  display:grid;
+}
+
+.loading-box{
+  background:#fff;
+  padding:18px 25px;
+  border-radius:10px;
+  box-shadow:0 10px 40px #0002;
+}
+
+.toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  padding:12px 17px;
+  background:#111827;
+  color:#fff;
+  border-radius:8px;
+  display:none;
+  z-index:600;
+}
+
+.toast.show{
+  display:block;
+}
+
+.report-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+@media(max-width:1000px){
+
+  .dashboard{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:700px){
+
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.2s;
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main{
+    margin-left:0;
+    padding:12px;
+  }
+
+  .menu-btn{
+    display:inline-block;
+  }
+
+  .user-info{
+    display:none;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .dashboard{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .report-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
 </style>
+
 </head>
+
 <body>
-<div id="login" class="login"><div class="loginbox"><img class="logo" src="./logo.png" onerror="this.onerror=null;this.src='./assets/logo.png'"><h2>Radiance Bangladesh CRM</h2><p class="muted">CRM & Business Management System</p><input id="lu" placeholder="Username" autocomplete="username"><input id="lp" type="password" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')login()"><button id="loginBtn" class="primary" style="width:100%;margin-top:8px" onclick="login()">Login</button><div id="loginMsg" class="muted" style="margin-top:10px"></div></div></div>
-<div id="app" class="app hidden"><aside class="side"><div class="brand"><img src="./logo.png" onerror="this.onerror=null;this.src='./assets/logo.png'"><div><b>Radiance Bangladesh</b><small>CRM & BMS</small></div></div><div id="nav" class="nav"></div><button class="logout" onclick="logout()">Logout</button></aside><main class="main"><div class="top"><div><h1 id="title">Dashboard</h1><span class="muted">Radiance Bangladesh</span></div><div class="user"><img id="up" class="avatar" src="./logo.png" onerror="this.onerror=null;this.src='./assets/logo.png'"><span id="un"></span></div></div><div id="content"></div></main></div>
-<div id="modal" class="modal hidden"></div><div id="toast" class="toast hidden"></div>
+
+
+<!-- ======================================================
+     LOGIN
+====================================================== -->
+
+<div
+  id="loginScreen"
+  class="login-screen"
+>
+
+  <div class="login-box">
+
+    <img
+      src="./logo.png"
+      class="login-logo"
+      alt="Radiance Bangladesh"
+      onerror="this.style.display='none'"
+    >
+
+    <h2>
+      Radiance Bangladesh
+    </h2>
+
+    <p>
+      CRM & Business Management System
+    </p>
+
+
+    <div class="field">
+
+      <label>
+        Username
+      </label>
+
+      <input
+        id="loginUsername"
+        autocomplete="username"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="loginPassword"
+        type="password"
+        autocomplete="current-password"
+        onkeydown="if(event.key==='Enter')login()"
+      >
+
+    </div>
+
+
+    <button
+      class="btn"
+      style="width:100%"
+      onclick="login()"
+    >
+      Login
+    </button>
+
+
+    <div
+      id="loginError"
+      style="color:#dc2626;text-align:center;margin-top:10px"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<!-- ======================================================
+     APPLICATION
+====================================================== -->
+
+<div
+  id="app"
+  style="display:none"
+>
+
+  <aside
+    id="sidebar"
+    class="sidebar"
+  >
+
+    <div class="brand">
+
+      <img
+        src="./logo.png"
+        alt="Radiance"
+        onerror="this.style.display='none'"
+      >
+
+      <div>
+
+        <div class="brand-title">
+          Radiance Bangladesh
+        </div>
+
+        <div class="brand-sub">
+          CRM / BMS
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="navigation"></div>
+
+  </aside>
+
+
+  <main class="main">
+
+    <div class="topbar">
+
+      <div
+        style="display:flex;align-items:center;gap:10px"
+      >
+
+        <button
+          class="btn btn-light menu-btn"
+          onclick="toggleSidebar()"
+        >
+          ☰
+        </button>
+
+        <h1 id="pageTitle">
+          Dashboard
+        </h1>
+
+      </div>
+
+
+      <div class="top-actions">
+
+        <span
+          id="userInfo"
+          class="user-info"
+        ></span>
+
+        <button
+          class="btn btn-light"
+          onclick="refresh()"
+        >
+          Refresh
+        </button>
+
+        <button
+          class="btn btn-danger"
+          onclick="logout()"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div id="content"></div>
+
+  </main>
+
+</div>
+
+
+<!-- ======================================================
+     MODAL
+====================================================== -->
+
+<div
+  id="modal"
+  class="modal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2 id="modalTitle">
+        Add Record
+      </h2>
+
+      <button
+        class="btn btn-light"
+        onclick="closeModal()"
+      >
+        Close
+      </button>
+
+    </div>
+
+
+    <div
+      id="form"
+      class="form-grid"
+    ></div>
+
+
+    <div
+      style="display:flex;justify-content:flex-end;gap:8px;margin-top:15px"
+    >
+
+      <button
+        class="btn btn-light"
+        onclick="closeModal()"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="btn"
+        onclick="saveRecord()"
+      >
+        Save
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- LOADING -->
+
+<div
+  id="loading"
+  class="loading"
+>
+
+  <div class="loading-box">
+    Please wait…
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
 <script>
-const API='https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec';
-const ADMIN_ONLY=['Users','Roles','Settings','ActivityLog'];
-const MODULES=[
- ['Dashboard','Dashboard'],['Leads','Leads'],['Students','Students'],['Counselling','Counselling'],['FollowUps','Follow Ups'],['Tasks','Tasks'],
- ['EmployeeAttendance','Employee Attendance'],['LeaveManagement','Leave Management'],['IELTS_Batches','IELTS Batches'],['IELTS_Students','IELTS Students'],['IELTS_Attendance','IELTS Attendance'],['IELTS_MockTests','IELTS Mock Tests'],['IELTS_Results','IELTS Results'],
- ['Countries','Countries'],['Universities','Universities'],['Courses','Courses'],['Intake','Intake'],['Applications','Applications'],['Documents','Documents'],['DocumentChecklist','Document Checklist'],['Offers','Offers'],['Visa','Visa'],
- ['Payments','Payments'],['Invoices','Invoices'],['MoneyReceipts','Money Receipts'],['Income','Income'],['Expenses','Expenses'],['DuePayments','Due Payments'],['Reports','Reports'],['StudentPortal','Student Portal'],['Notifications','Notifications'],['Timeline','Timeline'],['LeadSources','Lead Sources'],['Users','Staff / Users'],['Roles','Roles'],['ActivityLog','Activity Log'],['Settings','Settings']
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxY1JlVa4vhxSQmJwI62WHHA_DkDXR2sYSYOr8thOtMqTMsH7oqsiEXUNMczh9zwW1Z/exec";
+
+
+/* =========================================================
+   MODULE NAMES
+========================================================= */
+
+const MODULES = {
+
+  "CRM":[
+    "Dashboard",
+    "Leads",
+    "Students",
+    "Counselling",
+    "FollowUps",
+    "Tasks"
+  ],
+
+  "Staff Management":[
+    "Users",
+    "EmployeeAttendance",
+    "LeaveManagement"
+  ],
+
+  "Study Abroad":[
+    "Countries",
+    "Universities",
+    "Courses",
+    "Intake",
+    "Applications",
+    "Documents",
+    "DocumentChecklist",
+    "Offers",
+    "Visa"
+  ],
+
+  "IELTS":[
+    "IELTS_Batches",
+    "IELTS_Students",
+    "IELTS_Attendance",
+    "IELTS_MockTests",
+    "IELTS_Results"
+  ],
+
+  "Accounts":[
+    "Payments",
+    "Invoices",
+    "MoneyReceipts",
+    "Income",
+    "Expenses",
+    "DuePayments",
+    "Reports"
+  ],
+
+  "Administration":[
+    "Roles",
+    "Notifications",
+    "Timeline",
+    "LeadSources",
+    "ActivityLog",
+    "Settings",
+    "StudentPortal"
+  ]
+
+};
+
+
+const LABELS = {
+
+  FollowUps:"Follow-ups",
+
+  EmployeeAttendance:
+    "Employee Attendance",
+
+  LeaveManagement:
+    "Leave Management",
+
+  IELTS_Batches:
+    "IELTS Batches",
+
+  IELTS_Students:
+    "IELTS Students",
+
+  IELTS_Attendance:
+    "IELTS Attendance",
+
+  IELTS_MockTests:
+    "IELTS Mock Tests",
+
+  IELTS_Results:
+    "IELTS Results",
+
+  DocumentChecklist:
+    "Document Checklist",
+
+  MoneyReceipts:
+    "Money Receipts",
+
+  DuePayments:
+    "Due Payments",
+
+  LeadSources:
+    "Lead Sources",
+
+  StudentPortal:
+    "Student Portal",
+
+  ActivityLog:
+    "Activity Log"
+
+};
+
+
+/* =========================================================
+   FRONTEND SCHEMAS
+========================================================= */
+
+const HEADERS = {
+
+Users:[
+"Name","Email","Phone","Role","Username","Password","Status","Profile Photo"
+],
+
+Leads:[
+"Lead Date","Name","Phone","WhatsApp","Email","Source",
+"Interested Country","Interested Course","Intake",
+"Assigned Counsellor","Priority","Status","Next Follow-up","Notes"
+],
+
+Students:[
+"Lead ID","Name","Phone","WhatsApp","Email","Date of Birth",
+"Gender","Address","Passport Number","Passport Issue Date",
+"Passport Expiry Date","Nationality","Marital Status",
+"SSC/O-Level","SSC/O-Level GPA","SSC/O-Level Passing Year",
+"HSC/A-Level","HSC/A-Level GPA","HSC/A-Level Passing Year",
+"Bachelor","Bachelor CGPA","Bachelor Passing Year",
+"Master","Master CGPA","Master Passing Year",
+"English Test","Overall Score","Listening","Reading","Writing",
+"Speaking","Test Date","Preferred Country",
+"Preferred University","Preferred Course","Preferred Intake",
+"Budget","Assigned Counsellor","Current Status","Notes"
+],
+
+Countries:[
+"Country Name","Country Code","Flag","Description","Status","Sort Order"
+],
+
+Universities:[
+"University Name","Country","City","Website","Ranking",
+"Application Fee","Tuition Fee","Intakes",
+"IELTS Requirement","PTE Requirement","Duolingo Requirement",
+"GPA Requirement","Scholarship","Processing Time",
+"Partner Status","Status","Notes"
+],
+
+Courses:[
+"University ID","University Name","Country","Course Name",
+"Degree Level","Duration","Tuition Fee","Intake",
+"IELTS Requirement","PTE Requirement",
+"Duolingo Requirement","Application Deadline","Status","Notes"
+],
+
+Applications:[
+"Student ID","Country","University","Course","Degree Level",
+"Intake","Application Date","Application Deadline",
+"Assigned Officer","Application Status","Application Fee",
+"Payment Status","Notes"
+],
+
+Documents:[
+"Student ID","Application ID","Document Type","Document Name",
+"Expiry Date","Notes"
+],
+
+DocumentChecklist:[
+"Student ID","Application ID","Document Type",
+"Required","Received","Verified","File URL","Remarks"
+],
+
+Offers:[
+"Student ID","Application ID","University","Course","Offer Type",
+"Offer Date","Offer Deadline","Deposit Amount",
+"Deposit Deadline","Deposit Status","Offer Letter URL",
+"Status","Notes"
+],
+
+Visa:[
+"Student ID","Application ID","Country","University","Visa Type",
+"Application Date","Biometrics Date","Medical Date",
+"Interview Date","Decision Date","Visa Status",
+"Refusal Reason","Visa Letter URL","Assigned Officer","Notes"
+],
+
+IELTS_Batches:[
+"Batch Name","Teacher","Course Type","Start Date","End Date",
+"Class Days","Class Time","Room","Capacity","Status","Notes"
+],
+
+IELTS_Students:[
+"Student ID","Batch ID","Enrollment Date","Course Fee","Paid","Status","Notes"
+],
+
+IELTS_Attendance:[
+"Batch ID","Student ID","Date","Status","Remarks"
+],
+
+IELTS_MockTests:[
+"Student ID","Batch ID","Test Date","Listening","Reading",
+"Writing","Speaking","Overall","Remarks"
+],
+
+IELTS_Results:[
+"Student ID","Test Type","Test Date","Listening","Reading",
+"Writing","Speaking","Overall","Certificate URL","Notes"
+],
+
+Payments:[
+"Student ID","Invoice ID","Date","Purpose","Description",
+"Amount","Payment Method","Transaction ID",
+"Received By","Receipt Number","Notes"
+],
+
+Expenses:[
+"Date","Category","Description","Amount",
+"Payment Method","Reference","Paid By","Notes"
+],
+
+Invoices:[
+"Student ID","Invoice Date","Due Date","Service","Description",
+"Total Amount","Paid Amount"
+],
+
+MoneyReceipts:[
+"Receipt Number","Student ID","Payment ID","Date","Purpose",
+"Amount","Payment Method","Received By","Notes"
+],
+
+Income:[
+"Date","Category","Description","Amount","Source",
+"Payment Method","Received By","Reference","Notes"
+],
+
+Intake:[
+"Country","University","Course","Intake Name",
+"Application Deadline","Deposit Deadline",
+"Visa Deadline","Status","Notes"
+],
+
+Counselling:[
+"Student ID","Lead ID","Date","Counsellor","Country",
+"Course","University","Budget","Student Requirement",
+"Counsellor Recommendation","Next Action",
+"Next Follow-up","Notes"
+],
+
+FollowUps:[
+"Lead ID","Student ID","Assigned To","Follow-up Date",
+"Follow-up Time","Type","Subject","Notes",
+"Outcome","Next Follow-up","Status"
+],
+
+Tasks:[
+"Title","Description","Assigned To","Related Student",
+"Related Application","Priority","Due Date",
+"Status","Completed At"
+],
+
+EmployeeAttendance:[
+"Employee ID","Employee Name","Date",
+"Check In","Check Out","Status","Remarks"
+],
+
+LeaveManagement:[
+"Employee ID","Employee Name","Leave Type",
+"Start Date","End Date","Total Days","Reason",
+"Status","Approved By","Remarks"
+],
+
+Roles:[
+"Role Name","Permissions","Status"
+],
+
+Settings:[
+"Setting Name","Setting Value","Description","Status"
+],
+
+Notifications:[
+"User ID","Title","Message","Type","Related ID","Is Read"
+],
+
+Timeline:[
+"Student ID","Date","Event Type","Description","User ID"
+],
+
+LeadSources:[
+"Source Name","Status","Notes"
+],
+
+StudentPortal:[
+"Student ID","Username","Password","Status"
+]
+
+};
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let user = null;
+let currentModule = "";
+let records = [];
+let currentRow = null;
+let dropdowns = null;
+let cache = {};
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function esc(value){
+
+  return String(
+    value === null ||
+    value === undefined
+      ? ""
+      : value
+  )
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+
+function loading(show){
+
+  document
+    .getElementById("loading")
+    .classList.toggle(
+      "show",
+      show
+    );
+
+}
+
+
+function toast(message){
+
+  const el =
+    document.getElementById(
+      "toast"
+    );
+
+  el.textContent =
+    message;
+
+  el.classList.add(
+    "show"
+  );
+
+  setTimeout(
+    function(){
+
+      el.classList.remove(
+        "show"
+      );
+
+    },
+    2500
+  );
+
+}
+
+
+/* =========================================================
+   API
+========================================================= */
+
+async function api(
+  action,
+  data={}
+){
+
+  const payload = {
+
+    action:action,
+
+    ...data,
+
+    user:user
+
+  };
+
+
+  const response =
+    await fetch(
+      API_URL,
+      {
+        method:"POST",
+        body:
+          JSON.stringify(
+            payload
+          )
+      }
+    );
+
+
+  return response.json();
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+async function login(){
+
+  const username =
+    document
+      .getElementById(
+        "loginUsername"
+      )
+      .value
+      .trim();
+
+
+  const password =
+    document
+      .getElementById(
+        "loginPassword"
+      )
+      .value;
+
+
+  if(
+    !username ||
+    !password
+  ){
+
+    document
+      .getElementById(
+        "loginError"
+      )
+      .textContent =
+      "Enter username and password.";
+
+    return;
+
+  }
+
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "login",
+        {
+          username,
+          password
+        }
+      );
+
+
+    if(!result.success){
+
+      document
+        .getElementById(
+          "loginError"
+        )
+        .textContent =
+        result.message;
+
+      return;
+
+    }
+
+
+    user =
+      result.user;
+
+
+    sessionStorage.setItem(
+      "radiance_user",
+      JSON.stringify(user)
+    );
+
+
+    start();
+
+
+  }catch(error){
+
+    document
+      .getElementById(
+        "loginError"
+      )
+      .textContent =
+      "Unable to connect to CRM.";
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+function start(){
+
+  document
+    .getElementById(
+      "loginScreen"
+    )
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById(
+      "app"
+    )
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById(
+      "userInfo"
+    )
+    .textContent =
+    user.name +
+    " • " +
+    user.role;
+
+
+  buildNav();
+
+
+  openModule(
+    "Dashboard"
+  );
+
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+function buildNav(){
+
+  const nav =
+    document
+      .getElementById(
+        "navigation"
+      );
+
+
+  nav.innerHTML = "";
+
+
+  Object.keys(
+    MODULES
+  )
+  .forEach(function(group){
+
+    const title =
+      document.createElement(
+        "div"
+      );
+
+
+    title.className =
+      "nav-group";
+
+
+    title.textContent =
+      group;
+
+
+    nav.appendChild(
+      title
+    );
+
+
+    MODULES[group]
+      .forEach(function(module){
+
+        const btn =
+          document.createElement(
+            "button"
+          );
+
+
+        btn.className =
+          "nav-btn";
+
+
+        btn.dataset.module =
+          module;
+
+
+        btn.textContent =
+          LABELS[module] ||
+          module;
+
+
+        btn.onclick =
+          function(){
+
+            openModule(
+              module
+            );
+
+          };
+
+
+        nav.appendChild(
+          btn
+        );
+
+      });
+
+  });
+
+}
+
+
+function activeNav(){
+
+  document
+    .querySelectorAll(
+      ".nav-btn"
+    )
+    .forEach(function(btn){
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.module ===
+        currentModule
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   OPEN MODULE
+========================================================= */
+
+async function openModule(
+  module
+){
+
+  currentModule =
+    module;
+
+
+  activeNav();
+
+
+  document
+    .getElementById(
+      "pageTitle"
+    )
+    .textContent =
+    LABELS[module] ||
+    module;
+
+
+  if(
+    module ===
+    "Dashboard"
+  ){
+
+    await dashboard();
+
+    return;
+
+  }
+
+
+  if(
+    module ===
+    "Reports"
+  ){
+
+    await reports();
+
+    return;
+
+  }
+
+
+  await loadDropdowns();
+
+
+  if(
+    module ===
+    "DuePayments"
+  ){
+
+    const data =
+      await loadRecords(
+        "Invoices"
+      );
+
+
+    records =
+      data.filter(
+        function(x){
+
+          return (
+            Number(
+              x["Due Amount"]
+            ) || 0
+          ) > 0;
+
+        }
+      );
+
+
+    renderTable(
+      "Due Payments"
+    );
+
+
+    return;
+
+  }
+
+
+  await loadRecords(
+    module
+  );
+
+}
+
+
+/* =========================================================
+   DROPDOWNS
+========================================================= */
+
+async function loadDropdowns(){
+
+  if(dropdowns)
+    return dropdowns;
+
+
+  const result =
+    await api(
+      "dropdowns"
+    );
+
+
+  if(!result.success){
+
+    throw new Error(
+      result.message
+    );
+
+  }
+
+
+  dropdowns =
+    result.data;
+
+
+  return dropdowns;
+
+}
+
+
+/* =========================================================
+   LOAD RECORDS
+========================================================= */
+
+async function loadRecords(
+  module
+){
+
+  if(cache[module]){
+
+    records =
+      cache[module];
+
+
+    renderTable(
+      LABELS[module] ||
+      module
+    );
+
+
+    return records;
+
+  }
+
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "list",
+        {
+          module:module
+        }
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return [];
+
+    }
+
+
+    records =
+      result.records ||
+      [];
+
+
+    cache[module] =
+      records;
+
+
+    renderTable(
+      LABELS[module] ||
+      module
+    );
+
+
+    return records;
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+
+    return [];
+
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+function renderTable(
+  title
+){
+
+  const content =
+    document.getElementById(
+      "content"
+    );
+
+
+  const toolbar = `
+
+    <div class="toolbar">
+
+      <input
+        id="search"
+        class="search"
+        placeholder="Search..."
+        oninput="filterTable()"
+      >
+
+      <button
+        class="btn"
+        onclick="openModal()"
+      >
+        + Add New
+      </button>
+
+    </div>
+
+  `;
+
+
+  if(!records.length){
+
+    content.innerHTML =
+      toolbar +
+      `
+
+      <div class="card">
+
+        <h3>
+          ${esc(title)}
+        </h3>
+
+        <div class="empty">
+          No records found.
+        </div>
+
+      </div>
+
+      `;
+
+
+    return;
+
+  }
+
+
+  let keys =
+    Object.keys(
+      records[0]
+    )
+    .filter(function(key){
+
+      return key !== "_row";
+
+    });
+
+
+  keys =
+    prioritize(
+      keys
+    )
+    .slice(
+      0,
+      10
+    );
+
+
+  content.innerHTML =
+    toolbar +
+    `
+
+    <div class="table-card">
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              ${keys
+                .map(function(key){
+
+                  return `
+                    <th>
+                      ${esc(key)}
+                    </th>
+                  `;
+
+                })
+                .join("")
+              }
+
+              <th>
+                Actions
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="tableBody">
+
+            ${rowsHtml(
+              records,
+              keys
+            )}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    `;
+
+}
+
+
+function prioritize(
+  keys
+){
+
+  const first = [
+
+    "Student ID",
+    "Lead ID",
+    "Application ID",
+    "Invoice ID",
+
+    "Name",
+    "Employee Name",
+
+    "Phone",
+    "WhatsApp",
+
+    "Country",
+    "University",
+    "Course",
+
+    "Status",
+    "Date"
+
+  ];
+
+
+  const output = [];
+
+
+  first.forEach(function(name){
+
+    if(
+      keys.includes(name) &&
+      !output.includes(name)
+    ){
+
+      output.push(name);
+
+    }
+
+  });
+
+
+  keys.forEach(function(name){
+
+    if(
+      !output.includes(name)
+    ){
+
+      output.push(name);
+
+    }
+
+  });
+
+
+  return output;
+
+}
+
+
+function rowsHtml(
+  data,
+  keys
+){
+
+  return data
+    .map(function(row){
+
+      return `
+
+      <tr>
+
+        ${keys
+          .map(function(key){
+
+            return `
+              <td>
+                ${cell(
+                  row[key],
+                  key
+                )}
+              </td>
+            `;
+
+          })
+          .join("")
+        }
+
+        <td>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-light"
+              onclick="openModal(${row._row})"
+            >
+              Edit
+            </button>
+
+            <button
+              class="btn btn-danger"
+              onclick="deleteRecord(${row._row})"
+            >
+              Delete
+            </button>
+
+          </div>
+
+        </td>
+
+      </tr>
+
+      `;
+
+    })
+    .join("");
+
+}
+
+
+function cell(
+  value,
+  key
+){
+
+  if(
+    value === null ||
+    value === undefined ||
+    value === ""
+  ){
+
+    return "";
+
+  }
+
+
+  const text =
+    String(value);
+
+
+  if(
+    key === "Phone" ||
+    key === "WhatsApp"
+  ){
+
+    return `
+
+      ${esc(text)}
+
+      <button
+        class="whatsapp"
+        onclick="whatsapp('${esc(text)}')"
+      >
+        WhatsApp
+      </button>
+
+    `;
+
+  }
+
+
+  if(
+    key.toLowerCase()
+      .includes("url")
+  ){
+
+    return `
+
+      <a
+        href="${esc(text)}"
+        target="_blank"
+      >
+        Open
+      </a>
+
+    `;
+
+  }
+
+
+  if(
+    key === "Status" ||
+    key.endsWith(" Status")
+  ){
+
+    return `
+      <span class="badge">
+        ${esc(text)}
+      </span>
+    `;
+
+  }
+
+
+  if(text.length > 70){
+
+    return esc(
+      text.substring(0,67)
+    ) + "...";
+
+  }
+
+
+  return esc(text);
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function filterTable(){
+
+  const query =
+    (
+      document
+        .getElementById(
+          "search"
+        )
+        .value ||
+      ""
+    )
+    .toLowerCase();
+
+
+  const filtered =
+    records.filter(function(row){
+
+      return JSON.stringify(
+        row
+      )
+      .toLowerCase()
+      .includes(
+        query
+      );
+
+    });
+
+
+  const keys =
+    prioritize(
+      Object.keys(
+        records[0] || {}
+      )
+      .filter(function(k){
+
+        return k !== "_row";
+
+      })
+    )
+    .slice(0,10);
+
+
+  document
+    .getElementById(
+      "tableBody"
+    )
+    .innerHTML =
+    rowsHtml(
+      filtered,
+      keys
+    );
+
+}
+
+
+/* =========================================================
+   SYSTEM FIELDS
+========================================================= */
+
+const AUTO_FIELDS = [
+
+"User ID",
+"Lead ID",
+"Student ID",
+"Counselling ID",
+"Follow-up ID",
+"Task ID",
+"Country ID",
+"University ID",
+"Course ID",
+"Application ID",
+"Document ID",
+"Checklist ID",
+"Offer ID",
+"Visa ID",
+"Batch ID",
+"Enrollment ID",
+"Attendance ID",
+"Mock Test ID",
+"Result ID",
+"Payment ID",
+"Expense ID",
+"Invoice ID",
+"Receipt ID",
+"Notification ID",
+"Log ID",
+"Intake ID",
+"Income ID",
+"Timeline ID",
+"Source ID",
+"Portal ID",
+"Role ID",
+
+"Created At",
+"Updated At",
+"Created By",
+"Uploaded By",
+"Uploaded At",
+"Drive File ID",
+"Password Hash",
+"Due Amount"
+
 ];
-let token=sessionStorage.getItem('radiance_token')||'';let user=readJSON('radiance_user');let dd=null;let moduleCache={};let current={module:'Dashboard',page:1,size:20,search:'',filters:{}};
-const $=id=>document.getElementById(id);function readJSON(k){try{return JSON.parse(sessionStorage.getItem(k)||'null')}catch(e){return null}}function esc(v){return String(v??'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]))}function toast(msg,err=false){const t=$('toast');t.textContent=msg;t.className='toast'+(err?' err':'');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),3500)}function label(m){return(MODULES.find(x=>x[0]===m)||[m,m])[1]}
-async function api(action,data={}){const res=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,token,...data})});let x;try{x=await res.json()}catch(e){throw Error('API response was not valid JSON. Check the Apps Script deployment.')}if(!x.ok){if(/session expired/i.test(x.error||'')){sessionStorage.removeItem('radiance_token');sessionStorage.removeItem('radiance_user');token='';user=null;showLogin()}throw Error(x.error||'Request failed')}return x}
-function showLogin(){$('app').classList.add('hidden');$('login').classList.remove('hidden')}
-async function login(){const username=$('lu').value.trim(),password=$('lp').value; if(!username||!password){$('loginMsg').textContent='Username and password are required.';return}const b=$('loginBtn');b.disabled=true;b.textContent='Signing in...';$('loginMsg').textContent='';try{const x=await api('login',{username,password});token=x.token;user=x.user;sessionStorage.setItem('radiance_token',token);sessionStorage.setItem('radiance_user',JSON.stringify(user));start()}catch(e){$('loginMsg').textContent=e.message;toast(e.message,true)}finally{b.disabled=false;b.textContent='Login'}}
-async function logout(){try{if(token)await api('logout',{});}catch(e){}sessionStorage.removeItem('radiance_token');sessionStorage.removeItem('radiance_user');token='';user=null;moduleCache={};dd=null;showLogin()}
-function start(){if(!token||!user){showLogin();return}$('login').classList.add('hidden');$('app').classList.remove('hidden');$('un').textContent=(user.name||user.username)+' • '+(user.role||'');if(user.photo)$('up').src=user.photo;buildNav();openModule('Dashboard')}
-function buildNav(){const n=$('nav');n.innerHTML='';MODULES.forEach(([m,l])=>{if(user.role!=='Admin'&&ADMIN_ONLY.includes(m))return;const b=document.createElement('button');b.textContent=l;b.dataset.module=m;b.onclick=()=>openModule(m);n.appendChild(b)})}
-function openModule(m){current={module:m,page:1,size:20,search:'',filters:{}};$('title').textContent=label(m);document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.module===m));if(m==='Dashboard')return renderDashboard();if(m==='Reports')return renderReports();if(m==='DuePayments')return renderDuePayments();if(m==='EmployeeAttendance')return renderAttendance();renderList()}
-async function renderDashboard(){const c=$('content');c.innerHTML='<div class="loading">Loading dashboard...</div>';try{const x=await api('dashboard');const q=x.data.counts;c.innerHTML='<div class="grid">'+[['Leads','Leads'],['Students','Students'],['Applications','Applications'],['Invoices','Invoices'],['Payments','Payments'],['Expenses','Expenses'],['Users','Users'],['EmployeeAttendance','Employee Attendance']].map(a=>`<div class="stat"><span>${a[0]}</span><b>${q[a[1]]??0}</b></div>`).join('')+'</div><div class="card" style="margin-top:14px"><b>Welcome, '+esc(user.name||user.username)+'</b><p class="muted">Use the left menu to manage students, applications, IELTS, staff, attendance, leave, finance and other CRM records.</p></div>'}catch(e){c.innerHTML='<div class="card">'+esc(e.message)+'</div>'}}
-async function renderList(){const c=$('content');const key=current.module+'|'+current.page+'|'+current.size+'|'+current.search+'|'+JSON.stringify(current.filters);if(moduleCache[key]){drawList(moduleCache[key]);return}c.innerHTML='<div class="loading">Loading '+esc(label(current.module))+'...</div>';try{const x=await api('list',{module:current.module,page:current.page,pageSize:current.size,search:current.search,filters:current.filters});moduleCache[key]=x.data;drawList(x.data)}catch(e){c.innerHTML='<div class="card">'+esc(e.message)+'</div>'}}
-function drawList(data){const c=$('content');let toolbar=`<div class="toolbar"><input id="search" value="${esc(current.search)}" placeholder="Search ${esc(label(current.module))}..." onkeydown="if(event.key==='Enter'){current.search=this.value;current.page=1;renderList()}"><button class="primary" onclick="current.search=$('search').value;current.page=1;renderList()">Search</button><button class="secondary" onclick="current.search='';current.page=1;renderList()">Clear</button>`;if(current.module!=='ActivityLog')toolbar+=`<button class="primary" onclick="openForm()">+ Add New</button>`;toolbar+=`<button class="secondary" onclick="invalidateAndRefresh()">Refresh</button></div>`;let table='<div class="tablewrap"><table class="table"><thead><tr>'+data.headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'<th>Actions</th></tr></thead><tbody>';if(!data.rows.length)table+='<tr><td colspan="'+(data.headers.length+1)+'"><div class="empty">No records found.</div></td></tr>';data.rows.forEach(r=>{table+='<tr>'+r.map((v,i)=>cell(data.headers[i],v)).join('')+'<td>'+actionsForRow(data.headers,r)+'</td></tr>'});table+='</tbody></table></div>';const pages=Math.max(1,Math.ceil(data.total/data.pageSize));c.innerHTML=toolbar+table+`<div class="pager"><span>Page ${data.page} of ${pages} • ${data.total} records</span><span><button class="secondary" ${data.page<=1?'disabled':''} onclick="current.page--;renderList()">Previous</button> <button class="secondary" ${data.page>=pages?'disabled':''} onclick="current.page++;renderList()">Next</button></span></div>`}
-function cell(h,v){if(['Phone','WhatsApp','Mobile','Contact','Phone Number','Mobile Number'].includes(h)&&String(v).trim())return `<td>${esc(v)} <a class="wa" target="_blank" href="https://wa.me/${waNumber(v)}">WhatsApp</a></td>`;if(h==='Photo'&&String(v).startsWith('http'))return `<td><img class="photo" src="${esc(v)}" onerror="this.style.display='none'"></td>`;if(h==='File URL'&&String(v).startsWith('http'))return `<td><a class="link" target="_blank" href="${esc(v)}">Open file</a></td>`;return '<td>'+esc(v)+'</td>'}
-function waNumber(v){let s=String(v).replace(/\D/g,'');if(s.startsWith('880'))return s;if(s.startsWith('0'))return '880'+s.slice(1);return s.startsWith('1')?'880'+s:s}
-function actionsForRow(headers,row){if(current.module==='ActivityLog')return '<span class="muted">Read only</span>';const id=String(row[0]??'');let out=`<div class="actions"><button class="secondary" onclick='openForm(${JSON.stringify(id)})'>Edit</button>`;if(current.module==='Notifications' && String(row[headers.indexOf('Is Read')]||'').toLowerCase()!=='yes')out+=`<button class="success" onclick='markRead(${JSON.stringify(id)})'>Mark read</button>`;out+=`<button class="danger" onclick='removeRecord(${JSON.stringify(id)})'>Delete</button></div>`;return out}
-async function invalidateAndRefresh(){moduleCache={};dd=null;renderList()}
-async function loadDropdowns(){if(dd)return dd;const x=await api('dropdowns');dd=x.data;return dd}
-function fieldType(h,m){if(['Created At','Updated At','Password Hash'].includes(h))return 'hidden';if(h==='Password'&&m==='Users')return 'password';if(h==='Photo'&&m==='Users')return 'photo';if(h==='File URL'&&m==='Documents')return 'hidden';if(h==='Date'||h.endsWith(' Date')||h==='DOB'||h==='Start Date'||h==='End Date'||h==='Due Date'||h==='Deadline'||h==='Offer Date'||h==='Application Date'||h==='Submission Date'||h==='Decision Date'||h==='Enrollment Date'||h==='Income Date'||h==='Expense Date'||h==='Receipt Date'||h==='Test Date')return 'date';if(h==='Time'||h==='Check In'||h==='Check Out')return 'time';if(h.includes('Description')||h==='Notes'||h==='Remarks'||h==='Reason'||h==='Message'||h==='Details'||h==='Schedule')return 'textarea';return 'text'}
-function employeeKind(h){if(h==='Employee ID'||h==='Staff ID'||h==='Teacher ID')return 'id';if(h==='Employee Name'||h==='Staff Name')return 'name';if(['Employee','Teacher','Assigned Employee','Assigned To','Counsellor','Received By','Paid By','Approved By'].includes(h))return 'combo';return ''}
-function optionsFor(h,m,value){const v=String(value??'');let arr=[];const ek=employeeKind(h);if(ek){const es=dd.employees||[];if(ek==='id')arr=es.map(e=>[e.id,e.id+' — '+e.name]);else if(ek==='name')arr=es.map(e=>[e.name,e.name+' — '+e.id]);else arr=es.map(e=>[e.id,e.id+' — '+e.name]);}else if(h==='Role')arr=(dd.roles||[]).map(x=>[x.name,x.name]);else if(h==='Country'||h==='Country Name')arr=(dd.countries||[]).map(x=>[x.name,x.name]);else if(h==='University ID')arr=(dd.universities||[]).map(x=>[x.id,x.id+' — '+x.name]);else if(h==='Course ID')arr=(dd.courses||[]).map(x=>[x.id,x.id+' — '+x.name]);else if(h==='Student ID')arr=(dd.students||[]).map(x=>[x.id,x.id+' — '+x.label]);else if(h==='Lead ID')arr=(dd.leads||[]).map(x=>[x.id,x.id+' — '+x.label]);else if(h==='Application ID')arr=(dd.applications||[]).map(x=>[x.id,x.id+' — '+x.label]);else if(h==='Invoice ID')arr=(dd.invoices||[]).map(x=>[x.id,x.id+' — '+x.label]);else if(h==='Batch ID')arr=(dd.batches||[]).map(x=>[x.id,x.id+' — '+x.label]);else if(h==='IELTS Student ID')arr=(dd.ieltsStudents||[]).map(x=>[x.id,x.id+' — '+x.label]);else if(h==='Source')arr=(dd.sources||[]).map(x=>[x.label,x.label]);else if(h==='Leave Status')arr=[];else if(h==='Status')arr=statusOptions(m);else if(h==='Application Status')arr=['Draft','Submitted','Offer','Conditional Offer','Rejected','Withdrawn','Completed'].map(x=>[x,x]);else if(h==='Offer Type')arr=['Conditional','Unconditional'].map(x=>[x,x]);else if(h==='Payment Method'||h==='Method')arr=['Cash','bKash','Nagad','Rocket','Bank','Card','Other'].map(x=>[x,x]);else if(h==='Priority')arr=['Low','Medium','High','Urgent'].map(x=>[x,x]);else if(['Received','Verified','Required','Is Read'].includes(h))arr=['Yes','No'].map(x=>[x,x]);else if(h==='Gender')arr=['Male','Female','Other'].map(x=>[x,x]);if(v&&!arr.some(x=>String(x[0])===v))arr.unshift([v,v]);return arr}
-function statusOptions(m){if(m==='EmployeeAttendance')return ['Present','Absent','Late','Half Day','Leave'].map(x=>[x,x]);if(m==='LeaveManagement')return ['Pending','Approved','Rejected','Cancelled'].map(x=>[x,x]);if(m==='Countries'||m==='LeadSources')return ['Active','Inactive'].map(x=>[x,x]);if(m==='Tasks')return ['Pending','In Progress','Completed','Cancelled'].map(x=>[x,x]);if(m==='Invoices')return ['Unpaid','Partially Paid','Paid','Overdue'].map(x=>[x,x]);if(m==='Visa')return ['Pending','Submitted','Approved','Refused','Withdrawn'].map(x=>[x,x]);return ['Active','Inactive'].map(x=>[x,x])}
-async function openForm(id=''){try{await loadDropdowns();const x=id?await api('list',{module:current.module,page:1,pageSize:100,search:String(id)}):{data:{headers:[],rows:[]}};let record={};if(id){const d=x.data;const idx=d.rows.findIndex(r=>String(r[0])===String(id));if(idx<0)throw Error('Record not found.');d.headers.forEach((h,i)=>record[h]=d.rows[idx][i])}const headers=Object.keys(record).length?Object.keys(record):await schemaHeaders(current.module);renderForm(headers,record,id)}catch(e){toast(e.message,true)}}
-async function schemaHeaders(m){const x=await api('list',{module:m,page:1,pageSize:1});return x.data.headers}
-function renderForm(headers,record,id){const m=current.module;let html=`<div class="modalbox"><div class="modalhead"><h2>${id?'Edit ':'Add '}${esc(label(m))}</h2><button class="close" onclick="closeModal()">Close</button></div><form id="recordForm" onsubmit="submitForm(event)"><div class="formgrid">`;
-headers.forEach(h=>{if(['Password Hash','Created At','Updated At'].includes(h))return;const val=record[h]??'';if(m==='Users'&&h==='Password'){}const type=fieldType(h,m);if(type==='hidden')return;let req=(h===headers[0]&&id)?'':(['Full Name','Username','Role'].includes(h)&&m==='Users'?'required':'');const ek=employeeKind(h);if(ek||optionsFor(h,m,val).length){let opts=optionsFor(h,m,val);html+=`<div class="field"><label>${esc(h)}</label><select data-field="${esc(h)}" ${req} ${h==='Marked By'?'disabled':''} onchange="syncEmployee(this)"><option value="">Select ${esc(h)}</option>${opts.map(o=>`<option value="${esc(o[0])}" ${String(o[0])===String(val)?'selected':''}>${esc(o[1])}</option>`).join('')}</select></div>`;return}if(type==='textarea'){html+=`<div class="field full"><label>${esc(h)}</label><textarea data-field="${esc(h)}">${esc(val)}</textarea></div>`;return}if(type==='photo'){html+=`<div class="field"><label>Staff Photo</label><input type="file" id="staffPhoto" accept="image/*" onchange="previewPhoto(this)">${val?`<img id="photoPreview" class="photo" src="${esc(val)}">`:'<img id="photoPreview" class="photo hidden">'}<div class="filehint">Photo will be uploaded to Google Drive.</div></div>`;return}if(h==='Phone')req='required';html+=`<div class="field"><label>${esc(h)}</label><input data-field="${esc(h)}" type="${type==='date'?'date':type==='time'?'time':type==='password'?'password':'text'}" value="${esc(formatInputValue(val,type))}" ${req}></div>`});if(m==='Documents')html+=`<div class="field full"><label>Upload Document File</label><input type="file" id="documentFile"><div class="filehint">The selected file will be uploaded to Google Drive when you save.</div></div>`;if(m==='Users'&&id)html+=`<div class="field full"><div class="note">Leave Password blank to keep the existing password.</div></div>`;html+=`</div><div class="formactions"><button type="button" class="secondary" onclick="closeModal()">Cancel</button><button class="primary" type="submit">Save</button></div></form></div>`;$('modal').innerHTML=html;$('modal').classList.remove('hidden');window.__editingId=id;window.__record=record;window.__headers=headers;applyDefaults(m,record);}
-function formatInputValue(v,type){if(!v)return '';if(type==='date')return String(v).slice(0,10);if(type==='time')return String(v).slice(0,5);return v}
-function applyDefaults(m,r){const set=(f,v)=>{const e=document.querySelector(`[data-field="${CSS.escape(f)}"]`);if(e&&!String(r[f]??''))e.value=v};if(m==='EmployeeAttendance'){set('Date',new Date().toISOString().slice(0,10));set('Status','Present');const mk=document.querySelector('[data-field="Marked By"]');if(mk)mk.value=user.employeeId||user.name||user.username}if(m==='LeaveManagement')set('Status','Pending');if(m==='Documents'){const u=document.querySelector('[data-field="Uploaded By"]');if(u&&!r['Uploaded By'])u.value=user.employeeId||user.name||user.username}syncAllEmployees()}
-function syncEmployee(el){const f=el.dataset.field,val=el.value;if(!dd||!dd.employees)return;let e;if(f==='Employee ID'||f==='Staff ID'||f==='Teacher ID')e=dd.employees.find(x=>x.id===val);else if(f==='Employee Name'||f==='Staff Name')e=dd.employees.find(x=>x.name===val);else if(['Employee','Teacher','Assigned Employee','Assigned To','Counsellor','Received By','Paid By','Approved By'].includes(f))return;if(!e)return;const idFields=['Employee ID','Staff ID','Teacher ID'],nameFields=['Employee Name','Staff Name'];document.querySelectorAll('[data-field]').forEach(x=>{if(idFields.includes(x.dataset.field))x.value=e.id;if(nameFields.includes(x.dataset.field))x.value=e.name})}
-function syncAllEmployees(){const idEl=document.querySelector('[data-field="Employee ID"]'),nameEl=document.querySelector('[data-field="Employee Name"]');if(idEl&&idEl.value)syncEmployee(idEl);else if(nameEl&&nameEl.value)syncEmployee(nameEl)}
-function previewPhoto(input){if(!input.files[0])return;const img=$('photoPreview');img.src=URL.createObjectURL(input.files[0]);img.classList.remove('hidden')}
-function closeModal(){$('modal').classList.add('hidden');$('modal').innerHTML='';window.__editingId='';window.__record={};window.__headers=[]}
-async function submitForm(ev){ev.preventDefault();const m=current.module,record={};document.querySelectorAll('#recordForm [data-field]').forEach(e=>{if(e.disabled&&e.dataset.field==='Marked By')return;record[e.dataset.field]=e.value});if(m==='EmployeeAttendance'&&document.querySelector('[data-field="Marked By"]'))record['Marked By']=user.employeeId||user.name||user.username;if(m==='Documents'&&document.querySelector('[data-field="Uploaded By"]'))record['Uploaded By']=user.employeeId||user.name||user.username;const btn=document.querySelector('#recordForm button[type="submit"]');btn.disabled=true;btn.textContent='Saving...';try{if(m==='Users'){const f=$('staffPhoto');if(f&&f.files[0]){const b=await fileData(f.files[0],1200,.82);const up=await api('uploadStaffPhoto',b);record.Photo=up.data.url}}if(m==='Documents'){const f=$('documentFile');if(f&&f.files[0]){const b=await fileData(f.files[0],1600,.82);const up=await api('uploadDocument',b);record['File URL']=up.data.url}}const x=await api('save',{module:m,record,id:window.__editingId});toast('Saved successfully.');closeModal();moduleCache={};dd=null;renderList()}catch(e){toast(e.message,true)}finally{btn.disabled=false;btn.textContent='Save'}}
-function fileData(file,max,quality){return new Promise((resolve,reject)=>{if(!file.type.startsWith('image/')){const r=new FileReader();r.onload=()=>resolve({data:r.result,fileName:file.name,mimeType:file.type});r.onerror=reject;r.readAsDataURL(file);return}const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{let w=img.width,h=img.height;if(Math.max(w,h)>max){const k=max/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k)}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);resolve({data:c.toDataURL('image/jpeg',quality),fileName:(file.name.replace(/\.[^.]+$/,'')||'upload')+'.jpg',mimeType:'image/jpeg'})};img.onerror=reject;img.src=r.result};r.onerror=reject;r.readAsDataURL(file)})}
-async function removeRecord(id){if(!confirm('Delete this record?'))return;try{await api('delete',{module:current.module,id});toast('Deleted successfully.');moduleCache={};dd=null;renderList()}catch(e){toast(e.message,true)}}
-async function markRead(id){try{await api('markNotificationRead',{id});toast('Notification marked as read.');moduleCache={};renderList()}catch(e){toast(e.message,true)}}
-async function renderAttendance(){const c=$('content');c.innerHTML='<div class="loading">Loading attendance...</div>';try{await loadDropdowns();const s=await api('attendanceSummary',{});const d=s.data;c.innerHTML=`<div class="summary"><div class="stat"><span>Total</span><b>${d.total}</b></div><div class="stat"><span>Present</span><b>${d.Present}</b></div><div class="stat"><span>Absent</span><b>${d.Absent}</b></div><div class="stat"><span>Late</span><b>${d.Late}</b></div><div class="stat"><span>Half Day</span><b>${d['Half Day']}</b></div><div class="stat"><span>Leave</span><b>${d.Leave}</b></div></div>`;renderList()}catch(e){c.innerHTML='<div class="card">'+esc(e.message)+'</div>'}}
-function renderReports(){const c=$('content');c.innerHTML='<div class="grid"><div class="card"><b>Reports</b><p class="muted">Use module search and pagination for live records. Attendance has date/employee summary support.</p></div><div class="card"><b>Employee Master</b><p class="muted">All employee selectors are populated from Staff / Users.</p></div><div class="card"><b>Countries</b><p class="muted">Countries are managed dynamically from the Countries module.</p></div><div class="card"><b>Phone / WhatsApp</b><p class="muted">Bangladesh numbers are converted automatically for WhatsApp links.</p></div></div>'}
-function renderDuePayments(){current.module='Invoices';current.search='Unpaid';$('title').textContent='Due Payments';renderList()}
-window.addEventListener('load',()=>{if(token&&user)start();else showLogin()});
+
+
+function isAuto(
+  field
+){
+
+  return AUTO_FIELDS.includes(
+    field
+  );
+
+}
+
+
+/* =========================================================
+   FIELD ID
+========================================================= */
+
+function fid(
+  field
+){
+
+  return (
+    "f_" +
+    Array.from(
+      field
+    )
+    .map(function(ch){
+
+      return ch.charCodeAt(
+        0
+      );
+
+    })
+    .join("_")
+  );
+
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+function optionsFor(
+  field
+){
+
+  if(!dropdowns)
+    return null;
+
+
+  const f =
+    field.toLowerCase();
+
+
+  if(
+    field ===
+    "Student ID"
+  ){
+
+    return dropdowns.students
+      .map(function(x){
+
+        return {
+          value:
+            x["Student ID"],
+          label:
+            x["Student ID"] +
+            " — " +
+            x.Name
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Lead ID"
+  ){
+
+    return dropdowns.leads
+      .map(function(x){
+
+        return {
+          value:
+            x["Lead ID"],
+          label:
+            x["Lead ID"] +
+            " — " +
+            x.Name
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Invoice ID"
+  ){
+
+    return dropdowns.invoices
+      .map(function(x){
+
+        return {
+          value:
+            x["Invoice ID"],
+          label:
+            x["Invoice ID"] +
+            " — " +
+            (
+              x.Service || ""
+            )
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Application ID"
+  ){
+
+    return dropdowns.applications
+      .map(function(x){
+
+        return {
+          value:
+            x["Application ID"],
+          label:
+            x["Application ID"] +
+            " — " +
+            (
+              x.University || ""
+            )
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Employee ID"
+  ){
+
+    return dropdowns.users
+      .map(function(x){
+
+        return {
+          value:
+            x["User ID"],
+          label:
+            x["User ID"] +
+            " — " +
+            x.Name +
+            " (" +
+            x.Role +
+            ")"
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Batch ID"
+  ){
+
+    return dropdowns.batches
+      .map(function(x){
+
+        return {
+          value:
+            x["Batch ID"],
+          label:
+            x["Batch ID"] +
+            " — " +
+            x["Batch Name"]
+        };
+
+      });
+
+  }
+
+
+  if(
+    f === "role"
+  ){
+
+    return dropdowns.roles
+      .map(function(x){
+
+        return {
+          value:
+            x["Role Name"],
+          label:
+            x["Role Name"]
+        };
+
+      });
+
+  }
+
+
+  if(
+    f === "country" ||
+    f.includes("country")
+  ){
+
+    return dropdowns.countries
+      .map(function(x){
+
+        return {
+          value:
+            x["Country Name"],
+          label:
+            (
+              x.Flag || ""
+            ) +
+            " " +
+            x["Country Name"]
+        };
+
+      });
+
+  }
+
+
+  if(
+    f.includes("university")
+  ){
+
+    return dropdowns.universities
+      .map(function(x){
+
+        return {
+          value:
+            x["University Name"],
+          label:
+            x["University Name"] +
+            " — " +
+            (
+              x.Country || ""
+            )
+        };
+
+      });
+
+  }
+
+
+  if(
+    f.includes("course")
+  ){
+
+    return dropdowns.courses
+      .map(function(x){
+
+        return {
+          value:
+            x["Course Name"],
+          label:
+            x["Course Name"] +
+            " — " +
+            (
+              x["University Name"] ||
+              ""
+            )
+        };
+
+      });
+
+  }
+
+
+  if(
+    f.includes("counsellor") ||
+    f.includes("assigned") ||
+    f.includes("teacher") ||
+    f.includes("received by") ||
+    f.includes("paid by") ||
+    f.includes("approved by") ||
+    f.includes("marked by")
+  ){
+
+    return dropdowns.users
+      .map(function(x){
+
+        return {
+          value:
+            x.Name,
+          label:
+            x.Name +
+            " — " +
+            x.Role
+        };
+
+      });
+
+  }
+
+
+  if(
+    field ===
+    "Source"
+  ){
+
+    return dropdowns.leadSources
+      .map(function(x){
+
+        return {
+          value:
+            x["Source Name"],
+          label:
+            x["Source Name"]
+        };
+
+      });
+
+  }
+
+
+  if(
+    f === "status" ||
+    f.endsWith(" status")
+  ){
+
+    return [
+      "Active",
+      "Inactive",
+      "Pending",
+      "Approved",
+      "Rejected",
+      "Cancelled",
+      "Completed",
+      "Present",
+      "Late",
+      "Absent",
+      "Half Day",
+      "Leave",
+      "Paid",
+      "Partial",
+      "Due",
+      "Submitted",
+      "Under Review"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  if(
+    field ===
+    "Attendance Status"
+  ){
+
+    return [
+      "Present",
+      "Late",
+      "Absent",
+      "Half Day",
+      "Leave",
+      "Holiday"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  if(
+    field ===
+    "Leave Type"
+  ){
+
+    return [
+      "Casual Leave",
+      "Sick Leave",
+      "Annual Leave",
+      "Emergency Leave",
+      "Maternity Leave",
+      "Other"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  if(
+    field ===
+    "Payment Method"
+  ){
+
+    return [
+      "Cash",
+      "bKash",
+      "Nagad",
+      "Rocket",
+      "Bank Transfer",
+      "Card"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  if(
+    field === "Required" ||
+    field === "Received" ||
+    field === "Verified" ||
+    field === "Is Read"
+  ){
+
+    return [
+      "Yes",
+      "No"
+    ]
+    .map(function(x){
+
+      return {
+        value:x,
+        label:x
+      };
+
+    });
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =========================================================
+   FORM FIELD
+========================================================= */
+
+function formField(
+  field,
+  value
+){
+
+  const id =
+    fid(field);
+
+
+  const options =
+    optionsFor(field);
+
+
+  if(options){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <select
+          id="${id}"
+        >
+
+          <option value="">
+            Select...
+          </option>
+
+          ${options
+            .map(function(o){
+
+              return `
+
+                <option
+                  value="${esc(o.value)}"
+                  ${
+                    String(
+                      value || ""
+                    ) ===
+                    String(
+                      o.value
+                    )
+                      ? "selected"
+                      : ""
+                  }
+                >
+                  ${esc(o.label)}
+                </option>
+
+              `;
+
+            })
+            .join("")
+          }
+
+        </select>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field ===
+    "Password"
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          Password
+        </label>
+
+        <input
+          id="${id}"
+          type="password"
+          placeholder="${
+            currentRow
+              ? "Leave blank to keep existing password"
+              : ""
+          }"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field === "Phone" ||
+    field === "WhatsApp"
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          type="tel"
+          inputmode="tel"
+          value="${esc(value || "")}"
+          placeholder="017XXXXXXXX"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field.toLowerCase()
+      .includes("date")
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          type="date"
+          value="${esc(
+            String(
+              value || ""
+            ).substring(0,10)
+          )}"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field.toLowerCase()
+      .includes("time")
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          type="time"
+          value="${esc(
+            String(
+              value || ""
+            ).substring(0,5)
+          )}"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field ===
+    "Total Days"
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          Total Days
+        </label>
+
+        <input
+          id="${id}"
+          type="number"
+          value="${esc(value || "")}"
+          readonly
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field.toLowerCase()
+      .includes("amount") ||
+    field.toLowerCase()
+      .includes("fee") ||
+    field.toLowerCase()
+      .includes("budget") ||
+    field.toLowerCase()
+      .includes("score") ||
+    field.toLowerCase()
+      .includes("gpa") ||
+    field.toLowerCase()
+      .includes("ranking") ||
+    field.toLowerCase()
+      .includes("capacity")
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <input
+          id="${id}"
+          type="number"
+          value="${esc(value || "")}"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    field.toLowerCase()
+      .includes("description") ||
+    field.toLowerCase()
+      .includes("notes") ||
+    field.toLowerCase()
+      .includes("remarks") ||
+    field.toLowerCase()
+      .includes("reason") ||
+    field.toLowerCase()
+      .includes("address") ||
+    field.toLowerCase()
+      .includes("requirement") ||
+    field.toLowerCase()
+      .includes("recommendation") ||
+    field.toLowerCase()
+      === "message"
+  ){
+
+    return `
+
+      <div class="field">
+
+        <label>
+          ${esc(field)}
+        </label>
+
+        <textarea
+          id="${id}"
+        >${esc(value || "")}</textarea>
+
+      </div>
+
+    `;
+
+  }
+
+
+  return `
+
+    <div class="field">
+
+      <label>
+        ${esc(field)}
+      </label>
+
+      <input
+        id="${id}"
+        value="${esc(value || "")}"
+      >
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
+
+function openModal(
+  row
+){
+
+  currentRow =
+    row || null;
+
+
+  const existing =
+    row
+      ? records.find(
+          function(x){
+
+            return (
+              Number(x._row) ===
+              Number(row)
+            );
+
+          }
+        ) || {}
+      : {};
+
+
+  let fields =
+    HEADERS[currentModule];
+
+
+  if(!fields){
+
+    fields =
+      records.length
+        ? Object.keys(
+            records[0]
+          )
+          .filter(function(k){
+
+            return (
+              k !== "_row" &&
+              !isAuto(k)
+            );
+
+          })
+        : [];
+
+  }
+
+
+  /*
+   * Employee Attendance:
+   * Employee Name is automatically populated,
+   * but we keep it visible/read-only.
+   */
+  let html =
+    fields
+      .map(function(field){
+
+        return formField(
+          field,
+          existing[field]
+        );
+
+      })
+      .join("");
+
+
+  if(
+    currentModule ===
+    "Documents"
+  ){
+
+    html += `
+
+      <div class="field">
+
+        <label>
+          Upload File
+        </label>
+
+        <input
+          id="documentFile"
+          type="file"
+        >
+
+      </div>
+
+    `;
+
+  }
+
+
+  document
+    .getElementById(
+      "modalTitle"
+    )
+    .textContent =
+    (
+      row
+        ? "Edit "
+        : "Add "
+    ) +
+    (
+      LABELS[
+        currentModule
+      ] ||
+      currentModule
+    );
+
+
+  document
+    .getElementById(
+      "form"
+    )
+    .innerHTML =
+    html;
+
+
+  /*
+   * Employee name readonly.
+   */
+  if(
+    currentModule ===
+    "EmployeeAttendance" ||
+    currentModule ===
+    "LeaveManagement"
+  ){
+
+    const employeeName =
+      document.getElementById(
+        fid("Employee Name")
+      );
+
+
+    if(employeeName){
+
+      employeeName.readOnly =
+        true;
+
+    }
+
+    const employeeId =
+      document.getElementById(
+        fid("Employee ID")
+      );
+
+
+    if(employeeId){
+
+      employeeId.addEventListener(
+        "change",
+        autoEmployeeName
+      );
+
+    }
+
+  }
+
+
+  /*
+   * Leave date calculation.
+   */
+  if(
+    currentModule ===
+    "LeaveManagement"
+  ){
+
+    const start =
+      document.getElementById(
+        fid("Start Date")
+      );
+
+    const end =
+      document.getElementById(
+        fid("End Date")
+      );
+
+
+    if(start)
+      start.addEventListener(
+        "change",
+        calculateLeaveDays
+      );
+
+
+    if(end)
+      end.addEventListener(
+        "change",
+        calculateLeaveDays
+      );
+
+  }
+
+
+  document
+    .getElementById(
+      "modal"
+    )
+    .classList.add(
+      "show"
+    );
+
+}
+
+
+/* =========================================================
+   EMPLOYEE NAME
+========================================================= */
+
+function autoEmployeeName(){
+
+  const id =
+    document.getElementById(
+      fid("Employee ID")
+    );
+
+
+  const name =
+    document.getElementById(
+      fid("Employee Name")
+    );
+
+
+  if(
+    !id ||
+    !name ||
+    !dropdowns
+  )
+    return;
+
+
+  const employee =
+    dropdowns.users.find(
+      function(x){
+
+        return (
+          String(
+            x["User ID"]
+          ) ===
+          String(
+            id.value
+          )
+        );
+
+      }
+    );
+
+
+  if(employee){
+
+    name.value =
+      employee.Name;
+
+  }else{
+
+    name.value =
+      "";
+
+  }
+
+}
+
+
+/* =========================================================
+   LEAVE DAYS
+========================================================= */
+
+function calculateLeaveDays(){
+
+  const start =
+    document.getElementById(
+      fid("Start Date")
+    );
+
+
+  const end =
+    document.getElementById(
+      fid("End Date")
+    );
+
+
+  const total =
+    document.getElementById(
+      fid("Total Days")
+    );
+
+
+  if(
+    !start ||
+    !end ||
+    !total ||
+    !start.value ||
+    !end.value
+  ){
+
+    if(total)
+      total.value = "";
+
+    return;
+
+  }
+
+
+  const s =
+    new Date(
+      start.value
+    );
+
+  const e =
+    new Date(
+      end.value
+    );
+
+
+  if(
+    e < s
+  ){
+
+    total.value =
+      "";
+
+    return;
+
+  }
+
+
+  total.value =
+    Math.floor(
+      (
+        e - s
+      ) /
+      86400000
+    ) + 1;
+
+}
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+async function saveRecord(){
+
+  const fields =
+    HEADERS[currentModule] ||
+    [];
+
+
+  const record = {};
+
+
+  fields.forEach(function(field){
+
+    const element =
+      document.getElementById(
+        fid(field)
+      );
+
+
+    if(element){
+
+      record[field] =
+        element.value;
+
+    }
+
+  });
+
+
+  if(currentRow){
+
+    record._row =
+      currentRow;
+
+  }
+
+
+  /*
+   * Password is only sent when filled.
+   */
+  if(
+    currentModule ===
+    "Users"
+  ){
+
+    const password =
+      document.getElementById(
+        fid("Password")
+      );
+
+
+    if(
+      password &&
+      password.value
+    ){
+
+      record.Password =
+        password.value;
+
+    }
+
+  }
+
+
+  /*
+   * Document upload.
+   */
+  if(
+    currentModule ===
+    "Documents"
+  ){
+
+    const file =
+      document.getElementById(
+        "documentFile"
+      );
+
+
+    if(
+      file &&
+      file.files.length
+    ){
+
+      await uploadFile(
+        record,
+        file.files[0]
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "save",
+        {
+          module:
+            currentModule,
+          record:
+            record
+        }
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    closeModal();
+
+
+    delete cache[
+      currentModule
+    ];
+
+
+    dropdowns =
+      null;
+
+
+    await openModule(
+      currentModule
+    );
+
+
+    toast(
+      "Saved successfully."
+    );
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   DOCUMENT UPLOAD
+========================================================= */
+
+async function uploadFile(
+  record,
+  file
+){
+
+  loading(true);
+
+
+  try{
+
+    const base64 =
+      await toBase64(
+        file
+      );
+
+
+    const result =
+      await api(
+        "uploadDocument",
+        {
+
+          base64:
+            base64,
+
+          fileName:
+            file.name,
+
+          mimeType:
+            file.type,
+
+          studentId:
+            record["Student ID"] ||
+            "",
+
+          applicationId:
+            record["Application ID"] ||
+            "",
+
+          documentType:
+            record["Document Type"] ||
+            "Other",
+
+          expiryDate:
+            record["Expiry Date"] ||
+            "",
+
+          notes:
+            record.Notes ||
+            ""
+
+        }
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    closeModal();
+
+    delete cache.Documents;
+
+    await openModule(
+      "Documents"
+    );
+
+    toast(
+      "Document uploaded successfully."
+    );
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+function toBase64(
+  file
+){
+
+  return new Promise(
+    function(resolve,reject){
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function(){
+
+          resolve(
+            String(
+              reader.result
+            )
+            .split(",")[1]
+          );
+
+        };
+
+
+      reader.onerror =
+        reject;
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+async function deleteRecord(
+  row
+){
+
+  if(
+    !confirm(
+      "Are you sure you want to delete this record?"
+    )
+  )
+    return;
+
+
+  const module =
+    currentModule ===
+    "DuePayments"
+      ? "Invoices"
+      : currentModule;
+
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "delete",
+        {
+          module:
+            module,
+          row:
+            row
+        }
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    delete cache[
+      module
+    ];
+
+
+    dropdowns =
+      null;
+
+
+    await openModule(
+      currentModule
+    );
+
+
+    toast(
+      "Deleted successfully."
+    );
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal(){
+
+  document
+    .getElementById(
+      "modal"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  currentRow =
+    null;
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+async function dashboard(){
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "dashboard"
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    const d =
+      result.data;
+
+
+    document
+      .getElementById(
+        "content"
+      )
+      .innerHTML = `
+
+      <div class="dashboard">
+
+        ${stat(
+          "Total Leads",
+          d.totalLeads
+        )}
+
+        ${stat(
+          "Total Students",
+          d.totalStudents
+        )}
+
+        ${stat(
+          "Applications",
+          d.totalApplications
+        )}
+
+        ${stat(
+          "Due Payments",
+          "৳ " +
+          d.totalDue
+        )}
+
+        ${stat(
+          "Countries",
+          d.totalCountries
+        )}
+
+        ${stat(
+          "Universities",
+          d.totalUniversities
+        )}
+
+        ${stat(
+          "Courses",
+          d.totalCourses
+        )}
+
+        ${stat(
+          "Employees",
+          d.totalEmployees
+        )}
+
+      </div>
+
+
+      <div
+        class="report-grid"
+        style="margin-top:15px"
+      >
+
+        <div class="card">
+
+          <small>
+            Total Payments
+          </small>
+
+          <h2>
+            ৳ ${d.totalPayments}
+          </h2>
+
+        </div>
+
+        <div class="card">
+
+          <small>
+            Total Expenses
+          </small>
+
+          <h2>
+            ৳ ${d.totalExpenses}
+          </h2>
+
+        </div>
+
+        <div class="card">
+
+          <small>
+            Net Balance
+          </small>
+
+          <h2>
+            ৳ ${d.netBalance}
+          </h2>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+function stat(
+  title,
+  value
+){
+
+  return `
+
+    <div class="stat">
+
+      <small>
+        ${esc(title)}
+      </small>
+
+      <strong>
+        ${esc(value)}
+      </strong>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   REPORTS
+========================================================= */
+
+async function reports(){
+
+  loading(true);
+
+
+  try{
+
+    const result =
+      await api(
+        "reports"
+      );
+
+
+    if(!result.success){
+
+      toast(
+        result.message
+      );
+
+      return;
+
+    }
+
+
+    const d =
+      result.data;
+
+
+    document
+      .getElementById(
+        "content"
+      )
+      .innerHTML = `
+
+      <div class="dashboard">
+
+        ${stat(
+          "Leads",
+          d.leads
+        )}
+
+        ${stat(
+          "Students",
+          d.students
+        )}
+
+        ${stat(
+          "Applications",
+          d.applications
+        )}
+
+        ${stat(
+          "Income",
+          "৳ " + d.income
+        )}
+
+        ${stat(
+          "Expenses",
+          "৳ " + d.expenses
+        )}
+
+        ${stat(
+          "Due",
+          "৳ " + d.due
+        )}
+
+      </div>
+
+
+      <div
+        class="card"
+        style="margin-top:15px"
+      >
+
+        <h3>
+          Applications by Country
+        </h3>
+
+        ${reportTable(
+          d.applicationsByCountry
+        )}
+
+      </div>
+
+
+      <div
+        class="card"
+        style="margin-top:15px"
+      >
+
+        <h3>
+          Leads by Source
+        </h3>
+
+        ${reportTable(
+          d.leadsBySource
+        )}
+
+      </div>
+
+    `;
+
+
+  }catch(error){
+
+    toast(
+      error.message
+    );
+
+  }finally{
+
+    loading(false);
+
+  }
+
+}
+
+
+function reportTable(
+  data
+){
+
+  const entries =
+    Object.entries(
+      data || {}
+    );
+
+
+  if(!entries.length){
+
+    return `
+      <p>
+        No data available.
+      </p>
+    `;
+
+  }
+
+
+  return `
+
+    <table
+      style="min-width:100%"
+    >
+
+      <tbody>
+
+        ${entries
+          .map(function(x){
+
+            return `
+
+              <tr>
+
+                <td>
+                  ${esc(x[0])}
+                </td>
+
+                <td>
+                  ${x[1]}
+                </td>
+
+              </tr>
+
+            `;
+
+          })
+          .join("")
+        }
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+function whatsapp(
+  phone
+){
+
+  let number =
+    String(
+      phone || ""
+    )
+    .replace(
+      /\D/g,
+      ""
+    );
+
+
+  if(
+    number.startsWith("0")
+  ){
+
+    number =
+      "880" +
+      number.substring(1);
+
+  }else if(
+    !number.startsWith("880")
+  ){
+
+    number =
+      "880" +
+      number;
+
+  }
+
+
+  if(
+    number.length < 11
+  ){
+
+    toast(
+      "Invalid phone number."
+    );
+
+    return;
+
+  }
+
+
+  window.open(
+    "https://wa.me/" +
+    number,
+    "_blank"
+  );
+
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+async function refresh(){
+
+  if(
+    currentModule ===
+    "Dashboard"
+  ){
+
+    await dashboard();
+
+    return;
+
+  }
+
+
+  if(
+    currentModule ===
+    "Reports"
+  ){
+
+    await reports();
+
+    return;
+
+  }
+
+
+  if(
+    currentModule ===
+    "DuePayments"
+  ){
+
+    delete cache.Invoices;
+
+  }else{
+
+    delete cache[
+      currentModule
+    ];
+
+  }
+
+
+  dropdowns =
+    null;
+
+
+  await openModule(
+    currentModule
+  );
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+function toggleSidebar(){
+
+  document
+    .getElementById(
+      "sidebar"
+    )
+    .classList.toggle(
+      "open"
+    );
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout(){
+
+  try{
+
+    await api(
+      "logout"
+    );
+
+  }catch(error){}
+
+
+  sessionStorage.removeItem(
+    "radiance_user"
+  );
+
+
+  user =
+    null;
+
+
+  location.reload();
+
+}
+
+
+/* =========================================================
+   RESTORE SESSION
+========================================================= */
+
+(function(){
+
+  try{
+
+    const saved =
+      sessionStorage.getItem(
+        "radiance_user"
+      );
+
+
+    if(saved){
+
+      const parsed =
+        JSON.parse(
+          saved
+        );
+
+
+      if(
+        parsed &&
+        parsed.token
+      ){
+
+        user =
+          parsed;
+
+
+        start();
+
+      }
+
+    }
+
+  }catch(error){
+
+    sessionStorage.removeItem(
+      "radiance_user"
+    );
+
+  }
+
+})();
+
 </script>
-</body></html>
+
+</body>
+
+</html>
